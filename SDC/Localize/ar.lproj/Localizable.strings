@@ -1,0 +1,83 @@
+/* 
+  Localizable.strings
+  SDC
+
+  Created by Blue Ray on 09/04/2023.
+
+*/
+
+
+"Home" =  "الرئيسية" ;
+"investor info" = "معلومات المستثمر" ;
+"investor ownerShape" = "ملكية المستثمر" ;
+"investor account" = "حسابات المستثمر" ;
+"company's latest procedures" = "اخر اجرات الشركة" ;
+"investor's ownership of a new security" = "ملكية المستثمر لورقة مالية واحدة" ;
+"account settings" = "اعدادات الحساب" ;
+"Last Transfers" = " اخر الحركات" ;
+"Ownership analysis by sector" = " تحليل الملكية حسب القطاع" ;
+"Dinar" = "دينار" ;
+"dollar" = "دولار" ;
+"trading value" = "قيمة التداول" ;
+"Market value" = "القيمة السوقية" ;
+
+"Card Information" = "معلومات البطاقة" ;
+"Document Type" = "نوع الوثيقة" ;
+"Document Number" = "رقم الوثيقة" ;
+"Next" = "التالي" ;
+"Expiry Date" = "تاريخ الانتهاء" ;
+"Release Date" = "تاريخ الاصدار" ;
+"Family Book Number" = "رقم دفتر العائلة" ;
+"Follow These Step To SignUp" = "اتبع هذه الخطوات للتسجيل" ;
+"Welcome" = "مرحبًا بك" ;
+"Name" = "" ;
+"Center Phone" = "الرقم الارضي" ;
+"Phone Number " = "رقم الهاتف" ;
+"Email" = "البريد الالكتروني" ;
+"By clicking on the continue button, I agree to the terms and conditions" = "بالضغط على زر المتابعة ،انت توافق على الشروط والأحكام" ;
+"activation" = "تفعيل" ;
+"successfully registered" = "تم التسجيل بنجاح" ;
+"Code verification" = "" ;
+"An SMS containing a verification code has been sent to the number" = "تم إرسال رسالة نصية قصيرة تحتوي على رمز التحقق إلى الرقم" ;
+"Please enter the verification code" = "الرجاء إدخال رمز التحقق" ;
+"Code expires yet" = "تنتهي صلاحية الرمز بعد" ;
+"account type" = "رقم العضو" ;
+"account number" = "اسم العضو " ;
+"member name" = "رقم الحساب " ;
+"Member number" = "نوع الحساب" ;
+"Account statement" = "كشف الحساب" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;
+"" = "" ;

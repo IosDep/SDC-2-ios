@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="inX-5E-H0F" customClass="HeaderView" customModule="SDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="453" height="137"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WaJ-Bg-Rs1">
+                    <rect key="frame" x="20" y="27.333333333333336" width="50" height="82.333333333333314"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="50" id="jtp-rQ-Lp3"/>
+                    </constraints>
+                    <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <state key="normal" image="chevron.backward" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                    </state>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Saved Searches" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGm-Lc-WKb">
+                    <rect key="frame" x="154.33333333333337" y="57" width="144.66666666666663" height="23"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                    <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6gn-cv-GmV">
+                    <rect key="frame" x="333" y="27" width="100" height="82"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Opb-er-3aN">
+                            <rect key="frame" x="0.0" y="0.0" width="50" height="82"/>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uu9-3g-xIh">
+                            <rect key="frame" x="50" y="0.0" width="50" height="82"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="50" id="SXH-Ic-vVR"/>
+                            </constraints>
+                            <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" image="menus">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="82" id="S0p-MB-lAJ"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="NpV-e2-c6F"/>
+            <color key="backgroundColor" name="AccentColor"/>
+            <constraints>
+                <constraint firstItem="lGm-Lc-WKb" firstAttribute="centerX" secondItem="inX-5E-H0F" secondAttribute="centerX" id="49y-cG-dWT"/>
+                <constraint firstItem="WaJ-Bg-Rs1" firstAttribute="height" secondItem="inX-5E-H0F" secondAttribute="height" multiplier="0.6" id="MPS-WZ-14f"/>
+                <constraint firstAttribute="bottom" secondItem="6gn-cv-GmV" secondAttribute="bottom" constant="28" id="Ycw-iC-eMe"/>
+                <constraint firstItem="lGm-Lc-WKb" firstAttribute="width" relation="lessThanOrEqual" secondItem="inX-5E-H0F" secondAttribute="width" multiplier="0.6" id="ZLn-Yl-8OP"/>
+                <constraint firstItem="WaJ-Bg-Rs1" firstAttribute="leading" secondItem="inX-5E-H0F" secondAttribute="leading" constant="20" id="avW-N9-o1H"/>
+                <constraint firstItem="NpV-e2-c6F" firstAttribute="trailing" secondItem="6gn-cv-GmV" secondAttribute="trailing" constant="20" id="bAh-C8-Fw6"/>
+                <constraint firstItem="6gn-cv-GmV" firstAttribute="leading" secondItem="lGm-Lc-WKb" secondAttribute="trailing" constant="34" id="dnm-6B-Z79"/>
+                <constraint firstItem="6gn-cv-GmV" firstAttribute="top" secondItem="inX-5E-H0F" secondAttribute="top" constant="27" id="i2M-aj-jvv"/>
+                <constraint firstItem="lGm-Lc-WKb" firstAttribute="centerY" secondItem="inX-5E-H0F" secondAttribute="centerY" id="uEI-aq-zGV"/>
+                <constraint firstItem="WaJ-Bg-Rs1" firstAttribute="centerY" secondItem="inX-5E-H0F" secondAttribute="centerY" id="uXe-BE-f9r"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="arrowBack" destination="WaJ-Bg-Rs1" id="iL4-AV-m14"/>
+                <outlet property="bell" destination="Opb-er-3aN" id="S49-ji-88V"/>
+                <outlet property="menu" destination="Uu9-3g-xIh" id="j1Y-3r-Yb6"/>
+            </connections>
+            <point key="canvasLocation" x="442.30769230769232" y="-229.26540284360189"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
+        <image name="menus" width="22" height="22"/>
+        <namedColor name="AccentColor">
+            <color red="0.29803921568627451" green="0.75700002908706665" blue="0.54500001668930054" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

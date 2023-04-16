@@ -1,0 +1,873 @@
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "0K8-Ko-T8F"; */
+"0K8-Ko-T8F.text" = "Account";
+
+/* Class = "UILabel"; text = "Concept and instructions"; ObjectID = "0WE-Dw-tRI"; */
+"0WE-Dw-tRI.text" = "Concept and instructions";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "1JY-ex-Koc"; */
+"1JY-ex-Koc.text" = "100";
+
+/* Class = "UILabel"; text = "صندوق البريد"; ObjectID = "1l7-Z2-mEy"; */
+"1l7-Z2-mEy.text" = "صندوق البريد";
+
+/* Class = "UILabel"; text = "البريد الالكتروني"; ObjectID = "2Ad-T5-wOi"; */
+"2Ad-T5-wOi.text" = "البريد الالكتروني";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2Ew-eZ-JZO"; */
+"2Ew-eZ-JZO.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "2J3-WK-1mT"; */
+"2J3-WK-1mT.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "2JE-hK-6WB"; */
+"2JE-hK-6WB.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "investor account"; ObjectID = "2uK-ay-qGR"; */
+"2uK-ay-qGR.text" = "investor account";
+
+/* Class = "UILabel"; text = "investor ownershape"; ObjectID = "32A-Nt-p8X"; */
+"32A-Nt-p8X.text" = "investor ownershape";
+
+/* Class = "UILabel"; text = "your fingerprint"; ObjectID = "36u-4V-XNc"; */
+"36u-4V-XNc.text" = "your fingerprint";
+
+/* Class = "UILabel"; text = "Change Lang"; ObjectID = "3AB-h8-1sl"; */
+"3AB-h8-1sl.text" = "Change Lang";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "3Dn-kl-qee"; */
+"3Dn-kl-qee.text" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "3Lu-JM-JOl"; */
+"3Lu-JM-JOl.text" = "Label";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "3Xv-pp-6H3"; */
+"3Xv-pp-6H3.text" = "-";
+
+/* Class = "UIButton"; configuration.title = "معلومات الإتصال"; ObjectID = "3qf-K4-dfJ"; */
+"3qf-K4-dfJ.configuration.title" = "معلومات الإتصال";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "3qf-K4-dfJ"; */
+"3qf-K4-dfJ.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Please enter the verification code"; ObjectID = "3yx-dx-OMn"; */
+"3yx-dx-OMn.text" = "Please enter the verification code";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4aW-kJ-syI"; */
+"4aW-kJ-syI.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "4bw-KD-GVs"; */
+"4bw-KD-GVs.text" = "Label";
+
+/* Class = "UILabel"; text = "القيمة السوقية شهريا من ٢١/١/١٢"; ObjectID = "4wF-HS-LC0"; */
+"4wF-HS-LC0.text" = "القيمة السوقية شهريا من ٢١/١/١٢";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "500-uf-aXI"; */
+"500-uf-aXI.text" = "100";
+
+/* Class = "UILabel"; text = "Code expires yet"; ObjectID = "5JK-eg-R9I"; */
+"5JK-eg-R9I.text" = "Code expires yet";
+
+/* Class = "UILabel"; text = "Phone Number "; ObjectID = "5SC-RF-XOW"; */
+"5SC-RF-XOW.text" = "Phone Number ";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "5Tb-Nl-a0K"; */
+"5Tb-Nl-a0K.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "5kH-Yj-gje"; */
+"5kH-Yj-gje.text" = "-";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "6LK-Yt-PJ4"; */
+"6LK-Yt-PJ4.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "6zg-50-3E9"; */
+"6zg-50-3E9.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "7VO-XK-Y0f"; */
+"7VO-XK-Y0f.text" = "Account";
+
+/* Class = "UILabel"; text = "Section"; ObjectID = "7Wt-Jn-SDv"; */
+"7Wt-Jn-SDv.text" = "Section";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "7dV-8S-4aM"; */
+"7dV-8S-4aM.text" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "7uk-9x-80f"; */
+"7uk-9x-80f.text" = "Label";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "7yl-4N-tC1"; */
+"7yl-4N-tC1.text" = "Email";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "8JG-uB-vPv"; */
+"8JG-uB-vPv.text" = "Label";
+
+/* Class = "UILabel"; text = "Code verification"; ObjectID = "8OB-HD-LbB"; */
+"8OB-HD-LbB.text" = "Code verification";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8aa-cV-TU2"; */
+"8aa-cV-TU2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "133.1"; ObjectID = "8eK-W2-Y6i"; */
+"8eK-W2-Y6i.text" = "133.1";
+
+/* Class = "UILabel"; text = "National No"; ObjectID = "8q5-jm-hDm"; */
+"8q5-jm-hDm.text" = "National No";
+
+/* Class = "UIButton"; configuration.title = "-"; ObjectID = "8ti-oe-Nin"; */
+"8ti-oe-Nin.configuration.title" = "-";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "8ti-oe-Nin"; */
+"8ti-oe-Nin.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "9a5-hc-rUf"; */
+"9a5-hc-rUf.text" = "Label";
+
+/* Class = "UILabel"; text = "الهاتف الأرضي"; ObjectID = "9c6-45-Ngp"; */
+"9c6-45-Ngp.text" = "الهاتف الأرضي";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "9gm-us-36O"; */
+"9gm-us-36O.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "National No"; ObjectID = "9jc-cO-KuH"; */
+"9jc-cO-KuH.text" = "National No";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "9lX-T5-zO2"; */
+"9lX-T5-zO2.text" = "Number";
+
+/* Class = "UILabel"; text = "  Ownership analysis by sector"; ObjectID = "9v1-OV-nep"; */
+"9v1-OV-nep.text" = "  Ownership analysis by sector";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "A47-dY-Qoh"; */
+"A47-dY-Qoh.text" = "100";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "AOR-O0-UQw"; */
+"AOR-O0-UQw.text" = "-";
+
+/* Class = "UILabel"; text = "Enter your information below"; ObjectID = "Aqb-Rb-PTy"; */
+"Aqb-Rb-PTy.text" = "Enter your information below";
+
+/* Class = "UILabel"; text = "Bank"; ObjectID = "BNZ-Tw-TIL"; */
+"BNZ-Tw-TIL.text" = "Bank";
+
+/* Class = "UILabel"; text = "Logout"; ObjectID = "BiS-C6-TDv"; */
+"BiS-C6-TDv.text" = "Logout";
+
+/* Class = "UITabBarItem"; title = "investor ownership"; ObjectID = "C06-wM-F8I"; */
+"C06-wM-F8I.title" = "investor ownership";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "C8c-mG-4jn"; */
+"C8c-mG-4jn.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "بحث"; ObjectID = "CLF-vq-6UI"; */
+"CLF-vq-6UI.configuration.title" = "بحث";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "CLF-vq-6UI"; */
+"CLF-vq-6UI.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "The investor's ownership of a new security"; ObjectID = "CaG-ux-Ylh"; */
+"CaG-ux-Ylh.text" = "The investor's ownership of a new security";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "D4f-SH-vbp"; */
+"D4f-SH-vbp.text" = "100";
+
+/* Class = "UILabel"; text = "account settings"; ObjectID = "DDf-vO-fiB"; */
+"DDf-vO-fiB.text" = "account settings";
+
+/* Class = "UILabel"; text = "a way to backup"; ObjectID = "DUJ-Z1-Fko"; */
+"DUJ-Z1-Fko.text" = "a way to backup";
+
+/* Class = "UIButton"; configuration.title = "مع اصفار"; ObjectID = "Dbi-G5-iBy"; */
+"Dbi-G5-iBy.configuration.title" = "مع اصفار";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Dbi-G5-iBy"; */
+"Dbi-G5-iBy.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "User Name :"; ObjectID = "Dm6-F8-32I"; */
+"Dm6-F8-32I.text" = "User Name :";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "DoZ-6O-uiU"; */
+"DoZ-6O-uiU.text" = "100";
+
+/* Class = "UILabel"; text = "0.72"; ObjectID = "E2I-5c-pLw"; */
+"E2I-5c-pLw.text" = "0.72";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "EDB-Pl-gDz"; */
+"EDB-Pl-gDz.text" = "Account";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "EKq-bz-cnm"; */
+"EKq-bz-cnm.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ESi-Au-814"; */
+"ESi-Au-814.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "EqQ-nN-GIn"; */
+"EqQ-nN-GIn.text" = "100";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Eqy-BF-XRm"; */
+"Eqy-BF-XRm.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Money bills"; ObjectID = "F2r-ZX-RW5"; */
+"F2r-ZX-RW5.text" = "Money bills";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "F4l-ut-5eZ"; */
+"F4l-ut-5eZ.text" = "Account";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "F5U-tr-fM6"; */
+"F5U-tr-fM6.text" = "Email";
+
+/* Class = "UILabel"; text = "موديل السيارة"; ObjectID = "F5z-if-xf6"; */
+"F5z-if-xf6.text" = "موديل السيارة";
+
+/* Class = "UILabel"; text = "11.12"; ObjectID = "FCz-EF-r5C"; */
+"FCz-EF-r5C.text" = "11.12";
+
+/* Class = "UILabel"; text = "Market Value "; ObjectID = "Fah-o6-W65"; */
+"Fah-o6-W65.text" = "Market Value ";
+
+/* Class = "UILabel"; text = "البريد الالكتروني"; ObjectID = "Fap-Aq-N68"; */
+"Fap-Aq-N68.text" = "البريد الالكتروني";
+
+/* Class = "UIButton"; configuration.title = "By Clicking in conutinue Button i agree with terms and condetion"; ObjectID = "GL5-eZ-zPI"; */
+"GL5-eZ-zPI.configuration.title" = "By Clicking in conutinue Button i agree with terms and condetion";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "GL5-eZ-zPI"; */
+"GL5-eZ-zPI.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GQ8-CL-Lc7"; */
+"GQ8-CL-Lc7.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Forgot your password ?"; ObjectID = "H4g-hb-zUW"; */
+"H4g-hb-zUW.configuration.title" = "Forgot your password ?";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "H4g-hb-zUW"; */
+"H4g-hb-zUW.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "مركز إيداع الأوراق المالية يرحب بكم في خدماته الإلكترونية"; ObjectID = "H8g-Kv-vQp"; */
+"H8g-Kv-vQp.text" = "مركز إيداع الأوراق المالية يرحب بكم في خدماته الإلكترونية";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "HG2-yY-PBk"; */
+"HG2-yY-PBk.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "0.72"; ObjectID = "HOh-Pg-Cr9"; */
+"HOh-Pg-Cr9.text" = "0.72";
+
+/* Class = "UILabel"; text = "Welcome "; ObjectID = "HUh-zl-Ye1"; */
+"HUh-zl-Ye1.text" = "Welcome ";
+
+/* Class = "UILabel"; text = "الفاكس"; ObjectID = "HcB-rC-NBY"; */
+"HcB-rC-NBY.text" = "الفاكس";
+
+/* Class = "UILabel"; text = "Terms and Conditions"; ObjectID = "ID6-va-qbe"; */
+"ID6-va-qbe.text" = "Terms and Conditions";
+
+/* Class = "UITabBarItem"; title = "investor info "; ObjectID = "IF9-Fb-0OV"; */
+"IF9-Fb-0OV.title" = "investor info ";
+
+/* Class = "UILabel"; text = "الفاكس"; ObjectID = "IG6-Ce-LBE"; */
+"IG6-Ce-LBE.text" = "الفاكس";
+
+/* Class = "UILabel"; text = "Trading volume"; ObjectID = "IkM-Vm-Pu9"; */
+"IkM-Vm-Pu9.text" = "Trading volume";
+
+/* Class = "UITabBarItem"; title = "Home"; ObjectID = "J0x-Xd-3UD"; */
+"J0x-Xd-3UD.title" = "Home";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "J2Q-fR-O9A"; */
+"J2Q-fR-O9A.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "JZh-DT-pYu"; */
+"JZh-DT-pYu.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "البريد الالكتروني"; ObjectID = "Jhd-o7-T00"; */
+"Jhd-o7-T00.text" = "البريد الالكتروني";
+
+/* Class = "UILabel"; text = "Logout"; ObjectID = "Jl1-q7-O92"; */
+"Jl1-q7-O92.text" = "Logout";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JlO-k7-mQy"; */
+"JlO-k7-mQy.text" = "Label";
+
+/* Class = "UILabel"; text = "investor info"; ObjectID = "K7F-qT-2fm"; */
+"K7F-qT-2fm.text" = "investor info";
+
+/* Class = "UILabel"; text = "Money bills"; ObjectID = "KHR-OC-yXN"; */
+"KHR-OC-yXN.text" = "Money bills";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "KJQ-G0-tO0"; */
+"KJQ-G0-tO0.text" = "Account";
+
+/* Class = "UIButton"; configuration.title = "معلومات الإتصال"; ObjectID = "KlG-76-uWX"; */
+"KlG-76-uWX.configuration.title" = "معلومات الإتصال";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "KlG-76-uWX"; */
+"KlG-76-uWX.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "KlY-h1-kFm"; */
+"KlY-h1-kFm.text" = "Label";
+
+/* Class = "UILabel"; text = "inestor"; ObjectID = "L6M-gX-F1F"; */
+"L6M-gX-F1F.text" = "inestor";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Lis-Ne-6bp"; */
+"Lis-Ne-6bp.text" = "-";
+
+/* Class = "UILabel"; text = "a way to backup"; ObjectID = "Lkb-fg-fh1"; */
+"Lkb-fg-fh1.text" = "a way to backup";
+
+/* Class = "UILabel"; text = "خدمة محفظتك الالكترونية"; ObjectID = "LzX-kt-7y9"; */
+"LzX-kt-7y9.text" = "خدمة محفظتك الالكترونية";
+
+/* Class = "UILabel"; text = "Market value"; ObjectID = "M5c-3L-ncW"; */
+"M5c-3L-ncW.text" = "Market value";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "MT6-6n-P8P"; */
+"MT6-6n-P8P.text" = "Label";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "Mj2-iZ-YN4"; */
+"Mj2-iZ-YN4.text" = "Number";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "NQi-rU-WeE"; */
+"NQi-rU-WeE.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "NQi-rU-WeE"; */
+"NQi-rU-WeE.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Ngh-jn-FWs"; */
+"Ngh-jn-FWs.text" = "-";
+
+/* Class = "UILabel"; text = "Value"; ObjectID = "O3M-l2-EZY"; */
+"O3M-l2-EZY.text" = "Value";
+
+/* Class = "UILabel"; text = "0.72"; ObjectID = "OLQ-s8-JoE"; */
+"OLQ-s8-JoE.text" = "0.72";
+
+/* Class = "UILabel"; text = "The name of the security"; ObjectID = "OUi-7B-VvH"; */
+"OUi-7B-VvH.text" = "The name of the security";
+
+/* Class = "UILabel"; text = "القيمة السوقية شهريا من ٢١/١/١٢"; ObjectID = "PDG-sM-qtL"; */
+"PDG-sM-qtL.text" = "القيمة السوقية شهريا من ٢١/١/١٢";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Paz-k6-zxB"; */
+"Paz-k6-zxB.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Change Passwrod"; ObjectID = "Pc1-mJ-hiv"; */
+"Pc1-mJ-hiv.text" = "Change Passwrod";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Pmv-e0-SBe"; */
+"Pmv-e0-SBe.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "Ppb-8P-bYF"; */
+"Ppb-8P-bYF.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PqQ-Mf-Htr"; */
+"PqQ-Mf-Htr.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "رقم الهاتف الخلوي"; ObjectID = "QS9-N2-WbG"; */
+"QS9-N2-WbG.text" = "رقم الهاتف الخلوي";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "RMq-qc-xRS"; */
+"RMq-qc-xRS.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Sign in With FingerPoint"; ObjectID = "Ro2-IT-dI1"; */
+"Ro2-IT-dI1.configuration.title" = "Sign in With FingerPoint";
+
+/* Class = "UIButton"; normalTitle = "Sign in With FingerPoint"; ObjectID = "Ro2-IT-dI1"; */
+"Ro2-IT-dI1.normalTitle" = "Sign in With FingerPoint";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Slo-pt-JBb"; */
+"Slo-pt-JBb.text" = "-";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "SqX-up-PVM"; */
+"SqX-up-PVM.text" = "100";
+
+/* Class = "UILabel"; text = "Contracts Number"; ObjectID = "T37-lq-9E7"; */
+"T37-lq-9E7.text" = "Contracts Number";
+
+/* Class = "UILabel"; text = "Tottal"; ObjectID = "TD5-fA-Wcn"; */
+"TD5-fA-Wcn.text" = "Tottal";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TRQ-PM-lRS"; */
+"TRQ-PM-lRS.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "TwA-wZ-VEA"; */
+"TwA-wZ-VEA.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "U5A-e0-fj2"; */
+"U5A-e0-fj2.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "صندوق البريد"; ObjectID = "Uf4-ws-GbY"; */
+"Uf4-ws-GbY.text" = "صندوق البريد";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Uyg-tR-UEI"; */
+"Uyg-tR-UEI.text" = "-";
+
+/* Class = "UILabel"; text = "your fingerprint"; ObjectID = "Vf7-rC-Vpl"; */
+"Vf7-rC-Vpl.text" = "your fingerprint";
+
+/* Class = "UILabel"; text = "investor ownership"; ObjectID = "VfF-bK-qlv"; */
+"VfF-bK-qlv.text" = "investor ownership";
+
+/* Class = "UILabel"; text = "Account ownership"; ObjectID = "VmB-cn-b35"; */
+"VmB-cn-b35.text" = "Account ownership";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "Vr5-Ro-Ueh"; */
+"Vr5-Ro-Ueh.text" = "-";
+
+/* Class = "UILabel"; text = "An SMS containing a verification code has been sent to the number"; ObjectID = "Wd2-Vd-ACc"; */
+"Wd2-Vd-ACc.text" = "An SMS containing a verification code has been sent to the number";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "Wpb-7w-blo"; */
+"Wpb-7w-blo.normalTitle" = "التالي";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "XB2-1e-qxK"; */
+"XB2-1e-qxK.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "XFl-iU-Q0n"; */
+"XFl-iU-Q0n.text" = "-";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "XL7-tp-VIP"; */
+"XL7-tp-VIP.text" = "Label";
+
+/* Class = "UILabel"; text = "Account ownership"; ObjectID = "XO2-c8-nAb"; */
+"XO2-c8-nAb.text" = "Account ownership";
+
+/* Class = "UILabel"; text = "الهاتف الأرضي"; ObjectID = "XVB-DO-l36"; */
+"XVB-DO-l36.text" = "الهاتف الأرضي";
+
+/* Class = "UILabel"; text = "Serviess"; ObjectID = "XVW-n6-k2I"; */
+"XVW-n6-k2I.text" = "Serviess";
+
+/* Class = "UILabel"; text = "133.1"; ObjectID = "XbV-X8-I9C"; */
+"XbV-X8-I9C.text" = "133.1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "Xlx-S2-s0O"; */
+"Xlx-S2-s0O.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "YAN-1G-dpK"; */
+"YAN-1G-dpK.text" = "Email";
+
+/* Class = "UILabel"; text = "Document"; ObjectID = "YPl-AB-em7"; */
+"YPl-AB-em7.text" = "Document";
+
+/* Class = "UILabel"; text = "Market value"; ObjectID = "YeS-i6-XJJ"; */
+"YeS-i6-XJJ.text" = "Market value";
+
+/* Class = "UILabel"; text = "National No"; ObjectID = "Ygy-Ar-L34"; */
+"Ygy-Ar-L34.text" = "National No";
+
+/* Class = "UILabel"; text = "Please enter the verification code"; ObjectID = "ZTZ-74-Eb6"; */
+"ZTZ-74-Eb6.text" = "Please enter the verification code";
+
+/* Class = "UILabel"; text = "Document"; ObjectID = "ZfA-m3-vce"; */
+"ZfA-m3-vce.text" = "Document";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ZvS-21-8f3"; */
+"ZvS-21-8f3.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "user's Guide"; ObjectID = "a7K-bH-5F1"; */
+"a7K-bH-5F1.text" = "user's Guide";
+
+/* Class = "UIButton"; configuration.title = "-["; ObjectID = "aGI-XW-kW7"; */
+"aGI-XW-kW7.configuration.title" = "-[";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aGI-XW-kW7"; */
+"aGI-XW-kW7.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "aHB-86-x8F"; */
+"aHB-86-x8F.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "aMf-1D-4VG"; */
+"aMf-1D-4VG.text" = "-";
+
+/* Class = "UIButton"; configuration.title = "Sign In"; ObjectID = "abW-8g-bkH"; */
+"abW-8g-bkH.configuration.title" = "Sign In";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "abW-8g-bkH"; */
+"abW-8g-bkH.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "akD-Ha-bNH"; */
+"akD-Ha-bNH.text" = "100";
+
+/* Class = "UILabel"; text = "investor ownership"; ObjectID = "anN-d6-g8G"; */
+"anN-d6-g8G.text" = "investor ownership";
+
+/* Class = "UILabel"; text = "Contracts Number"; ObjectID = "bNq-Ly-5IC"; */
+"bNq-Ly-5IC.text" = "Contracts Number";
+
+/* Class = "UIButton"; configuration.title = "بدون اصفار"; ObjectID = "bNq-Yo-d6j"; */
+"bNq-Yo-d6j.configuration.title" = "بدون اصفار";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bNq-Yo-d6j"; */
+"bNq-Yo-d6j.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "User Name"; ObjectID = "bSi-RA-bJT"; */
+"bSi-RA-bJT.text" = "User Name";
+
+/* Class = "UILabel"; text = "رقم الهاتف الخلوي"; ObjectID = "bce-Tw-yOX"; */
+"bce-Tw-yOX.text" = "رقم الهاتف الخلوي";
+
+/* Class = "UIButton"; configuration.title = "Sign Up"; ObjectID = "bgN-yu-1dk"; */
+"bgN-yu-1dk.configuration.title" = "Sign Up";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "bgN-yu-1dk"; */
+"bgN-yu-1dk.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "cCw-rh-vnN"; */
+"cCw-rh-vnN.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "تاريخ الحجز"; ObjectID = "cMo-c5-LGJ"; */
+"cMo-c5-LGJ.text" = "تاريخ الحجز";
+
+/* Class = "UILabel"; text = "buying"; ObjectID = "ccV-0Q-buF"; */
+"ccV-0Q-buF.text" = "buying";
+
+/* Class = "UILabel"; text = "Industry"; ObjectID = "cfD-mX-SDc"; */
+"cfD-mX-SDc.text" = "Industry";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "cpd-tf-0VJ"; */
+"cpd-tf-0VJ.text" = "Label";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "czc-og-hk7"; */
+"czc-og-hk7.text" = "Account";
+
+/* Class = "UILabel"; text = "تاريخ الحجز"; ObjectID = "d7O-aF-XNl"; */
+"d7O-aF-XNl.text" = "تاريخ الحجز";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "dAx-m3-E1C"; */
+"dAx-m3-E1C.normalTitle" = "التالي";
+
+/* Class = "UIButton"; configuration.title = "بحث"; ObjectID = "diD-NN-LZC"; */
+"diD-NN-LZC.configuration.title" = "بحث";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "diD-NN-LZC"; */
+"diD-NN-LZC.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "doH-wD-Hsj"; */
+"doH-wD-Hsj.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "sale"; ObjectID = "dtO-ct-4YT"; */
+"dtO-ct-4YT.text" = "sale";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "e7R-Xb-IUf"; */
+"e7R-Xb-IUf.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Document"; ObjectID = "eCr-VV-fui"; */
+"eCr-VV-fui.text" = "Document";
+
+/* Class = "UIButton"; configuration.title = "-"; ObjectID = "ebP-gL-0P4"; */
+"ebP-gL-0P4.configuration.title" = "-";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ebP-gL-0P4"; */
+"ebP-gL-0P4.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "efG-yL-Gaa"; */
+"efG-yL-Gaa.text" = "1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "ejw-bY-R5Q"; */
+"ejw-bY-R5Q.text" = "Label";
+
+/* Class = "UILabel"; text = "22"; ObjectID = "fDe-Np-cdZ"; */
+"fDe-Np-cdZ.text" = "22";
+
+/* Class = "UIButton"; configuration.title = "activation"; ObjectID = "fM0-fg-uCg"; */
+"fM0-fg-uCg.configuration.title" = "activation";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fM0-fg-uCg"; */
+"fM0-fg-uCg.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "fTG-a5-5Ow"; */
+"fTG-a5-5Ow.text" = "Account";
+
+/* Class = "UILabel"; text = "الفاكس"; ObjectID = "fXd-OD-0em"; */
+"fXd-OD-0em.text" = "الفاكس";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "faq-u9-zRA"; */
+"faq-u9-zRA.text" = "1";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "fbD-pl-TJf"; */
+"fbD-pl-TJf.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Center Phone"; ObjectID = "fgh-cL-xj3"; */
+"fgh-cL-xj3.text" = "Center Phone";
+
+/* Class = "UILabel"; text = "11.12"; ObjectID = "g2F-KC-MmH"; */
+"g2F-KC-MmH.text" = "11.12";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "g8n-Dk-NAE"; */
+"g8n-Dk-NAE.text" = "Account";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "gFD-gd-Xqx"; */
+"gFD-gd-Xqx.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Change Passwrod"; ObjectID = "gI8-x6-gMM"; */
+"gI8-x6-gMM.text" = "Change Passwrod";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "gb6-5S-irz"; */
+"gb6-5S-irz.text" = "Number";
+
+/* Class = "UILabel"; text = "Market value"; ObjectID = "h0o-hG-B1S"; */
+"h0o-hG-B1S.text" = "Market value";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "h7H-nD-P9w"; */
+"h7H-nD-P9w.text" = "-";
+
+/* Class = "UILabel"; text = "صندوق البريد"; ObjectID = "hGD-yT-be4"; */
+"hGD-yT-be4.text" = "صندوق البريد";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hLe-eT-SIg"; */
+"hLe-eT-SIg.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "hbA-JP-ZkO"; */
+"hbA-JP-ZkO.text" = "Label";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "hq9-xR-GgC"; */
+"hq9-xR-GgC.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "iUG-sR-Uoc"; */
+"iUG-sR-Uoc.text" = "-";
+
+/* Class = "UILabel"; text = "paper"; ObjectID = "iVn-mu-6QH"; */
+"iVn-mu-6QH.text" = "paper";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jM2-D2-hSr"; */
+"jM2-D2-hSr.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "National No"; ObjectID = "jZR-sS-HGq"; */
+"jZR-sS-HGq.text" = "National No";
+
+/* Class = "UILabel"; text = "Password : "; ObjectID = "jgL-3S-nVb"; */
+"jgL-3S-nVb.text" = "Password : ";
+
+/* Class = "UILabel"; text = " The name of the security"; ObjectID = "jrE-16-GvK"; */
+"jrE-16-GvK.text" = " The name of the security";
+
+/* Class = "UILabel"; text = "Address"; ObjectID = "jsv-Qg-IZe"; */
+"jsv-Qg-IZe.text" = "Address";
+
+/* Class = "UIButton"; configuration.title = "Denna"; ObjectID = "jua-I3-pLr"; */
+"jua-I3-pLr.configuration.title" = "Denna";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "jua-I3-pLr"; */
+"jua-I3-pLr.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "مع اصفار"; ObjectID = "kKd-EH-8AB"; */
+"kKd-EH-8AB.configuration.title" = "مع اصفار";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kKd-EH-8AB"; */
+"kKd-EH-8AB.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "kZu-Gd-9wo"; */
+"kZu-Gd-9wo.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "kjj-EC-jO7"; */
+"kjj-EC-jO7.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "l7S-Gc-cxe"; */
+"l7S-Gc-cxe.text" = "-";
+
+/* Class = "UILabel"; text = "الهاتف الأرضي"; ObjectID = "lIa-3h-dz0"; */
+"lIa-3h-dz0.text" = "الهاتف الأرضي";
+
+/* Class = "UILabel"; text = "11.12"; ObjectID = "lKa-VI-Bea"; */
+"lKa-VI-Bea.text" = "11.12";
+
+/* Class = "UIButton"; configuration.title = "Login"; ObjectID = "lg6-4E-AAW"; */
+"lg6-4E-AAW.configuration.title" = "Login";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "lg6-4E-AAW"; */
+"lg6-4E-AAW.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "lkn-qC-Mqd"; */
+"lkn-qC-Mqd.normalTitle" = "التالي";
+
+/* Class = "UILabel"; text = "An SMS containing a verification code has been sent to the number"; ObjectID = "m3v-P2-BGk"; */
+"m3v-P2-BGk.text" = "An SMS containing a verification code has been sent to the number";
+
+/* Class = "UILabel"; text = "  Ownership analysis by sector"; ObjectID = "mVd-TX-mR2"; */
+"mVd-TX-mR2.text" = "  Ownership analysis by sector";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "me8-ug-7Fn"; */
+"me8-ug-7Fn.text" = "-";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "nDP-5z-1CL"; */
+"nDP-5z-1CL.text" = "-";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "nEQ-ct-u2c"; */
+"nEQ-ct-u2c.text" = "1";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "nXu-Lh-s3e"; */
+"nXu-Lh-s3e.text" = "Number";
+
+/* Class = "UILabel"; text = "Code verification"; ObjectID = "oQ6-Em-Zc4"; */
+"oQ6-Em-Zc4.text" = "Code verification";
+
+/* Class = "UILabel"; text = "The company's latest procedures"; ObjectID = "oVx-cF-Zhc"; */
+"oVx-cF-Zhc.text" = "The company's latest procedures";
+
+/* Class = "UILabel"; text = "Rember me "; ObjectID = "ohS-27-b8m"; */
+"ohS-27-b8m.text" = "Rember me ";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "ojP-fT-yzd"; */
+"ojP-fT-yzd.text" = "100";
+
+/* Class = "UILabel"; text = "0.72"; ObjectID = "p4k-0C-lEQ"; */
+"p4k-0C-lEQ.text" = "0.72";
+
+/* Class = "UILabel"; text = "National No"; ObjectID = "pD3-as-hdB"; */
+"pD3-as-hdB.text" = "National No";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pEU-k7-jES"; */
+"pEU-k7-jES.text" = "Label";
+
+/* Class = "UILabel"; text = "user's Guide"; ObjectID = "pOB-RD-O8M"; */
+"pOB-RD-O8M.text" = "user's Guide";
+
+/* Class = "UILabel"; text = "-"; ObjectID = "pSS-Dq-m2E"; */
+"pSS-Dq-m2E.text" = "-";
+
+/* Class = "UILabel"; text = "133.1"; ObjectID = "pUP-6A-DgO"; */
+"pUP-6A-DgO.text" = "133.1";
+
+/* Class = "UILabel"; text = "133.1"; ObjectID = "pwo-cP-kyM"; */
+"pwo-cP-kyM.text" = "133.1";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "py2-Lh-jm2"; */
+"py2-Lh-jm2.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "qAi-xb-Z3d"; */
+"qAi-xb-Z3d.text" = "Label";
+
+/* Class = "UILabel"; text = "Document"; ObjectID = "qIw-If-OrP"; */
+"qIw-If-OrP.text" = "Document";
+
+/* Class = "UILabel"; text = "1"; ObjectID = "qdt-TO-7Kg"; */
+"qdt-TO-7Kg.text" = "1";
+
+/* Class = "UILabel"; text = "Document"; ObjectID = "qgd-WP-u29"; */
+"qgd-WP-u29.text" = "Document";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "rFE-Ia-3kW"; */
+"rFE-Ia-3kW.text" = "Email";
+
+/* Class = "UILabel"; text = "رقم الهاتف الخلوي"; ObjectID = "rJl-YW-jdV"; */
+"rJl-YW-jdV.text" = "رقم الهاتف الخلوي";
+
+/* Class = "UILabel"; text = "buying"; ObjectID = "rez-gd-TiB"; */
+"rez-gd-TiB.text" = "buying";
+
+/* Class = "UILabel"; text = "Account"; ObjectID = "s1b-VQ-rax"; */
+"s1b-VQ-rax.text" = "Account";
+
+/* Class = "UILabel"; text = "موديل السيارة"; ObjectID = "s7v-sf-IIq"; */
+"s7v-sf-IIq.text" = "موديل السيارة";
+
+/* Class = "UILabel"; text = "11.12"; ObjectID = "sCQ-zG-kdz"; */
+"sCQ-zG-kdz.text" = "11.12";
+
+/* Class = "UILabel"; text = "Notice"; ObjectID = "sWv-F7-OOr"; */
+"sWv-F7-OOr.text" = "Notice";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sgS-ry-Ev0"; */
+"sgS-ry-Ev0.text" = "Label";
+
+/* Class = "UIButton"; configuration.title = "Button"; ObjectID = "t03-cF-i9R"; */
+"t03-cF-i9R.configuration.title" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "t03-cF-i9R"; */
+"t03-cF-i9R.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Concept and instructions"; ObjectID = "t0b-VS-7Zk"; */
+"t0b-VS-7Zk.text" = "Concept and instructions";
+
+/* Class = "UIButton"; configuration.title = "بحث"; ObjectID = "tDr-Bu-UcM"; */
+"tDr-Bu-UcM.configuration.title" = "بحث";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tDr-Bu-UcM"; */
+"tDr-Bu-UcM.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Email"; ObjectID = "tRh-40-moy"; */
+"tRh-40-moy.text" = "Email";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "tV4-UP-S24"; */
+"tV4-UP-S24.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "ufn-XG-J0D"; */
+"ufn-XG-J0D.text" = "Name";
+
+/* Class = "UIButton"; configuration.title = "-["; ObjectID = "umZ-ih-wC9"; */
+"umZ-ih-wC9.configuration.title" = "-[";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "umZ-ih-wC9"; */
+"umZ-ih-wC9.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "sale"; ObjectID = "uwY-ww-WwI"; */
+"uwY-ww-WwI.text" = "sale";
+
+/* Class = "UILabel"; text = "موديل السيارة"; ObjectID = "ux8-4e-jpy"; */
+"ux8-4e-jpy.text" = "موديل السيارة";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "vBV-Hx-pdd"; */
+"vBV-Hx-pdd.normalTitle" = "Button";
+
+/* Class = "UIButton"; configuration.title = "Dollar"; ObjectID = "ver-p7-Edj"; */
+"ver-p7-Edj.configuration.title" = "Dollar";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ver-p7-Edj"; */
+"ver-p7-Edj.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Home"; ObjectID = "vik-U1-Dgd"; */
+"vik-U1-Dgd.text" = "Home";
+
+/* Class = "UIButton"; configuration.title = "activation"; ObjectID = "w21-17-Dix"; */
+"w21-17-Dix.configuration.title" = "activation";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "w21-17-Dix"; */
+"w21-17-Dix.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wGv-Yw-8Oi"; */
+"wGv-Yw-8Oi.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Account ownership"; ObjectID = "wJo-Cy-dDK"; */
+"wJo-Cy-dDK.text" = "Account ownership";
+
+/* Class = "UILabel"; text = "Number"; ObjectID = "wdu-pS-zUD"; */
+"wdu-pS-zUD.text" = "Number";
+
+/* Class = "UILabel"; text = "User Name"; ObjectID = "wik-Jg-q40"; */
+"wik-Jg-q40.text" = "User Name";
+
+/* Class = "UIButton"; normalTitle = "التالي"; ObjectID = "wz2-1v-Kpk"; */
+"wz2-1v-Kpk.normalTitle" = "التالي";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "wzn-nT-2hy"; */
+"wzn-nT-2hy.normalTitle" = "Button";
+
+/* Class = "UITabBarItem"; title = "investor accounts"; ObjectID = "x10-id-dtg"; */
+"x10-id-dtg.title" = "investor accounts";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "xmv-Zr-5yE"; */
+"xmv-Zr-5yE.text" = "Label";
+
+/* Class = "UILabel"; text = "Notice"; ObjectID = "xq4-iu-ar2"; */
+"xq4-iu-ar2.text" = "Notice";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "y2M-p0-wPL"; */
+"y2M-p0-wPL.text" = "100";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "y5b-AG-G3b"; */
+"y5b-AG-G3b.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "Terms and Conditions"; ObjectID = "yIW-kA-RG1"; */
+"yIW-kA-RG1.text" = "Terms and Conditions";
+
+/* Class = "UILabel"; text = "صندوق البريد"; ObjectID = "yY2-IF-n5P"; */
+"yY2-IF-n5P.text" = "صندوق البريد";
+
+/* Class = "UILabel"; text = "Change Lang"; ObjectID = "ywi-U8-ybk"; */
+"ywi-U8-ybk.text" = "Change Lang";
+
+/* Class = "UIButton"; configuration.title = "بدون اصفار"; ObjectID = "zgf-jz-Fiu"; */
+"zgf-jz-Fiu.configuration.title" = "بدون اصفار";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "zgf-jz-Fiu"; */
+"zgf-jz-Fiu.normalTitle" = "Button";
