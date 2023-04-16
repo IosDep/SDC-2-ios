@@ -15,6 +15,8 @@ class ChangeLanguage: UIViewController {
     
     @IBOutlet weak var enimaeg: UIImageView!
     @IBOutlet weak var arimage: UIImageView!
+//
+//
     
     
     override func viewDidLoad() {
