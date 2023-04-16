@@ -99,35 +99,35 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             cell = nib[0] as? BusnissCardTable
         }
         
-
+//
 //        if seatrching == true {
-//            
-//            
-//            
+//
+//
+//
 //            cell?.mainCardView.layer.cornerRadius =  8
 //            let data = arr_search[indexPath.row]
-//            
+//
 //            cell?.cardFaildOne.text = data.Security_Name
 //            cell?.cardFaildTwo.text = data.securityIsin
 //            cell?.cardFaildThere.text = data.clientNo
-//            
-//            
-//            
+//
+//
+//
 //        }else {
-//            
-// 
+//
+//
 //            cell?.mainCardView.layer.cornerRadius =  8
 //            let data = invAccount[indexPath.row]
-//            
+//
 //            cell?.cardFaildOne.text = data.Security_Name
 //            cell?.cardFaildTwo.text = data.securityIsin
 //            cell?.cardFaildThere.text = data.clientNo
-//            
-//        }
-//        
-//        
 //
-//        
+//        }
+//
+//
+//
+//
         
         
 
