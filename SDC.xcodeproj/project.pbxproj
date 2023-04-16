@@ -20,8 +20,6 @@
 		8728D9E729E9D6FC00133096 /* CardTwoVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8728D9E629E9D6FC00133096 /* CardTwoVc.swift */; };
 		8728D9E929E9D72100133096 /* CardThereVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8728D9E829E9D72100133096 /* CardThereVc.swift */; };
 		8728D9EB29E9D73800133096 /* CardFourVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8728D9EA29E9D73800133096 /* CardFourVC.swift */; };
-		872A930D29E242FA00D6912F /* TradingXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 872A930B29E242FA00D6912F /* TradingXibView.xib */; };
-		872A931029E2432C00D6912F /* TradingXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872A930F29E2432C00D6912F /* TradingXibView.swift */; };
 		8734D284295C32570044B0F7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8734D283295C32570044B0F7 /* AppDelegate.swift */; };
 		8734D28B295C32570044B0F7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8734D289295C32570044B0F7 /* Main.storyboard */; };
 		8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8734D28C295C32590044B0F7 /* Assets.xcassets */; };
@@ -70,6 +68,8 @@
 		87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87BC4E0629DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift */; };
 		87C59C7E29C13C7900EB0C40 /* BusnissCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C59C7C29C13C7900EB0C40 /* BusnissCard.swift */; };
 		87C59C7F29C13C7900EB0C40 /* BusnissCard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87C59C7D29C13C7900EB0C40 /* BusnissCard.xib */; };
+		87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87CE38E929EBC78800FD09D5 /* TradingXibView.swift */; };
+		87CE38EC29EBC78800FD09D5 /* TradingXibView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 87CE38EA29EBC78800FD09D5 /* TradingXibView.xib */; };
 		87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E9B129DA9D39006B6AA7 /* LoginVC.swift */; };
 		87D3E9B429DA9DD8006B6AA7 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E9B329DA9DD8006B6AA7 /* Helper.swift */; };
 		87D3E9B629DA9F5E006B6AA7 /* ApiCaler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D3E9B529DA9F5E006B6AA7 /* ApiCaler.swift */; };
@@ -118,8 +118,6 @@
 		8728D9E629E9D6FC00133096 /* CardTwoVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTwoVc.swift; sourceTree = "<group>"; };
 		8728D9E829E9D72100133096 /* CardThereVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardThereVc.swift; sourceTree = "<group>"; };
 		8728D9EA29E9D73800133096 /* CardFourVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFourVC.swift; sourceTree = "<group>"; };
-		872A930B29E242FA00D6912F /* TradingXibView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TradingXibView.xib; path = ../../../../.Trash/TradingXibView.xib; sourceTree = "<group>"; };
-		872A930F29E2432C00D6912F /* TradingXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradingXibView.swift; sourceTree = "<group>"; };
 		8734D280295C32570044B0F7 /* SDC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SDC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8734D283295C32570044B0F7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8734D28A295C32570044B0F7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -174,6 +172,8 @@
 		87BC4E0629DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OwnerShapeAnlysisModel.swift; sourceTree = "<group>"; };
 		87C59C7C29C13C7900EB0C40 /* BusnissCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusnissCard.swift; sourceTree = "<group>"; };
 		87C59C7D29C13C7900EB0C40 /* BusnissCard.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BusnissCard.xib; sourceTree = "<group>"; };
+		87CE38E929EBC78800FD09D5 /* TradingXibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TradingXibView.swift; sourceTree = "<group>"; };
+		87CE38EA29EBC78800FD09D5 /* TradingXibView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TradingXibView.xib; sourceTree = "<group>"; };
 		87D3E9B129DA9D39006B6AA7 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		87D3E9B329DA9DD8006B6AA7 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		87D3E9B529DA9F5E006B6AA7 /* ApiCaler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiCaler.swift; sourceTree = "<group>"; };
@@ -368,8 +368,6 @@
 		87C59C7B29C13C5600EB0C40 /* XIb */ = {
 			isa = PBXGroup;
 			children = (
-				872A930F29E2432C00D6912F /* TradingXibView.swift */,
-				872A930B29E242FA00D6912F /* TradingXibView.xib */,
 				8736F53229C7218900A6A567 /* HeaderView.swift */,
 				8736F53329C7218900A6A567 /* HeaderView.xib */,
 				87C59C7C29C13C7900EB0C40 /* BusnissCard.swift */,
@@ -384,6 +382,8 @@
 				87B614FA29D15C690039813A /* HeaderDataXIB.xib */,
 				8761E54229DC4B3B00CB72B5 /* AccountListXib.swift */,
 				8761E54329DC4B3B00CB72B5 /* AccountListXib.xib */,
+				87CE38E929EBC78800FD09D5 /* TradingXibView.swift */,
+				87CE38EA29EBC78800FD09D5 /* TradingXibView.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -553,7 +553,7 @@
 				87B614FC29D15C690039813A /* HeaderDataXIB.xib in Resources */,
 				8768982929D00C3B00636503 /* HomePropretyXib.xib in Resources */,
 				87C59C7F29C13C7900EB0C40 /* BusnissCard.xib in Resources */,
-				872A930D29E242FA00D6912F /* TradingXibView.xib in Resources */,
+				87CE38EC29EBC78800FD09D5 /* TradingXibView.xib in Resources */,
 				8734D28B295C32570044B0F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,7 +705,7 @@
 				876758A729C751C6000F3CBC /* InvestorOwnershipVC.swift in Sources */,
 				8771087729D04AD50010AEBE /* NotficationXIB.swift in Sources */,
 				8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */,
-				872A931029E2432C00D6912F /* TradingXibView.swift in Sources */,
+				87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */,
 				87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */,
 				87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */,
 				8728D9E729E9D6FC00133096 /* CardTwoVc.swift in Sources */,
