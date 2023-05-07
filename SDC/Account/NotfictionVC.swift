@@ -6,23 +6,27 @@
 //
 
 import UIKit
+import Alamofire
+import JGProgressHUD
+import MOLH
 
 class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var notficationTable:UITableView!
     @IBOutlet weak var mainView:UIView!
     @IBOutlet weak var bellView:UIView!
-
+    
+    var notifications = [NotificationModel]()
+    var notificationCount : String?
     override func viewDidLoad() {
         super.viewDidLoad()
-
-    
-        
         notficationTable.dataSource = self
         notficationTable.delegate = self
+        getNotificationInfo()
+        
         
         notficationTable.register(UINib(nibName: "NotficationXIB", bundle: nil), forCellReuseIdentifier: "NotficationXIB")
-        self.cerateBellView(bellview: self.bellView, count: "12")
+        self.cerateBellView(bellview: self.bellView, count: "\(notificationCount)")
         
         mainView.roundCorners([.topRight,.topLeft], radius: 18)
     }
@@ -32,19 +36,21 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 25
+        return notifications.count ?? 25
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = self.notficationTable.dequeueReusableCell(withIdentifier: "NotficationXIB", for: indexPath) as? NotficationXIB
       
         
-        
-        
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("NotficationXIB", owner: self, options: nil)!
             cell = nib[0] as? NotficationXIB
+           
+            
         }
+        cell?.notificationTitle.text = notifications[indexPath.row].desc
+        cell?.dateCreated.text = notifications[indexPath.row].createdAt
         
 //        self.makeShadow(mainView: cell?.mainCardView)
 //        self.makeShadow(mainView: cell!.contentView)
@@ -59,6 +65,90 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         
         return cell!
+    }
+    
+    
+    func getNotificationInfo(){
+//
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+ ]
+     
+        let link = URL(string: APIConfig.GetNotfication)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                            for item in data {
+                                                let model = NotificationModel(data: item)
+                                                self.notifications.append(model)
+                                 
+                                            }
+                                  
+                                    
+                                    
+                                            
+                                            DispatchQueue.main.async {
+                                                
+                                                self.notificationCount = String(self.notifications.count)
+                                                
+                                                    self.cerateBellView(bellview: self.bellView, count: "\(self.notificationCount)")
+                                                    self.notficationTable.reloadData()
+                                                    
+                                                    hud.dismiss()
+
+//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                                
+//                                                if self.car_arr.count == 0{
+//
+//
+//                                                    self.noDataImage.isHidden = false
+//                                                }else{
+//
+//                                                    self.noDataImage.isHidden = true
+//                                                }
+
+                                            }
+                                        }
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                                other Wise Problem
+                            else {
+                                hud.dismiss(animated: true)      }
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+
+
+            }
+        }
     }
 
 //    override func viewDidAppear(_ animated: Bool) {
