@@ -2,35 +2,27 @@
 //  DesignableClass.swift
 //  Albaraka
 //
+//  Created by Omar Warrayat on 23/12/2020.
 //
 
 import Foundation
 import UIKit
 import MOLH
 
-@IBDesignable
-public class CustomImageView: UIImageView {
-    @IBInspectable var alwaysTemplate: Bool = false {
-        didSet {
-            if alwaysTemplate {
-                self.image = self.image?.withRenderingMode(.alwaysTemplate)
-            } else {
-                self.image = self.image?.withRenderingMode(.alwaysOriginal)
-            }
-            
-        }
-    }
-}
 
 @IBDesignable
 class DesignableLabel: UILabel {
     required init(coder aDecoder: NSCoder) {
         
         super.init(coder: aDecoder)!
+
+
+
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+
     }
     
     @IBInspectable
@@ -47,6 +39,31 @@ class DesignableLabel: UILabel {
     
 }
 
+@IBDesignable
+class DesignableLabel2: UILabel {
+    required init(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    @IBInspectable
+    var Languagable: String {
+        get {
+            return self.text!
+        }
+        set(value) {
+            self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+            self.text = NSLocalizedString(value, comment: "")
+            
+        }
+    }
+    
+    
+}
 
 @IBDesignable
 class DesignableTextFeild: UITextField {
@@ -120,6 +137,74 @@ class DesignableTextFeild2: UITextField {
 }
 
 @IBDesignable
+class DesignableTextFeild3: UITextField {
+    required init(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    @IBInspectable
+    var placeholder_Languagable: String {
+        get {
+            return self.placeholder!
+        }
+        set(value) {
+            self.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString(value.localized(), comment: ""), attributes: [NSAttributedString.Key.foregroundColor : UIColor.black])
+            
+            self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+            if MOLHLanguage.isRTLLanguage() == true {
+                self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+                self.rightViewMode = .always
+            } else {
+                self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+                self.leftViewMode = .always
+            }
+            
+        }
+    }
+    
+    
+}
+
+@IBDesignable
+class DesignableTextFeild4: UITextField {
+    required init(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    @IBInspectable
+    var placeholder_Languagable: String {
+        get {
+            return self.placeholder!
+        }
+        set(value) {
+            self.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString(value.localized(), comment: ""), attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
+            
+            self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+            if MOLHLanguage.isRTLLanguage() == true {
+                self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+                self.rightViewMode = .always
+            } else {
+                self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
+                self.leftViewMode = .always
+            }
+            
+        }
+    }
+    
+    
+}
+
+@IBDesignable
 class DesignableButton: UIButton {
     
     required init(coder aDecoder: NSCoder) {
@@ -145,79 +230,4 @@ class DesignableButton: UIButton {
     
     
     
-}
-
-@IBDesignable
-class DesignableTextFeild4: UITextField {
-    required init(coder aDecoder: NSCoder) {
-        
-        super.init(coder: aDecoder)!
-    }
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    @IBInspectable
-    var placeholder_Languagable: String {
-        get {
-            return self.placeholder!
-        }
-        set(value) {
-            self.attributedPlaceholder =  NSAttributedString(string: NSLocalizedString(value.localized(), comment: ""), attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-            
-            
-            self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-            if MOLHLanguage.isRTLLanguage() == true {
-                self.layer.sublayerTransform = CATransform3DMakeTranslation(-10, 0, 0)
-                self.rightView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-                self.rightViewMode = .always
-            } else {
-                self.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 10, height: self.frame.height))
-                self.leftViewMode = .always
-            }
-            
-        }
-    }
-    
-    
-}
-@IBDesignable class ShadowView: UIView {
-
-    @IBInspectable var shadowColors: UIColor = UIColor.black {
-        didSet {
-            updateView()
-        }
-    }
-
-    @IBInspectable var shadowOpacitys: Float = 0.5 {
-        didSet {
-            updateView()
-        }
-    }
-
-    @IBInspectable var shadowOffsets: CGSize = CGSize(width: 0, height: 3) {
-        didSet {
-            updateView()
-        }
-    }
-
-    @IBInspectable var shadowRadiuss: CGFloat = 3 {
-        didSet {
-            updateView()
-        }
-    }
-
-    override func prepareForInterfaceBuilder() {
-        super.prepareForInterfaceBuilder()
-        updateView()
-    }
-
-    private func updateView() {
-        layer.shadowColor = shadowColors.cgColor
-        layer.shadowOpacity = shadowOpacitys
-        layer.shadowOffset = shadowOffsets
-        layer.shadowRadius = shadowRadiuss
-    }
-
 }

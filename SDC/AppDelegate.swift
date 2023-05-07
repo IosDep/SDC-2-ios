@@ -30,14 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
         
 // check user Login
 //
-//        if Helper.shared.getUserId() == 0 {
-//
-//            self.notLogin()
-//
-//        }else {
-//            self.isLogin()
-//
-//        }
+        if Helper.shared.getUserId() == 0 {
+
+            self.notLogin()
+
+        }else {
+            self.isLogin()
+
+        }
 //
         return true
     }

@@ -9,12 +9,16 @@ import UIKit
 
 class BusnissCardTable: UITableViewCell {
 
-    @IBOutlet weak var cardFaildOne: UILabel!
-    @IBOutlet weak var cardFaildTwo: UILabel!
-    @IBOutlet weak var cardFaildThere: UILabel!
-
+    
+    @IBOutlet weak var balance: UILabel!
+    @IBOutlet weak var literalNum: UILabel!
+    
+    
+    @IBOutlet weak var extraStack: UILabel!
+    @IBOutlet weak var sector: UILabel!
     @IBOutlet weak var addtionalLabel: UILabel!
     @IBOutlet weak var addtionalStack: UIStackView!
+    @IBOutlet weak var literalName: UILabel!
     @IBOutlet weak var addtionalValue: UILabel!
     @IBOutlet weak var mainCardView: UIView!
     @IBOutlet weak var views: UIView!
@@ -23,6 +27,8 @@ class BusnissCardTable: UITableViewCell {
         // Initialization code
         
         views.roundCorners([.topLeft, .topRight], radius: 2)
+        
+        extraStack.text = "Sector"
 
   
     }

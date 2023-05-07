@@ -1,20 +1,19 @@
 //
 //  TradingXibView.swift
-//  
+//  SDC
 //
-//  Created by Blue Ray on 06/04/2023.
+//  Created by Blue Ray on 16/04/2023.
 //
 
 import UIKit
 
 class TradingXibView: UITableViewCell {
 
-    @IBOutlet weak var value1: UILabel!
-    @IBOutlet weak var value2: UILabel!
-    @IBOutlet weak var value3: UILabel!
+    @IBOutlet weak var lbl1: UILabel!
+    @IBOutlet weak var lbl2: UILabel!
+    @IBOutlet weak var lbl3: UILabel!
+
     @IBOutlet weak var img: UIImageView!
-    
-    @IBOutlet weak var type: DesignableLabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

@@ -13,8 +13,12 @@ import JGProgressHUD
 import Alamofire
 
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+
+    
     @IBOutlet weak var lastloginInfo: UILabel!
     
+    @IBOutlet weak var dolar: DesignableButton!
+    @IBOutlet weak var dinar: DesignableButton!
     @IBOutlet weak var busnissCard: UICollectionView!
     
     @IBOutlet weak var anlyssSection: UICollectionView!
@@ -22,10 +26,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 
     @IBOutlet weak var bellView: UIView!
     
-    
+    var isDolarSelected : Bool = true
+    var isDinarSelected : Bool = false
     var monthData  = [String]()
     var valueChart  = [Double]()
-    
+    var notificationCount : String?
     
     var tradeAnlysis = [TradeAnlysis]()
     
@@ -42,15 +47,57 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var ownershapeAnlusis = [OwnerShapeAnlysisModel]()
     var yearArray = [String]()
     var categoryArray = [String]()
-
     
+    func highlightedButtons() {
+        if isDolarSelected && !isDinarSelected {
+            DispatchQueue.main.async {
+                self.dolar.setTitleColor(.white, for: .normal)
+                self.dolar.cornerRadius = 12
+                self.dolar.backgroundColor  = UIColor(named: "AccentColor")
+                self.dinar.borderWidth = 0
+                self.dinar.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+                self.dinar.backgroundColor  = .white
+                self.dinar.cornerRadius = 12
+                self.dinar.borderColor =  UIColor(named: "AccentColor")
+                self.dinar.borderWidth = 1
+            }
+        }
+        else if !isDolarSelected && isDinarSelected {
+            DispatchQueue.main.async {
+                self.dinar.setTitleColor(.white, for: .normal)
+                self.dinar.backgroundColor  = UIColor(named: "AccentColor")
+                self.dinar.cornerRadius = 12
+                self.dinar.borderWidth = 0
+                self.dolar.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+                self.dolar.backgroundColor  = .white
+                self.dolar.cornerRadius = 12
+                self.dolar.borderColor =  UIColor(named: "AccentColor")
+                self.dolar.borderWidth = 1
+            }
+        }
+    }
+    
+    
+    @IBAction func dolarPressed(_ sender: Any) {
+        isDolarSelected = true
+        isDinarSelected = false
+        highlightedButtons()
+    }
+    
+    @IBAction func dinarPressed(_ sender: Any) {
+        isDolarSelected = false
+        isDinarSelected = true
+        highlightedButtons()
+    }
+     
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
+        isDolarSelected = true
+        isDinarSelected = false
+        highlightedButtons()
         busnissCard.delegate = self
         busnissCard.dataSource  = self
-        
         anlyssSection.delegate = self
         anlyssSection.dataSource  = self
         busnissCard.register(UINib(nibName: "BusnissCard", bundle: nil), forCellWithReuseIdentifier: "BusnissCard")
@@ -102,16 +149,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "CardInfo") as! CardInfo
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CardThereVc") as! CardThereVc
         vc.modalPresentationStyle = .fullScreen
-  
+        vc.trans = self.lastTransarr[indexPath.row]
         
         self.present(vc, animated: true)
 
-        
-        
-        
-        
         
         
     }
@@ -138,8 +181,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             
             let data  = lastTransarr[indexPath.row]
 
-            cell?.firstlbl.text =  data.Member_Name
-            cell?.secondlbl.text = data.Account_No
+            cell?.firstlbl.text =  data.Security_Id
+            cell?.secondlbl.text = data.Security_Name
             cell?.theredlbl.text =  data.Price
 
 

@@ -1,25 +1,35 @@
 //
-//  InvestoreOwnerShape.swift
+//  AccountOnwerShip.swift
 //  SDC
 //
-//  Created by Blue Ray on 03/04/2023.
+//  Created by Razan Barq on 27/04/2023.
 //
 
 import Foundation
-class InvestoreOwnerShape{
+
+class AccountOwnerShape{
     
     
     
 
-    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value  : String?
+    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency: String?
 
     init(data: [String: Any]) {
         
         if let Pending_In = data["Pending_In"] as? String {
             self.Pending_In = Pending_In
         }
+        if let Pending_Out = data["Pending_Out"] as? String {
+            self.Pending_Out = Pending_Out
+        }
         
+        if let Trade_Currency = data["Trade_Currency"] as? String {
+            self.Trade_Currency = Trade_Currency
+        }
         
+        if let Client_No = data["Client_No"] as? String {
+            self.Client_No = Client_No
+        }
         
         if let Nominal_Value = data["Nominal_Value"] as? String {
             self.Nominal_Value = Nominal_Value
@@ -29,9 +39,6 @@ class InvestoreOwnerShape{
             self.Security_Sector_Desc = Security_Sector_Desc
         }
         
-        if let Pending_Out = data["Pending_Out"] as? String {
-            self.Pending_Out = Pending_Out
-        }
         
         if let Security_Close_Price = data["Security_Close_Price"] as? String {
             self.Security_Close_Price = Security_Close_Price

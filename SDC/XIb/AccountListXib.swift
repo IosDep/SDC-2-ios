@@ -8,13 +8,14 @@
 import UIKit
 
 class AccountListXib: UITableViewCell {
-
-    @IBOutlet weak var firstLbl: UILabel!
     
-    @IBOutlet weak var secondeLbl: UILabel!
+    @IBOutlet weak var memberNum: UILabel!
     
-    @IBOutlet weak var theraedLbl: UILabel!
+  
+    @IBOutlet weak var memberName: UILabel!
     
+    @IBOutlet weak var accountNum: UILabel!
+    @IBOutlet weak var accountName: UILabel!
     
     
     @IBOutlet weak var greenView: UIView!

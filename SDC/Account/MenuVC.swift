@@ -12,6 +12,8 @@ import CDAlertView
 import Alamofire
 class MenuVC: UIViewController {
     
+    @IBOutlet weak var invOwnershipBtn: UIButton!
+    
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
 
@@ -23,23 +25,22 @@ class MenuVC: UIViewController {
     
     enum Actions: Int {
         case home = 0
-        case accountInfo = 1
+        case invInfo = 1
         case invownerShabe = 2
-        case invAccounyt = 3
-        case notification = 4
-        case lang = 5
-        case contactUs = 6
-        case address = 7
-        case onePageOwnerShape = 8
-        case delete_my_account
+        case invAccount = 3
+        case companyProcedure = 4
+        case invOwnershipOf = 5
+        case accountSetting = 6
+        case accountStatement = 7
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
+        invOwnershipBtn.titleLabel?.font = .systemFont(ofSize: 5)
 
-        
+        invOwnershipBtn.clipsToBounds = true
         
 
         
@@ -64,33 +65,63 @@ class MenuVC: UIViewController {
             
              self.tabBarController?.selectedIndex =  0
 
-
-         }else if sender.tag == Actions.accountInfo.rawValue {
-             
-             let vc = storyBoard.instantiateViewController(withIdentifier: "AccountInfoDetails") as! AccountInfoDetails
-             vc.modalPresentationStyle = .fullScreen
-       
-             self.present(vc, animated: true)
-             
          }
-        
-        else if sender.tag == Actions.invAccounyt.rawValue {
-            
+             else if sender.tag == Actions.invInfo.rawValue {
+
+             let vc = storyBoard.instantiateViewController(withIdentifier: "CardFiveVC") as! CardFiveVC
+             vc.modalPresentationStyle = .fullScreen
+
+             self.present(vc, animated: true)
+
+         }
+
+        else if sender.tag == Actions.invownerShabe.rawValue {
+
+            let vc = storyBoard.instantiateViewController(withIdentifier: "InvestorOwnershipVC") as! InvestorOwnershipVC
+            vc.modalPresentationStyle = .fullScreen
+
+            self.present(vc, animated: true)
+
+        }
+
+        else if sender.tag == Actions.invAccount.rawValue {
+
             let vc = storyBoard.instantiateViewController(withIdentifier: "AccountList") as! AccountList
             vc.modalPresentationStyle = .fullScreen
-      
+
             self.present(vc, animated: true)
-            
+
         }
-        
-        else if sender.tag == Actions.onePageOwnerShape.rawValue {
-            
+
+        else if sender.tag == Actions.invOwnershipOf.rawValue {
+
             let vc = storyBoard.instantiateViewController(withIdentifier: "OnePaperOwnerShape") as! OnePaperOwnerShape
             vc.modalPresentationStyle = .fullScreen
-      
+
             self.present(vc, animated: true)
-            
+
         }
+    
+
+        
+        else if sender.tag == Actions.accountSetting.rawValue {
+
+            let vc = storyBoard.instantiateViewController(withIdentifier: "AccountVC") as! AccountVC
+            vc.modalPresentationStyle = .fullScreen
+
+            self.present(vc, animated: true)
+
+        }
+        
+        else if sender.tag == Actions.accountStatement.rawValue {
+
+            let vc = storyBoard.instantiateViewController(withIdentifier: "AccountStatement") as! AccountStatement
+            vc.modalPresentationStyle = .fullScreen
+
+            self.present(vc, animated: true)
+
+        }
+        
         
         
     }

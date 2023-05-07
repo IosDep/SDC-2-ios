@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -59,7 +59,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="enG-0X-g1c">
                                         <rect key="frame" x="0.0" y="40.333333333333329" width="436" height="37.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="literal number of the security" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-s5-RbF">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="literal number of the security" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-s5-RbF">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -76,7 +76,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WZb-5I-B5v">
                                         <rect key="frame" x="0.0" y="80.666666666666671" width="436" height="37"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="literal Name" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc5-cc-l5g">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc5-cc-l5g">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="37"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <nil key="textColor"/>
@@ -93,7 +93,7 @@
                                     <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qyS-ut-EOd">
                                         <rect key="frame" x="0.0" y="119.33333333333334" width="436" height="0.0"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptd-Df-TeZ">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptd-Df-TeZ">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="0.0"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -109,7 +109,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z8a-6Q-3EG">
                                         <rect key="frame" x="0.0" y="120.66666666666664" width="436" height="37.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Available balance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-Ef-yRk">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-Ef-yRk">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                 <color key="textColor" name="AccentColor"/>
@@ -173,11 +173,12 @@
             <connections>
                 <outlet property="addtionalLabel" destination="Ptd-Df-TeZ" id="NiW-ng-5Lr"/>
                 <outlet property="addtionalStack" destination="qyS-ut-EOd" id="atl-lI-uyZ"/>
-                <outlet property="addtionalValue" destination="gCB-on-dLF" id="a9c-Pq-jmb"/>
-                <outlet property="cardFaildOne" destination="4YN-4p-BFn" id="AkI-MJ-EDG"/>
-                <outlet property="cardFaildThere" destination="gCB-on-dLF" id="yeS-CC-IUr"/>
-                <outlet property="cardFaildTwo" destination="HpX-QB-AV6" id="RGP-Qo-QUG"/>
+                <outlet property="balance" destination="34m-9L-SDh" id="E3P-Df-dLc"/>
+                <outlet property="extraStack" destination="Ptd-Df-TeZ" id="pxa-OK-ADU"/>
+                <outlet property="literalName" destination="HpX-QB-AV6" id="kXj-En-WvO"/>
+                <outlet property="literalNum" destination="4YN-4p-BFn" id="hUL-Sg-Ir9"/>
                 <outlet property="mainCardView" destination="RE0-dd-v5M" id="DjR-sg-v16"/>
+                <outlet property="sector" destination="gCB-on-dLF" id="c5R-Qj-dNt"/>
                 <outlet property="views" destination="RaD-ab-fn6" id="H0E-sC-J3h"/>
             </connections>
             <point key="canvasLocation" x="28.800000000000001" y="-73.891625615763544"/>

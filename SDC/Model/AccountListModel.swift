@@ -7,13 +7,17 @@
 
 import Foundation
 class AccountListModel{
-    var Member_No, Member_Name, Member_Type , Account_No,Account_Status_Desc: String?
+    var Member_No, Member_Name, Member_Type , Account_No,Account_Status_Desc , accountTypeDesc: String?
     
     init(data: [String: Any]) {
         
         
         if let Member_No = data["Member_No"] as? String {
             self.Member_No = Member_No
+        }
+        
+        if let accountTypeDesc = data["Account_Type_Desc"] as? String {
+            self.accountTypeDesc = accountTypeDesc
         }
         
         

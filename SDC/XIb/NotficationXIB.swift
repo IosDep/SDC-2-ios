@@ -8,7 +8,11 @@
 import UIKit
 
 class NotficationXIB: UITableViewCell {
-
+    
+    
+    @IBOutlet weak var notificationTitle: UILabel!
+    
+    @IBOutlet weak var dateCreated: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

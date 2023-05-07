@@ -284,10 +284,11 @@ extension UIViewController {
 
             
             SideMenuManager.default.rightMenuNavigationController = MenuNavigationController
+            SideMenuManager.default.rightMenuNavigationController?.menuWidth = 250
 
         } else {
             SideMenuManager.default.leftMenuNavigationController = MenuNavigationController
- 
+            SideMenuManager.default.leftMenuNavigationController?.menuWidth = 250
 
         }
         

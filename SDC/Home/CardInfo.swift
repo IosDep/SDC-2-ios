@@ -8,7 +8,6 @@
 import UIKit
 
 class CardInfo: UIViewController {
-
     @IBOutlet weak var mainVIew: UIView!
     @IBOutlet weak var bellView: UIView!
     override func viewDidLoad() {

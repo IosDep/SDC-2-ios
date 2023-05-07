@@ -9,7 +9,7 @@ import Foundation
 class LastTransaction {
     
     
-    var Trans_No, Trans_Date, Trade_Time , Effictive_Date,Settlement_Date ,Security_Id,Member_No,Member_Name,Account_No,Market_Value,Price,Quantity : String?
+    var Trans_No, Trans_Date, Trade_Time , Effictive_Date,Settlement_Date ,Security_Id,Member_No,Member_Name,Account_No,Market_Value,Price,Quantity,Post_Date,Security_Name , Account_Type , Client_No , Trans_Maj_Code_Desc , Trans_Min_Code_Desc , Rel_Trans_No: String?
     
     init(data: [String: Any]) {
         
@@ -17,7 +17,29 @@ class LastTransaction {
         if let Trans_No = data["Trans_No"] as? String {
             self.Trans_No = Trans_No
         }
+        if let Post_Date = data["Post_Date"] as? String {
+            self.Post_Date = Post_Date
+        }
         
+        if let Security_Name = data["Security_Name"] as? String {
+            self.Security_Name = Security_Name
+        }
+        
+        if let Account_Type = data["Account_Type"] as? String {
+            self.Account_Type = Account_Type
+        }
+        
+        if let Client_No = data["Client_No"] as? String {
+            self.Client_No = Client_No
+        }
+        
+        if let Trans_Maj_Code_Desc = data["Trans_Maj_Code_Desc"] as? String {
+            self.Trans_Maj_Code_Desc = Trans_Maj_Code_Desc
+        }
+        
+        if let Trans_Min_Code_Desc = data["Trans_Min_Code_Desc"] as? String {
+            self.Trans_Min_Code_Desc = Trans_Min_Code_Desc
+        }
         
         
         if let Trans_Date = data["Trans_Date"] as? String {
@@ -60,8 +82,9 @@ class LastTransaction {
             self.Price = Price
         }
         
-        
-        
+        if let Rel_Trans_No = data["Rel_Trans_No"] as? String {
+            self.Rel_Trans_No = Rel_Trans_No
+        }
         
         if let Quantity = data["Quantity"] as? String {
             self.Quantity = Quantity

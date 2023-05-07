@@ -10,9 +10,10 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 
     var refreshControl: UIRefreshControl!
     var seatrching = false
-
-    @IBOutlet weak var withZero: UIButton!
-    @IBOutlet weak var withoutZero: UIButton!
+    var isZeroSelected : Bool = false
+    var isWithoutSelected : Bool = false
+    @IBOutlet weak var withZero: DesignableButton!
+    @IBOutlet weak var withoutZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
 
     @IBOutlet weak var bellView: UIView!
@@ -22,11 +23,14 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     var balanceType:String = ""
     var accountNo:String = ""
     var securityId:String = ""
-    var invAccount = [InvestoreOwnerShape]()
+    var invAccount = [AccountOwnerShape]()
     var arr_search = [InvestoreOwnerShape]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        isZeroSelected = true
+        isWithoutSelected = false
+        highlightedButtons()
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
@@ -69,50 +73,50 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
       
-        
-        
+        cell?.addtionalStack.isHidden = false
         
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("BusnissCardTable", owner: self, options: nil)!
             cell = nib[0] as? BusnissCardTable
         }
-        
-
+    
         if seatrching == true {
-            
-            
             
             cell?.mainCardView.layer.cornerRadius =  8
             let data = arr_search[indexPath.row]
             
-            cell?.cardFaildOne.text = data.Security_Name
-            cell?.cardFaildTwo.text = data.securityIsin
-            cell?.cardFaildThere.text = data.clientNo
-            
-            
+            cell?.literalName.text = data.Security_Name
+            cell?.literalNum.text = data.securityID
+            cell?.sector.text = data.Security_Sector_Desc
+            cell?.balance.text = data.Nominal_Value
             
         }else {
-            
- 
+
             cell?.mainCardView.layer.cornerRadius =  8
             let data = invAccount[indexPath.row]
             
-            cell?.cardFaildOne.text = data.Security_Name
-            cell?.cardFaildTwo.text = data.securityIsin
-            cell?.cardFaildThere.text = data.clientNo
+            cell?.literalName.text = data.Security_Name
+            cell?.literalNum.text = data.securityID
+            cell?.sector.text = data.Security_Sector_Desc
+            cell?.balance.text = data.Nominal_Value
             
         }
-        
-        
-
-        
-        
-        
-
-        
+       
         return cell!
         
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        Mark
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
+        vc.modalPresentationStyle = .fullScreen
+        vc.invAccount = self.invAccount[indexPath.row]
+        self.present(vc, animated: true)
+        
+        
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
     }
@@ -121,37 +125,56 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     
     @IBAction func withZeero(btn:UIButton){
     
-        self.withZero.titleLabel?.tintColor = .white
-        self.withZero.backgroundColor  = UIColor(named: "AccentColor")
+        isZeroSelected = true
+        isWithoutSelected = false
+        highlightedButtons()
         
+    }
+    
+    func highlightedButtons() {
+        if isZeroSelected  && !isWithoutSelected  {
+            DispatchQueue.main.async {
+                self.withZero.setTitleColor(.white, for: .normal)
+                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
+                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withoutZero.backgroundColor  = .systemGray6
+                self.withoutZero.cornerRadius = 12
+                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+                self.withoutZero.borderWidth = 1
+            }
+        }
+        else if !isZeroSelected  && isWithoutSelected {
+            DispatchQueue.main.async {
+                self.withoutZero.setTitleColor(.white, for: .normal)
+                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
+                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withZero.backgroundColor  = .systemGray6
+                self.withZero.cornerRadius = 12
+                self.withZero.borderColor =  UIColor(named: "AccentColor")
+                self.withZero.borderWidth = 1
+            }
+        }
         
-        self.withoutZero.titleLabel?.tintColor = .black
-        self.withoutZero.backgroundColor  = .white
-        self.withoutZero.cornerRadius = 12
-        self.withoutZero.borderColor =  .black
-        self.withoutZero.borderWidth = 1
-
-        
-        
-        
+        else {
+            self.withoutZero.titleLabel?.tintColor = .black
+            self.withoutZero.backgroundColor  = .white
+            self.withoutZero.cornerRadius = 12
+            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+            self.withoutZero.borderWidth = 1
+            self.withZero.backgroundColor  = .white
+            self.withZero.cornerRadius = 12
+            self.withZero.borderColor =  UIColor(named: "AccentColor")
+            self.withZero.borderWidth = 1
+            
+        }
     }
     
     
     @IBAction func withoutZeero(btn:UIButton){
-    
-        self.withoutZero.titleLabel?.tintColor = .white
-        self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
-        
-     
-        self.withZero.titleLabel?.tintColor = .black
-        self.withZero.backgroundColor  = .white
-        self.withZero.cornerRadius = 12
-        self.withZero.borderColor =  .black
-        self.withZero.borderWidth = 1
+        isWithoutSelected = true
+        isZeroSelected = false
+        highlightedButtons()
 
-        
-        
-        
     }
     
     
@@ -166,9 +189,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     
     func getAccountInvestoreInfo(){
         
-        
-
-//
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
@@ -183,7 +203,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                     "securityId":self.securityId
  ]
      
-        let link = URL(string: APIConfig.GetInvOwnership)
+        let link = URL(string: APIConfig.GetAccountOwnerShpe)
 
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
@@ -203,7 +223,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                     
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                             for item in data {
-                                                let model = InvestoreOwnerShape(data: item)
+                                                let model = AccountOwnerShape(data: item)
                                                 self.invAccount.append(model)
                                  
                                             }
@@ -241,7 +261,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                             else {  self.refreshControl.endRefreshing()
                                                 hud.dismiss(animated: true)      }
                       
-                            
                         }
                         
                     }
@@ -262,12 +281,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             }
         }
 
-
-
-
-        
-        
-        
     }
     
     @IBOutlet weak var headerView: UIView!

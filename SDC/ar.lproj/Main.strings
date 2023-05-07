@@ -153,7 +153,7 @@
 "BiS-C6-TDv.text" = "Logout";
 
 /* Class = "UITabBarItem"; title = "investor ownership"; ObjectID = "C06-wM-F8I"; */
-"C06-wM-F8I.title" = "investor ownership";
+"C06-wM-F8I.title" = "ملكية المستثمر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "C8c-mG-4jn"; */
 "C8c-mG-4jn.text" = "Label";
@@ -261,7 +261,7 @@
 "ID6-va-qbe.text" = "Terms and Conditions";
 
 /* Class = "UITabBarItem"; title = "investor info "; ObjectID = "IF9-Fb-0OV"; */
-"IF9-Fb-0OV.title" = "investor info ";
+"IF9-Fb-0OV.title" = " معلومات المستثمر";
 
 /* Class = "UILabel"; text = "الفاكس"; ObjectID = "IG6-Ce-LBE"; */
 "IG6-Ce-LBE.text" = "الفاكس";
@@ -270,7 +270,7 @@
 "IkM-Vm-Pu9.text" = "Trading volume";
 
 /* Class = "UITabBarItem"; title = "Home"; ObjectID = "J0x-Xd-3UD"; */
-"J0x-Xd-3UD.title" = "Home";
+"J0x-Xd-3UD.title" = "الصفحة الرئسية";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "J2Q-fR-O9A"; */
 "J2Q-fR-O9A.normalTitle" = "Button";
@@ -843,7 +843,7 @@
 "wzn-nT-2hy.normalTitle" = "Button";
 
 /* Class = "UITabBarItem"; title = "investor accounts"; ObjectID = "x10-id-dtg"; */
-"x10-id-dtg.title" = "investor accounts";
+"x10-id-dtg.title" = "حسابات المستثمر";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "xmv-Zr-5yE"; */
 "xmv-Zr-5yE.text" = "Label";

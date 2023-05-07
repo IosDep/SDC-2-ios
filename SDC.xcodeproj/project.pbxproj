@@ -8,11 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		364D455FB1D4360B43DA4153 /* Pods_SDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */; };
+		3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1038992A02704E004594ED /* SecurityOwnership.swift */; };
+		3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */; };
+		3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80D44829ED5615003F9945 /* CardFiveVC.swift */; };
+		3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871181C229E2D06200F14C5C /* Localizable.strings */; };
+		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
+		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
+		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
+		3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAAB7292A01079300DCFDA5 /* PickerCell.xib */; };
+		3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */; };
+		3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A982A03DBA200C74E58 /* InvInfo.swift */; };
 		833D9A5BE677D8AC99F3C9A2 /* Pods_SDC_SDCUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA1B898AF6138A99DA886A /* Pods_SDC_SDCUITests.framework */; };
 		8707FB4829E9ECC4004CB6AA /* AgrementVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707FB4729E9ECC4004CB6AA /* AgrementVc.swift */; };
 		8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707FB4929E9EFA6004CB6AA /* PopUpAccountCreated.swift */; };
 		8707FB4C29E9EFB7004CB6AA /* PopUpOTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707FB4B29E9EFB7004CB6AA /* PopUpOTP.swift */; };
-		871181C029E2D06200F14C5C /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871181C229E2D06200F14C5C /* Localizable.strings */; };
 		871CC1DD29CFEF390013F612 /* MonthlyValue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871CC1DC29CFEF390013F612 /* MonthlyValue.swift */; };
 		871DC73929C0774A00C90982 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871DC73829C0774A00C90982 /* Extensions.swift */; };
 		871DC73B29C0813800C90982 /* TabBarVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871DC73A29C0813700C90982 /* TabBarVC.swift */; };
@@ -106,6 +115,15 @@
 		3114F48A82D937A369D32195 /* Pods-SDCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.debug.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.debug.xcconfig"; sourceTree = "<group>"; };
 		312806C7B0722D6FDCD1CFDF /* Pods-SDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDC.release.xcconfig"; path = "Target Support Files/Pods-SDC/Pods-SDC.release.xcconfig"; sourceTree = "<group>"; };
 		35A43BAA4BE44B9CDDE441CD /* Pods-SDCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.release.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.release.xcconfig"; sourceTree = "<group>"; };
+		3F1038992A02704E004594ED /* SecurityOwnership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityOwnership.swift; sourceTree = "<group>"; };
+		3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnwerShip.swift; sourceTree = "<group>"; };
+		3F80D44829ED5615003F9945 /* CardFiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFiveVC.swift; sourceTree = "<group>"; };
+		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
+		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
+		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
+		3FAAB7292A01079300DCFDA5 /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
+		3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfo.swift; sourceTree = "<group>"; };
+		3FB42A982A03DBA200C74E58 /* InvInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvInfo.swift; sourceTree = "<group>"; };
 		8707FB4729E9ECC4004CB6AA /* AgrementVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgrementVc.swift; sourceTree = "<group>"; };
 		8707FB4929E9EFA6004CB6AA /* PopUpAccountCreated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAccountCreated.swift; sourceTree = "<group>"; };
 		8707FB4B29E9EFB7004CB6AA /* PopUpOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpOTP.swift; sourceTree = "<group>"; };
@@ -236,6 +254,7 @@
 				87D3E9B529DA9F5E006B6AA7 /* ApiCaler.swift */,
 				87D3E9B729DA9FCC006B6AA7 /* LoadingOverly.swift */,
 				87D3E9B929DAA07F006B6AA7 /* EndPoint.swift */,
+				3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -244,6 +263,7 @@
 			isa = PBXGroup;
 			children = (
 				8728D9E429E9D6DF00133096 /* CardOneVC.swift */,
+				3F80D44829ED5615003F9945 /* CardFiveVC.swift */,
 				8728D9E629E9D6FC00133096 /* CardTwoVc.swift */,
 				8728D9E829E9D72100133096 /* CardThereVc.swift */,
 				8728D9EA29E9D73800133096 /* CardFourVC.swift */,
@@ -316,7 +336,6 @@
 			children = (
 				8736F52E29C70DB800A6A567 /* AccountVC.swift */,
 				876758A429C74F6C000F3CBC /* MenuVC.swift */,
-				876758A629C751C6000F3CBC /* InvestorOwnershipVC.swift */,
 				87B89AE029CFD6B900E82C1E /* ForgetPassword.swift */,
 				8771087B29D04C870010AEBE /* NotfictionVC.swift */,
 				87B614F729D15B1D0039813A /* InvestorAccountOwnerShape.swift */,
@@ -361,6 +380,7 @@
 			children = (
 				87B89AE329CFE8BA00E82C1E /* TradingValue.swift */,
 				871CC1DC29CFEF390013F612 /* MonthlyValue.swift */,
+				876758A629C751C6000F3CBC /* InvestorOwnershipVC.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -384,6 +404,8 @@
 				8761E54329DC4B3B00CB72B5 /* AccountListXib.xib */,
 				87CE38E929EBC78800FD09D5 /* TradingXibView.swift */,
 				87CE38EA29EBC78800FD09D5 /* TradingXibView.xib */,
+				3FAAB7282A01079300DCFDA5 /* PickerCell.swift */,
+				3FAAB7292A01079300DCFDA5 /* PickerCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -406,6 +428,11 @@
 				87BC4E0429DDB63B0095BDC1 /* LastTransaction.swift */,
 				87BC4E0629DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift */,
 				87D5A4AA29DEEFBB00F78DBE /* TradeAnlysis.swift */,
+				3FA51A3F29F7E20200F19975 /* Notification.swift */,
+				3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */,
+				3F1038992A02704E004594ED /* SecurityOwnership.swift */,
+				3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */,
+				3FB42A982A03DBA200C74E58 /* InvInfo.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -544,11 +571,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8734D290295C32590044B0F7 /* LaunchScreen.storyboard in Resources */,
-				871181C029E2D06200F14C5C /* Localizable.strings in Resources */,
+				3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */,
 				8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */,
 				8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
+				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
 				8761E54529DC4B3B00CB72B5 /* AccountListXib.xib in Resources */,
 				87B614FC29D15C690039813A /* HeaderDataXIB.xib in Resources */,
 				8768982929D00C3B00636503 /* HomePropretyXib.xib in Resources */,
@@ -697,23 +725,29 @@
 				87B614FB29D15C690039813A /* HeaderDataXIB.swift in Sources */,
 				87B614F829D15B1D0039813A /* InvestorAccountOwnerShape.swift in Sources */,
 				87D3E9B429DA9DD8006B6AA7 /* Helper.swift in Sources */,
+				3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */,
 				8775B921298FB7770052C551 /* HomeVC.swift in Sources */,
 				87F4FD5329EA282300FF2485 /* OnePaperOwnerShape.swift in Sources */,
 				87B05CE329C06D5D00EAA41D /* WelcomePageVC.swift in Sources */,
 				8736F52F29C70DB800A6A567 /* AccountVC.swift in Sources */,
 				87B89ADF29CFC85000E82C1E /* IdentfairVC.swift in Sources */,
 				876758A729C751C6000F3CBC /* InvestorOwnershipVC.swift in Sources */,
+				3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */,
 				8771087729D04AD50010AEBE /* NotficationXIB.swift in Sources */,
 				8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */,
 				87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */,
 				87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */,
 				87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */,
 				8728D9E729E9D6FC00133096 /* CardTwoVc.swift in Sources */,
+				3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */,
+				3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */,
 				871DC73929C0774A00C90982 /* Extensions.swift in Sources */,
 				8728D9E529E9D6DF00133096 /* CardOneVC.swift in Sources */,
 				87B6150029D170DE0039813A /* AccountInfoDetails.swift in Sources */,
 				8736F53129C7184600A6A567 /* BellCountView.swift in Sources */,
 				8736F53429C7218900A6A567 /* HeaderView.swift in Sources */,
+				3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */,
+				3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */,
 				87D3E9B629DA9F5E006B6AA7 /* ApiCaler.swift in Sources */,
 				8707FB4C29E9EFB7004CB6AA /* PopUpOTP.swift in Sources */,
 				87B89ADB29CFC81100E82C1E /* PhoneNumberVc.swift in Sources */,
@@ -731,6 +765,8 @@
 				87B89AE429CFE8BA00E82C1E /* TradingValue.swift in Sources */,
 				8761E54129DC4A8A00CB72B5 /* AccountList.swift in Sources */,
 				8748CB48299029EE00E9AE81 /* NewMorhpic.swift in Sources */,
+				3FA51A4029F7E20300F19975 /* Notification.swift in Sources */,
+				3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */,
 				87B89AE129CFD6B900E82C1E /* ForgetPassword.swift in Sources */,
 				87D5A4AB29DEEFBB00F78DBE /* TradeAnlysis.swift in Sources */,
 				8737879629E1FA0400D73972 /* WebVcContent.swift in Sources */,

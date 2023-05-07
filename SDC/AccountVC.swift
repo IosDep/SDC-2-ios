@@ -54,18 +54,18 @@ class AccountVC: UIViewController {
         
         self.navigationText(title: "Account Settings".localized())
 
-        if MOLHLanguage.isArabic(){
-            self.arrowImag1.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag2.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag3.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag4.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag5.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag6.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag7.transform = CGAffineTransform(scaleX: -1, y: 1)
-            self.arrowImag8.transform = CGAffineTransform(scaleX: -1, y: 1)
-   
-        }
-        
+//        if MOLHLanguage.isArabic(){
+//            self.arrowImag1.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag2.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag3.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag4.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag5.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag6.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag7.transform = CGAffineTransform(scaleX: -1, y: 1)
+//            self.arrowImag8.transform = CGAffineTransform(scaleX: -1, y: 1)
+//
+//        }
+//
         
         self.cerateBellView(bellview: self.bellview, count: "10")
         

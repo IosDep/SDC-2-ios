@@ -1,9 +1,8 @@
 //
 //  ChangeLanguage.swift
 //  SDC
-//
 //  Created by Blue Ray on 09/04/2023.
-//
+
 
 import UIKit
 import MOLH
@@ -17,7 +16,6 @@ class ChangeLanguage: UIViewController {
     @IBOutlet weak var arimage: UIImageView!
 //
 //
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,8 +32,6 @@ class ChangeLanguage: UIViewController {
             enimaeg.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor.black)
             arimage.image = UIImage(systemName: "circle")?.withTintColor(UIColor.black)
         }
-        
-        
     }
     
 
