@@ -20,6 +20,9 @@ class DocumentType: UIViewController {
     
     @IBOutlet weak var famileyNoteNumber: DesignableTextFeild!
     
+    var accountDetails : AccountDetails?
+
+    
     @IBOutlet weak var scroll: UIScrollView!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,6 +40,7 @@ class DocumentType: UIViewController {
 
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "PhoneNumberVc") as! PhoneNumberVc
+        vc.accountDetails = AccountDetails(name: "" , phoneNum: "", email: "")
             vc.modalPresentationStyle = .fullScreen
       
             self.present(vc, animated: true)

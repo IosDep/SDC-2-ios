@@ -24,13 +24,15 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     var accountNo:String = ""
     var securityId:String = ""
     var invAccount = [AccountOwnerShape]()
-    var arr_search = [InvestoreOwnerShape]()
+    var arr_search = [AccountOwnerShape]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         isZeroSelected = true
         isWithoutSelected = false
-        highlightedButtons()
+        self.withoutZero.cornerRadius = 12
+        self.withZero.cornerRadius = 12
+        self.highlightedButtons()
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
@@ -50,6 +52,27 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                 
                 
                 self.cerateBellView(bellview: self.bellView, count: "10")
+    }
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if MOLHLanguage.isArabic(){
+            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+        self.seatrching = true
+            self.busnissCard.reloadData()
+            
+        } else {
+            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+            self.seatrching = true
+                self.busnissCard.reloadData()
+            
+        }
+    }
+    
+//    search
+    func cancelbtn (search:UISearchBar){
+        self.seatrching = false
+        search_bar.text = ""
+        view.endEditing(true)
+        busnissCard.reloadData()
     }
     
     
@@ -131,8 +154,10 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         
     }
     
+    //function for change background selected background color for with and without zero btn
+    
     func highlightedButtons() {
-        if isZeroSelected  && !isWithoutSelected  {
+        if isZeroSelected  == true && isWithoutSelected == false {
             DispatchQueue.main.async {
                 self.withZero.setTitleColor(.white, for: .normal)
                 self.withZero.backgroundColor  = UIColor(named: "AccentColor")

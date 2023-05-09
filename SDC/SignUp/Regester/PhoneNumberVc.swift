@@ -11,6 +11,9 @@ class PhoneNumberVc: UIViewController {
     @IBOutlet weak var phoneTxt: DesignableTextFeild!
 
     @IBOutlet weak var scroll: UIScrollView!
+    
+    var accountDetails : AccountDetails?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

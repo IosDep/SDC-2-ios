@@ -28,8 +28,7 @@ class BusnissCardTable: UITableViewCell {
         
         views.roundCorners([.topLeft, .topRight], radius: 2)
         
-        extraStack.text = "Sector"
-
+        
   
     }
     

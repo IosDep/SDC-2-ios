@@ -14,6 +14,9 @@ class MenuVC: UIViewController {
     
     @IBOutlet weak var invOwnershipBtn: UIButton!
     
+    var checkSideMenu = false
+
+    
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
 
@@ -63,14 +66,19 @@ class MenuVC: UIViewController {
 
          if sender.tag == Actions.home.rawValue {
             
-             self.tabBarController?.selectedIndex =  0
+//             self.tabBarController?.selectedIndex =  0
+             
+             let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+             vc.checkSideMenu = true
+             vc.modalPresentationStyle = .fullScreen
+             self.present(vc, animated: true)
 
          }
              else if sender.tag == Actions.invInfo.rawValue {
 
              let vc = storyBoard.instantiateViewController(withIdentifier: "CardFiveVC") as! CardFiveVC
+                 vc.checkSideMenu = true
              vc.modalPresentationStyle = .fullScreen
-
              self.present(vc, animated: true)
 
          }
@@ -78,8 +86,8 @@ class MenuVC: UIViewController {
         else if sender.tag == Actions.invownerShabe.rawValue {
 
             let vc = storyBoard.instantiateViewController(withIdentifier: "InvestorOwnershipVC") as! InvestorOwnershipVC
+            vc.checkSideMenu = true
             vc.modalPresentationStyle = .fullScreen
-
             self.present(vc, animated: true)
 
         }
@@ -87,8 +95,8 @@ class MenuVC: UIViewController {
         else if sender.tag == Actions.invAccount.rawValue {
 
             let vc = storyBoard.instantiateViewController(withIdentifier: "AccountList") as! AccountList
+            vc.checkSideMenu = true
             vc.modalPresentationStyle = .fullScreen
-
             self.present(vc, animated: true)
 
         }
@@ -96,8 +104,8 @@ class MenuVC: UIViewController {
         else if sender.tag == Actions.invOwnershipOf.rawValue {
 
             let vc = storyBoard.instantiateViewController(withIdentifier: "OnePaperOwnerShape") as! OnePaperOwnerShape
+            vc.checkSideMenu = true
             vc.modalPresentationStyle = .fullScreen
-
             self.present(vc, animated: true)
 
         }

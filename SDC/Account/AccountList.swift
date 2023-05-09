@@ -19,19 +19,27 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     @IBOutlet weak var bellView: UIView!
     
+    @IBOutlet weak var backBtn: UIButton!
+    
+    @IBOutlet weak var sideMenuBtn: UIButton!
+    
     var accountList =  [AccountListModel]()
     var invAccount = [AccountOwnerShape]()
     var invInfo =  [AccountInfo]()
-
     var memberId:String = ""
     var accountNo:String = ""
+    var checkSideMenu = false
+
 
     var refreshControl: UIRefreshControl!
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        if checkSideMenu == true {
+            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+        }
         tableVIew.dataSource = self
         tableVIew.delegate = self
         
@@ -51,6 +59,15 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(vc, animated: true, completion: nil)
+        })
+    }
+    
     @objc func didPullToRefresh() {
         self.accountList.removeAll()
         self.tableVIew.reloadData()

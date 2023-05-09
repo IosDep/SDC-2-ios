@@ -17,6 +17,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     @IBOutlet weak var lastloginInfo: UILabel!
     
+    @IBOutlet weak var sideMenuBtn: UIButton!
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var dolar: DesignableButton!
     @IBOutlet weak var dinar: DesignableButton!
     @IBOutlet weak var busnissCard: UICollectionView!
@@ -31,6 +33,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var monthData  = [String]()
     var valueChart  = [Double]()
     var notificationCount : String?
+    var checkSideMenu = false
+
     
     var tradeAnlysis = [TradeAnlysis]()
     
@@ -47,6 +51,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var ownershapeAnlusis = [OwnerShapeAnlysisModel]()
     var yearArray = [String]()
     var categoryArray = [String]()
+    
+    //function for change background selected background color for with and without zero btn
     
     func highlightedButtons() {
         if isDolarSelected && !isDinarSelected {
@@ -84,6 +90,15 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         highlightedButtons()
     }
     
+    @IBAction func backPressed(_ sender: Any) {
+        
+        self.dismiss(animated: true, completion: {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(vc, animated: true, completion: nil)
+        })
+    }
+    
     @IBAction func dinarPressed(_ sender: Any) {
         isDolarSelected = false
         isDinarSelected = true
@@ -96,6 +111,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         isDolarSelected = true
         isDinarSelected = false
         highlightedButtons()
+        if checkSideMenu == true {
+            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+            sideMenuBtn.isHidden = true
+        }
+        
         busnissCard.delegate = self
         busnissCard.dataSource  = self
         anlyssSection.delegate = self

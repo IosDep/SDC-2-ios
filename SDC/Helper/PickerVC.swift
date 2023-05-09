@@ -85,9 +85,6 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
             
         }
         
-        
-   
-        
         self.dismiss(animated:  true)
         
     }

@@ -10,6 +10,10 @@
 		364D455FB1D4360B43DA4153 /* Pods_SDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */; };
 		3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1038992A02704E004594ED /* SecurityOwnership.swift */; };
 		3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */; };
+		3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */; };
+		3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */; };
+		3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */; };
+		3F4F5CB02A0A300400554BAD /* Naionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAF2A0A300400554BAD /* Naionality.swift */; };
 		3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80D44829ED5615003F9945 /* CardFiveVC.swift */; };
 		3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871181C229E2D06200F14C5C /* Localizable.strings */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
@@ -117,6 +121,10 @@
 		35A43BAA4BE44B9CDDE441CD /* Pods-SDCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.release.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.release.xcconfig"; sourceTree = "<group>"; };
 		3F1038992A02704E004594ED /* SecurityOwnership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityOwnership.swift; sourceTree = "<group>"; };
 		3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnwerShip.swift; sourceTree = "<group>"; };
+		3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerVC.swift; sourceTree = "<group>"; };
+		3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerCell.swift; sourceTree = "<group>"; };
+		3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NatPickerCell.xib; sourceTree = "<group>"; };
+		3F4F5CAF2A0A300400554BAD /* Naionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Naionality.swift; sourceTree = "<group>"; };
 		3F80D44829ED5615003F9945 /* CardFiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFiveVC.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
@@ -254,7 +262,9 @@
 				87D3E9B529DA9F5E006B6AA7 /* ApiCaler.swift */,
 				87D3E9B729DA9FCC006B6AA7 /* LoadingOverly.swift */,
 				87D3E9B929DAA07F006B6AA7 /* EndPoint.swift */,
+				87D3E9B129DA9D39006B6AA7 /* LoginVC.swift */,
 				3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */,
+				3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -356,7 +366,6 @@
 				8748CB4A2990555E00E9AE81 /* LocalAuthentication.swift */,
 				8748CB4C2990562B00E9AE81 /* Login.swift */,
 				87B05CE229C06D5D00EAA41D /* WelcomePageVC.swift */,
-				87D3E9B129DA9D39006B6AA7 /* LoginVC.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -406,6 +415,8 @@
 				87CE38EA29EBC78800FD09D5 /* TradingXibView.xib */,
 				3FAAB7282A01079300DCFDA5 /* PickerCell.swift */,
 				3FAAB7292A01079300DCFDA5 /* PickerCell.xib */,
+				3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */,
+				3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -433,6 +444,7 @@
 				3F1038992A02704E004594ED /* SecurityOwnership.swift */,
 				3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */,
 				3FB42A982A03DBA200C74E58 /* InvInfo.swift */,
+				3F4F5CAF2A0A300400554BAD /* Naionality.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -577,6 +589,7 @@
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
 				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
+				3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */,
 				8761E54529DC4B3B00CB72B5 /* AccountListXib.xib in Resources */,
 				87B614FC29D15C690039813A /* HeaderDataXIB.xib in Resources */,
 				8768982929D00C3B00636503 /* HomePropretyXib.xib in Resources */,
@@ -716,10 +729,13 @@
 				8761E54729DC4D6200CB72B5 /* AccountListModel.swift in Sources */,
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
 				87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */,
+				3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */,
 				87D3E9B829DA9FCC006B6AA7 /* LoadingOverly.swift in Sources */,
 				8761E54429DC4B3B00CB72B5 /* AccountListXib.swift in Sources */,
 				87C59C7E29C13C7900EB0C40 /* BusnissCard.swift in Sources */,
 				8748CB4B2990555E00E9AE81 /* LocalAuthentication.swift in Sources */,
+				3F4F5CB02A0A300400554BAD /* Naionality.swift in Sources */,
+				3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */,
 				8748CB4D2990562B00E9AE81 /* Login.swift in Sources */,
 				87B89AD929CFC78B00E82C1E /* DocumentType.swift in Sources */,
 				87B614FB29D15C690039813A /* HeaderDataXIB.swift in Sources */,

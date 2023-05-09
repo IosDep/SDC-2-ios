@@ -9,12 +9,16 @@ import UIKit
 
 class AgrementVc: UIViewController {
 
-    @IBOutlet weak var nameTxt: UILabel!
-    @IBOutlet weak var centerPhoneTxt: UILabel!
-    @IBOutlet weak var phoneNumberTxt: UILabel!
-    @IBOutlet weak var btnAgree: UIButton!
-    @IBOutlet weak var emailTxt: UILabel!
-var flagAgree = 1
+    @IBOutlet weak var nameTxt: DesignableLabel!
+    @IBOutlet weak var centerPhoneTxt: DesignableLabel!
+    @IBOutlet weak var phoneNumberTxt: DesignableLabel!
+    @IBOutlet weak var btnAgree: DesignableButton!
+    @IBOutlet weak var emailTxt: DesignableLabel!
+    
+    var flagAgree = 1
+    var accountDetails : AccountDetails?
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

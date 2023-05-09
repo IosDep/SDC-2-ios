@@ -11,6 +11,9 @@ class EmailVc: UIViewController {
     @IBOutlet weak var emailTxt: DesignableTextFeild!
 
     @IBOutlet weak var scroll: UIScrollView!
+    
+    var accountDetails : AccountDetails?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 

@@ -12,7 +12,9 @@ import MOLH
 
 class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate {
     
+    @IBOutlet weak var sideMenuBtn: UIButton!
     
+    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var busnissCard: UITableView!
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
@@ -27,11 +29,17 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var invAccount = [InvestoreOwnerShape]()
     var arr_search = [InvestoreOwnerShape]()
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
+    var checkSideMenu = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
+        if checkSideMenu == true {
+            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+        }
         isZeroSelected = true
         isWithoutSelected = false
         highlightedButtons()
@@ -57,6 +65,26 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(vc, animated: true, completion: nil)
+        })
+    }
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        self.seatrching = true
+        busnissCard.reloadData()
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        self.setupSideMenu()
+
+    }
+    
     
     
     //    refresh action
@@ -145,10 +173,12 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         busnissCard.reloadData()
     }
     
+    //function for change background selected background color for with and without zero btn
+    
     func highlightedButtons() {
         if isZeroSelected == true && isWithoutSelected == false {
             DispatchQueue.main.async{
-            //            self.withZero.titleLabel?.textColor = .white
+         
             self.withZero.setTitleColor(.white, for: .normal)
                 
             self.withZero.backgroundColor  =
@@ -205,10 +235,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.setupSideMenu()
-
-    }
+   
     
 //    API Call
     

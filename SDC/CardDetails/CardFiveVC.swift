@@ -14,7 +14,9 @@ class CardFiveVC: UIViewController {
 
     @IBOutlet weak var bellView: UIButton!
     
+    @IBOutlet weak var sideMenuBtn: UIButton!
     
+    @IBOutlet weak var backBtn: UIButton!
     
     @IBOutlet weak var nickname: UILabel!
     
@@ -74,12 +76,35 @@ class CardFiveVC: UIViewController {
     
     @IBOutlet weak var country: UILabel!
     
+    var clientNum : String?
+    var checkSideMenu = false
+    var nationalities = [Nationality]()
     
     
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(vc, animated: true, completion: nil)
+        })
+    }
+    
+    
+    @IBAction func nationalityPressed(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "NatPickerVC") as! NatPickerVC
+        vc.nationalities = self.nationalities
+        self.present(vc, animated: true)
+        
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if checkSideMenu == true {
+            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
+            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+        }
         self.cerateBellView(bellview: bellView, count: "12")
         self.getAccountInfo()
 
@@ -117,6 +142,9 @@ class CardFiveVC: UIViewController {
                                      let message = jsonObj!["msg"] as? String
                                     
                                     let data = jsonObj!["data"] as? [String:Any]
+                                    
+                                    let clientNo = data!["clientNo"] as? String
+                                    self.clientNum = clientNo
                                     
                                     let title = data!["title"] as? String
                                     self.nickname.text = title ?? ""
@@ -198,6 +226,8 @@ class CardFiveVC: UIViewController {
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
                                     self.expiryDate.text = idDocExpDate ?? ""
+                                    
+                                    self.getNationalities()
 
 
                                         
@@ -240,6 +270,89 @@ class CardFiveVC: UIViewController {
                 print("Error")
                 self.internetError(hud: hud)
                 //                    self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+    
+    
+    func getNationalities(){
+//
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+    
+     
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "",
+                                    "client_No" : self.clientNum!
+ ]
+     // "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+        let link = URL(string: APIConfig.GetNationality)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                            for item in data {
+                                                let model = Nationality(data: item)
+                                                self.nationalities.append(model)
+                                                print(self.nationalities)
+                                 
+                                            }
+                                            
+                                            DispatchQueue.main.async {
+                                                
+                                                hud.dismiss()
+//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                                
+//                                                if self.car_arr.count == 0{
+//
+//
+//                                                    self.noDataImage.isHidden = false
+//                                                }else{
+//
+//                                                    self.noDataImage.isHidden = true
+//                                                }
+
+                                            }
+                                        }
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                                other Wise Problem
+                            else {
+                                                hud.dismiss(animated: true)      }
+                      
+                            
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    
+                
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+
+
             }
         }
     }

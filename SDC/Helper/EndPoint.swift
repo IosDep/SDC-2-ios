@@ -2,7 +2,7 @@ import Alamofire
 class APIConfig {
 
     
-    static let BaseURL = "https://sdce.br-ws.com/api/"
+    static let BaseURL = "https://sdce5.blueraydev.com/api/"
     
     static let Login = BaseURL  + "authentication/login"
     
@@ -22,7 +22,8 @@ class APIConfig {
     static let TradesAnalysis = BaseURL  + "investor_information/tradesAnalysis"
     
     static let GetSecurityPwnership = BaseURL + "investor_information/getInvOwnership"
-
+    
+    static let GetNationality = BaseURL  + "investor_information/getOtherNat"
     
     static let ChangePassword = BaseURL  + "authentication/changePassword"
     static let GetSecurityOwnership = BaseURL  + "investor_information/getSecurityOwnership"

@@ -10,6 +10,9 @@ import UIKit
 class IdentfairVC: UIViewController {
     @IBOutlet weak var idTxt: DesignableTextFeild!
     @IBOutlet weak var scroll: UIScrollView!
+    
+    var accountDetails : AccountDetails?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -27,6 +30,7 @@ class IdentfairVC: UIViewController {
 
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
+//        vc.accountDetails = AccountDetails(name: <#T##String#>, phoneNum: <#T##String#>, email: <#T##String#>)
             vc.modalPresentationStyle = .fullScreen
       
             self.present(vc, animated: true)
@@ -35,4 +39,10 @@ class IdentfairVC: UIViewController {
         
         
     }
+}
+
+struct AccountDetails {
+    var name : String
+    var  phoneNum : String
+    var  email : String
 }

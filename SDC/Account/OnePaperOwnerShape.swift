@@ -22,7 +22,7 @@ self.paperNameBtn.setTitle(selectdTxt, for: .normal)
 
 } else  if flag == "1"{
 selectedLiteralNum = selectdTxt
-self.literalNumBtn.setTitle(selectdTxt, for: .normal)
+self.literalNumBtn.setTitle(securtNumber, for: .normal)
 
 }
 
@@ -43,18 +43,11 @@ var securtyIdToCallApi:String?
 
 @IBOutlet weak var literalNumBtn: UIButton!
 
-var seatrching = false
+    @IBOutlet weak var sideMenuBtn: UIButton!
+    
+   
 
 @IBOutlet weak var busnissCard: UITableView!
-
-var refreshControl: UIRefreshControl!
-
-var numberCode = [String]()
-var securityName = [String]()
-var selectedPaperName : String?
-var selectedLiteralNum : String?
-
-
 
 @IBOutlet weak var headerView: UIView!
 var previousScrollViewYOffset: CGFloat = 0
@@ -73,15 +66,23 @@ var securityId:String = ""
 var invAccount = [InvestoreOwnerShape]()
 var securityOwnership = [SecurityOwnership]()
 var arr_search = [InvestoreOwnerShape]()
-
 var secData = [SecurityData]()
+    var refreshControl: UIRefreshControl!
+    var seatrching = false
+    var numberCode = [String]()
+    var securityName = [String]()
+    var selectedPaperName : String?
+    var selectedLiteralNum : String?
+    var checkSideMenu = false
 
 
 override func viewDidLoad() {
 super.viewDidLoad()
+    if checkSideMenu == true {
+        sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+    }
 self.cerateBellView(bellview: bellView, count: "12")
 self.getInvestoreInfo()
-
 self.busnissCard.delegate = self
 self.busnissCard.dataSource = self
 self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
@@ -364,6 +365,9 @@ self.serverError(hud: hud)
 
     func getSecurityOwnership(securtID:String){
 
+        self.securityOwnership.removeAll()
+        
+        
 let hud = JGProgressHUD(style: .light)
 
 hud.show(in: self.view)
