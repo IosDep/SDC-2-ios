@@ -134,6 +134,14 @@ class MenuVC: UIViewController {
             self.present(vc, animated: true)
 
         }
+        else if sender.tag == Actions.companyProcedure.rawValue {
+
+            let vc = storyBoard.instantiateViewController(withIdentifier: "CompanyProcedureVC") as! CompanyProcedureVC
+            vc.modalPresentationStyle = .fullScreen
+
+            self.present(vc, animated: true)
+
+        }
         
         
         

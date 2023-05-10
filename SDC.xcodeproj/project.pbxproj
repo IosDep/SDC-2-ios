@@ -16,6 +16,9 @@
 		3F4F5CB02A0A300400554BAD /* Naionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAF2A0A300400554BAD /* Naionality.swift */; };
 		3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80D44829ED5615003F9945 /* CardFiveVC.swift */; };
 		3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871181C229E2D06200F14C5C /* Localizable.strings */; };
+		3F8AFA802A0B9C6700D13625 /* CompanyProcedureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */; };
+		3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */; };
+		3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA832A0BC47A00D13625 /* LastAction.swift */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
@@ -126,6 +129,9 @@
 		3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NatPickerCell.xib; sourceTree = "<group>"; };
 		3F4F5CAF2A0A300400554BAD /* Naionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Naionality.swift; sourceTree = "<group>"; };
 		3F80D44829ED5615003F9945 /* CardFiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFiveVC.swift; sourceTree = "<group>"; };
+		3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProcedureVC.swift; sourceTree = "<group>"; };
+		3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSixVC.swift; sourceTree = "<group>"; };
+		3F8AFA832A0BC47A00D13625 /* LastAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAction.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
@@ -277,6 +283,7 @@
 				8728D9E629E9D6FC00133096 /* CardTwoVc.swift */,
 				8728D9E829E9D72100133096 /* CardThereVc.swift */,
 				8728D9EA29E9D73800133096 /* CardFourVC.swift */,
+				3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */,
 			);
 			path = CardDetails;
 			sourceTree = "<group>";
@@ -354,6 +361,7 @@
 				8755766129E2E3C4009CA58D /* ChangeLanguage.swift */,
 				87F4FD5029EA261800FF2485 /* AccountStatement.swift */,
 				87F4FD5229EA282300FF2485 /* OnePaperOwnerShape.swift */,
+				3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -445,6 +453,7 @@
 				3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */,
 				3FB42A982A03DBA200C74E58 /* InvInfo.swift */,
 				3F4F5CAF2A0A300400554BAD /* Naionality.swift */,
+				3F8AFA832A0BC47A00D13625 /* LastAction.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -750,7 +759,9 @@
 				876758A729C751C6000F3CBC /* InvestorOwnershipVC.swift in Sources */,
 				3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */,
 				8771087729D04AD50010AEBE /* NotficationXIB.swift in Sources */,
+				3F8AFA802A0B9C6700D13625 /* CompanyProcedureVC.swift in Sources */,
 				8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */,
+				3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */,
 				87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */,
 				87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */,
 				87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */,
@@ -773,6 +784,7 @@
 				87D3E9BD29DAA7E1006B6AA7 /* InvestoreOwnerShapeModel.swift in Sources */,
 				8768982829D00C3B00636503 /* HomePropretyXib.swift in Sources */,
 				8755766229E2E3C4009CA58D /* ChangeLanguage.swift in Sources */,
+				3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */,
 				8728D9EB29E9D73800133096 /* CardFourVC.swift in Sources */,
 				87B614FE29D170580039813A /* CardInfo.swift in Sources */,
 				8728D9E929E9D72100133096 /* CardThereVc.swift in Sources */,

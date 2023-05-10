@@ -187,15 +187,32 @@
                 <outlet property="addtionalStack" destination="qyS-ut-EOd" id="atl-lI-uyZ"/>
                 <outlet property="balance" destination="34m-9L-SDh" id="E3P-Df-dLc"/>
                 <outlet property="extraStack" destination="Ptd-Df-TeZ" id="pxa-OK-ADU"/>
+                <outlet property="firstLbl" destination="e4t-s5-RbF" id="PDy-Uk-gcV"/>
                 <outlet property="literalName" destination="HpX-QB-AV6" id="kXj-En-WvO"/>
                 <outlet property="literalNum" destination="4YN-4p-BFn" id="hUL-Sg-Ir9"/>
                 <outlet property="mainCardView" destination="RE0-dd-v5M" id="DjR-sg-v16"/>
+                <outlet property="secondLbl" destination="Zc5-cc-l5g" id="JEE-NZ-qVp"/>
                 <outlet property="sector" destination="gCB-on-dLF" id="c5R-Qj-dNt"/>
+                <outlet property="thirdLbl" destination="cV7-Ef-yRk" id="YYC-QX-q9Q"/>
                 <outlet property="views" destination="RaD-ab-fn6" id="H0E-sC-J3h"/>
             </connections>
             <point key="canvasLocation" x="28.800000000000001" y="-73.891625615763544"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="Ptd-Df-TeZ">
+            <size key="intrinsicContentSize" width="37.333333333333336" height="14.333333333333334"/>
+        </designable>
+        <designable name="Zc5-cc-l5g">
+            <size key="intrinsicContentSize" width="81" height="14.333333333333334"/>
+        </designable>
+        <designable name="cV7-Ef-yRk">
+            <size key="intrinsicContentSize" width="90.666666666666671" height="14.333333333333334"/>
+        </designable>
+        <designable name="e4t-s5-RbF">
+            <size key="intrinsicContentSize" width="126.66666666666667" height="14.333333333333334"/>
+        </designable>
+    </designables>
     <resources>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.7839999794960022" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

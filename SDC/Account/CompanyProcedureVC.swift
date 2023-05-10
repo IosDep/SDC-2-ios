@@ -1,3 +1,4 @@
+
 //
 //  InvestorOwnershipVC.swift
 //  SDC
@@ -10,23 +11,25 @@ import Alamofire
 import JGProgressHUD
 import MOLH
 
-class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate {
+class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate {
     
-    @IBOutlet weak var sideMenuBtn: UIButton!
-    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var busnissCard: UITableView!
-    @IBOutlet weak var search_bar: UISearchBar!
-    @IBOutlet weak var bellView: UIView!
-    @IBOutlet weak var withZero: DesignableButton!
-    @IBOutlet weak var withoutZero: DesignableButton!
-    
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
+    @IBOutlet weak var withoutZero: DesignableButton!
+    @IBOutlet weak var withZero: DesignableButton!
+    
+    
+    @IBOutlet weak var search_bar: UISearchBar!
+    
     var seatrching = false
+    
+
+    @IBOutlet weak var bellView: UIView!
     var invOwnership = [InvestoreOwnerShape]()
-    var invAccount = [InvestoreOwnerShape]()
-    var arr_search = [InvestoreOwnerShape]()
+    var lastAction = [LastAction]()
+    var arr_search = [LastAction]()
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
     var checkSideMenu = false
     
@@ -35,14 +38,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
-        if checkSideMenu == true {
-            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
-            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
-        }
+        
         isZeroSelected = true
         isWithoutSelected = false
         highlightedButtons()
-        self.getInvestoreInfo()
+        self.getLastactions()
         search_bar.delegate = self
 
         self.busnissCard.delegate = self
@@ -64,22 +64,22 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         
         // Do any additional setup after loading the view.
     }
+    // self.dismiss(animated: true, completion: {
+//    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+//    let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+//    self.present(vc, animated: true, completion: nil)
+//})
+    
+   
     
     @IBAction func backPressed(_ sender: Any) {
-        if checkSideMenu == true {
-            self.dismiss(animated: true, completion: {
-                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                self.present(vc, animated: true, completion: nil)
-            })
-        }
+        self.dismiss(animated: true, completion: {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+            self.present(vc, animated: true, completion: nil)
+        })
     }
     
-    @IBAction func searchPressed(_ sender: Any) {
-        self.seatrching = true
-        busnissCard.reloadData()
-        
-    }
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
@@ -87,12 +87,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     
-    
     //    refresh action
         @objc func didPullToRefresh() {
-            self.invAccount.removeAll()
+            self.lastAction.removeAll()
             self.busnissCard.reloadData()
-            self.getInvestoreInfo()
+            self.getLastactions()
         
         }
     
@@ -102,21 +101,25 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         }
         
         else {
-            return self.invAccount.count
+            return self.lastAction.count
         }
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CardSixVC") as! CardSixVC
+        vc.lastAction = self.lastAction[indexPath.row]
         vc.modalPresentationStyle = .fullScreen
-        vc.invOwnership = self.invAccount[indexPath.row]
         self.present(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
-        cell?.addtionalStack.isHidden = false
+        cell?.addtionalStack.isHidden = true
+        cell?.firstLbl.text = "Corporation name".localized()
+        cell?.secondLbl.text = "Corporation ID".localized()
+        cell?.thirdLbl.text = "Action description".localized()
+        
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("BusnissCardTable", owner: self, options: nil)!
             cell = nib[0] as? BusnissCardTable
@@ -126,23 +129,19 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             
             cell?.mainCardView.layer.cornerRadius =  8
             let data = arr_search[indexPath.row]
-            cell?.literalName.text = data.Security_Name
-            cell?.literalNum.text = data.securityID
-            cell?.sector.text = data.Security_Sector_Desc
-            cell?.balance.text = data.Nominal_Value
+            cell?.literalNum.text = data.Member_Name ?? ""
+            cell?.literalName.text =  data.Member_Id ?? ""
+            cell?.balance.text = data.Action_Type_Desc ?? ""
+            
         }
         
         else {
             cell?.mainCardView.layer.cornerRadius =  8
-            let data = invAccount[indexPath.row]
-            
-            cell?.literalName.text = data.Security_Name
-            cell?.literalNum.text = data.securityID
-            cell?.sector.text = data.Security_Sector_Desc
-            cell?.balance.text = data.Quantity_Avilable
-            cell?.balance.text = data.Nominal_Value
-
-
+            let data = lastAction[indexPath.row]
+            cell?.literalNum.text = data.Member_Name ?? ""
+            cell?.literalName.text =  data.Member_Id ?? ""
+            cell?.balance.text = data.Action_Type_Desc ?? ""
+        
         }
         
         return cell!
@@ -154,12 +153,12 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if MOLHLanguage.isArabic(){
-            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
         self.seatrching = true
             self.busnissCard.reloadData()
             
         } else {
-            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
             self.seatrching = true
                 self.busnissCard.reloadData()
             
@@ -243,18 +242,16 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     
-    func getInvestoreInfo(){
+    func getLastactions(){
 //
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
 
-    
-     
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
  ]
      
-        let link = URL(string: APIConfig.GetInvOwnership)
+        let link = URL(string: APIConfig.GetLastAction)
 
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
@@ -267,8 +264,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                             if status == 200 {
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                             for item in data {
-                                                let model = InvestoreOwnerShape(data: item)
-                                                self.invAccount.append(model)
+                                                let model = LastAction(data: item)
+                                                self.lastAction.append(model)
                                  
                                             }
                                             
@@ -324,12 +321,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         }
     }
     
-    
     @IBOutlet weak var headerView: UIView!
     var previousScrollViewYOffset: CGFloat = 0
     var headerViewIsHidden = false
-
+    
+    
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
+    
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentScrollViewYOffset = scrollView.contentOffset.y
         

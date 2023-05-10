@@ -144,7 +144,7 @@
 
 "Investor accounts" = "حسابات المستثمر";
 
-"The company's latest procedures" = "آخر إجراءات الشركة";
+"Corporation's last actions" = "آخر إجراءات الشركة";
 "Investor's ownership of a new security" = "ملكية المستثمر لورقة مالية جديدة";
 "Account statement" = "كشف حساب";
 "Change password" = "تغيير كلمة السر";
@@ -206,3 +206,29 @@
 "Otherr Nationalities" = "جنسيات أخرى";
 "Investor Status" = "حالة المستثمر";
 "Press here to show other nationalities" = "اضغط هنا لعرض  الجنسيات الأخرى";
+"Action's information" = "معلومات الإجراء";
+"Corporation name" = "اسم الشركة";
+"Corporation ID"="رقم الشركة";
+"Literal number"="الرقم الحرفي";
+"Action date"="تاريخ الإجراء";
+"Action"="الإجراء";
+"Action description"="وصف الإجراء";
+"Before action"="قبل الإجراء";
+"After action"="بعد الأجراء";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";
+""="";

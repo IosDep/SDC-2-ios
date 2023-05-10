@@ -14,8 +14,8 @@ class APIConfig {
     static let GetNotfication = BaseURL  + "investor_information/getNotifications"
     
     static let GetAccountOwnerShpe = BaseURL  + "investor_information/getAccountOwnership"
-    
 
+    static let GetLastAction = BaseURL  + "investor_information/lastcorporateactions"
     
     static let GetLastTrans = BaseURL  + "investor_information/getLastTrans"
     static let OwnershipAnalysis = BaseURL  + "investor_information/ownershipAnalysis"

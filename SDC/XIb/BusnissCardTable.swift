@@ -9,6 +9,11 @@ import UIKit
 
 class BusnissCardTable: UITableViewCell {
 
+    @IBOutlet weak var firstLbl: DesignableLabel2!
+    
+    @IBOutlet weak var secondLbl: DesignableLabel2!
+    
+    @IBOutlet weak var thirdLbl: DesignableLabel2!
     
     @IBOutlet weak var balance: UILabel!
     @IBOutlet weak var literalNum: UILabel!
