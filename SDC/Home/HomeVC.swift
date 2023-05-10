@@ -115,6 +115,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
             sideMenuBtn.isHidden = true
         }
+        else {
+            backBtn.isHidden = true
+        }
         
         busnissCard.delegate = self
         busnissCard.dataSource  = self

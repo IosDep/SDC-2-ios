@@ -25,8 +25,16 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     var checkFlag:String?
     var securtyID = [String]()
     var secData =  [SecurityData]()
-
     var checkAccountStatmnt = false
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tableView.delegate = self
+        self.tableView.dataSource = self
+        
+        self.tableView.register(UINib(nibName: "PickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
+        
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
@@ -59,8 +67,6 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
                     cell?.title.text = secData[indexPath.row].secNum ?? ""
 
                 }
-                
-                
             }else {
                 cell?.title.text = dataFilterd[indexPath.row]
             }
@@ -82,21 +88,10 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
 //            in account statmnet we provide empty securtyId and Securty Number
             
             self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: "")
-            
         }
         
         self.dismiss(animated:  true)
         
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
-        
-        self.tableView.register(UINib(nibName: "PickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
-        
-    }
-   
 }
 

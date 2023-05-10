@@ -7,6 +7,8 @@
 
 import UIKit
 
+// Security info
+
 class CardTwoVc: UIViewController {
 
     @IBOutlet weak var bellView : UIView!

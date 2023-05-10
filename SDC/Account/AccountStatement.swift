@@ -13,6 +13,7 @@ import Alamofire
 
 class AccountStatement: UIViewController,DataSelectedDelegate{
     
+    // set title for picker's buttons when is selected from picker vc
     
     func getSelectdPicker(selectdTxt: String,securtNumber:String,flag: String,securtyId:String) {
         if flag == "0"{
@@ -38,13 +39,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     @IBOutlet weak var literalnumber: UIButton!
     @IBOutlet weak var secutrtyNameBtn: UIButton!
     @IBOutlet weak var mebemrCodeBtn: UIButton!
-
     @IBOutlet weak var fromDate: UIButton!
     @IBOutlet weak var toDate: UIButton!
     
     var accountList =  [AccountListModel]()
     var invAccount = [InvestoreOwnerShape]()
-    
     var accountName = [String]()
     var numberCode = [String]()
     var securityName = [String]()
@@ -57,7 +56,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
 
         // Do any additional setup after loading the view.
         
-        
         self.cerateBellView(bellview: self.bellView, count: "12")
     }
 
@@ -65,14 +63,13 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
     }
     
-    
+    // When pressed one of the three pickers
     
     @IBAction func gooingToPicker(_ sender: UIButton) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
     
-        
         vc.dataSelectedDelegate = self
         vc.checkAccountStatmnt = true
 
@@ -104,8 +101,10 @@ print("default Value")
 
     }
     
+    // Api call
+    
     func getInvestoreInfo(){
-//
+        
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
@@ -137,16 +136,7 @@ print("default Value")
                                             
                                             DispatchQueue.main.async {
                                                 hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
+
 
                                             }
                                         }
@@ -182,6 +172,8 @@ print("default Value")
             }
         }
     }
+    
+    
     
     func getAccountList(){
         

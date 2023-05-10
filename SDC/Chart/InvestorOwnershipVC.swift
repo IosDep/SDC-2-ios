@@ -67,11 +67,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.present(vc, animated: true, completion: nil)
-        })
+        if checkSideMenu == true {
+            self.dismiss(animated: true, completion: {
+                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+                self.present(vc, animated: true, completion: nil)
+            })
+        }
     }
     
     @IBAction func searchPressed(_ sender: Any) {

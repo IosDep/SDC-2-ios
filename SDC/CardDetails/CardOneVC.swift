@@ -9,6 +9,8 @@ import UIKit
 
 class CardOneVC: UIViewController {
     
+    // Security info
+    
     @IBOutlet weak var bellView : UIView!
    
     @IBOutlet weak var clientNum: UILabel!

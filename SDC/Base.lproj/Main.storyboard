@@ -9263,21 +9263,8 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="EtI-Ql-XdK">
                                                 <rect key="frame" x="0.0" y="16" width="100" height="82"/>
                                                 <subviews>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6R-Jk-U83">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="82"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="k7e-WZ-4UZ"/>
-                                                        </constraints>
-                                                        <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <state key="normal" image="menus">
-                                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
-                                                        </state>
-                                                        <connections>
-                                                            <action selector="setupMenu:" destination="Ub5-L7-qzu" eventType="touchUpInside" id="cUg-wM-AYB"/>
-                                                        </connections>
-                                                    </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bjl-TG-m1S">
-                                                        <rect key="frame" x="50" y="0.0" width="50" height="82"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="82"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MRn-Mw-Kmf">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="82"/>
@@ -9298,6 +9285,16 @@
                                                             <constraint firstItem="MRn-Mw-Kmf" firstAttribute="top" secondItem="Bjl-TG-m1S" secondAttribute="top" id="vsM-Ap-kUa"/>
                                                         </constraints>
                                                     </view>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z6R-Jk-U83">
+                                                        <rect key="frame" x="50" y="0.0" width="50" height="82"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="50" id="k7e-WZ-4UZ"/>
+                                                        </constraints>
+                                                        <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <connections>
+                                                            <action selector="setupMenu:" destination="Ub5-L7-qzu" eventType="touchUpInside" id="cUg-wM-AYB"/>
+                                                        </connections>
+                                                    </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="82" id="xoz-tv-vGO"/>

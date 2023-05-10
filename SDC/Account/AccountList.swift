@@ -12,15 +12,10 @@ import JGProgressHUD
 
 class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
-    
-
     @IBOutlet weak var tableVIew: UITableView!
     @IBOutlet weak var roundview: UIView!
-
     @IBOutlet weak var bellView: UIView!
-    
     @IBOutlet weak var backBtn: UIButton!
-    
     @IBOutlet weak var sideMenuBtn: UIButton!
     
     var accountList =  [AccountListModel]()
@@ -29,8 +24,6 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var memberId:String = ""
     var accountNo:String = ""
     var checkSideMenu = false
-
-
     var refreshControl: UIRefreshControl!
 
     
@@ -42,11 +35,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         }
         tableVIew.dataSource = self
         tableVIew.delegate = self
-        
         self.getAccountList()
-
-//        roundview.roundCorners([.topLeft,.topRight], radius: 12)
-        
         cerateBellView(bellview: self.bellView, count: "12")
         
         tableVIew.register(UINib(nibName: "AccountListXib", bundle: nil), forCellReuseIdentifier: "AccountListXib")
@@ -56,16 +45,17 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
                 refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.tableVIew.addSubview(refreshControl)
                 
-
         // Do any additional setup after loading the view.
     }
     
     @IBAction func backPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.present(vc, animated: true, completion: nil)
-        })
+        if checkSideMenu == true {
+            self.dismiss(animated: true, completion: {
+                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+                self.present(vc, animated: true, completion: nil)
+            })
+        }
     }
     
     @objc func didPullToRefresh() {
@@ -110,24 +100,10 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
        
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//        let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
-//        vc.modalPresentationStyle = .fullScreen
-//        vc.invAccount = self.invAccount[indexPath.row]
-//        self.present(vc, animated: true)
-    }
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 200
-//    }
+    // Action when Account ownership button pressed
     
     @objc func accountOwnerShape(sender: UIButton){
-        
-        
-//        let cell  =
-        
-        
-        
+     
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
         let vc = storyBoard.instantiateViewController(withIdentifier: "InvestorAccountOwnerShape") as! InvestorAccountOwnerShape
@@ -135,15 +111,12 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
   
         vc.memberId = self.accountList[sender.tag].Member_No ?? ""
         vc.accountNo =  self.accountList [sender.tag].Account_No ?? ""
-        
-        
-//        vc.securityId  = self.accountList[sender.tag].s
-//        vc.
-        
         self.present(vc, animated: true)
         
         
     }
+    
+    // Action when Account info button pressed
     
     @objc func accountInfo(sender: UIButton){
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -193,8 +166,6 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
                             if let status = jsonObj!["status"] as? Int {
                                 if status == 200 {
                                     
-                                
-                                        
                                     if let data = jsonObj!["data"] as? [[String: Any]]{
                                                 for item in data {
                                                     let model = AccountListModel(data: item)
@@ -206,16 +177,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                                     self.tableVIew.reloadData()
                                                     self.refreshControl?.endRefreshing()
                                                     hud.dismiss()
-    //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                    
-    //                                                if self.car_arr.count == 0{
-    //
-    //
-    //                                                    self.noDataImage.isHidden = false
-    //                                                }else{
-    //
-    //                                                    self.noDataImage.isHidden = true
-    //                                                }
+    
 
                                                 }
                                             }
@@ -224,7 +186,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //                             Session ID is Expired
                                 else if status == 400{
                                     let msg = jsonObj!["message"] as? String
-    //                                self.showErrorHud(msg: msg ?? "")
+    
                                     self.seassionExpired(msg: msg ?? "")
                                 }
                                     

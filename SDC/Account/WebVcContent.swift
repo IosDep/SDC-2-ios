@@ -21,10 +21,6 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
     //  Created by Omar Warrayat on 15/01/2022.
     //
     
-    
-    
-    
-    
     @IBOutlet weak var webView: WKWebView!
     @IBOutlet weak var bellView: UIView!
 

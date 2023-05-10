@@ -7,22 +7,17 @@
 import UIKit
 import MOLH
 class ChangeLanguage: UIViewController {
+    
     @IBOutlet weak var bellView: UIView!
-    
     @IBOutlet weak var majoreView: UIView!
-    
-    
     @IBOutlet weak var enimaeg: UIImageView!
     @IBOutlet weak var arimage: UIImageView!
-//
-//
-    
+
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.cerateBellView(bellview: bellView, count: "12")
-        
         majoreView.roundCorners([.topLeft,.topRight], radius: 12)
-        
         
         if MOLHLanguage.isArabic() {
             arimage.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor.black)

@@ -10,39 +10,26 @@ import Alamofire
 import MOLH
 import JGProgressHUD
 
+// Account info
+
 class CardFourVC: UIViewController {
     
 
     @IBOutlet weak var backgroundStack: UIStackView!
     @IBOutlet weak var bellView : UIView!
-
-    
     @IBOutlet weak var memberNumber: UILabel!
-    
     @IBOutlet weak var name: UILabel!
-    
-    
     @IBOutlet weak var documentType: UILabel!
-    
     @IBOutlet weak var documentNumber: UILabel!
     @IBOutlet weak var accountID: UILabel!
-    
     @IBOutlet weak var accountType: UILabel!
-    
-    
     @IBOutlet weak var releaseDate: UILabel!
-    
     @IBOutlet weak var expiryDate: UILabel!
-    
     @IBOutlet weak var documentRefernce: UILabel!
-    
     @IBOutlet weak var identificationNumber: UILabel!
-    
     @IBOutlet weak var bankType: UILabel!
     @IBOutlet weak var bankName: UILabel!
-    
     @IBOutlet weak var country: UILabel!
-    
     @IBOutlet weak var bankID: UILabel!
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var postalCode: UILabel!
@@ -61,31 +48,13 @@ class CardFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAccountInfo()
-//        memberNumber.text = invInfo?.memberId ?? ""
-//        name.text = invInfo?.memberName ?? ""
-//        accountID.text = invInfo?.accountNo ?? ""
-//        accountType.text = invInfo?.accountType ?? ""
-//        documentType.text = invInfo?.idDocTypeDesc ?? ""
-//        documentNumber.text = invInfo?.idDocNo ?? ""
-//        releaseDate.text = invInfo?.idDocDate ?? ""
-//        expiryDate.text = invInfo?.idDocExpDate ?? ""
-//        documentRefernce.text = invInfo?.idDocReference ?? ""
-//        identificationNumber.text = invInfo?.identificationNo ?? ""
-//        postalBox.text = invInfo?.pobox ?? ""
-//        postalCode.text = invInfo?.postalCode ?? ""
-//        country.text = invInfo?.resCountry ?? ""
-//        city.text = invInfo?.resCity ?? ""
-//        bankName.text = invInfo?.bankName ?? ""
-//        bankID.text = invInfo?.bankId ?? ""
-//        bankType.text = invInfo?.bankTypeDesc ?? ""
 
         self.cerateBellView(bellview: bellView, count: "12")
         
     }
     
     
-    
-    
+    // Api call
     
     func getAccountInfo() {
         let hud = JGProgressHUD(style: .light)
@@ -181,44 +150,14 @@ class CardFourVC: UIViewController {
                                     }
 
                                 }
-//                                if status == 200 {
-//
-//
-//
-//                                    if let data = jsonObj!["data"] as? [[String: Any]]{
-//                                                for item in data {
-//                                                    let model = AccountInfo(data: item)
-//                                                    self.invInfo = model
-//                                                }
-//
-//                                                DispatchQueue.main.async {
-//
-//                                                    hud.dismiss()
-//    //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-//
-//    //                                                if self.car_arr.count == 0{
-//    //
-//    //
-//    //                                                    self.noDataImage.isHidden = false
-//    //                                                }else{
-//    //
-//    //                                                    self.noDataImage.isHidden = true
-//    //                                                }
-//
-//                                                }
-//                                            }
-//
-//                                        }
+
 
 
 
                                 else if status == 400{
                                     let msg = jsonObj!["message"] as? String
-    //                                self.showErrorHud(msg: msg ?? "")
                                     self.seassionExpired(msg: msg ?? "")
                                 }
-
-
 
 
     //                                other Wise Problem
@@ -231,17 +170,13 @@ class CardFourVC: UIViewController {
                 } catch let err as NSError {
                     print("Error: \(err)")
                     self.serverError(hud: hud)
-                    //                        self.refreshControl?.endRefreshing()
+                   
                 }
             } else {
                 print("Error")
                 self.internetError(hud: hud)
-                //                    self.refreshControl?.endRefreshing()
+               
             }
         }
     }
-
-
-
-
 }

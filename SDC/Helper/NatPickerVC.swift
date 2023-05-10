@@ -15,18 +15,13 @@ class NatPickerVC: UIViewController , UITableViewDataSource , UITableViewDelegat
     var selectedNatDelegate:SelectedNatDelegate?
 
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        
         self.tableView.register(UINib(nibName: "NatPickerCell", bundle: nil), forCellReuseIdentifier: "NatPickerCell")
-
     }
     
-
-   
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nationalities.count ?? 0
     }
@@ -43,17 +38,11 @@ class NatPickerVC: UIViewController , UITableViewDataSource , UITableViewDelegat
            cell?.nationality.text = nationalities[indexPath.row].Nationality ?? ""
            cell?.invStatus.text = nationalities[indexPath.row].Client_Status ?? ""
 
-          
        }
        
        return cell!
     }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
-    }
-
-}
+  }
 
 protocol SelectedNatDelegate{
     func getSelectdPicker(selectdTxt:String,flag:String)

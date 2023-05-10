@@ -10,6 +10,8 @@ import Alamofire
 import MOLH
 import JGProgressHUD
 
+// investor info
+
 class CardFiveVC: UIViewController {
 
     @IBOutlet weak var bellView: UIButton!
@@ -82,11 +84,13 @@ class CardFiveVC: UIViewController {
     
     
     @IBAction func backPressed(_ sender: Any) {
-        self.dismiss(animated: true, completion: {
-            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.present(vc, animated: true, completion: nil)
-        })
+        if checkSideMenu == true {
+            self.dismiss(animated: true, completion: {
+                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+                self.present(vc, animated: true, completion: nil)
+            })
+        }
     }
     
     
@@ -110,6 +114,8 @@ class CardFiveVC: UIViewController {
 
         
     }
+    
+    // Api call when Account info button pressed
     
     func getAccountInfo() {
         let hud = JGProgressHUD(style: .light)
@@ -274,6 +280,7 @@ class CardFiveVC: UIViewController {
         }
     }
     
+    // Api call when Nationality button pressed
     
     func getNationalities(){
 //
@@ -285,8 +292,9 @@ class CardFiveVC: UIViewController {
      
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "",
                                     "client_No" : self.clientNum!
+                                     ,"lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+
  ]
-     // "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
         let link = URL(string: APIConfig.GetNationality)
 
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
@@ -309,16 +317,7 @@ class CardFiveVC: UIViewController {
                                             DispatchQueue.main.async {
                                                 
                                                 hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
+
 
                                             }
                                         }
@@ -343,9 +342,6 @@ class CardFiveVC: UIViewController {
                 } catch let err as NSError {
                     print("Error: \(err)")
                     self.serverError(hud: hud)
-                    
-                
-
               }
             } else {
                 print("Error")
@@ -356,7 +352,5 @@ class CardFiveVC: UIViewController {
             }
         }
     }
-    
-    
-
+   
 }

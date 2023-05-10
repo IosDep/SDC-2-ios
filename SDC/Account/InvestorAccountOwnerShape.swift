@@ -257,16 +257,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                                 self.busnissCard.reloadData()
                                                 self.refreshControl?.endRefreshing()
                                                 hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
+
 
                                             }
                                         }
@@ -275,13 +266,9 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
-//                                self.showErrorHud(msg: msg ?? "")
                                 self.seassionExpired(msg: msg ?? "")
                             }
-                                
-                                
-                                
-                                
+                     
 //                                other Wise Problem
                             else {  self.refreshControl.endRefreshing()
                                                 hud.dismiss(animated: true)      }

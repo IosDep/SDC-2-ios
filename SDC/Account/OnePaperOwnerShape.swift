@@ -13,7 +13,8 @@ import JGProgressHUD
 
 class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate , DataSelectedDelegate{
 
-
+// set title for picker's buttons when is selected from picker vc
+    
     func getSelectdPicker(selectdTxt: String,securtNumber:String ,flag: String,securtyId:String) {
 
 if flag == "0"{
@@ -34,28 +35,15 @@ print("Securty !!",securtyId)
 
 
 }
-var securtyIdToCallApi:String?
 
 
 @IBOutlet weak var paperNameBtn: UIButton!
-
 @IBOutlet weak var search_bar: UISearchBar!
-
 @IBOutlet weak var literalNumBtn: UIButton!
-
-    @IBOutlet weak var sideMenuBtn: UIButton!
-    
-   
-
+@IBOutlet weak var sideMenuBtn: UIButton!
 @IBOutlet weak var busnissCard: UITableView!
-
 @IBOutlet weak var headerView: UIView!
-var previousScrollViewYOffset: CGFloat = 0
-var headerViewIsHidden = false
-
 @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
-
-
 @IBOutlet weak var bellView: UIView!
 
 
@@ -74,7 +62,9 @@ var secData = [SecurityData]()
     var selectedPaperName : String?
     var selectedLiteralNum : String?
     var checkSideMenu = false
-
+    var securtyIdToCallApi:String?
+    var previousScrollViewYOffset: CGFloat = 0
+    var headerViewIsHidden = false
 
 override func viewDidLoad() {
 super.viewDidLoad()
