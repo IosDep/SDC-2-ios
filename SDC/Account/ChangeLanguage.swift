@@ -8,6 +8,11 @@ import UIKit
 import MOLH
 class ChangeLanguage: UIViewController {
     
+    
+    @IBOutlet weak var englishBtn: DesignableButton!
+    @IBOutlet weak var arabicBtn: DesignableButton!
+    @IBOutlet weak var backView: UIView!
+    @IBOutlet weak var langView: UIStackView!
     @IBOutlet weak var bellView: UIView!
     @IBOutlet weak var majoreView: UIView!
     @IBOutlet weak var enimaeg: UIImageView!
@@ -18,14 +23,28 @@ class ChangeLanguage: UIViewController {
         super.viewDidLoad()
         self.cerateBellView(bellview: bellView, count: "12")
         majoreView.roundCorners([.topLeft,.topRight], radius: 12)
+        self.langView.layer.cornerRadius = 10
+        self.langView.layer.backgroundColor = UIColor.black.cgColor
+        self.langView.backgroundColor = UIColor.systemBackground
+        self.langView.layer.shadowColor = UIColor.systemGray3.cgColor
+        self.langView.layer.shadowOpacity = 0.6
+        self.langView.layer.shadowRadius = 1
+        self.langView.layer.shadowOffset = CGSize(width: 0, height: 10);
+        self.langView.layer.shadowRadius = 5
+            
+    // UIColor(named: "AccentColor")
         
         if MOLHLanguage.isArabic() {
-            arimage.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor.black)
-            enimaeg.image = UIImage(systemName: "circle")?.withTintColor(UIColor.black)
+            arabicBtn.semanticContentAttribute = .forceRightToLeft
+            enimaeg.semanticContentAttribute = .forceRightToLeft
+            arimage.image = UIImage(systemName: "circle.fill")
+            arimage.tintColor = UIColor(named: "AccentColor") ?? UIColor.green
+            enimaeg.image = UIImage(systemName: "circle")?.withTintColor(UIColor(named: "AccentColor") ?? UIColor.green)
 
         }else {
-            enimaeg.image = UIImage(systemName: "circle.fill")?.withTintColor(UIColor.black)
-            arimage.image = UIImage(systemName: "circle")?.withTintColor(UIColor.black)
+            enimaeg.image = UIImage(systemName: "circle.fill")
+            enimaeg.tintColor = UIColor(named: "AccentColor") ?? UIColor.green
+            arimage.image = UIImage(systemName: "circle")?.withTintColor(UIColor(named: "AccentColor") ?? UIColor.green)
         }
     }
     

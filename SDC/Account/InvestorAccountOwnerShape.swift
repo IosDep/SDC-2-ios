@@ -32,6 +32,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         isWithoutSelected = false
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
+        self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
         self.highlightedButtons()
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
@@ -163,7 +164,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                 self.withZero.backgroundColor  = UIColor(named: "AccentColor")
                 self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
                 self.withoutZero.backgroundColor  = .systemGray6
-                self.withoutZero.cornerRadius = 12
+//                self.withoutZero.cornerRadius = 12
                 self.withoutZero.borderColor =  UIColor(named: "AccentColor")
                 self.withoutZero.borderWidth = 1
             }
@@ -174,7 +175,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                 self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
                 self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
                 self.withZero.backgroundColor  = .systemGray6
-                self.withZero.cornerRadius = 12
+//                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
             }

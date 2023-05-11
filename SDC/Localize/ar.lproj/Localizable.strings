@@ -17,7 +17,7 @@
 "Last Transfers" = " اخر الحركات" ;
 "Ownership analysis by sector" = " تحليل الملكية حسب القطاع" ;
 "Dinar" = "دينار" ;
-"dollar" = "دولار" ;
+"Dollar" = "دولار" ;
 "trading value" = "قيمة التداول" ;
 "Market value" = "القيمة السوقية" ;
 
@@ -41,7 +41,7 @@
 "An SMS containing a verification code has been sent to the number" = "تم إرسال رسالة نصية قصيرة تحتوي على رمز التحقق إلى الرقم" ;
 "Please enter the verification code" = "الرجاء إدخال رمز التحقق" ;
 "Code expires yet" = "تنتهي صلاحية الرمز بعد" ;
-"Account type" = "رقم العضو" ;
+"Account type" = "نوع الحساب" ;
 "Account number" = "رقم الحساب" ;
 "Member name" = "اسم العضو" ;
 "Member number" = "رقم العضو" ;
@@ -100,7 +100,7 @@
 "Country" = "الدولة" ;
 "City" = "المدينة" ;
 "Bank Name" = "اسم البنك" ;
-"Bank ID" = "رقم الحساب" ;
+"Bank ID" = "رقم الحساب البنكي" ;
 "Bank Type" = "نوع البنك" ;
 "Account information" = "معلومات الحساب" ;
 "Security Information" = "معلومات الورقة المالية" ;
@@ -169,8 +169,8 @@
 "Enter your information below" = "ادخل معلوماتك في الأسفل";
 "Username" = "اسم المستخدم";
 "Password" = "كلمة المرور";
-"Rember me " = "تذكرني";
-"Forgot your password ?" = "هل نسيت كلمة المرور ؟";
+"Remember me" = "تذكرني";
+"Forgot your password ?" = "هل نسيت كلمة المرور";
 "Login" = "تسجيل دخول";
 "Old password" = "كلمة المرور القديمة";
 
@@ -178,7 +178,7 @@
 "Confirm new password" = "تأكيد كلمة المرور الجديدة";
 "Send" = "إرسال";
 "ِEnglish" = "English";
-"Forget Password" = "فقدان كلمة المرور";
+"Forget Password" = "تغيير كلمة المرور";
 "Monthly market value from" = "القيمة السوقية شهريا من";
 "Market value" = "القيمة السوقية";
 "Money bills" = "الفواتير";
@@ -215,7 +215,7 @@
 "Action description"="وصف الإجراء";
 "Before action"="قبل الإجراء";
 "After action"="بعد الأجراء";
-""="";
+"My Account"="حسابي";
 ""="";
 ""="";
 ""="";

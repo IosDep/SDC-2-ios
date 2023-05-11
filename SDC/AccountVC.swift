@@ -19,6 +19,7 @@ class AccountVC: UIViewController {
     
     
     @IBOutlet weak var scroll: UIScrollView!
+    
     enum Actions: Int {
         case CHANGEPASSWROD = 0
         case CHANGELANG = 1
@@ -108,7 +109,10 @@ class AccountVC: UIViewController {
         }
      
         else  if btn.tag == Actions.NOTICE.rawValue {
-            
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WebVcContent") as! WebVcContent
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+    
         }
         else  if btn.tag == Actions.FINGERPOINT.rawValue {
             

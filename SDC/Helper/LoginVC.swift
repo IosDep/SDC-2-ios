@@ -47,6 +47,12 @@ class LoginVC: UIViewController {
     }
     
     @IBAction func SignUp(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "IdentfairVC") as! IdentfairVC
+        vc.modalPresentationStyle = .fullScreen
+  
+        self.present(vc, animated: true)
+        
     }
     @IBAction func forgetPassword(_ sender: Any) {
     }

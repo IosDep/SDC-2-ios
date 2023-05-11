@@ -28,7 +28,10 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
     
     var flag:Int!
     
-    var urlString: String? = "https://wavemrs.aci.org.jo/WaveMRS/onlineuserlogin.aspx"
+    
+    // https://wavemrs.aci.org.jo/WaveMRS/onlineuserlogin.aspx
+    
+// http://sdc2.bluerayjo.com/ar/node/9149
     
     //refresh stuff
     let hud = JGProgressHUD(style: .light)
@@ -38,11 +41,13 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
     var activityIndicator: UIActivityIndicatorView!
     
     
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-
         
         webView.navigationDelegate=self
         webView.uiDelegate = self
@@ -51,8 +56,17 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
         webView.navigationDelegate = self
         webView.uiDelegate = self
         
-        activityIndicator = UIActivityIndicatorView()
+        guard let urlString = URL(string:" http://sdc2.bluerayjo.com/ar/node/9149") else {
+            return
+        }
+//        let preferences = WKPreferences()
+//        preferences.javaScriptEnabled = true
+//        let configuration = WKWebViewConfiguration()
+//        configuration.preferences = preferences
+        webView.configuration.preferences.javaScriptEnabled = true
+        webView.load(URLRequest(url: urlString))
         
+        activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         
@@ -83,11 +97,7 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
         }
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         
-        
-        
-        
-
-        
+      
     }
     func showActivityIndicator(show: Bool) {
         if show {

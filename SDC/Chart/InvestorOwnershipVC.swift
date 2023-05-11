@@ -33,8 +33,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.withoutZero.cornerRadius = 12
-        self.withZero.cornerRadius = 12
+        self.withoutZero.cornerRadius = 6
+        self.withZero.cornerRadius = 6
         if checkSideMenu == true {
             backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
@@ -64,6 +64,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         
         // Do any additional setup after loading the view.
     }
+    
     
     @IBAction func backPressed(_ sender: Any) {
         if checkSideMenu == true {
@@ -186,7 +187,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 UIColor(named: "AccentColor")
             self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
             self.withoutZero.backgroundColor  = .systemGray6
-            self.withoutZero.cornerRadius = 12
+//            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
         }
@@ -199,7 +200,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 
                 self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
                 self.withZero.backgroundColor  = .systemGray6
-                self.withZero.cornerRadius = 12
+//                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
             }
@@ -208,11 +209,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         else {
             self.withoutZero.titleLabel?.tintColor = .black
             self.withoutZero.backgroundColor  = .white
-            self.withoutZero.cornerRadius = 12
+//            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
             self.withZero.backgroundColor  = .white
-            self.withZero.cornerRadius = 12
+//            self.withZero.cornerRadius = 12
             self.withZero.borderColor =  UIColor(named: "AccentColor")
             self.withZero.borderWidth = 1
             

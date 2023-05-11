@@ -14,6 +14,7 @@ import JGProgressHUD
 class ForgetPassword: UIViewController {
     @IBOutlet weak var bellView: UIView!
     
+    @IBOutlet weak var backView: UIStackView!
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPasswrod: UITextField!
     @IBOutlet weak var confimNewPasword: UITextField!
@@ -23,7 +24,15 @@ class ForgetPassword: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        self.backView.layer.cornerRadius = 10
+        self.backView.layer.backgroundColor = UIColor.black.cgColor
+        self.backView.backgroundColor = UIColor.systemBackground
+        self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
+        self.backView.layer.shadowOpacity = 0.6
+        self.backView.layer.shadowRadius = 1
+        self.backView.layer.shadowOffset = CGSize(width: 0, height: 10);
+        self.backView.layer.shadowRadius = 5
+            
         
         self.cerateBellView(bellview: bellView, count: "12")
         
