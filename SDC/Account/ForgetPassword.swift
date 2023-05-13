@@ -11,6 +11,16 @@ import MOLH
 import Alamofire
 import JGProgressHUD
 
+extension UIView {
+    func setShadowForAppStyle(){
+        self.layer.shadowOpacity = 2
+        self.layer.shadowRadius = 10
+        self.layer.shadowOffset = .zero
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.shadowColor = UIColor.systemGray3.cgColor
+    }
+}
 class ForgetPassword: UIViewController {
     @IBOutlet weak var bellView: UIView!
     
@@ -23,16 +33,10 @@ class ForgetPassword: UIViewController {
     @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        backView.setShadowForAppStyle()
         self.backView.layer.cornerRadius = 10
         self.backView.layer.backgroundColor = UIColor.black.cgColor
         self.backView.backgroundColor = UIColor.systemBackground
-        self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
-        self.backView.layer.shadowOpacity = 0.6
-        self.backView.layer.shadowRadius = 1
-        self.backView.layer.shadowOffset = CGSize(width: 0, height: 10);
-        self.backView.layer.shadowRadius = 5
-            
         
         self.cerateBellView(bellview: bellView, count: "12")
         
@@ -40,8 +44,7 @@ class ForgetPassword: UIViewController {
         
         majorView.roundCorners([.topLeft, .topRight], radius: 12)
         
-        
-        
+     
     }
     
     

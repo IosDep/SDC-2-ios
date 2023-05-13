@@ -23,12 +23,17 @@ class CardTwoVc: UIViewController {
     @IBOutlet weak var securityID: UILabel!
     @IBOutlet weak var iSSN: UILabel!
     @IBOutlet weak var securityName: UILabel!
+    @IBOutlet weak var securityStack: UIStackView!
+    @IBOutlet weak var balanceStack: UIStackView!
+    @IBOutlet weak var pendingStack: UIStackView!
     var invOwnership : InvestoreOwnerShape?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        securityStack.roundCorners([.topLeft, .topRight], radius: 12)
+        balanceStack.roundCorners([.topLeft, .topRight], radius: 12)
+        pendingStack.roundCorners([.topLeft, .topRight], radius: 12)
         currentBalance.text = invOwnership?.Quantity_Owned ?? ""
         freeBalance.text = invOwnership?.Quantity_Avilable ?? ""
         pledgedBalance.text = invOwnership?.Quantity_Pledge ?? ""

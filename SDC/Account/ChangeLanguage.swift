@@ -27,20 +27,19 @@ class ChangeLanguage: UIViewController {
         self.langView.layer.backgroundColor = UIColor.black.cgColor
         self.langView.backgroundColor = UIColor.systemBackground
         self.langView.layer.shadowColor = UIColor.systemGray3.cgColor
-        self.langView.layer.shadowOpacity = 0.6
-        self.langView.layer.shadowRadius = 1
-        self.langView.layer.shadowOffset = CGSize(width: 0, height: 10);
-        self.langView.layer.shadowRadius = 5
-            
+        langView.layer.shadowOpacity = 2
+        langView.layer.shadowRadius = 10
+        langView.layer.shadowOffset = .zero
+        langView.layer.shadowPath = UIBezierPath(rect: langView.bounds).cgPath
+        langView.layer.shouldRasterize = true
+
     // UIColor(named: "AccentColor")
         
         if MOLHLanguage.isArabic() {
-            arabicBtn.semanticContentAttribute = .forceRightToLeft
             enimaeg.semanticContentAttribute = .forceRightToLeft
             arimage.image = UIImage(systemName: "circle.fill")
             arimage.tintColor = UIColor(named: "AccentColor") ?? UIColor.green
             enimaeg.image = UIImage(systemName: "circle")?.withTintColor(UIColor(named: "AccentColor") ?? UIColor.green)
-
         }else {
             enimaeg.image = UIImage(systemName: "circle.fill")
             enimaeg.tintColor = UIColor(named: "AccentColor") ?? UIColor.green

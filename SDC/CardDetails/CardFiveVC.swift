@@ -15,68 +15,34 @@ import JGProgressHUD
 class CardFiveVC: UIViewController {
 
     @IBOutlet weak var bellView: UIButton!
-    
     @IBOutlet weak var sideMenuBtn: UIButton!
-    
     @IBOutlet weak var backBtn: UIButton!
-    
     @IBOutlet weak var nickname: UILabel!
-    
-    
     @IBOutlet weak var name: UILabel!
-    
-   
-    
     @IBOutlet weak var nationality: UILabel!
-    
     @IBOutlet weak var motherName: UILabel!
-    
     @IBOutlet weak var jobTitle: UILabel!
-    
     @IBOutlet weak var investorClassification: UILabel!
-    
-    
     @IBOutlet weak var investorType: UILabel!
-    
-    
     @IBOutlet weak var investorStatus: UILabel!
-    
-    
     @IBOutlet weak var language: UILabel!
-    
     @IBOutlet weak var birthDate: UILabel!
-    
-    
     @IBOutlet weak var gender: UILabel!
-    
-    
     @IBOutlet weak var taxNumber: UILabel!
-    
     @IBOutlet weak var statusDate: UILabel!
-    
     @IBOutlet weak var educationDegree: UILabel!
-    
     @IBOutlet weak var documentType: UILabel!
-    
     @IBOutlet weak var documentNumber: UILabel!
-    
     @IBOutlet weak var identificationNumber: UILabel!
-    
-    
     @IBOutlet weak var documentReference: UILabel!
-    
     @IBOutlet weak var releaseDate: UILabel!
-    
     @IBOutlet weak var expiryDate: UILabel!
-    
-    
     @IBOutlet weak var city: UILabel!
-    
     @IBOutlet weak var postalBox: UILabel!
-    
     @IBOutlet weak var postalCode: UILabel!
-    
     @IBOutlet weak var country: UILabel!
+    @IBOutlet weak var documentationStack: UIStackView!
+    @IBOutlet weak var securityStack: UIStackView!
     
     var clientNum : String?
     var checkSideMenu = false
@@ -109,6 +75,8 @@ class CardFiveVC: UIViewController {
             backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
+        securityStack.roundCorners([.topLeft, .topRight], radius: 12)
+        documentationStack.roundCorners([.topLeft, .topRight], radius: 12)
         self.cerateBellView(bellview: bellView, count: "12")
         self.getAccountInfo()
 
@@ -258,11 +226,7 @@ class CardFiveVC: UIViewController {
     //                                other Wise Problem
                                 else {
                                                     hud.dismiss(animated: true)      }
-                          
-                                
-                            
-                                
-                       
+                           
                             }
                         
                     }

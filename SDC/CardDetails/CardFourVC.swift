@@ -34,13 +34,13 @@ class CardFourVC: UIViewController {
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var postalCode: UILabel!
     @IBOutlet weak var postalBox: UILabel!
+    @IBOutlet weak var accountStack: UIStackView!
+    @IBOutlet weak var addressStack: UIStackView!
     
     var invAccount : AccountOwnerShape?
     var invInfo :  AccountInfo?
-    
     var memberId:String = ""
     var accountNo:String = ""
-
     var balanceType:String = ""
     var securityId:String = ""
 
@@ -48,7 +48,8 @@ class CardFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAccountInfo()
-
+        accountStack.roundCorners([.topLeft, .topRight], radius: 12)
+        addressStack.roundCorners([.topLeft, .topRight], radius: 12)
         self.cerateBellView(bellview: bellView, count: "12")
         
     }
