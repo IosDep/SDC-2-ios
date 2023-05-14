@@ -18,14 +18,16 @@
                 <rect key="frame" x="0.0" y="0.0" width="320" height="128"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4w-xq-o6P">
-                        <rect key="frame" x="10" y="17" width="259" height="61"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                        <nil key="textColor"/>
-                        <nil key="highlightedColor"/>
-                    </label>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xf3-A2-yQZ">
+                        <rect key="frame" x="5" y="29.333333333333332" width="35" height="34.333333333333343"/>
+                        <color key="tintColor" name="AccentColor"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="35" id="B1G-YP-c2y"/>
+                            <constraint firstAttribute="height" constant="35" id="WyJ-HY-hJd"/>
+                        </constraints>
+                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23 - 6- 2022" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEf-Uj-B3R">
-                        <rect key="frame" x="45" y="86" width="259" height="12"/>
+                        <rect key="frame" x="45" y="86" width="65" height="12"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="12" id="P4p-VU-O3o"/>
                         </constraints>
@@ -40,27 +42,24 @@
                             <constraint firstAttribute="height" constant="1" id="MLn-Np-nNc"/>
                         </constraints>
                     </view>
-                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bell.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Xf3-A2-yQZ">
-                        <rect key="frame" x="277" y="29.333333333333332" width="35" height="34.333333333333343"/>
-                        <color key="tintColor" name="AccentColor"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="35" id="B1G-YP-c2y"/>
-                            <constraint firstAttribute="height" constant="35" id="WyJ-HY-hJd"/>
-                        </constraints>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy Dummy " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y4w-xq-o6P">
+                        <rect key="frame" x="45" y="17" width="270" height="61"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <constraints>
                     <constraint firstItem="WEf-Uj-B3R" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="45" id="2ky-Uv-QaH"/>
                     <constraint firstItem="y4w-xq-o6P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="17" id="7lo-Ql-kDe"/>
+                    <constraint firstItem="y4w-xq-o6P" firstAttribute="leading" secondItem="Xf3-A2-yQZ" secondAttribute="trailing" constant="5" id="Cxa-Sf-cua"/>
                     <constraint firstAttribute="trailing" secondItem="Mpr-mo-oeb" secondAttribute="trailing" constant="8" id="GSG-9a-jpH"/>
                     <constraint firstAttribute="bottom" secondItem="Mpr-mo-oeb" secondAttribute="bottom" constant="11" id="Mln-w9-sHS"/>
                     <constraint firstItem="Mpr-mo-oeb" firstAttribute="top" secondItem="WEf-Uj-B3R" secondAttribute="bottom" constant="18" id="NI5-Pb-Zne"/>
                     <constraint firstItem="Mpr-mo-oeb" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="26" id="Nb7-3b-KFN"/>
-                    <constraint firstAttribute="trailing" secondItem="Xf3-A2-yQZ" secondAttribute="trailing" constant="8" id="ZPz-PK-oto"/>
+                    <constraint firstItem="Xf3-A2-yQZ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="5" id="Njm-BY-9yc"/>
+                    <constraint firstAttribute="trailing" secondItem="y4w-xq-o6P" secondAttribute="trailing" constant="5" id="VCI-ep-dna"/>
                     <constraint firstItem="WEf-Uj-B3R" firstAttribute="top" secondItem="y4w-xq-o6P" secondAttribute="bottom" constant="8" id="eOZ-Pl-cDm"/>
-                    <constraint firstItem="Xf3-A2-yQZ" firstAttribute="leading" secondItem="y4w-xq-o6P" secondAttribute="trailing" constant="8" symbolic="YES" id="hXc-FL-8xV"/>
-                    <constraint firstItem="Xf3-A2-yQZ" firstAttribute="leading" secondItem="WEf-Uj-B3R" secondAttribute="trailing" constant="-27" id="oDA-wR-dBc"/>
-                    <constraint firstItem="y4w-xq-o6P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="sAX-uS-wCn"/>
                     <constraint firstItem="Xf3-A2-yQZ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="28.999999999999996" id="yQT-ZP-g5b"/>
                 </constraints>
             </tableViewCellContentView>

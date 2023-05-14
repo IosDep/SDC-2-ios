@@ -255,7 +255,6 @@ extension UIViewController {
     @IBAction func setupMenu(_ sender: Any) {self.side_menu()}
 
     
-    
     func showSuccessHud(msg: String, hud: JGProgressHUD) {
 //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
 //        hud.textLabel.text = msg

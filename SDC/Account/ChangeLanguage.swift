@@ -23,12 +23,12 @@ class ChangeLanguage: UIViewController {
         super.viewDidLoad()
         self.cerateBellView(bellview: bellView, count: "12")
         majoreView.roundCorners([.topLeft,.topRight], radius: 12)
-        self.langView.layer.cornerRadius = 10
+        self.langView.layer.cornerRadius = 23
         self.langView.layer.backgroundColor = UIColor.black.cgColor
         self.langView.backgroundColor = UIColor.systemBackground
         self.langView.layer.shadowColor = UIColor.systemGray3.cgColor
         langView.layer.shadowOpacity = 2
-        langView.layer.shadowRadius = 10
+        langView.layer.shadowRadius = 23
         langView.layer.shadowOffset = .zero
         langView.layer.shadowPath = UIBezierPath(rect: langView.bounds).cgPath
         langView.layer.shouldRasterize = true

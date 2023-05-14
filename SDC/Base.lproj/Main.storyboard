@@ -6,7 +6,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -864,13 +863,13 @@
                                                     <constraint firstAttribute="height" constant="82" id="F74-ik-3eD"/>
                                                 </constraints>
                                             </stackView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account ownership" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJo-Cy-dDK" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifications" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wJo-Cy-dDK" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
                                                 <rect key="frame" x="100" y="47.333333333333336" width="240" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account ownership"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Notifications"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ieU-B0-DLX">
@@ -981,9 +980,6 @@
                                                             <constraint firstAttribute="width" constant="50" id="Z1x-eb-okJ"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <connections>
-                                                            <action selector="setupMenu:" destination="6Hs-cy-sD2" eventType="touchUpInside" id="c0d-5u-X2e"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -1028,162 +1024,168 @@
                                 <rect key="frame" x="0.0" y="109" width="390" height="701"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-Dq-f1D">
-                                        <rect key="frame" x="25" y="50" width="340" height="319"/>
+                                        <rect key="frame" x="10" y="50" width="370" height="345"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="4ov-3u-xjc">
-                                                <rect key="frame" x="10" y="10" width="320" height="299"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="4ov-3u-xjc">
+                                                <rect key="frame" x="10" y="30" width="350" height="305"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d8c-vn-tpI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="320" height="75"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="aX5-bh-SLA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="305"/>
                                                         <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="old password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eF9-pg-JYP" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="d8c-vn-tpI">
+                                                                <rect key="frame" x="0.0" y="0.0" width="350" height="75"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="old password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eF9-pg-JYP" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="17"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="17" id="Blw-O8-qgM"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
+                                                                        <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Old password"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7N-tN-Rcy">
+                                                                        <rect key="frame" x="0.0" y="25" width="350" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="TpO-Lt-yWh"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="25"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="17" id="Blw-O8-qgM"/>
+                                                                    <constraint firstAttribute="height" constant="75" id="pcf-Lv-rkc"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
-                                                                <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Old password"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="c7N-tN-Rcy">
-                                                                <rect key="frame" x="0.0" y="25" width="320" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Dj-PN-fnO">
+                                                                <rect key="frame" x="0.0" y="85" width="350" height="75"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rh-sF-XsQ" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="17"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="17" id="Hcr-sh-auY"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
+                                                                        <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="New password"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-46-ssm">
+                                                                        <rect key="frame" x="0.0" y="25" width="350" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="Wci-0M-1tO"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="25"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="TpO-Lt-yWh"/>
+                                                                    <constraint firstAttribute="height" constant="75" id="Mvl-2T-vY8"/>
                                                                 </constraints>
-                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
+                                                            </stackView>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rbs-iC-aYe">
+                                                                <rect key="frame" x="0.0" y="170" width="350" height="75"/>
+                                                                <subviews>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm new password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbW-pV-STw" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="350" height="17"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="17" id="jdu-uz-Qla"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
+                                                                        <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        <nil key="highlightedColor"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Confirm new password"/>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </label>
+                                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFG-f5-CZI">
+                                                                        <rect key="frame" x="0.0" y="25" width="350" height="50"/>
+                                                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="50" id="u2r-9p-3JI"/>
+                                                                        </constraints>
+                                                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                        <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
+                                                                        <textInputTraits key="textInputTraits"/>
+                                                                        <userDefinedRuntimeAttributes>
+                                                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                                                <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                                                <real key="value" value="1"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                                <real key="value" value="25"/>
+                                                                            </userDefinedRuntimeAttribute>
+                                                                        </userDefinedRuntimeAttributes>
+                                                                    </textField>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="75" id="jDN-0d-Ow5"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-hG-LVP" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
+                                                                <rect key="frame" x="0.0" y="255" width="350" height="50"/>
+                                                                <color key="backgroundColor" red="0.0" green="0.7843137255" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="50" id="2qW-vv-oPP"/>
+                                                                </constraints>
+                                                                <state key="normal" title="Button"/>
+                                                                <buttonConfiguration key="configuration" style="plain" title="Send">
+                                                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                </buttonConfiguration>
                                                                 <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
                                                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                         <real key="value" value="25"/>
                                                                     </userDefinedRuntimeAttribute>
+                                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Send"/>
                                                                 </userDefinedRuntimeAttributes>
-                                                            </textField>
+                                                                <connections>
+                                                                    <action selector="changePasswordWithSnder:" destination="6Hs-cy-sD2" eventType="touchUpInside" id="5VE-LM-Ac3"/>
+                                                                </connections>
+                                                            </button>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="trailing" secondItem="c7N-tN-Rcy" secondAttribute="trailing" id="EtU-l5-sx0"/>
-                                                            <constraint firstItem="c7N-tN-Rcy" firstAttribute="leading" secondItem="d8c-vn-tpI" secondAttribute="leading" id="RJN-i8-1u2"/>
-                                                            <constraint firstAttribute="height" constant="75" id="pcf-Lv-rkc"/>
-                                                        </constraints>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="5Dj-PN-fnO">
-                                                        <rect key="frame" x="0.0" y="83" width="320" height="75"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4rh-sF-XsQ" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="17" id="Hcr-sh-auY"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
-                                                                <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="New password"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vb4-46-ssm">
-                                                                <rect key="frame" x="0.0" y="25" width="320" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="Wci-0M-1tO"/>
-                                                                </constraints>
-                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="25"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="vb4-46-ssm" firstAttribute="leading" secondItem="5Dj-PN-fnO" secondAttribute="leading" id="HRG-ZN-zPi"/>
-                                                            <constraint firstAttribute="height" constant="75" id="Mvl-2T-vY8"/>
-                                                            <constraint firstAttribute="trailing" secondItem="vb4-46-ssm" secondAttribute="trailing" id="O5Z-Vs-XA5"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rbs-iC-aYe">
-                                                        <rect key="frame" x="0.0" y="166" width="320" height="75"/>
-                                                        <subviews>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm new password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GbW-pV-STw" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="320" height="17"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="17" id="jdu-uz-Qla"/>
-                                                                </constraints>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="16"/>
-                                                                <color key="textColor" red="0.089950807389999998" green="0.098004452879999995" blue="0.1021875218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                <nil key="highlightedColor"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Confirm new password"/>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </label>
-                                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="eFG-f5-CZI">
-                                                                <rect key="frame" x="0.0" y="25" width="320" height="50"/>
-                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <constraints>
-                                                                    <constraint firstAttribute="height" constant="50" id="u2r-9p-3JI"/>
-                                                                </constraints>
-                                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                <fontDescription key="fontDescription" name="Fairuz-Normal" family="Fairuz" pointSize="15"/>
-                                                                <textInputTraits key="textInputTraits"/>
-                                                                <userDefinedRuntimeAttributes>
-                                                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                                        <color key="value" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                                                        <real key="value" value="1"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                        <real key="value" value="25"/>
-                                                                    </userDefinedRuntimeAttribute>
-                                                                </userDefinedRuntimeAttributes>
-                                                            </textField>
-                                                        </subviews>
-                                                        <constraints>
-                                                            <constraint firstItem="eFG-f5-CZI" firstAttribute="leading" secondItem="Rbs-iC-aYe" secondAttribute="leading" id="hGi-Fd-pCP"/>
-                                                            <constraint firstAttribute="height" constant="75" id="jDN-0d-Ow5"/>
-                                                            <constraint firstAttribute="trailing" secondItem="eFG-f5-CZI" secondAttribute="trailing" id="xEn-9j-8R8"/>
-                                                        </constraints>
-                                                    </stackView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qD1-hG-LVP" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="249" width="320" height="50"/>
-                                                        <color key="backgroundColor" red="0.0" green="0.7843137255" blue="0.42352941179999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="2qW-vv-oPP"/>
-                                                        </constraints>
-                                                        <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="plain" title="Send">
-                                                            <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        </buttonConfiguration>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                                <real key="value" value="25"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Send"/>
-                                                        </userDefinedRuntimeAttributes>
-                                                        <connections>
-                                                            <action selector="changePasswordWithSnder:" destination="6Hs-cy-sD2" eventType="touchUpInside" id="5VE-LM-Ac3"/>
-                                                        </connections>
-                                                    </button>
                                                 </subviews>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="305" id="7kB-Tq-Ee3"/>
+                                                    <constraint firstItem="aX5-bh-SLA" firstAttribute="top" secondItem="4ov-3u-xjc" secondAttribute="top" constant="20" id="L38-6d-IxM"/>
+                                                    <constraint firstItem="aX5-bh-SLA" firstAttribute="leading" secondItem="4ov-3u-xjc" secondAttribute="leading" constant="20" id="UWd-8r-K6X"/>
+                                                    <constraint firstAttribute="trailing" secondItem="aX5-bh-SLA" secondAttribute="trailing" constant="20" id="bcz-r6-eIk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="aX5-bh-SLA" secondAttribute="bottom" constant="20" id="mrG-qy-sGX"/>
+                                                </constraints>
                                                 <userDefinedRuntimeAttributes>
                                                     <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
                                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1197,7 +1199,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="4ov-3u-xjc" firstAttribute="leading" secondItem="Lkf-Dq-f1D" secondAttribute="leading" constant="10" id="3Fj-UT-jcc"/>
-                                            <constraint firstItem="4ov-3u-xjc" firstAttribute="top" secondItem="Lkf-Dq-f1D" secondAttribute="top" constant="10" id="Fbr-3M-vDX"/>
+                                            <constraint firstItem="4ov-3u-xjc" firstAttribute="top" secondItem="Lkf-Dq-f1D" secondAttribute="top" constant="30" id="Fbr-3M-vDX"/>
                                             <constraint firstAttribute="trailing" secondItem="4ov-3u-xjc" secondAttribute="trailing" constant="10" id="U0h-tm-yxm"/>
                                             <constraint firstAttribute="bottom" secondItem="4ov-3u-xjc" secondAttribute="bottom" constant="10" id="UQ4-kz-DP7"/>
                                         </constraints>
@@ -1222,8 +1224,8 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="Lkf-Dq-f1D" firstAttribute="leading" secondItem="AWr-Dc-WR6" secondAttribute="leading" constant="25" id="9Ix-gS-nQ0"/>
-                                    <constraint firstAttribute="trailing" secondItem="Lkf-Dq-f1D" secondAttribute="trailing" constant="25" id="jBB-X5-vEq"/>
+                                    <constraint firstItem="Lkf-Dq-f1D" firstAttribute="leading" secondItem="AWr-Dc-WR6" secondAttribute="leading" constant="10" id="9Ix-gS-nQ0"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lkf-Dq-f1D" secondAttribute="trailing" constant="10" id="jBB-X5-vEq"/>
                                     <constraint firstItem="Lkf-Dq-f1D" firstAttribute="top" secondItem="AWr-Dc-WR6" secondAttribute="top" constant="50" id="u6r-o5-SlS"/>
                                 </constraints>
                             </view>
@@ -2067,6 +2069,9 @@
                                                         <state key="normal" image="menus">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                                         </state>
+                                                        <connections>
+                                                            <action selector="setupMenu:" destination="UQN-vg-0Pt" eventType="touchUpInside" id="st9-eL-Bbo"/>
+                                                        </connections>
                                                     </button>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7hG-Zz-KeG">
                                                         <rect key="frame" x="50" y="0.0" width="50" height="82"/>
@@ -5427,9 +5432,6 @@
                                                             <constraint firstAttribute="width" constant="50" id="JUV-Er-jGy"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <connections>
-                                                            <action selector="setupMenu:" destination="WRd-dy-JQY" eventType="touchUpInside" id="Jav-LF-Mt1"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -6025,7 +6027,7 @@
                                                                             <constraint firstAttribute="height" constant="20" id="Le9-5h-mHa"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your fingerprint" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36u-4V-XNc" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your fingerprint" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="36u-4V-XNc" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                                         <rect key="frame" x="30" y="20.666666666666629" width="212" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="21" id="eDd-Zj-ZsU"/>
@@ -7356,9 +7358,6 @@
                                                             <constraint firstAttribute="width" constant="50" id="ZUf-SO-Ler"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <connections>
-                                                            <action selector="setupMenu:" destination="Kob-Zc-CQJ" eventType="touchUpInside" id="U75-cy-faU"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -11647,9 +11646,6 @@
                                                         <state key="normal" image="menus">
                                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                                         </state>
-                                                        <connections>
-                                                            <action selector="setupMenu:" destination="5mv-UP-Ti5" eventType="touchUpInside" id="DBF-2N-1Sw"/>
-                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -15896,7 +15892,7 @@
             <size key="intrinsicContentSize" width="137.66666666666666" height="17"/>
         </designable>
         <designable name="C8c-mG-4jn">
-            <size key="intrinsicContentSize" width="75" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="119.33333333333333" height="20.333333333333332"/>
         </designable>
         <designable name="CDw-xB-NQO">
             <size key="intrinsicContentSize" width="236" height="20.333333333333332"/>
@@ -16629,7 +16625,7 @@
             <size key="intrinsicContentSize" width="102.66666666666667" height="19.333333333333332"/>
         </designable>
         <designable name="wJo-Cy-dDK">
-            <size key="intrinsicContentSize" width="149.33333333333334" height="19.333333333333332"/>
+            <size key="intrinsicContentSize" width="99.666666666666671" height="19.333333333333332"/>
         </designable>
         <designable name="wgq-UW-IgT">
             <size key="intrinsicContentSize" width="50.333333333333336" height="18.666666666666668"/>

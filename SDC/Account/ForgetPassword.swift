@@ -14,7 +14,7 @@ import JGProgressHUD
 extension UIView {
     func setShadowForAppStyle(){
         self.layer.shadowOpacity = 2
-        self.layer.shadowRadius = 10
+        self.layer.shadowRadius = 23
         self.layer.shadowOffset = .zero
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shouldRasterize = true
@@ -33,11 +33,13 @@ class ForgetPassword: UIViewController {
     @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        backView.setShadowForAppStyle()
-        self.backView.layer.cornerRadius = 10
-        self.backView.layer.backgroundColor = UIColor.black.cgColor
-        self.backView.backgroundColor = UIColor.systemBackground
-        
+        self.makeShadow(mainView: self.backView)
+
+//        backView.setShadowForAppStyle()
+//        self.backView.layer.cornerRadius = 23
+//        self.backView.layer.backgroundColor = UIColor.black.cgColor
+//        self.backView.backgroundColor = UIColor.systemBackground
+//
         self.cerateBellView(bellview: bellView, count: "12")
         
         majorView.backgroundColor = .white

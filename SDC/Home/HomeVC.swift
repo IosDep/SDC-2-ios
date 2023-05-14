@@ -272,10 +272,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
       }
       return colors
     }
+    
     @IBAction func marketValue(_ sender: Any) {
         
-        
- 
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "TradingValue") as! TradingValue
         vc.modalPresentationStyle = .fullScreen
@@ -291,10 +290,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
 
     @IBAction func trading(_ sender: Any) {
-        
-        
-
-
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "MonthlyValue") as! MonthlyValue
         vc.modalPresentationStyle = .fullScreen
@@ -304,18 +299,10 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         
     }
     
-    
-    
   
-
-    
     //    API Call
         
         func getLastTrans(){
-            
-            
-
-    //
             let hud = JGProgressHUD(style: .light)
     //        hud.textLabel.text = "Please Wait".localized()
             hud.show(in: self.view)
@@ -331,18 +318,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                 if response.error == nil {
                     do {
                         let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                       
 
                         if jsonObj != nil {
-                            
-                            
-                                
-                                
                             if let status = jsonObj!["status"] as? Int {
                                 if status == 200 {
                                     
-                                
-                                        
                                     if let data = jsonObj!["data"] as? [[String: Any]]{
                                                 for item in data {
                                                     let model = LastTransaction(data: item)
@@ -353,16 +333,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                                 DispatchQueue.main.async {
                                                     self.busnissCard.reloadData()
                                                     hud.dismiss()
-    //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                    
-    //                                                if self.car_arr.count == 0{
-    //
-    //
-    //                                                    self.noDataImage.isHidden = false
-    //                                                }else{
-    //
-    //                                                    self.noDataImage.isHidden = true
-    //                                                }
+  
 
                                                 }
                                             }
@@ -371,18 +342,13 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     //                             Session ID is Expired
                                 else if status == 400{
                                     let msg = jsonObj!["message"] as? String
-    //                                self.showErrorHud(msg: msg ?? "")
                                     self.seassionExpired(msg: msg ?? "")
                                 }
-                                    
-                                    
-                                    
-                                    
+                          
     //                                other Wise Problem
                                 else {
                                                     hud.dismiss(animated: true)      }
-                          
-                                
+                              
                             }
                             
                         }
@@ -402,21 +368,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 
                 }
             }
-
-
-
-
-            
-            
-            
         }
     
     
     //    API Call
         
         func getOwnerShapeList(){
-            
-            
 
     //
             let hud = JGProgressHUD(style: .light)
@@ -438,9 +395,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 
                         if jsonObj != nil {
                             
-                            
-                                
-                                
                             if let status = jsonObj!["status"] as? Int {
                                 if status == 200 {
                                     
@@ -467,16 +421,6 @@ print("MYUERAAARAY")
                                                     print(self.categoryArray)
 
                                                     hud.dismiss()
-    //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                    
-    //                                                if self.car_arr.count == 0{
-    //
-    //
-    //                                                    self.noDataImage.isHidden = false
-    //                                                }else{
-    //
-    //                                                    self.noDataImage.isHidden = true
-    //                                                }
 
                                                 }
                                             }
@@ -489,14 +433,10 @@ print("MYUERAAARAY")
                                     self.seassionExpired(msg: msg ?? "")
                                 }
                                     
-                                    
-                                    
-                                    
     //                                other Wise Problem
                                 else {
                                                     hud.dismiss(animated: true)      }
-                          
-                                
+                        
                             }
                             
                         }
@@ -517,12 +457,6 @@ print("MYUERAAARAY")
                 }
             }
 
-
-
-
-            
-            
-            
         }
     
     
@@ -530,9 +464,6 @@ print("MYUERAAARAY")
         
         func getLastDate(){
             
-            
-
-    //
             let hud = JGProgressHUD(style: .light)
     //        hud.textLabel.text = "Please Wait".localized()
             hud.show(in: self.view)
@@ -601,17 +532,9 @@ print("MYUERAAARAY")
 
                     self.serverError(hud: hud)
                         
-
-
                 }
             }
 
-
-
-
-            
-            
-            
         }
     
     
@@ -620,17 +543,11 @@ print("MYUERAAARAY")
     //    API Call
         
         func getTradingValue(){
-            
-            
-
-    //
             let hud = JGProgressHUD(style: .light)
     //        hud.textLabel.text = "Please Wait".localized()
             hud.show(in: self.view)
 
-        
-         
-            let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en", "date":"2020-01-07" 
+            let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en", "date":"2020-01-07"
      ]
          
             let link = URL(string: APIConfig.TradesAnalysis)
@@ -663,28 +580,14 @@ print("MYUERAAARAY")
                                                     
                                                     TradingValue.monthData = self.tradeAnlysis.map { $0.Month ?? "" }
                                                     TradingValue.valueChart = self.tradeAnlysis.map{ Double($0.Market_Value_Sell ?? "") ?? 0.0 }
-                                                 
-                                                    
-                                          
 
-                                          
-
-print("MYUERAAARAY")
-                                                    print(self.monthData)
-                                                    print(TradingValue.valueChart )
+                                       print("MYUERAAARAY")
+                                       print(self.monthData)
+                                        print(TradingValue.valueChart )
                                                     
 
                                                     hud.dismiss()
-    //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                    
-    //                                                if self.car_arr.count == 0{
-    //
-    //
-    //                                                    self.noDataImage.isHidden = false
-    //                                                }else{
-    //
-    //                                                    self.noDataImage.isHidden = true
-    //                                                }
+   
 
                                                 }
                                             }
@@ -696,15 +599,11 @@ print("MYUERAAARAY")
     //                                self.showErrorHud(msg: msg ?? "")
                                     self.seassionExpired(msg: msg ?? "")
                                 }
-                                    
-                                    
-                                    
-                                    
+                        
     //                                other Wise Problem
                                 else {
                                                     hud.dismiss(animated: true)      }
                           
-                                
                             }
                             
                         }
@@ -712,8 +611,6 @@ print("MYUERAAARAY")
                     } catch let err as NSError {
                         print("Error: \(err)")
                         self.serverError(hud: hud)
-                        
-
                   }
                 } else {
                     print("Error")
@@ -724,18 +621,6 @@ print("MYUERAAARAY")
 
                 }
             }
-
-
-
-
-            
-            
-            
+ 
         }
-    
-
-    
-
-    
-    
 }

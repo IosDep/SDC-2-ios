@@ -68,6 +68,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         }
     }
     
+  
+    
 //    search
     func cancelbtn (search:UISearchBar){
         self.seatrching = false
