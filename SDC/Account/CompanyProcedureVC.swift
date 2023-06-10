@@ -32,7 +32,8 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     var arr_search = [LastAction]()
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
     var checkSideMenu = false
-    
+    var withZeroFlag : String?
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +42,9 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         
         isZeroSelected = true
         isWithoutSelected = false
+        withZeroFlag = "1"
         highlightedButtons()
-        self.getLastactions()
+        self.getLastactions(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
 
         self.busnissCard.delegate = self
@@ -91,10 +93,34 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         @objc func didPullToRefresh() {
             self.lastAction.removeAll()
             self.busnissCard.reloadData()
-            self.getLastactions()
-        
+            if isZeroSelected == true && isWithoutSelected == false {
+                self.getLastactions(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+
+            }
+            
+            else if isZeroSelected == false && isWithoutSelected == true {
+                self.getLastactions(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+            }
         }
     
+    @IBAction func clearBtnPressed(_ sender: Any) {
+        search_bar.text = ""
+        seatrching = false
+        self.arr_search.removeAll()
+        self.invOwnership.removeAll()
+        self.busnissCard.reloadData()
+        if isZeroSelected == true && isWithoutSelected == false {
+            self.getLastactions(withZero: self.withZeroFlag ?? "")
+            self.busnissCard.reloadData()
+
+        }
+        
+        else if isZeroSelected == false && isWithoutSelected == true {
+            self.getLastactions(withZero: self.withZeroFlag ?? "")
+            self.busnissCard.reloadData()
+        }    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if seatrching{
             return arr_search.count
@@ -188,6 +214,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
+                self.getLastactions(withZero: self.withZeroFlag ?? "")
         }
         
         }
@@ -201,26 +228,17 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                 self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
+                self.getLastactions(withZero: self.withZeroFlag ?? "")
             }
         }
         
-        else {
-            self.withoutZero.titleLabel?.tintColor = .black
-            self.withoutZero.backgroundColor  = .white
-            self.withoutZero.cornerRadius = 12
-            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-            self.withoutZero.borderWidth = 1
-            self.withZero.backgroundColor  = .white
-            self.withZero.cornerRadius = 12
-            self.withZero.borderColor =  UIColor(named: "AccentColor")
-            self.withZero.borderWidth = 1
-            
-        }
+       
     }
     
     
     @IBAction func withZeero(btn:UIButton){
-        
+        invOwnership.removeAll()
+           withZeroFlag = "1"
             isZeroSelected = true
             isWithoutSelected = false
             highlightedButtons()
@@ -228,6 +246,8 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     
     @IBAction func withoutZeero(btn:UIButton){
+        invOwnership.removeAll()
+        withZeroFlag = "0"
         isWithoutSelected = true
         isZeroSelected = false
         highlightedButtons()
@@ -242,7 +262,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     
     
-    func getLastactions(){
+    func getLastactions(withZero : String){
 //
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()

@@ -43,6 +43,7 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var documentationStack: UIStackView!
     @IBOutlet weak var securityStack: UIStackView!
+    @IBOutlet weak var placeOfBirth: UILabel!
     
     var clientNum : String?
     var checkSideMenu = false

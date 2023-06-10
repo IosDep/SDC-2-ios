@@ -23,26 +23,27 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
+    var withZeroFlag : String?
     var seatrching = false
     var invOwnership = [InvestoreOwnerShape]()
     var invAccount = [InvestoreOwnerShape]()
     var arr_search = [InvestoreOwnerShape]()
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
     var checkSideMenu = false
-    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.withoutZero.cornerRadius = 6
-        self.withZero.cornerRadius = 6
+        self.withoutZero.cornerRadius = 12
+        self.withZero.cornerRadius = 12
         if checkSideMenu == true {
             backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
         isZeroSelected = true
         isWithoutSelected = false
+        withZeroFlag = "1"
         highlightedButtons()
-        self.getInvestoreInfo()
+        self.getInvestoreInfo(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
 
         self.busnissCard.delegate = self
@@ -51,18 +52,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 
         view.layer.zPosition = 999
         busnissCard.contentInsetAdjustmentBehavior = .never
-        
-//        self.withZero.titleLabel?.tintColor = .white
-//        self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-//        self.withZero.cornerRadius = 12
-//refreshControl
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.busnissCard.addSubview(refreshControl)
         
         self.cerateBellView(bellview: self.bellView, count: "10")
         
-        // Do any additional setup after loading the view.
+        withZeroFlag = "1"
     }
     
     
@@ -78,8 +74,17 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBAction func searchPressed(_ sender: Any) {
         self.seatrching = true
+        seatrching = false
+        didPullToRefresh()
         busnissCard.reloadData()
-        
+    }
+    
+    
+    @IBAction func clearBtnPressed(_ sender: Any) {
+        search_bar.text = ""
+        seatrching = false
+        self.arr_search.removeAll()
+        self.busnissCard.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -93,7 +98,18 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         @objc func didPullToRefresh() {
             self.invAccount.removeAll()
             self.busnissCard.reloadData()
-            self.getInvestoreInfo()
+            if isZeroSelected == true && isWithoutSelected == false {
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+
+            }
+            
+            else if isZeroSelected == false && isWithoutSelected == true {
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+            }
+            
+            
         
         }
     
@@ -179,6 +195,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     func highlightedButtons() {
         if isZeroSelected == true && isWithoutSelected == false {
+            self.withZeroFlag = "1"
             DispatchQueue.main.async{
          
             self.withZero.setTitleColor(.white, for: .normal)
@@ -190,7 +207,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 //            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+
         }
+            
+
         
         }
         else if isZeroSelected == false && isWithoutSelected == true {
@@ -203,26 +224,17 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 //                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+
             }
         }
         
-        else {
-            self.withoutZero.titleLabel?.tintColor = .black
-            self.withoutZero.backgroundColor  = .white
-//            self.withoutZero.cornerRadius = 12
-            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-            self.withoutZero.borderWidth = 1
-            self.withZero.backgroundColor  = .white
-//            self.withZero.cornerRadius = 12
-            self.withZero.borderColor =  UIColor(named: "AccentColor")
-            self.withZero.borderWidth = 1
-            
-        }
     }
     
     
     @IBAction func withZeero(btn:UIButton){
-        
+        invAccount.removeAll()
+            withZeroFlag = "1"
             isZeroSelected = true
             isWithoutSelected = false
             highlightedButtons()
@@ -230,8 +242,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func withoutZeero(btn:UIButton){
+        invAccount.removeAll()
+        withZeroFlag = "0"
         isWithoutSelected = true
         isZeroSelected = false
+        
         highlightedButtons()
     }
     
@@ -244,7 +259,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     
-    func getInvestoreInfo(){
+    func getInvestoreInfo(withZero : String){
 //
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
@@ -252,7 +267,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+                                    "with_zero" : withZero
  ]
      
         let link = URL(string: APIConfig.GetInvOwnership)

@@ -106,10 +106,7 @@ class LoginVC: UIViewController {
                                     self.showSuccessHud(msg: message ?? "", hud: hud)
                                     
                                     
-                                    
-
-                                    
-                                        
+                                 
                                         
                                     DispatchQueue.main.async {
                                         hud.dismiss(afterDelay: 1.5, animated: true,completion: {

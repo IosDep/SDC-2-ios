@@ -11,7 +11,7 @@ class InvestoreOwnerShape{
     
     
 
-    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value  : String?
+    var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value  : String?
 
     init(data: [String: Any]) {
         
@@ -72,7 +72,7 @@ class InvestoreOwnerShape{
         }
         
         if let securityReuterCode = data["Security_Reuter_Code"] as? String {
-            self.securityReuterCode = securityReuterCode
+            self.Security_Reuter_Code = securityReuterCode
         }
         
         if let Security_Name = data["Security_Name"] as? String {

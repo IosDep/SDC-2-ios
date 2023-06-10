@@ -15,6 +15,100 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     // set title for picker's buttons when is selected from picker vc
     
+  
+    
+    @IBOutlet weak var withoutZero: DesignableButton!
+    @IBOutlet weak var withZero: DesignableButton!
+    @IBOutlet weak var bellView: UIView!
+    @IBOutlet weak var membername: UIButton!
+    @IBOutlet weak var accountNumberBtn: UIButton!
+    @IBOutlet weak var literalnumber: UIButton!
+    @IBOutlet weak var secutrtyNameBtn: UIButton!
+    @IBOutlet weak var mebemrCodeBtn: UIButton!
+    @IBOutlet weak var fromDate: UIButton!
+    @IBOutlet weak var toDate: UIButton!
+    
+    var accountList =  [AccountListModel]()
+    var invAccount = [InvestoreOwnerShape]()
+    var accountName = [String]()
+    var numberCode = [String]()
+    var securityName = [String]()
+    var accounNumber = [String]()
+    var isZeroSelected : Bool?
+    var isWithoutSelected : Bool?
+    var withZeroFlag : String?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.withoutZero.cornerRadius = 12
+        self.withZero.cornerRadius = 12
+        isZeroSelected = true
+        isWithoutSelected = false
+        withZeroFlag = "1"
+        self.getAccountList()
+        self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
+
+        // Do any additional setup after loading the view.
+        
+        self.cerateBellView(bellview: self.bellView, count: "12")
+    }
+    
+    
+    
+    @IBAction func withZeero(btn:UIButton){
+        invAccount.removeAll()
+        securityName.removeAll()
+        self.secutrtyNameBtn.setTitle("-", for: .normal)
+        self.mebemrCodeBtn.setTitle("-", for: .normal)
+        withZeroFlag = "1"
+        isZeroSelected = true
+        isWithoutSelected = false
+        highlightedButtons()
+        
+    }
+    
+    //function for change background selected background color for with and without zero btn
+    
+    func highlightedButtons() {
+        if isZeroSelected  == true && isWithoutSelected == false {
+            DispatchQueue.main.async {
+                self.withZero.setTitleColor(.white, for: .normal)
+                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
+                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withoutZero.backgroundColor  = .systemGray6
+//                self.withoutZero.cornerRadius = 12
+                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+                self.withoutZero.borderWidth = 1
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+            }
+        }
+        else if isZeroSelected == false  && isWithoutSelected == true {
+            DispatchQueue.main.async {
+                self.withoutZero.setTitleColor(.white, for: .normal)
+                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
+                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withZero.backgroundColor  = .systemGray6
+//                self.withZero.cornerRadius = 12
+                self.withZero.borderColor =  UIColor(named: "AccentColor")
+                self.withZero.borderWidth = 1
+                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+            }
+        }
+        
+    }
+    
+    
+    @IBAction func withoutZeero(btn:UIButton){
+        invAccount.removeAll()
+        securityName.removeAll()
+        self.secutrtyNameBtn.setTitle("-", for: .normal)
+        self.mebemrCodeBtn.setTitle("-", for: .normal)
+        withZeroFlag = "0"
+        isWithoutSelected = true
+        isZeroSelected = false
+        highlightedButtons()
+    }
+    
     func getSelectdPicker(selectdTxt: String,securtNumber:String,flag: String,securtyId:String) {
         if flag == "0"{
             self.membername.setTitle(selectdTxt, for: .normal)
@@ -32,32 +126,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         }
     }
     
-
-    @IBOutlet weak var bellView: UIView!
-    @IBOutlet weak var membername: UIButton!
-    @IBOutlet weak var accountNumberBtn: UIButton!
-    @IBOutlet weak var literalnumber: UIButton!
-    @IBOutlet weak var secutrtyNameBtn: UIButton!
-    @IBOutlet weak var mebemrCodeBtn: UIButton!
-    @IBOutlet weak var fromDate: UIButton!
-    @IBOutlet weak var toDate: UIButton!
     
-    var accountList =  [AccountListModel]()
-    var invAccount = [InvestoreOwnerShape]()
-    var accountName = [String]()
-    var numberCode = [String]()
-    var securityName = [String]()
-    var accounNumber = [String]()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.getAccountList()
-        self.getInvestoreInfo()
-
-        // Do any additional setup after loading the view.
-        
-        self.cerateBellView(bellview: self.bellView, count: "12")
-    }
 
     @IBAction func nextBtn(_ sender: Any) {
         
@@ -101,9 +170,9 @@ print("default Value")
 
     }
     
-    // Api call
+    // Api call for ````Picker data
     
-    func getInvestoreInfo(){
+    func getInvestoreInfo(withZero : String){
         
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
@@ -111,7 +180,8 @@ print("default Value")
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+                                    "with_zero" : withZero
  ]
      
         let link = URL(string: APIConfig.GetInvOwnership)
@@ -130,7 +200,7 @@ print("default Value")
                                                 let model = InvestoreOwnerShape(data: item)
                                                 self.invAccount.append(model)
                                                 self.securityName.append(model.Security_Name!)
-                                                self.numberCode.append(model.securityID!)
+                                                self.numberCode.append(model.Security_Reuter_Code!)
                                  
                                             }
                                             
@@ -184,7 +254,9 @@ print("default Value")
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+                                    "with_zero" : withZero
+                                    
  ]
      
         let link = URL(string: APIConfig.GetAccountInfo)
@@ -209,7 +281,7 @@ print("default Value")
                                                 
                                                 self.accountName.append(model.Member_Name!)
                                                 self.accounNumber.append(model.Account_No!)
-                                                
+                                                self.accounNumber.append(model.Account_No!)
                                  
                                             }
                                     DispatchQueue.main.async {

@@ -45,10 +45,6 @@ class MenuVC: UIViewController {
 
         invOwnershipBtn.clipsToBounds = true
         
-
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -77,8 +77,6 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-
-        
         if self.checkAccountStatmnt == false {
             let data  =  self.secData[indexPath.row]
 

@@ -62,10 +62,12 @@ final class Helper {
         def.setValue(auth, forKey: "user_token")
         def.synchronize()
     }
+    
     func getToken()-> String?{
         let def = UserDefaults.standard
         return def.object(forKey: "user_token" ) as? String
     }
+    
     func saveUserPhoneNumber(phone:String)
     {
         let def = UserDefaults.standard

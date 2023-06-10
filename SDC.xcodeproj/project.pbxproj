@@ -354,6 +354,7 @@
 				8736F52E29C70DB800A6A567 /* AccountVC.swift */,
 				876758A429C74F6C000F3CBC /* MenuVC.swift */,
 				87B89AE029CFD6B900E82C1E /* ForgetPassword.swift */,
+				876758A629C751C6000F3CBC /* InvestorOwnershipVC.swift */,
 				8771087B29D04C870010AEBE /* NotfictionVC.swift */,
 				87B614F729D15B1D0039813A /* InvestorAccountOwnerShape.swift */,
 				8761E54029DC4A8A00CB72B5 /* AccountList.swift */,
@@ -397,7 +398,6 @@
 			children = (
 				87B89AE329CFE8BA00E82C1E /* TradingValue.swift */,
 				871CC1DC29CFEF390013F612 /* MonthlyValue.swift */,
-				876758A629C751C6000F3CBC /* InvestorOwnershipVC.swift */,
 			);
 			path = Chart;
 			sourceTree = "<group>";
@@ -1021,7 +1021,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = RDL9PQKYU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

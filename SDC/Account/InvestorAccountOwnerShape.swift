@@ -25,11 +25,13 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     var securityId:String = ""
     var invAccount = [AccountOwnerShape]()
     var arr_search = [AccountOwnerShape]()
-    
+    var withZeroFlag : String?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         isZeroSelected = true
         isWithoutSelected = false
+        withZeroFlag = "1"
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
         self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
@@ -37,7 +39,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
-        self.getAccountInvestoreInfo()
+        self.getAccountInvestoreInfo(withZero: withZeroFlag ?? "")
 
         search_bar.delegate = self
 
@@ -83,7 +85,18 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         @objc func didPullToRefresh() {
             self.invAccount.removeAll()
             self.busnissCard.reloadData()
-            self.getAccountInvestoreInfo()
+            if isZeroSelected == true && isWithoutSelected == false {
+                self.getAccountInvestoreInfo(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+
+            }
+            
+            else if isZeroSelected == false && isWithoutSelected == true {
+                self.getAccountInvestoreInfo(withZero: self.withZeroFlag ?? "")
+                self.busnissCard.reloadData()
+            }
+            
+            
         
         }
     
@@ -116,7 +129,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             cell?.sector.text = data.Security_Sector_Desc
             cell?.balance.text = data.Nominal_Value
             
-        }else {
+        }else if !(invAccount.isEmpty) {
+            
 
             cell?.mainCardView.layer.cornerRadius =  8
             let data = invAccount[indexPath.row]
@@ -149,8 +163,17 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     
     
     
-    @IBAction func withZeero(btn:UIButton){
+    @IBAction func clearPressed(_ sender: Any) {
+        search_bar.text = ""
+        seatrching = false
+        self.arr_search.removeAll()
+        self.busnissCard.reloadData()
+    }
     
+    
+    @IBAction func withZeero(btn:UIButton){
+        invAccount.removeAll()
+        withZeroFlag = "1"
         isZeroSelected = true
         isWithoutSelected = false
         highlightedButtons()
@@ -169,6 +192,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 //                self.withoutZero.cornerRadius = 12
                 self.withoutZero.borderColor =  UIColor(named: "AccentColor")
                 self.withoutZero.borderWidth = 1
+                self.getAccountInvestoreInfo(withZero: self.withZeroFlag ?? "")
             }
         }
         else if !isZeroSelected  && isWithoutSelected {
@@ -180,25 +204,16 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 //                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
+                self.getAccountInvestoreInfo(withZero: self.withZeroFlag ?? "")
             }
         }
         
-        else {
-            self.withoutZero.titleLabel?.tintColor = .black
-            self.withoutZero.backgroundColor  = .white
-            self.withoutZero.cornerRadius = 12
-            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-            self.withoutZero.borderWidth = 1
-            self.withZero.backgroundColor  = .white
-            self.withZero.cornerRadius = 12
-            self.withZero.borderColor =  UIColor(named: "AccentColor")
-            self.withZero.borderWidth = 1
-            
-        }
     }
     
     
     @IBAction func withoutZeero(btn:UIButton){
+        invAccount.removeAll()
+        withZeroFlag = "0"
         isWithoutSelected = true
         isZeroSelected = false
         highlightedButtons()
@@ -215,7 +230,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     
 //    API Call
     
-    func getAccountInvestoreInfo(){
+    func getAccountInvestoreInfo(withZero : String){
         
         let hud = JGProgressHUD(style: .light)
 //        hud.textLabel.text = "Please Wait".localized()
@@ -228,7 +243,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                     ,"lang": MOLHLanguage.isRTLLanguage() ? "ar": "en",
                                     "memberId" : self.memberId,
                                     "accountNo" : self.accountNo,
-                                    "securityId":self.securityId
+                                    "securityId":self.securityId,
+                                    "with_zero" : withZero
  ]
      
         let link = URL(string: APIConfig.GetAccountOwnerShpe)
