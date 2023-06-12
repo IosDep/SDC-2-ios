@@ -22,7 +22,6 @@ class ChangeLanguage: UIViewController {
         
         super.viewDidLoad()
         self.cerateBellView(bellview: bellView, count: "12")
-        majoreView.roundCorners([.topLeft,.topRight], radius: 12)
         self.langView.layer.cornerRadius = 23
         self.langView.layer.backgroundColor = UIColor.black.cgColor
         self.langView.backgroundColor = UIColor.systemBackground
@@ -45,6 +44,11 @@ class ChangeLanguage: UIViewController {
             enimaeg.tintColor = UIColor(named: "AccentColor") ?? UIColor.green
             arimage.image = UIImage(systemName: "circle")?.withTintColor(UIColor(named: "AccentColor") ?? UIColor.green)
         }
+    }
+    
+    override func viewDidLayoutSubviews() {
+        majoreView.roundCorners([.topLeft,.topRight], radius: 12)
+
     }
     
 

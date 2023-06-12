@@ -44,7 +44,20 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var documentationStack: UIStackView!
     @IBOutlet weak var securityStack: UIStackView!
     @IBOutlet weak var placeOfBirth: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var mobile: UILabel!
+    @IBOutlet weak var buldingNo: UILabel!
+    @IBOutlet weak var area: UILabel!
+    @IBOutlet weak var street: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var fax: UILabel!
+    @IBOutlet weak var email: UILabel!
     
+    @IBOutlet weak var guardianNat: UILabel!
+    
+    @IBOutlet weak var inestorType: UILabel!
+    @IBOutlet weak var inestorNo: UILabel!
+    @IBOutlet weak var guardianName: UILabel!
     var clientNum : String?
     var checkSideMenu = false
     var nationalities = [Nationality]()
@@ -60,6 +73,10 @@ class CardFiveVC: UIViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        securityStack.roundCorners([.topLeft, .topRight], radius: 12)
+        documentationStack.roundCorners([.topLeft, .topRight], radius: 12)
+    }
     
     @IBAction func nationalityPressed(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -76,8 +93,7 @@ class CardFiveVC: UIViewController {
             backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
-        securityStack.roundCorners([.topLeft, .topRight], radius: 12)
-        documentationStack.roundCorners([.topLeft, .topRight], radius: 12)
+        
         self.cerateBellView(bellview: bellView, count: "12")
         self.getAccountInfo()
 
@@ -146,7 +162,7 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let clientStatusDesc = data!["clientStatusDesc"] as? String
-                                    self.investorType.text = clientStatusDesc ?? ""
+                                    self.investorStatus.text = clientStatusDesc ?? ""
                                     
                                     let languageDesc = data!["languageDesc"] as? String
                                     self.language.text = languageDesc ?? ""
@@ -174,7 +190,7 @@ class CardFiveVC: UIViewController {
                                     
                                     let
                                     postalCde = data!["postalCode"] as? String
-                                    self.postalBox.text = postalCde ?? ""
+                                    self.postalCode.text = postalCde ?? ""
                                     
                                     
                                     let postalCountry = data!["postalCountry"] as? String
@@ -201,6 +217,37 @@ class CardFiveVC: UIViewController {
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
                                     self.expiryDate.text = idDocExpDate ?? ""
+                                    
+                                    
+                                    // resAddress1
+                                    
+                                    let resAddress1 = data!["resAddress1"] as? String
+                                    self.address.text = resAddress1 ?? ""
+                                    
+                                    let resBuildingNo = data!["resBuildingNo"] as? String
+                                    self.buldingNo.text = resBuildingNo ?? ""
+                                    
+                                    let resStreet = data!["resStreet"] as? String
+                                    self.street.text = resStreet ?? ""
+                                    
+                                    let resArea = data!["resArea"] as? String
+                                    self.area.text = resArea ?? ""
+                                    
+                                    
+                                    let phone = data!["phone"] as? String
+                                    self.phone.text = phone ?? ""
+                                    
+                                    let fax = data!["fax"] as? String
+                                    self.fax.text = fax ?? ""
+                                    
+                                    let mobile = data!["mobile"] as? String
+                                    self.mobile.text = mobile ?? ""
+                                    
+                                    let email = data!["email"] as? String
+                                    self.email.text = email ?? ""
+                                    
+                                    
+                                    
                                     
                                     self.getNationalities()
 
@@ -273,15 +320,15 @@ class CardFiveVC: UIViewController {
                             if status == 200 {
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                             for item in data {
-                                                let model = Nationality(data: item)
-                                                self.nationalities.append(model)
-                                                print(self.nationalities)
+                                let model = Nationality(data: item)
+                                self.nationalities.append(model)
+                            print(self.nationalities)
                                  
                                             }
                                             
-                                            DispatchQueue.main.async {
+                        DispatchQueue.main.async {
                                                 
-                                                hud.dismiss()
+                            hud.dismiss()
 
 
                                             }

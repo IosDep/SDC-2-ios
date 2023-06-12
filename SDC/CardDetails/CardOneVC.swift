@@ -55,7 +55,7 @@ class CardOneVC: UIViewController {
     var checkOnepaper = false
     
 
-
+// Security_Reuter_Code
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,7 +75,7 @@ class CardOneVC: UIViewController {
             pendingBuy.text = securityOwnership?.Pending_In ?? ""
             pendeingSell.text = securityOwnership?.Pending_Out ?? ""
             closePrice.text = securityOwnership?.Security_Close_Price ?? ""
-            securityID.text = securityOwnership?.Security_Id ?? ""
+            securityID.text = securityOwnership?.securityReuterCode ?? ""
             securityName.text = securityOwnership?.Security_Name ?? ""
             isin.text = securityOwnership?.Security_Isin ?? ""
             clientNum.text = securityOwnership?.Client_No ?? ""
@@ -98,7 +98,7 @@ class CardOneVC: UIViewController {
             pendingBuy.text = invAccount?.Pending_In ?? ""
             pendeingSell.text = invAccount?.Pending_Out ?? ""
             closePrice.text = invAccount?.Security_Close_Price ?? ""
-            securityID.text = invAccount?.securityID ?? ""
+            securityID.text = invAccount?.securityReuterCode ?? ""
             securityName.text = invAccount?.Security_Name ?? ""
             isin.text = invAccount?.securityIsin ?? ""
             clientNum.text = invAccount?.Client_No ?? ""

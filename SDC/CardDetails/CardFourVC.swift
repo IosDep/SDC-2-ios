@@ -34,8 +34,25 @@ class CardFourVC: UIViewController {
     @IBOutlet weak var city: UILabel!
     @IBOutlet weak var postalCode: UILabel!
     @IBOutlet weak var postalBox: UILabel!
+    @IBOutlet weak var bankBranch: UILabel!
+    @IBOutlet weak var branchSwiftCode: UILabel!
+    @IBOutlet weak var curreny: UILabel!
     @IBOutlet weak var accountStack: UIStackView!
     @IBOutlet weak var addressStack: UIStackView!
+    @IBOutlet weak var statusDate: UILabel!
+    @IBOutlet weak var accountStatus: UILabel!
+    @IBOutlet weak var nationality: UILabel!
+    @IBOutlet weak var investorNo: UILabel!
+    @IBOutlet weak var guardianType: UILabel!
+    @IBOutlet weak var guardianName: UILabel!
+    @IBOutlet weak var phone: UILabel!
+    @IBOutlet weak var email: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var fax: UILabel!
+    @IBOutlet weak var street: UILabel!
+    @IBOutlet weak var buildingNo: UILabel!
+    @IBOutlet weak var area: UILabel!
+    @IBOutlet weak var mobile: UILabel!
     
     var invAccount : AccountOwnerShape?
     var invInfo :  AccountInfo?
@@ -48,12 +65,13 @@ class CardFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAccountInfo()
-        accountStack.roundCorners([.topLeft, .topRight], radius: 12)
-        addressStack.roundCorners([.topLeft, .topRight], radius: 12)
         self.cerateBellView(bellview: bellView, count: "12")
         
     }
-    
+    override func viewDidLayoutSubviews() {
+        accountStack.roundCorners([.topLeft, .topRight], radius: 12)
+        addressStack.roundCorners([.topLeft, .topRight], radius: 12)
+    }
     
     // Api call
     
@@ -94,8 +112,8 @@ class CardFourVC: UIViewController {
                                     let memberName = data!["memberName"] as? String
                                     self.name.text = memberName ?? ""
                                     
-                                    let memberTypeDesc = data!["memberTypeDesc"] as? String
-                                    self.documentType.text = memberTypeDesc ?? ""
+                                    let idDocTypeDesc = data!["idDocTypeDesc"] as? String
+                                    self.documentType.text = idDocTypeDesc ?? ""
                                     
                                     let idDocNo = data!["idDocNo"] as? String
                                     self.documentNumber.text = idDocNo ?? ""
@@ -140,8 +158,69 @@ class CardFourVC: UIViewController {
                                     
                                     let bankTypeDesc = data!["bankTypeDesc"] as? String
                                     self.bankType.text = bankTypeDesc ?? ""
-
-
+                                    
+                                    let clientStatusDesc = data!["clientStatusDesc"] as? String
+                                    self.accountStatus.text = clientStatusDesc ?? ""
+                                    
+                                    
+                                    let statusDate = data!["statusDate"] as? String
+                                    self.statusDate.text = statusDate ?? ""
+                                    
+                                    
+                                    let branchName = data!["branchName"] as? String
+                                    self.bankBranch.text = branchName ?? ""
+                                    
+                                    
+                                    let branchSwiftCode = data!["branchSwiftCode"] as? String
+                                    self.branchSwiftCode.text = branchSwiftCode ?? ""
+                                    
+                                    
+                                    let bankAccCurrDesc = data!["bankAccCurrDesc"] as? String
+                                    self.curreny.text = bankAccCurrDesc ?? ""
+                                    
+                                    
+                                    
+                                    let resAddress1 = data!["resAddress1"] as? String
+                                    self.address.text = resAddress1 ?? ""
+                                    
+                                    let resBuildingNo = data!["resBuildingNo"] as? String
+                                    self.buildingNo.text = resBuildingNo ?? ""
+                                    
+                                    let resStreet = data!["resStreet"] as? String
+                                    self.street.text = resStreet ?? ""
+                                    
+                                    let resArea = data!["resArea"] as? String
+                                    self.area.text = resArea ?? ""
+                                    
+                                    
+                                    let phone = data!["phone"] as? String
+                                    self.phone.text = phone ?? ""
+                                    
+                                    let fax = data!["fax"] as? String
+                                    self.fax.text = fax ?? ""
+                                    
+                                    let mobile = data!["mobile"] as? String
+                                    self.mobile.text = mobile ?? ""
+                                    
+                                    let email = data!["email"] as? String
+                                    self.email.text = email ?? ""
+                                    
+                                    
+                                    let guardianName = data!["guardianName"] as? String
+                                    self.guardianName.text = guardianName ?? ""
+                                    
+                                    let guardianNat = data!["guardianNat"] as? String
+                                    self.nationality.text = guardianNat ?? ""
+                                    
+                                    let guardianTypeDesc = data!["guardianTypeDesc"] as? String
+                                    self.guardianType.text = guardianTypeDesc ?? ""
+                                    
+                                    // inv No ??
+                                    
+                                    let custNo = data!["custNo"] as? String
+                                    self.investorNo.text = custNo ?? ""
+                                    
+                                    
                                     DispatchQueue.main.async {
                                         hud.dismiss(afterDelay: 1.5, animated: true,completion: {
 

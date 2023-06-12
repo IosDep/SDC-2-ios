@@ -12,6 +12,7 @@ class InvestoreOwnerShape{
     
 
     var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value  : String?
+    var  MarketValue : Int?
 
     init(data: [String: Any]) {
         
@@ -79,6 +80,9 @@ class InvestoreOwnerShape{
             self.Security_Name = Security_Name
         }
         
+        if let MarketValue = data["MarketValue"] as? Int {
+            self.MarketValue = MarketValue
+        }
         
         
         
@@ -86,4 +90,9 @@ class InvestoreOwnerShape{
     }
     
     
+}
+
+class PartialData {
+    var  MarketValue : String?
+
 }

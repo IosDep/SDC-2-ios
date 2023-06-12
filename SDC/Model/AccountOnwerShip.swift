@@ -12,7 +12,7 @@ class AccountOwnerShape{
     
     
 
-    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency: String?
+    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency , MarketValue: String?
 
     init(data: [String: Any]) {
         
@@ -86,7 +86,9 @@ class AccountOwnerShape{
             self.Security_Name = Security_Name
         }
         
-        
+        if let MarketValue = data["MarketValue"] as? String {
+            self.MarketValue = MarketValue
+        }
         
         
         

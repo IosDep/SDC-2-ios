@@ -31,7 +31,7 @@ extension UIViewController {
         mainView.layer.shadowOpacity = 0.5
         mainView.layer.shadowOffset = CGSize(width: 2, height: 2)
         mainView.layer.shadowRadius = 5
-        mainView.layer.cornerRadius = 10
+        mainView.layer.cornerRadius = 25
     }
     func cerateBellView(bellview:UIView,count:String){
         var imageViewWithCount: UIView!

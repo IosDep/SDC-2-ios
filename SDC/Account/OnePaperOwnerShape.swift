@@ -182,7 +182,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func withZeero(btn:UIButton){
-        invAccount.removeAll()
+        DispatchQueue.main.async {
+            self.securityOwnership.removeAll()
+            self.busnissCard.reloadData()
+        }
         secData.removeAll()
         self.paperNameBtn.setTitle("-", for: .normal)
         self.literalNumBtn.setTitle("-", for: .normal)
@@ -196,6 +199,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     //function for change background selected background color for with and without zero btn
     
     func highlightedButtons() {
+        
         if isZeroSelected  == true && isWithoutSelected == false {
             DispatchQueue.main.async {
                 self.withZero.setTitleColor(.white, for: .normal)
@@ -225,7 +229,11 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func withoutZeero(btn:UIButton){
-        invAccount.removeAll()
+        DispatchQueue.main.async {
+            self.securityOwnership.removeAll()
+            self.busnissCard.reloadData()
+        }
+        
         secData.removeAll()
         self.paperNameBtn.setTitle("-", for: .normal)
         self.literalNumBtn.setTitle("-", for: .normal)
@@ -267,11 +275,8 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
         
         vc.dataSelectedDelegate = self
-        
         vc.checkFlag = "0"
-        
         vc.secData = self.secData
-        
         vc.checkAccountStatmnt = false
         self.present(vc, animated: true)
         

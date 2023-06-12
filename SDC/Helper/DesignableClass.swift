@@ -11,6 +11,7 @@ import MOLH
 
 
 @IBDesignable
+//center
 class DesignableLabel: UILabel {
     required init(coder aDecoder: NSCoder) {
         
@@ -57,6 +58,7 @@ class DesignableLabel2: UILabel {
         }
         set(value) {
             self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+    
             self.text = NSLocalizedString(value, comment: "")
             
         }
@@ -64,6 +66,42 @@ class DesignableLabel2: UILabel {
     
     
 }
+
+@IBDesignable
+class DesignableLabelWitSpace: UILabel {
+    required init(coder aDecoder: NSCoder) {
+        
+        super.init(coder: aDecoder)!
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    @IBInspectable
+    var Languagable: String {
+        get {
+            return self.text!
+        }
+        set(value) {
+            self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
+            if  self.self.textAlignment == .right {
+             
+            }
+            
+            else if self.self.textAlignment == .left {
+            
+            }
+            
+            self.text = NSLocalizedString("\(value)", comment: "")
+            
+        }
+        
+    }
+    
+    
+}
+
 
 @IBDesignable
 class DesignableTextFeild: UITextField {

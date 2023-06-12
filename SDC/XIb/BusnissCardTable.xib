@@ -118,19 +118,17 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z8a-6Q-3EG">
                                         <rect key="frame" x="0.0" y="120.66666666666664" width="436" height="37.333333333333329"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-Ef-yRk" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-Ef-yRk" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="218" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" name="AccentColor"/>
                                                 <nil key="highlightedColor"/>
                                                 <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Current balance"/>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Owned balance"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000  ►" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34m-9L-SDh">
                                                 <rect key="frame" x="218" y="0.0" width="218" height="37.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <color key="textColor" name="AccentColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -207,7 +205,7 @@
             <size key="intrinsicContentSize" width="81" height="14.333333333333334"/>
         </designable>
         <designable name="cV7-Ef-yRk">
-            <size key="intrinsicContentSize" width="90.666666666666671" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="87.666666666666671" height="14.333333333333334"/>
         </designable>
         <designable name="e4t-s5-RbF">
             <size key="intrinsicContentSize" width="126.66666666666667" height="14.333333333333334"/>

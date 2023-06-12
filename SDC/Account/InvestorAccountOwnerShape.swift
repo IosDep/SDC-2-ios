@@ -170,14 +170,20 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         self.busnissCard.reloadData()
     }
     
+    @IBAction func withoutZeroAction(_ sender: UIButton) {
+        invAccount.removeAll()
+        withZeroFlag = "0"
+        isWithoutSelected = true
+        isZeroSelected = false
+        highlightedButtons()
+    }
     
-    @IBAction func withZeero(btn:UIButton){
+    @IBAction func withZeroAction(_ sender: UIButton) {
         invAccount.removeAll()
         withZeroFlag = "1"
         isZeroSelected = true
         isWithoutSelected = false
         highlightedButtons()
-        
     }
     
     //function for change background selected background color for with and without zero btn
@@ -209,17 +215,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         }
         
     }
-    
-    
-    @IBAction func withoutZeero(btn:UIButton){
-        invAccount.removeAll()
-        withZeroFlag = "0"
-        isWithoutSelected = true
-        isZeroSelected = false
-        highlightedButtons()
-
-    }
-    
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
@@ -263,7 +258,9 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
-                            
+                                if let partialData = jsonObj!["partialData"] as? [[String : Any]] {
+                                    
+                                }
                                     
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                             for item in data {

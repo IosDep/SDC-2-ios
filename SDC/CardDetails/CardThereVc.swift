@@ -32,16 +32,18 @@ class CardThereVc: UIViewController {
     @IBOutlet weak var transID: UILabel!
     @IBOutlet weak var postDate: UILabel!
     
+    @IBOutlet weak var mainStack: UIStackView!
     var trans : LastTransaction?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainStack.isLayoutMarginsRelativeArrangement = true
         transactionNumber.text = trans?.Trans_No ?? ""
         tradeTime.text = trans?.Trade_Time ?? ""
         transactionDate.text = trans?.Trans_Date ?? ""
         settlementDate.text = trans?.Settlement_Date ?? ""
         effectiveDate.text = trans?.Effictive_Date ?? ""
-        securityID.text = trans?.Security_Id ?? ""
+        securityID.text = trans?.Security_Reuter_Code ?? ""
         securityName.text = trans?.Security_Name ?? ""
         memberNumber.text = trans?.Member_No ?? ""
         memberName.text = trans?.Member_Name ?? ""

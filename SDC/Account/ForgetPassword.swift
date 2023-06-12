@@ -11,43 +11,42 @@ import MOLH
 import Alamofire
 import JGProgressHUD
 
-extension UIView {
-    func setShadowForAppStyle(){
-        self.layer.shadowOpacity = 2
-        self.layer.shadowRadius = 23
-        self.layer.shadowOffset = .zero
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shouldRasterize = true
-        self.layer.shadowColor = UIColor.systemGray3.cgColor
-    }
-}
+
+
 class ForgetPassword: UIViewController {
     @IBOutlet weak var bellView: UIView!
-    
     @IBOutlet weak var backView: UIStackView!
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPasswrod: UITextField!
     @IBOutlet weak var confimNewPasword: UITextField!
-
     @IBOutlet weak var majorView: UIView!
     @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.makeShadow(mainView: self.backView)
-
-//        backView.setShadowForAppStyle()
-//        self.backView.layer.cornerRadius = 23
-//        self.backView.layer.backgroundColor = UIColor.black.cgColor
-//        self.backView.backgroundColor = UIColor.systemBackground
-//
+//        self.makeShadow(mainView: self.backView)
+        self.backView.layer.cornerRadius = 23
+        self.backView.layer.backgroundColor = UIColor.black.cgColor
+        self.backView.backgroundColor = UIColor.systemBackground
+        self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
+        backView.layer.shadowOpacity = 2
+        backView.layer.shadowRadius = 23
+        backView.layer.shadowOffset = .zero
+        backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
+        backView.layer.shouldRasterize = true
         self.cerateBellView(bellview: bellView, count: "12")
         
-        majorView.backgroundColor = .white
-        
-        majorView.roundCorners([.topLeft, .topRight], radius: 12)
-        
+       
+            self.majorView.backgroundColor = .white
+            
+           
      
     }
+    
+    override func viewDidLayoutSubviews() {
+        self.majorView.roundCorners([.topLeft, .topRight], radius: 12)
+   
+    }
+    
     
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +59,7 @@ class ForgetPassword: UIViewController {
     }
     
     
-    func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String) {
+func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String) {
         let hud = JGProgressHUD(style: .light)
         
         hud.show(in: self.view)
@@ -160,4 +159,16 @@ class ForgetPassword: UIViewController {
     
     
     
+}
+
+
+extension UIView {
+    func setShadowForAppStyle(){
+        self.layer.shadowOpacity = 2
+        self.layer.shadowRadius = 23
+        self.layer.shadowOffset = .zero
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shouldRasterize = true
+        self.layer.shadowColor = UIColor.systemGray3.cgColor
+    }
 }

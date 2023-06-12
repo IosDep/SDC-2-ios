@@ -89,9 +89,7 @@ class LoginVC: UIViewController {
                         
                             if let status = jsonObj!["status"] as? Bool {
                                 
-                                
-                                
-                                
+                               
                                 if status == true {
                                      let message = jsonObj!["msg"] as? String
                                     
@@ -122,7 +120,9 @@ class LoginVC: UIViewController {
                                 
                                 //    status ==> false
                                 else {
+                                    
                                     if let message = jsonObj!["msg"] as? String {
+                                        hud.dismiss()
                                         DispatchQueue.main.async {
                                             self.showErrorHud(msg: message, hud: hud)
                                             

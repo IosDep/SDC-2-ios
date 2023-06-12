@@ -34,6 +34,7 @@ class AccountVC: UIViewController {
     @IBOutlet weak var bellview: UIView!
     
     
+    @IBOutlet weak var scrollViewHolder: UIView!
     
     
     @IBOutlet weak var arrowImag1: UIImageView!
@@ -50,8 +51,6 @@ class AccountVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        scroll.roundCorners([.topLeft, .topRight], radius: 20)
         
         self.navigationText(title: "Account Settings".localized())
 
@@ -73,7 +72,9 @@ class AccountVC: UIViewController {
         
     }
     
-
+    override func viewDidLayoutSubviews() {
+        scroll.roundCorners([.topLeft, .topRight], radius: 20)
+    }
 
 
 //    Action
