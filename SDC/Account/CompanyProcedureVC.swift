@@ -17,15 +17,12 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
-    @IBOutlet weak var withoutZero: DesignableButton!
-    @IBOutlet weak var withZero: DesignableButton!
-    
-    
+//    @IBOutlet weak var withoutZero: DesignableButton!
+//    @IBOutlet weak var withZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
     
     var seatrching = false
     
-
     @IBOutlet weak var bellView: UIView!
     var invOwnership = [InvestoreOwnerShape]()
     var lastAction = [LastAction]()
@@ -37,13 +34,13 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.withoutZero.cornerRadius = 12
-        self.withZero.cornerRadius = 12
-        
+//        self.withoutZero.cornerRadius = 12
+//        self.withZero.cornerRadius = 12
+//
         isZeroSelected = true
         isWithoutSelected = false
         withZeroFlag = "1"
-        highlightedButtons()
+//        highlightedButtons()
         self.getLastactions(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
 
@@ -201,57 +198,57 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     //function for change background selected background color for with and without zero btn
     
-    func highlightedButtons() {
-        if isZeroSelected == true && isWithoutSelected == false {
-            DispatchQueue.main.async{
-         
-            self.withZero.setTitleColor(.white, for: .normal)
-                
-            self.withZero.backgroundColor  =
-                UIColor(named: "AccentColor")
-            self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-            self.withoutZero.backgroundColor  = .systemGray6
-            self.withoutZero.cornerRadius = 12
-            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-            self.withoutZero.borderWidth = 1
-                self.getLastactions(withZero: self.withZeroFlag ?? "")
-        }
-        
-        }
-        else if isZeroSelected == false && isWithoutSelected == true {
-            DispatchQueue.main.async {
-                self.withoutZero.setTitleColor(.white, for: .normal)
-                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
-                
-                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-                self.withZero.backgroundColor  = .systemGray6
-                self.withZero.cornerRadius = 12
-                self.withZero.borderColor =  UIColor(named: "AccentColor")
-                self.withZero.borderWidth = 1
-                self.getLastactions(withZero: self.withZeroFlag ?? "")
-            }
-        }
-        
-       
-    }
+//    func highlightedButtons() {
+//        if isZeroSelected == true && isWithoutSelected == false {
+//            DispatchQueue.main.async{
+//
+//            self.withZero.setTitleColor(.white, for: .normal)
+//
+//            self.withZero.backgroundColor  =
+//                UIColor(named: "AccentColor")
+//            self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+//            self.withoutZero.backgroundColor  = .systemGray6
+//            self.withoutZero.cornerRadius = 12
+//            self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+//            self.withoutZero.borderWidth = 1
+//                self.getLastactions(withZero: self.withZeroFlag ?? "")
+//        }
+//
+//        }
+//        else if isZeroSelected == false && isWithoutSelected == true {
+//            DispatchQueue.main.async {
+//                self.withoutZero.setTitleColor(.white, for: .normal)
+//                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
+//
+//                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+//                self.withZero.backgroundColor  = .systemGray6
+//                self.withZero.cornerRadius = 12
+//                self.withZero.borderColor =  UIColor(named: "AccentColor")
+//                self.withZero.borderWidth = 1
+//                self.getLastactions(withZero: self.withZeroFlag ?? "")
+//            }
+//        }
+//
+//
+//    }
     
     
-    @IBAction func withZeero(btn:UIButton){
-        invOwnership.removeAll()
-           withZeroFlag = "1"
-            isZeroSelected = true
-            isWithoutSelected = false
-            highlightedButtons()
-    }
-    
-    
-    @IBAction func withoutZeero(btn:UIButton){
-        invOwnership.removeAll()
-        withZeroFlag = "0"
-        isWithoutSelected = true
-        isZeroSelected = false
-        highlightedButtons()
-    }
+//    @IBAction func withZeero(btn:UIButton){
+//        invOwnership.removeAll()
+//           withZeroFlag = "1"
+//            isZeroSelected = true
+//            isWithoutSelected = false
+//            highlightedButtons()
+//    }
+//
+//
+//    @IBAction func withoutZeero(btn:UIButton){
+//        invOwnership.removeAll()
+//        withZeroFlag = "0"
+//        isWithoutSelected = true
+//        isZeroSelected = false
+//        highlightedButtons()
+//    }
     
     
     
