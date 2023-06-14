@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kKb-oe-d8t">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="50"/>
+                    <rect key="frame" x="10" y="0.0" width="373" height="50"/>
                     <color key="backgroundColor" name="AccentColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" name="Color"/>
@@ -29,8 +29,8 @@
             <constraints>
                 <constraint firstItem="kKb-oe-d8t" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="D8K-Rt-9ud"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="kKb-oe-d8t" secondAttribute="bottom" id="Eke-j9-9eg"/>
-                <constraint firstItem="kKb-oe-d8t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="aFB-7S-p8p"/>
-                <constraint firstAttribute="trailing" secondItem="kKb-oe-d8t" secondAttribute="trailing" id="bBu-Yc-gi1"/>
+                <constraint firstItem="kKb-oe-d8t" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="aFB-7S-p8p"/>
+                <constraint firstAttribute="trailing" secondItem="kKb-oe-d8t" secondAttribute="trailing" constant="10" id="bBu-Yc-gi1"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>

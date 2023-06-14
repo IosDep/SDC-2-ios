@@ -108,8 +108,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
-        withZero.titleLabel?.textColor  = UIColor(named: "AccentColor")
-        withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
         
     }
     
@@ -203,11 +201,27 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        //        let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
-        //        vc.modalPresentationStyle = .fullScreen
-        //        vc.invOwnership = self.invAccount[indexPath.row]
-        //        self.present(vc, animated: true)
+    
+                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
+                vc.modalPresentationStyle = .fullScreen
+        
+        if indexPath.section == 0 {
+            vc.invOwnership = self.bankArray[indexPath.row]
+        }
+        
+        else if indexPath.section == 1 {
+            vc.invOwnership = self.insuaranceArray[indexPath.row]
+        }
+        
+        else if indexPath.section == 2 {
+            vc.invOwnership = self.servicesArray[indexPath.row]
+        }
+        
+        else if indexPath.section == 3 {
+            vc.invOwnership = self.industryArray[indexPath.row]
+        }
+            self.present(vc, animated: true)
         
     }
     
@@ -223,7 +237,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
         cell?.addtionalStack.isHidden = false
-
+        cell?.mainCardView.layer.cornerRadius =  25
         if seatrching == true {
             if indexPath.section == 0 {
                 cell?.literalName.text = filterdBankArray[indexPath.row].Security_Name ?? ""
@@ -282,6 +296,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 cell?.balance.text = servicesArray[indexPath.row].Security_Close_Price ?? ""
                 
             }
+            
             else if indexPath.section == 3 {
                 cell?.literalName.text = industryArray[indexPath.row].Security_Name ?? ""
                 cell?.literalNum.text = industryArray[indexPath.row].securityID  ?? ""

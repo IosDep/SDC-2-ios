@@ -63,14 +63,13 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             self.busnissCard.reloadData()
             
         } else {
-            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText} )
             self.seatrching = true
                 self.busnissCard.reloadData()
             
         }
     }
     
-  
     
 //    search
     func cancelbtn (search:UISearchBar){

@@ -14,9 +14,14 @@ class BusnissCard: UICollectionViewCell {
     @IBOutlet weak var theredlbl: UILabel!
 //    @IBOutlet weak var forth: UILabel!
 
+    @IBOutlet weak var greenView: UIView!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+
+        greenView.roundCorners([.topLeft, .topRight], radius: 10)
+
+
     }
 
    

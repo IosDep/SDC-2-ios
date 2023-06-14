@@ -31,8 +31,8 @@ class BusnissCardTable: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        views.roundCorners([.topLeft, .topRight], radius: 2)
-        
+        views.roundCorners([.topLeft, .topRight], radius: 25)
+
         
   
     }

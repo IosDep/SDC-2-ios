@@ -76,7 +76,6 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         
         
-        
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("AccountListXib", owner: self, options: nil)!
             cell = nib[0] as? AccountListXib
