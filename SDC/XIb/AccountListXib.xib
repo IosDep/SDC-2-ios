@@ -18,14 +18,14 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNz-rL-Smf">
-                        <rect key="frame" x="10" y="11" width="385" height="20"/>
+                        <rect key="frame" x="20" y="11" width="395" height="20"/>
                         <color key="backgroundColor" name="AccentColor"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="43K-SS-6p9"/>
                         </constraints>
                     </view>
                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-FY-T4s">
-                        <rect key="frame" x="10" y="30" width="365" height="137.33333333333334"/>
+                        <rect key="frame" x="30" y="36" width="365" height="137.33333333333334"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dOR-BJ-7HG">
                                 <rect key="frame" x="0.0" y="0.0" width="365" height="97.333333333333329"/>
@@ -113,7 +113,7 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8tS-z0-knw">
-                                <rect key="frame" x="0.0" y="97.333333333333329" width="365" height="39.999999999999986"/>
+                                <rect key="frame" x="0.0" y="97.333333333333343" width="365" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Tk-9NY" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="180" height="34.333333333333336"/>
@@ -168,9 +168,9 @@
                     <constraint firstAttribute="trailing" secondItem="DNz-rL-Smf" secondAttribute="trailing" constant="10" id="0ky-J0-6on"/>
                     <constraint firstItem="DNz-rL-Smf" firstAttribute="top" secondItem="M7u-dh-hKL" secondAttribute="top" constant="11" id="41S-uE-nM4"/>
                     <constraint firstAttribute="trailing" secondItem="Ops-FY-T4s" secondAttribute="trailing" constant="30" id="Ldg-fT-HUS"/>
-                    <constraint firstItem="Ops-FY-T4s" firstAttribute="top" secondItem="DNz-rL-Smf" secondAttribute="bottom" constant="-1" id="QyG-DK-Fs8"/>
-                    <constraint firstItem="DNz-rL-Smf" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="10" id="Sd8-Yx-zLA"/>
-                    <constraint firstItem="Ops-FY-T4s" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="10" id="aNQ-XW-s63"/>
+                    <constraint firstItem="Ops-FY-T4s" firstAttribute="top" secondItem="DNz-rL-Smf" secondAttribute="bottom" constant="5" id="QyG-DK-Fs8"/>
+                    <constraint firstItem="DNz-rL-Smf" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="20" id="Sd8-Yx-zLA"/>
+                    <constraint firstItem="Ops-FY-T4s" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="30" id="aNQ-XW-s63"/>
                     <constraint firstAttribute="bottom" secondItem="Ops-FY-T4s" secondAttribute="bottom" constant="10" id="qJ5-CI-Aof"/>
                 </constraints>
             </tableViewCellContentView>

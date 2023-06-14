@@ -11,6 +11,7 @@ import UIKit
 
 class CardTwoVc: UIViewController {
 
+    @IBOutlet weak var reuterCode: UILabel!
     @IBOutlet weak var bellView : UIView!
     @IBOutlet weak var currentBalance: UILabel!
     @IBOutlet weak var freeBalance: UILabel!
@@ -40,7 +41,7 @@ class CardTwoVc: UIViewController {
         nonCurrentBalance.text = invOwnership?.Quantity_Unlisted ?? ""
         securityID.text = invOwnership?.securityID ?? ""
         securityName.text = invOwnership?.Security_Name ?? ""
-        
+        reuterCode.text = invOwnership?.Security_Reuter_Code ?? ""
         iSSN.text = invOwnership?.securityIsin ?? ""
         pendingIn.text = invOwnership?.Pending_In ?? ""
         pendingOut.text = invOwnership?.Pending_Out ?? ""

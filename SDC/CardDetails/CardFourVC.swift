@@ -84,7 +84,8 @@ class CardFourVC: UIViewController {
         let param: [String: Any] = [
             "sessionId" : Helper.shared.getUserSeassion() ?? "" ,
             "memberId" : self.memberId,
-            "accountNo" :  self.accountNo
+            "accountNo" :  self.accountNo ,
+            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
         ]
 
         AF.request(endpoint!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in

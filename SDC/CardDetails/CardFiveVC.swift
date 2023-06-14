@@ -14,12 +14,13 @@ import JGProgressHUD
 
 class CardFiveVC: UIViewController {
 
+    @IBOutlet weak var invNationality: UILabel!
     @IBOutlet weak var bellView: UIButton!
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var name: UILabel!
-    @IBOutlet weak var nationality: UILabel!
+    @IBOutlet weak var investorNat: UILabel!
     @IBOutlet weak var motherName: UILabel!
     @IBOutlet weak var jobTitle: UILabel!
     @IBOutlet weak var investorClassification: UILabel!
@@ -34,6 +35,7 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var documentType: UILabel!
     @IBOutlet weak var documentNumber: UILabel!
     @IBOutlet weak var identificationNumber: UILabel!
+    @IBOutlet weak var nationalityBtn: UIButton!
     @IBOutlet weak var documentReference: UILabel!
     @IBOutlet weak var releaseDate: UILabel!
     @IBOutlet weak var expiryDate: UILabel!
@@ -54,7 +56,6 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var email: UILabel!
     
     @IBOutlet weak var guardianNat: UILabel!
-    
     @IBOutlet weak var inestorType: UILabel!
     @IBOutlet weak var inestorNo: UILabel!
     @IBOutlet weak var guardianName: UILabel!
@@ -83,7 +84,7 @@ class CardFiveVC: UIViewController {
         let vc = storyBoard.instantiateViewController(withIdentifier: "NatPickerVC") as! NatPickerVC
         vc.nationalities = self.nationalities
         self.present(vc, animated: true)
-        
+
     }
     
     
@@ -112,7 +113,9 @@ class CardFiveVC: UIViewController {
      
         let endpoint = URL(string:APIConfig.GetInvestorInfo)
         let param: [String: Any] = [
-            "sessionId" : Helper.shared.getUserSeassion() ?? ""
+            "sessionId" : Helper.shared.getUserSeassion() ?? "" ,
+            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+            
         ]
         
         AF.request(endpoint!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
@@ -247,12 +250,8 @@ class CardFiveVC: UIViewController {
                                     self.email.text = email ?? ""
                                     
                                     
-                                    
-                                    
                                     self.getNationalities()
-
-
-                                        
+ 
                                     DispatchQueue.main.async {
                                         hud.dismiss(afterDelay: 1.5, animated: true,completion: {
                       
@@ -329,6 +328,10 @@ class CardFiveVC: UIViewController {
                         DispatchQueue.main.async {
                                                 
                             hud.dismiss()
+//                            self.nationalityBtn.setTitle(self.nationalities[0].Nationality ?? "" , for: .normal)
+
+                            
+                            self.invNationality.text = self.nationalities[0].Nationality ?? ""
 
 
                                             }

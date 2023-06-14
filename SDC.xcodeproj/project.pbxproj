@@ -14,6 +14,7 @@
 		3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */; };
 		3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */; };
 		3F4F5CB02A0A300400554BAD /* Naionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAF2A0A300400554BAD /* Naionality.swift */; };
+		3F7A0BBF2A386BE3006DCBC5 /* InvestorInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */; };
 		3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F80D44829ED5615003F9945 /* CardFiveVC.swift */; };
 		3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 871181C229E2D06200F14C5C /* Localizable.strings */; };
 		3F8AFA802A0B9C6700D13625 /* CompanyProcedureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */; };
@@ -23,8 +24,14 @@
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
 		3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FAAB7292A01079300DCFDA5 /* PickerCell.xib */; };
+		3FB0EF832A38FB1700D72C4C /* InvestorOwnershipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0EF812A38FB1700D72C4C /* InvestorOwnershipCell.swift */; };
+		3FB0EF842A38FB1700D72C4C /* InvestorOwnershipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0EF822A38FB1700D72C4C /* InvestorOwnershipCell.xib */; };
+		3FB0EF862A391F4500D72C4C /* sectorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */; };
 		3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */; };
 		3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A982A03DBA200C74E58 /* InvInfo.swift */; };
+		3FFBE3CB2A392186000A3503 /* sectorHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */; };
+		3FFBE3CD2A39E8C6000A3503 /* SectionNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */; };
+		3FFBE3CF2A39E8E9000A3503 /* SectionNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */; };
 		833D9A5BE677D8AC99F3C9A2 /* Pods_SDC_SDCUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ECDA1B898AF6138A99DA886A /* Pods_SDC_SDCUITests.framework */; };
 		8707FB4829E9ECC4004CB6AA /* AgrementVc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707FB4729E9ECC4004CB6AA /* AgrementVc.swift */; };
 		8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8707FB4929E9EFA6004CB6AA /* PopUpAccountCreated.swift */; };
@@ -128,6 +135,7 @@
 		3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerCell.swift; sourceTree = "<group>"; };
 		3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NatPickerCell.xib; sourceTree = "<group>"; };
 		3F4F5CAF2A0A300400554BAD /* Naionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Naionality.swift; sourceTree = "<group>"; };
+		3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfoModel.swift; sourceTree = "<group>"; };
 		3F80D44829ED5615003F9945 /* CardFiveVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardFiveVC.swift; sourceTree = "<group>"; };
 		3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProcedureVC.swift; sourceTree = "<group>"; };
 		3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSixVC.swift; sourceTree = "<group>"; };
@@ -136,8 +144,14 @@
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
 		3FAAB7292A01079300DCFDA5 /* PickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickerCell.xib; sourceTree = "<group>"; };
+		3FB0EF812A38FB1700D72C4C /* InvestorOwnershipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorOwnershipCell.swift; sourceTree = "<group>"; };
+		3FB0EF822A38FB1700D72C4C /* InvestorOwnershipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorOwnershipCell.xib; sourceTree = "<group>"; };
+		3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectorHeaderView.swift; sourceTree = "<group>"; };
 		3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfo.swift; sourceTree = "<group>"; };
 		3FB42A982A03DBA200C74E58 /* InvInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvInfo.swift; sourceTree = "<group>"; };
+		3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = sectorHeaderView.xib; sourceTree = "<group>"; };
+		3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionNameView.swift; sourceTree = "<group>"; };
+		3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionNameView.xib; sourceTree = "<group>"; };
 		8707FB4729E9ECC4004CB6AA /* AgrementVc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgrementVc.swift; sourceTree = "<group>"; };
 		8707FB4929E9EFA6004CB6AA /* PopUpAccountCreated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpAccountCreated.swift; sourceTree = "<group>"; };
 		8707FB4B29E9EFB7004CB6AA /* PopUpOTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpOTP.swift; sourceTree = "<group>"; };
@@ -425,6 +439,12 @@
 				3FAAB7292A01079300DCFDA5 /* PickerCell.xib */,
 				3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */,
 				3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */,
+				3FB0EF812A38FB1700D72C4C /* InvestorOwnershipCell.swift */,
+				3FB0EF822A38FB1700D72C4C /* InvestorOwnershipCell.xib */,
+				3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */,
+				3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */,
+				3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */,
+				3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -454,6 +474,7 @@
 				3FB42A982A03DBA200C74E58 /* InvInfo.swift */,
 				3F4F5CAF2A0A300400554BAD /* Naionality.swift */,
 				3F8AFA832A0BC47A00D13625 /* LastAction.swift */,
+				3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -598,10 +619,13 @@
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
 				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
+				3FB0EF842A38FB1700D72C4C /* InvestorOwnershipCell.xib in Resources */,
 				3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */,
+				3FFBE3CB2A392186000A3503 /* sectorHeaderView.xib in Resources */,
 				8761E54529DC4B3B00CB72B5 /* AccountListXib.xib in Resources */,
 				87B614FC29D15C690039813A /* HeaderDataXIB.xib in Resources */,
 				8768982929D00C3B00636503 /* HomePropretyXib.xib in Resources */,
+				3FFBE3CF2A39E8E9000A3503 /* SectionNameView.xib in Resources */,
 				87C59C7F29C13C7900EB0C40 /* BusnissCard.xib in Resources */,
 				87CE38EC29EBC78800FD09D5 /* TradingXibView.xib in Resources */,
 				8734D28B295C32570044B0F7 /* Main.storyboard in Resources */,
@@ -732,6 +756,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3FB0EF832A38FB1700D72C4C /* InvestorOwnershipCell.swift in Sources */,
 				87B05CF229C0730700EAA41D /* DesignableClass.swift in Sources */,
 				871CC1DD29CFEF390013F612 /* MonthlyValue.swift in Sources */,
 				8771087C29D04C870010AEBE /* NotfictionVC.swift in Sources */,
@@ -752,6 +777,7 @@
 				87D3E9B429DA9DD8006B6AA7 /* Helper.swift in Sources */,
 				3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */,
 				8775B921298FB7770052C551 /* HomeVC.swift in Sources */,
+				3FB0EF862A391F4500D72C4C /* sectorHeaderView.swift in Sources */,
 				87F4FD5329EA282300FF2485 /* OnePaperOwnerShape.swift in Sources */,
 				87B05CE329C06D5D00EAA41D /* WelcomePageVC.swift in Sources */,
 				8736F52F29C70DB800A6A567 /* AccountVC.swift in Sources */,
@@ -781,6 +807,7 @@
 				8734D284295C32570044B0F7 /* AppDelegate.swift in Sources */,
 				876758A529C74F6C000F3CBC /* MenuVC.swift in Sources */,
 				8707FB4829E9ECC4004CB6AA /* AgrementVc.swift in Sources */,
+				3FFBE3CD2A39E8C6000A3503 /* SectionNameView.swift in Sources */,
 				87D3E9BD29DAA7E1006B6AA7 /* InvestoreOwnerShapeModel.swift in Sources */,
 				8768982829D00C3B00636503 /* HomePropretyXib.swift in Sources */,
 				8755766229E2E3C4009CA58D /* ChangeLanguage.swift in Sources */,
@@ -799,6 +826,7 @@
 				87D5A4AB29DEEFBB00F78DBE /* TradeAnlysis.swift in Sources */,
 				8737879629E1FA0400D73972 /* WebVcContent.swift in Sources */,
 				876758AA29C75935000F3CBC /* BusnissCardTable.swift in Sources */,
+				3F7A0BBF2A386BE3006DCBC5 /* InvestorInfoModel.swift in Sources */,
 				87BC4E0529DDB63B0095BDC1 /* LastTransaction.swift in Sources */,
 				87B89ADD29CFC81B00E82C1E /* EmailVc.swift in Sources */,
 			);

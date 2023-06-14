@@ -372,7 +372,157 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     //            }
     //        }
     //    }
-    
+    func getAccountInfo() {
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+        let endpoint = URL(string:APIConfig.GetAccountInvInfo)
+        let param: [String: Any] = [
+            "sessionId" : Helper.shared.getUserSeassion() ?? "" ,
+            "memberId" : self.memberId,
+            "accountNo" :  self.accountNo ,
+            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        ]
+
+        AF.request(endpoint!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+
+                    if jsonObj != nil {
+
+                        //    object status
+
+                            if let status = jsonObj!["status"] as? Int {
+
+
+
+
+                                if status == 200 {
+                                     let message = jsonObj!["msg"] as? String
+
+                                    let data = jsonObj!["data"] as? [String:Any]
+
+
+                                    let memberId = data!["memberId"] as? String
+                                    let memberName = data!["memberName"] as? String
+                                    
+                                    let idDocTypeDesc = data!["idDocTypeDesc"] as? String
+                                    
+                                    let idDocNo = data!["idDocNo"] as? String
+                                    
+                                    let accountNo = data!["accountNo"] as? String
+
+                                    let accountTypeDesc = data!["accountTypeDesc"] as? String
+                                   
+                                    let idDocDate = data!["idDocDate"] as? String
+
+                                    
+                                    
+                                    let idDocExpDate = data!["idDocExpDate"] as? String
+                                    
+                                    let idDocReference = data!["idDocReference"] as? String
+                                    
+                                    let identificationNo = data!["identificationNo"] as? String
+                                    
+                                    let pobox = data!["pobox"] as? String
+
+                                    let postalCode = data!["postalCode"] as? String
+                                    
+                                    let postalCountry = data!["postalCountry"] as? String
+                                    
+                                    let postalCity = data!["postalCity"] as? String
+                                    
+                                    let bankName = data!["bankName"] as? String
+                                    
+                                    let bankId = data!["bankId"] as? String
+                                    
+                                    let bankTypeDesc = data!["bankTypeDesc"] as? String
+                                    
+                                    let clientStatusDesc = data!["clientStatusDesc"] as? String
+                                    
+                                    
+                                    let statusDate = data!["statusDate"] as? String
+                                    
+                                    
+                                    let branchName = data!["branchName"] as? String
+                                    
+                                    
+                                    let branchSwiftCode = data!["branchSwiftCode"] as? String
+                                    
+                                    
+                                    let bankAccCurrDesc = data!["bankAccCurrDesc"] as? String
+                                    
+                                    
+                                    
+                                    let resAddress1 = data!["resAddress1"] as? String
+                                    
+                                    let resBuildingNo = data!["resBuildingNo"] as? String
+                                    
+                                    let resStreet = data!["resStreet"] as? String
+                                    
+                                    let resArea = data!["resArea"] as? String
+                                    
+                                    
+                                    let phone = data!["phone"] as? String
+                                    
+                                    let fax = data!["fax"] as? String
+                                    
+                                    let mobile = data!["mobile"] as? String
+                                    
+                                    let email = data!["email"] as? String
+                                    
+                                    
+                                    let guardianName = data!["guardianName"] as? String
+                                    
+                                    let guardianNat = data!["guardianNat"] as? String
+                                    
+                                    let guardianTypeDesc = data!["guardianTypeDesc"] as? String
+                                    
+                                    // inv No ??
+                                    
+                                    let custNo = data!["custNo"] as? String
+                                    
+                                    
+                                    DispatchQueue.main.async {
+                                        hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+
+                                        })
+
+
+                                    }
+
+                                }
+
+
+
+
+                                else if status == 400{
+                                    let msg = jsonObj!["message"] as? String
+                                    self.seassionExpired(msg: msg ?? "")
+                                }
+
+
+    //                                other Wise Problem
+                                else {
+                                                    hud.dismiss(animated: true)      }
+
+                            }
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                   
+                }
+            } else {
+                print("Error")
+                self.internetError(hud: hud)
+               
+            }
+        }
+    }
     
     
 }

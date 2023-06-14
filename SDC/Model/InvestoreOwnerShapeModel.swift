@@ -11,7 +11,7 @@ class InvestoreOwnerShape{
     
     
 
-    var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value  : String?
+    var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value , Security_Sector  : String?
     var  MarketValue : Int?
 
     init(data: [String: Any]) {
@@ -85,8 +85,9 @@ class InvestoreOwnerShape{
         }
         
         
-        
-        
+        if let Security_Sector = data["Security_Sector"] as? String {
+            self.Security_Sector = Security_Sector
+        }
     }
     
     

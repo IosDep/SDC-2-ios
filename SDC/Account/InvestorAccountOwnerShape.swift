@@ -9,9 +9,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var busnissCard: UITableView!
 
     var refreshControl: UIRefreshControl!
-    var seatrching = false
-    var isZeroSelected : Bool = false
-    var isWithoutSelected : Bool = false
     @IBOutlet weak var withZero: DesignableButton!
     @IBOutlet weak var withoutZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
@@ -26,6 +23,9 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     var invAccount = [AccountOwnerShape]()
     var arr_search = [AccountOwnerShape]()
     var withZeroFlag : String?
+    var seatrching = false
+    var isZeroSelected : Bool = false
+    var isWithoutSelected : Bool = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -138,7 +138,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             cell?.literalName.text = data.Security_Name
             cell?.literalNum.text = data.securityID
             cell?.sector.text = data.Security_Sector_Desc
-            cell?.balance.text = data.Nominal_Value
+            cell?.balance.text = data.Security_Close_Price
             
         }
        

@@ -16,15 +16,16 @@ class AccountListXib: UITableViewCell {
     
     @IBOutlet weak var accountNum: UILabel!
     @IBOutlet weak var accountName: UILabel!
-    
-    
     @IBOutlet weak var greenView: UIView!
     @IBOutlet weak var accountOwnerShape: UIButton!
-    
     @IBOutlet weak var profileInfo: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
+    }
+    
+    override func layoutSubviews() {
         greenView.roundCorners([.topLeft, .topRight], radius: 12)
+
     }
 
 

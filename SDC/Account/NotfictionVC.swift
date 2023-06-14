@@ -28,9 +28,14 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         notficationTable.register(UINib(nibName: "NotficationXIB", bundle: nil), forCellReuseIdentifier: "NotficationXIB")
         self.cerateBellView(bellview: self.bellView, count: "\(notificationCount)")
         
-        mainView.roundCorners([.topRight,.topLeft], radius: 18)
     }
 
+    override func viewDidLayoutSubviews() {
+     mainView.roundCorners([.topRight,.topLeft], radius: 18)
+
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 140
     }

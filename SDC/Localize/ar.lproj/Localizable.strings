@@ -93,7 +93,7 @@
 "Document refrence" = "مكان الإصدار" ;
 "Identification Number" = "رقم الهوية" ;
 "Identification number" = "رقم الهوية" ;
-"Account and idocumentation Data" = "بيانات الحساب والوثيقة" ;
+"Investor Account and ID document Data" = "بيانات حساب المستثمر والوثيقة" ;
 "Address and Bank account info" = "بيانات العنوان والحساب البنكي" ;
 "Postal Box" = "صندوق البريد" ;
 "Postal Code" = "الرمز البريدي" ;
@@ -222,7 +222,7 @@
 "Place of birth"="مكان الولادة";
 "ID type"="نوع الوثيقة";
 "ID No."="رقم الوثيقة";
-"Identity Card number"="رقم الهوية";
+"Identity Card No"="رقم الهوية";
 "Clear"="مسح";
 "Reuter Code"="الرمز الحرفي";
 "Owned balance"="الرصيد الحالي";
@@ -255,3 +255,13 @@
 "Guardian name" = "اسم النائب عن المستثمر";
 "Guardian type" = "نوع النيابة";
 "Security ID" = "رقم الورقة المالية";
+"Transaction Type" = "نوع الحركة";
+"No." = "العدد";
+"Account No." = "رقم الحساب";
+" Bank Account Data" = "بيانات الحساب البنكي";
+"Identity Card number" = "رقم الهوية";
+"Close Price" = "سعر الإغلاق" ;
+ "Services" = "خدمات";
+"Industry" = "صناعة";
+"Banks" = "البنوك";
+"Insuarance" = "تأمين";

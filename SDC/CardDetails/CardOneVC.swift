@@ -41,13 +41,9 @@ class CardOneVC: UIViewController {
     
     
     @IBOutlet weak var isin: UILabel!
-    
-    
     @IBOutlet weak var securityName: UILabel!
-    
-    
     @IBOutlet weak var additionalStack: UIStackView!
-    
+    @IBOutlet weak var marketValue: UILabel!
     @IBOutlet weak var securityStatus: UILabel!
     
     var invAccount : AccountOwnerShape?
@@ -83,7 +79,6 @@ class CardOneVC: UIViewController {
             securityName.text = securityOwnership?.Security_Name ?? ""
             securityStatus.text = securityOwnership?.Security_Sector_Desc ?? ""
             tradeCuurency.text = securityOwnership?.Trade_Currency ?? ""
-            
         }
         
         else {
@@ -105,9 +100,15 @@ class CardOneVC: UIViewController {
             nominalValue.text = invAccount?.Nominal_Value  ?? ""
             securityStatus.text = invAccount?.Security_Sector_Desc ?? ""
             tradeCuurency.text = invAccount?.Trade_Currency ?? ""
+            if let value =  invAccount?.MarketValue as? Int {
+                marketValue.text = "\(value)"
+            }
+           
+            
+            
         }
         
-        
+       
         
         
     }

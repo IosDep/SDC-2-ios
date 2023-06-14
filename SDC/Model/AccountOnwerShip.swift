@@ -35,7 +35,7 @@ class AccountOwnerShape{
             self.Nominal_Value = Nominal_Value
         }
         
-        if let Security_Sector_Desc = data["Security_Sector_Desc"] as? String {
+        if let Security_Sector_Desc = data["Security_Sector"] as? String {
             self.Security_Sector_Desc = Security_Sector_Desc
         }
         
