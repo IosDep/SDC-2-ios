@@ -19,7 +19,7 @@ class BusnissCard: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
 
-        greenView.roundCorners([.topLeft, .topRight], radius: 10)
+        greenView.roundCorners([.topLeft, .topRight], radius: 15)
 
 
     }

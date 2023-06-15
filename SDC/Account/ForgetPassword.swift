@@ -19,8 +19,15 @@ class ForgetPassword: UIViewController {
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPasswrod: UITextField!
     @IBOutlet weak var confimNewPasword: UITextField!
+    @IBOutlet weak var oldPasswordStack: UIStackView!
     @IBOutlet weak var majorView: UIView!
     @IBOutlet weak var mainView: UIView!
+    
+    
+    var checkOldPassword : Bool?
+
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.makeShadow(mainView: self.backView)
@@ -34,11 +41,11 @@ class ForgetPassword: UIViewController {
         backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
         backView.layer.shouldRasterize = true
         self.cerateBellView(bellview: bellView, count: "12")
-        
-       
-            self.majorView.backgroundColor = .white
+        self.majorView.backgroundColor = .white
             
-           
+        if checkOldPassword == true {
+            oldPasswordStack.isHidden = true
+        }
      
     }
     

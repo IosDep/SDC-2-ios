@@ -505,7 +505,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": "en" ,
                                     "with_zero" : withZero
  ]
      

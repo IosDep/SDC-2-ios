@@ -15,7 +15,7 @@ class LoginVC: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
-    
+    var checkOldPassword : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,14 +36,7 @@ class LoginVC: UIViewController {
     
 
     @IBAction func Login(_ sender: Any) {
-        
-        
-        
-        
         self.LoginRequest(email: self.userName.text ?? "", password: self.password.text ?? "")
-        
-        
-        
     }
     
     @IBAction func SignUp(_ sender: Any) {
@@ -55,9 +48,22 @@ class LoginVC: UIViewController {
         
     }
     @IBAction func forgetPassword(_ sender: Any) {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "ForgetPassword") as! ForgetPassword
+        vc.checkOldPassword = true
+        vc.modalPresentationStyle = .fullScreen
+        self.present(vc, animated: true)
+        
     }
+    
     @IBAction func remberMe(_ sender: Any) {
+        
+        
+        
     }
+    
+    
+    
     
     
     

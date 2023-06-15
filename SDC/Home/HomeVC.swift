@@ -193,7 +193,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                 let nib: [Any] = Bundle.main.loadNibNamed("BusnissCard", owner: self, options: nil)!
                 cell = nib[0] as? BusnissCard
             }
-            cell?.mainCardView.layer.cornerRadius = 12
+            cell?.mainCardView.layer.cornerRadius = 20
             cell?.mainCardView.clipsToBounds = true
             cell?.layer.borderWidth = 0
             cell?.layer.shadowColor = UIColor.black.cgColor

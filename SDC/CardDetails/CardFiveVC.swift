@@ -246,6 +246,9 @@ class CardFiveVC: UIViewController {
                                     let mobile = data!["mobile"] as? String
                                     self.mobile.text = mobile ?? ""
                                     
+                                    let birthPlace = data!["birthPlace"] as? String
+                                    self.placeOfBirth                                   .text = birthPlace ?? ""
+                                    
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""
                                     
