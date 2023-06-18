@@ -138,7 +138,7 @@ class CardFiveVC: UIViewController {
                                     let data = jsonObj!["data"] as? [String:Any]
                                     
                                     let clientNo = data!["clientNo"] as? String
-                                    self.clientNum = clientNo
+                                    self.clientNum = self.convertIntToArabicNumbers(intString: clientNo ?? "")
                                     
                                     let title = data!["title"] as? String
                                     self.nickname.text = title ?? ""
@@ -171,7 +171,7 @@ class CardFiveVC: UIViewController {
                                     self.language.text = languageDesc ?? ""
                                     
                                     let birthDate = data!["birthDate"] as? String
-                                    self.birthDate.text = birthDate ?? ""
+                                    self.birthDate.text = self.convertDateToArabicNumbers(dateString: birthDate ?? "")
                                     
                                     let sexDesc = data!["sexDesc"] as? String
                                     self.gender.text = sexDesc ?? ""
@@ -184,16 +184,16 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let statusDate = data!["statusDate"] as? String
-                                    self.statusDate.text = statusDate ?? ""
+                                    self.statusDate.text = self.convertDateToArabicNumbers(dateString: statusDate ?? "")
                                     
                                     
                                     let pobox = data!["pobox"] as? String
-                                    self.postalBox.text = pobox ?? ""
+                                    self.postalBox.text = self.convertIntToArabicNumbers(intString: pobox ?? "")
                                     
                                     
                                     let
                                     postalCde = data!["postalCode"] as? String
-                                    self.postalCode.text = postalCde ?? ""
+                                    self.postalCode.text = self.convertIntToArabicNumbers(intString: postalCde ?? "")
                                     
                                     
                                     let postalCountry = data!["postalCountry"] as? String
@@ -213,13 +213,13 @@ class CardFiveVC: UIViewController {
                                     self.documentReference.text = idDocReference ?? ""
                                     
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text = idDocDate ?? ""
+                                    self.releaseDate.text = self.convertDateToArabicNumbers(dateString: idDocDate ?? "")
                                     
                                     let identificationNo = data!["identificationNo"] as? String
-                                    self.identificationNumber.text = identificationNo ?? ""
+                                    self.identificationNumber.text = identificationNo
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = idDocExpDate ?? ""
+                                    self.expiryDate.text = self.convertDateToArabicNumbers(dateString: idDocExpDate ?? "")
                                     
                                     
                                     // resAddress1
@@ -238,19 +238,22 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let phone = data!["phone"] as? String
-                                    self.phone.text = phone ?? ""
+                                    self.phone.text = self.convertIntToArabicNumbers(intString: phone ?? "")
                                     
                                     let fax = data!["fax"] as? String
                                     self.fax.text = fax ?? ""
                                     
                                     let mobile = data!["mobile"] as? String
-                                    self.mobile.text = mobile ?? ""
+                                    self.mobile.text = self.doubleToArabic(value: mobile ?? "")
                                     
                                     let birthPlace = data!["birthPlace"] as? String
                                     self.placeOfBirth                                   .text = birthPlace ?? ""
                                     
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""
+                                    
+                                    // inestorNo
+                                    
                                     
                                     
                                     self.getNationalities()

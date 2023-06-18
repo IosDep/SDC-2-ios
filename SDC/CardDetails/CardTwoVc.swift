@@ -34,20 +34,34 @@ class CardTwoVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentBalance.text = invOwnership?.Quantity_Owned ?? ""
-        freeBalance.text = invOwnership?.Quantity_Avilable ?? ""
-        pledgedBalance.text = invOwnership?.Quantity_Pledge ?? ""
-        reservedBalance.text = invOwnership?.Quantity_Freezed ?? ""
-        nonCurrentBalance.text = invOwnership?.Quantity_Unlisted ?? ""
-        securityID.text = invOwnership?.securityID ?? ""
+        
+        currentBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Owned ?? "")
+        
+        freeBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Avilable ?? "")
+        
+        pledgedBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Pledge ?? "")
+        
+        reservedBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Freezed ?? "")
+        
+        nonCurrentBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Unlisted ?? "")
+        
+        securityID.text = self.convertIntToArabicNumbers(intString: invOwnership?.securityID ?? "")
+        
         securityName.text = invOwnership?.Security_Name ?? ""
         reuterCode.text = invOwnership?.Security_Reuter_Code ?? ""
         iSSN.text = invOwnership?.securityIsin ?? ""
-        pendingIn.text = invOwnership?.Pending_In ?? ""
-        pendingOut.text = invOwnership?.Pending_Out ?? ""
-        closePrice.text = invOwnership?.Security_Close_Price ?? ""
+        
+        
+        pendingIn.text = self.convertIntToArabicNumbers(intString: invOwnership?.Pending_In ?? "")
+        
+        
+        pendingOut.text = self.convertIntToArabicNumbers(intString: invOwnership?.Pending_Out ?? "")
+        
+        //doubleToArabic
+        closePrice.text = self.doubleToArabic(value: invOwnership?.Security_Close_Price ?? "")
+        
         if let value =  invOwnership?.MarketValue as? Int {
-            marketValue.text = "\(value)"
+            marketValue.text = self.doubleToArabic(value: "\(value)")
         }
         
         self.cerateBellView(bellview: bellView, count: "12")

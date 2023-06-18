@@ -572,9 +572,137 @@ extension UIViewController {
 //            }
 //        }
 //    }
+    
 //
+    
+    
+    func convertDateAndTimeToArabicNumbers(dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" // Set the input date format
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return nil // Return nil if the input string is not a valid date
+        }
+        
+        let arabicLocale = Locale(identifier: "ar")
+        dateFormatter.locale = arabicLocale
+        dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy HH:mm:ss") // Set the output date format
+        
+        return dateFormatter.string(from: date)
+    }
+    
+    func convertDateToArabicNumbers(dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" 
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return nil
+        }
+        
+        if MOLHLanguage.isRTLLanguage() {
+            let arabicLocale = Locale(identifier: "ar")
+            dateFormatter.locale = arabicLocale
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+            
+        }
+        
+        else {
+            let englishLocale = Locale(identifier: "en")
+            dateFormatter.locale = englishLocale
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+        }
+        
+        return dateFormatter.string(from: date)
+    }
+
+    func convertTimeToArabicNumbers(timeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        guard let date = dateFormatter.date(from: timeString) else {
+            return nil
+        }
+        
+        let arabicLocale = Locale(identifier: "ar")
+        let timeFormatter = DateFormatter()
+        timeFormatter.locale = arabicLocale
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .medium
+
+
+        timeFormatter.setLocalizedDateFormatFromTemplate("HH:mm:ss") // Set the output time format
+        
+        return timeFormatter.string(from: date)
+    }
+    
+
+    
+    
+    func convertIntToArabicNumbers(intString: String) -> String? {
+        
+        let numberFormatter = NumberFormatter()
+        
+        if MOLHLanguage.isRTLLanguage() {
+            numberFormatter.locale = Locale(identifier: "ar") // Set the Arabic locale
+            guard let number = numberFormatter.number(from: intString) else {
+                return nil
+            }
+            
+            return numberFormatter.string(from: number)
+        }
+        
+        else {
+            numberFormatter.locale = Locale(identifier: "en") // Set the Arabic locale
+            guard let number = numberFormatter.number(from: intString) else {
+                return nil
+            }
+            
+            return numberFormatter.string(from: number)
+        }
+        
+    }
+    
+    
+    func doubleToArabic(value: String) -> String {
+        
+        if MOLHLanguage.isRTLLanguage() {
+            let arabicNumerals: [Character: Character] = [
+                "0": "٠",
+                "1": "١",
+                "2": "٢",
+                "3": "٣",
+                "4": "٤",
+                "5": "٥",
+                "6": "٦",
+                "7": "٧",
+                "8": "٨",
+                "9": "٩",
+                ".": "."
+            ]
+            
+            let strValue = String(value)
+            var arabicValue = ""
+            
+            for char in strValue {
+                let arabicChar = arabicNumerals[char] ?? char
+                arabicValue.append(arabicChar)
+            }
+            
+            return arabicValue
+            
+        }
+        
+        else {
+            return value
+        }
+        
+    }
+
 
 }
+
+
+
 
 extension String {
     func localized(bundle: Bundle = .main, tableName: String = "Localizable") -> String {

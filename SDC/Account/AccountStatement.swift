@@ -53,13 +53,9 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         self.cerateBellView(bellview: self.bellView, count: "12")
     }
     
-    
-    
+   
     @IBAction func withZeero(btn:UIButton){
-        invAccount.removeAll()
-        securityName.removeAll()
-        self.secutrtyNameBtn.setTitle("-", for: .normal)
-        self.mebemrCodeBtn.setTitle("-", for: .normal)
+        
         withZeroFlag = "1"
         isZeroSelected = true
         isWithoutSelected = false
@@ -70,6 +66,16 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     //function for change background selected background color for with and without zero btn
     
     func highlightedButtons() {
+        invAccount.removeAll()
+        securityName.removeAll()
+        numberCode.removeAll()
+        
+        self.secutrtyNameBtn.setTitle("-", for: .normal)
+        self.mebemrCodeBtn.setTitle("-", for: .normal)
+        self.membername.setTitle("-", for: .normal)
+        self.accountNumberBtn.setTitle("-", for: .normal)
+        
+        
         if isZeroSelected  == true && isWithoutSelected == false {
             DispatchQueue.main.async {
                 self.withZero.setTitleColor(.white, for: .normal)
@@ -99,10 +105,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     
     @IBAction func withoutZeero(btn:UIButton){
-        invAccount.removeAll()
-        securityName.removeAll()
-        self.secutrtyNameBtn.setTitle("-", for: .normal)
-        self.mebemrCodeBtn.setTitle("-", for: .normal)
+        
         withZeroFlag = "0"
         isWithoutSelected = true
         isZeroSelected = false
@@ -180,7 +183,7 @@ print("default Value")
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": "en" ,
                                     "with_zero" : withZero
  ]
      
@@ -277,12 +280,12 @@ print("default Value")
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                             for item in data {
                                                 let model = AccountListModel(data: item)
+                                                
                                                 self.accountList.append(model)
                                                 
                                                 self.accountName.append(model.Member_Name!)
                                                 self.accounNumber.append(model.Account_No!)
-                                                self.accounNumber.append(model.Account_No!)
-                                 
+                                                
                                             }
                                     DispatchQueue.main.async {
                                   

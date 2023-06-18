@@ -109,7 +109,8 @@ class CardFourVC: UIViewController {
 
 
                                     let memberId = data!["memberId"] as? String
-                                    self.memberNumber.text = memberId ?? ""
+                                    self.memberNumber.text = self.convertIntToArabicNumbers(intString: memberId ?? "")
+                                    
                                     let memberName = data!["memberName"] as? String
                                     self.name.text = memberName ?? ""
                                     
@@ -117,21 +118,21 @@ class CardFourVC: UIViewController {
                                     self.documentType.text = idDocTypeDesc ?? ""
                                     
                                     let idDocNo = data!["idDocNo"] as? String
-                                    self.documentNumber.text = idDocNo ?? ""
+                                    self.documentNumber.text = self.convertIntToArabicNumbers(intString: idDocNo ?? "")
                                     
                                     let accountNo = data!["accountNo"] as? String
-                                    self.accountID.text = accountNo ?? ""
+                                    self.accountID.text = self.convertIntToArabicNumbers(intString: accountNo ?? "")
 
                                     let accountTypeDesc = data!["accountTypeDesc"] as? String
                                     self.accountType.text = accountTypeDesc ?? ""
                                    
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text = idDocDate ?? ""
+                                    self.releaseDate.text = self.convertDateToArabicNumbers(dateString: idDocDate ?? "")
 
                                     
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = idDocExpDate ?? ""
+                                    self.expiryDate.text = self.convertDateToArabicNumbers(dateString: idDocExpDate ?? "")
                                     
                                     let idDocReference = data!["idDocReference"] as? String
                                     self.documentRefernce.text = idDocReference ?? ""
@@ -140,10 +141,10 @@ class CardFourVC: UIViewController {
                                     self.identificationNumber.text = identificationNo ?? ""
                                     
                                     let pobox = data!["pobox"] as? String
-                                    self.postalBox.text = pobox ?? ""
+                                    self.postalBox.text = self.convertIntToArabicNumbers(intString: pobox ?? "")
 
                                     let postalCode = data!["postalCode"] as? String
-                                    self.postalCode.text = postalCode ?? ""
+                                    self.postalCode.text = self.convertIntToArabicNumbers(intString: postalCode ?? "")
                                     
                                     let postalCountry = data!["postalCountry"] as? String
                                     self.country.text = postalCountry ?? ""
@@ -165,7 +166,7 @@ class CardFourVC: UIViewController {
                                     
                                     
                                     let statusDate = data!["statusDate"] as? String
-                                    self.statusDate.text = statusDate ?? ""
+                                    self.statusDate.text = self.convertDateToArabicNumbers(dateString: statusDate ?? "")
                                     
                                     
                                     let branchName = data!["branchName"] as? String
@@ -195,13 +196,13 @@ class CardFourVC: UIViewController {
                                     
                                     
                                     let phone = data!["phone"] as? String
-                                    self.phone.text = phone ?? ""
+                                    self.phone.text = self.doubleToArabic(value: phone ?? "")
                                     
                                     let fax = data!["fax"] as? String
                                     self.fax.text = fax ?? ""
                                     
                                     let mobile = data!["mobile"] as? String
-                                    self.mobile.text = mobile ?? ""
+                                    self.mobile.text = self.doubleToArabic(value: mobile ?? "")
                                     
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""

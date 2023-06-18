@@ -15,7 +15,10 @@ class LoginVC: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var remmbermeimg: UIImageView!
     var checkOldPassword : Bool?
+    var AgreeIconClick : Bool! = false
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,8 +29,26 @@ class LoginVC: UIViewController {
 #endif
         
         
-        
-        
+        if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
+
+         if let image = UIImage(named: "checked1") {
+             remmbermeimg.image = image
+          }
+
+         AgreeIconClick = true
+
+         // Set values
+                  self.userName.text = UserDefaults.standard.string(forKey: "userMail") ?? ""
+                  self.password.text = UserDefaults.standard.string(forKey: "userPassword") ?? ""
+
+         }else{
+
+         if let image = UIImage(systemName: "circle") {
+             remmbermeimg.image = image
+         }
+
+         AgreeIconClick = false
+        }
         
         
     }
@@ -58,7 +79,28 @@ class LoginVC: UIViewController {
     
     @IBAction func remberMe(_ sender: Any) {
         
-        
+        if(AgreeIconClick == false) {
+
+         if let image = UIImage(named: "checked1") {
+             self.remmbermeimg.image = image
+             
+             UserDefaults.standard.set("1", forKey: "rememberMe")
+             UserDefaults.standard.set(userName.text ?? "" , forKey: "userMail")
+             UserDefaults.standard.set(password.text ?? "", forKey: "userPassword")
+
+          
+         }
+            AgreeIconClick = true
+            
+         } else {
+         if let image = UIImage(systemName: "circle") {
+             self.remmbermeimg.image = image
+             UserDefaults.standard.set("2", forKey: "rememberMe")
+
+        }
+            AgreeIconClick = false
+        }
+
         
     }
     
@@ -97,7 +139,7 @@ class LoginVC: UIViewController {
                                 
                                
                                 if status == true {
-                                     let message = jsonObj!["msg"] as? String
+                                     let message = jsonObj!["errNum1"] as? String
                                     
                                     let user_data = jsonObj!["user_data"] as? [String:Any]
                                     
@@ -107,8 +149,8 @@ class LoginVC: UIViewController {
 
                                     
 //                                    showing Done Flag
-                                    self.showSuccessHud(msg: message ?? "", hud: hud)
-                                    
+//                                    self.showSuccessHud(msg:                                         message ?? "", hud: hud)
+//
                                     
                                  
                                         
@@ -156,10 +198,5 @@ class LoginVC: UIViewController {
     }
  
     
-    
-    
-    
-    
-    
-    
+   
 }

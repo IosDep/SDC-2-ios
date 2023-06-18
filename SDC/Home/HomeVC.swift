@@ -16,16 +16,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 
     
     @IBOutlet weak var lastloginInfo: UILabel!
-    
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var dolar: DesignableButton!
     @IBOutlet weak var dinar: DesignableButton!
     @IBOutlet weak var busnissCard: UICollectionView!
-    
     @IBOutlet weak var anlyssSection: UICollectionView!
-
-
     @IBOutlet weak var bellView: UIView!
     
     var isDolarSelected : Bool = true
@@ -34,12 +30,20 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var valueChart  = [Double]()
     var notificationCount : String?
     var checkSideMenu = false
-
     
     var tradeAnlysis = [TradeAnlysis]()
-    
+    var bank = SectorAnylisisModel(data: [:])
+    var insuarance = SectorAnylisisModel(data: [:])
+    var service = SectorAnylisisModel(data: [:])
+    var industry = SectorAnylisisModel(data: [:])
+    var total = SectorAnylisisModel(data: [:])
+    var quantities : [Int] = []
+    var securities  : [Int] = []
+    var marketValues : [Double] = []
+
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
+        
 
     }
     
@@ -108,6 +112,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.getInvestoreInfo()
         isDolarSelected = true
         isDinarSelected = false
         highlightedButtons()
@@ -162,7 +167,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             return lastTransarr.count
             
         }else {
-            return ownershapeAnlusis.count
+            
+            return 3
         }
         }
     
@@ -204,19 +210,22 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             
             let data  = lastTransarr[indexPath.row]
 
-            cell?.firstlbl.text =  data.Security_Id
+            cell?.firstlbl.text =  self.convertIntToArabicNumbers(intString: data.Security_Id ?? "")
+            
             cell?.secondlbl.text = data.Security_Name
-            cell?.theredlbl.text =  data.Price
-
+            
+            // ?????
+            
+            cell?.theredlbl.text =  self.doubleToArabic(value: data.Price ??  "")
 
             return cell!
             
-        }else {
+        }
+        
+        else {
+            // pie chart
             
             var cell = self.anlyssSection.dequeueReusableCell(withReuseIdentifier: "HomePropretyXib", for: indexPath) as? HomePropretyXib
-            //            .dequeueReusableCell(withReuseIdentifier: "EductionSystemCell", for: indexPath) as? EductionSystemCell
-            
-            
             
             if cell == nil {
                 let nib: [Any] = Bundle.main.loadNibNamed("HomePropretyXib", owner: self, options: nil)!
@@ -233,45 +242,97 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             cell?.layer.shadowOpacity = 0.2
             cell?.layer.masksToBounds = false
             
-            let data =  ownershapeAnlusis[indexPath.row]
-            cell?.title.text = data.Main_Security_Cat_Desc
+            switch indexPath.row {
+            case 0:
+                cell?.title.text = "Shareholders" .localized()
             customizeChart(dataPoints: categoryArray, values: yearArray.map{ Double($0) ?? 0.0 },pieChartView: (cell?.chartView!)!)
+
+            case 1:
+                cell?.title.text = "Securities" .localized()
+//                let data =  ownershapeAnlusis[indexPath.row]
+
+              // Market Value
+            case 2:
+                cell?.title.text = "Market Value" .localized()
+            default:
+                print("defaultt")
+            }
+        
+//            let data =  ownershapeAnlusis[indexPath.row]
+//            cell?.title.text = data.Main_Security_Cat_Desc
+//            customizeChart(dataPoints: categoryArray, values: yearArray.map{ Double($0) ?? 0.0 },pieChartView: (cell?.chartView!)!)
+            
             return cell!
         }
    
     }
-    func customizeChart(dataPoints: [String], values: [Double],pieChartView:PieChartView) {
-      
-      // 1. Set ChartDataEntry
-      var dataEntries: [ChartDataEntry] = []
-      for i in 0..<dataPoints.count {
-        let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: "" as AnyObject)
-        dataEntries.append(dataEntry)
-      }
-      // 2. Set ChartDataSet
-        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "nil")
-      pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-      // 3. Set ChartData
-      let pieChartData = PieChartData(dataSet: pieChartDataSet)
-      let format = NumberFormatter()
-      format.numberStyle = .none
-      let formatter = DefaultValueFormatter(formatter: format)
-      pieChartData.setValueFormatter(formatter)
-      // 4. Assign it to the chart’s data
-      pieChartView.data = pieChartData
-    }
-
-    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
-      var colors: [UIColor] = []
-      for _ in 0..<numbersOfColor {
-        let red = Double(arc4random_uniform(256))
-        let green = Double(arc4random_uniform(256))
-        let blue = Double(arc4random_uniform(256))
-        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-        colors.append(color)
-      }
-      return colors
-    }
+    
+    
+        func customizeChart(dataPoints: [String] , values: [Double],pieChartView:PieChartView) {
+    
+          // 1. Set ChartDataEntry
+          
+          // 2. Set ChartDataSet
+            
+          // 3. Set ChartData
+         
+        }
+    
+        private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
+          var colors: [UIColor] = []
+          for _ in 0..<numbersOfColor {
+            let red = Double(arc4random_uniform(256))
+            let green = Double(arc4random_uniform(256))
+            let blue = Double(arc4random_uniform(256))
+            let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+            colors.append(color)
+          }
+          return colors
+        }
+    
+    
+    
+    
+    
+//    func customizeChart(dataPoints: [String], values: [Double],pieChartView:PieChartView) {
+//
+//      // 1. Set ChartDataEntry
+//      var dataEntries: [ChartDataEntry] = []
+//      for i in 0..<dataPoints.count {
+//        let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: "" as AnyObject)
+//        dataEntries.append(dataEntry)
+//      }
+//      // 2. Set ChartDataSet
+//        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "nil")
+//      pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+//      // 3. Set ChartData
+//      let pieChartData = PieChartData(dataSet: pieChartDataSet)
+//      let format = NumberFormatter()
+//      format.numberStyle = .none
+//      let formatter = DefaultValueFormatter(formatter: format)
+//      pieChartData.setValueFormatter(formatter)
+//      // 4. Assign it to the chart’s data
+//      pieChartView.data = pieChartData
+//    }
+//
+//    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
+//      var colors: [UIColor] = []
+//      for _ in 0..<numbersOfColor {
+//        let red = Double(arc4random_uniform(256))
+//        let green = Double(arc4random_uniform(256))
+//        let blue = Double(arc4random_uniform(256))
+//        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
+//        colors.append(color)
+//      }
+//      return colors
+//    }
+//
+    
+    
+    
+    
+    
+    
     
     @IBAction func marketValue(_ sender: Any) {
         
@@ -279,11 +340,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         let vc = storyBoard.instantiateViewController(withIdentifier: "TradingValue") as! TradingValue
         vc.modalPresentationStyle = .fullScreen
   
-//        vc.monthData = self.monthData
-//        vc.valueChart = self.valueChart
+
         vc.tradeAnlysis = self.tradeAnlysis
-//
-        
         
         self.present(vc, animated: true)
     }
@@ -371,7 +429,133 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         }
     
     
-    //    API Call
+    //    API Call for pie chart
+    
+    func getInvestoreInfo(){
+//
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+    
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": "en" ,
+                                    "with_zero" : 1
+ ]
+     
+        let link = URL(string: APIConfig.GetInvOwnership)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                
+                                if let total = jsonObj!["total"] as? [String: Any]{
+                                    if let one = total["1"] as? [String: Any] {
+                                        let model = SectorAnylisisModel(data: total)
+                                        self.total = model
+                                        
+                                    }
+                                }
+                                
+                                if let ownershipBysector = jsonObj!["ownershipBysector"] as? [String: Any]{
+                                    if let one = ownershipBysector["1"] as? [String: Any] {
+                                        
+                                        if let banks = one["Banks"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: banks)
+                                            self.bank = model
+                                            self.quantities.append(model.Quantity ?? 0)
+                                            self.securities.append(model.sec_count ?? 0)
+                                            self.marketValues.append(model.market_value ?? 0 )
+                                        }
+                                        
+                                        if let insurance = one["insurance"] as? [String: Any] {
+                                            let model = SectorAnylisisModel(data: insurance)
+                                            self.insuarance = model
+                                            self.quantities.append(model.Quantity ?? 0)
+                                            self.securities.append(model.sec_count ?? 0)
+                                            self.marketValues.append(model.market_value ?? 0)
+                                        }
+                                        
+                                        if let industry = one["Industry"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: industry)
+                                            self.industry = model
+                                    self.quantities.append(model.Quantity ?? 0)
+                                            self.securities.append(model.sec_count ?? 0)
+                                            self.marketValues.append(model.market_value ?? 0)
+                                        }
+                                        
+                                        if let Services = one["Services"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: Services)
+                                            self.service = model
+                                            self.quantities.append(model.Quantity ?? 0)
+                                            self.securities.append(model.sec_count ?? 0)
+                                            self.marketValues.append(model.market_value ?? 0)
+                                        }
+                                        
+                                        if let industry = one["Industry"] as? [String: Any] {
+                                            let model = SectorAnylisisModel(data: industry)
+                                            self.industry = model
+                                            self.quantities.append(model.Quantity ?? 0)
+                                            self.securities.append(model.sec_count ?? 0)
+                                            self.marketValues.append(model.market_value ?? 0)
+                                        }
+                                        
+                                        
+                                    }
+                                }
+                                
+                                
+                                    
+                               
+                                            DispatchQueue.main.async {
+                                                self.anlyssSection.reloadData()
+                                    hud.dismiss()
+
+
+                                            }
+                                        
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                                other Wise Problem
+                            else {
+                            hud.dismiss(animated: true)      }
+                      
+                            
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+
+
+            }
+        }
+    }
+    
+    
         
         func getOwnerShapeList(){
 
@@ -402,12 +586,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         
                                     if let data = jsonObj!["data"] as? [[String: Any]]{
                                                 for item in data {
-                                                    let model = OwnerShapeAnlysisModel(data: item)
+                                        let model = OwnerShapeAnlysisModel(data: item)
                                                     self.ownershapeAnlusis.append(model)
                                      
                                                 }
-                                                
-                                                DispatchQueue.main.async {
+                                    DispatchQueue.main.async {
                                                     self.anlyssSection.reloadData()
                                                     
                                                     
@@ -494,9 +677,14 @@ print("MYUERAAARAY")
                                     
                                     let sysDate =     data!["sysDate"] as? String
                                     let lastUpdate =     data!["lastUpdate"] as? String
-
-                                    self.lastloginInfo.text =  sysDate ?? "" +  (lastUpdate ?? "")
-                                
+                                    
+                                    self.lastloginInfo.text  =    MOLHLanguage.isRTLLanguage() ? self.convertDateAndTimeToArabicNumbers(dateString: sysDate ?? ""): sysDate ?? ""
+                                    
+                                    //convertDateToArabicNumbers
+                                   
+                                    
+//                                    self.lastloginInfo.text =  sysDate ?? "" +  (lastUpdate ?? "")
+//
                                         
                             
                                     
@@ -616,11 +804,10 @@ print("MYUERAAARAY")
                     print("Error")
 
                     self.serverError(hud: hud)
-                        
-
-
+                
                 }
             }
- 
         }
+    
+   
 }

@@ -127,9 +127,12 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 //
 //        else {
             cell?.literalName.text = securityOwnership[indexPath.row].Security_Name
-            cell?.literalNum.text = securityOwnership[indexPath.row].Security_Id
-            cell?.balance.text =
-            securityOwnership[indexPath.row].Nominal_Value
+        cell?.literalNum.text = self.convertIntToArabicNumbers(intString: securityOwnership[indexPath.row].Security_Id ?? "")
+        
+        cell?.sector.text =  securityOwnership[indexPath.row].Security_Sector_Desc ?? ""
+        
+        cell?.balance.text = self.doubleToArabic(value: securityOwnership[indexPath.row].Security_Close_Price ?? "")
+            
             
 //        }
         
@@ -315,7 +318,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         
         
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang":  "en" ,
                                     "with_zero" : withZero
                                     
                                     
@@ -403,7 +406,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         let param : [String:Any] = [
             "sessionId" : Helper.shared.getUserSeassion() ?? ""
-            ,"lang": MOLHLanguage.isRTLLanguage() ? "ar": "en",
+            ,"lang": "en",
             "securityId":self.securtyIdToCallApi ?? "" ,
             "with_zero" : "0"
         ]

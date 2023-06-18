@@ -124,9 +124,9 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             let data = arr_search[indexPath.row]
             
             cell?.literalName.text = data.Security_Name
-            cell?.literalNum.text = data.securityID
-            cell?.sector.text = data.Security_Sector_Desc
-            cell?.balance.text = data.Nominal_Value
+            cell?.literalNum.text = self.convertIntToArabicNumbers(intString: data.securityID ?? "")
+            cell?.sector.text = self.convertIntToArabicNumbers(intString: data.Security_Sector_Desc ?? "")
+            cell?.balance.text = self.doubleToArabic(value: data.Security_Close_Price ?? "")
             
         }else if !(invAccount.isEmpty) {
             
@@ -135,9 +135,9 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             let data = invAccount[indexPath.row]
             
             cell?.literalName.text = data.Security_Name
-            cell?.literalNum.text = data.securityID
-            cell?.sector.text = data.Security_Sector_Desc
-            cell?.balance.text = data.Security_Close_Price
+            cell?.literalNum.text = self.convertIntToArabicNumbers(intString: data.securityID ?? "")
+            cell?.sector.text = self.convertIntToArabicNumbers(intString: data.Security_Sector_Desc ?? "")
+            cell?.balance.text = self.doubleToArabic(value: data.Security_Close_Price ?? "")
             
         }
        

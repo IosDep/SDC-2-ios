@@ -20,6 +20,7 @@
 		3F8AFA802A0B9C6700D13625 /* CompanyProcedureVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */; };
 		3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */; };
 		3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA832A0BC47A00D13625 /* LastAction.swift */; };
+		3F8D2FF92A3F0B9400564271 /* SectorAnlysisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
@@ -140,6 +141,7 @@
 		3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyProcedureVC.swift; sourceTree = "<group>"; };
 		3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSixVC.swift; sourceTree = "<group>"; };
 		3F8AFA832A0BC47A00D13625 /* LastAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAction.swift; sourceTree = "<group>"; };
+		3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorAnlysisModel.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
@@ -475,6 +477,7 @@
 				3F4F5CAF2A0A300400554BAD /* Naionality.swift */,
 				3F8AFA832A0BC47A00D13625 /* LastAction.swift */,
 				3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */,
+				3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -791,6 +794,7 @@
 				87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */,
 				87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */,
 				87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */,
+				3F8D2FF92A3F0B9400564271 /* SectorAnlysisModel.swift in Sources */,
 				8728D9E729E9D6FC00133096 /* CardTwoVc.swift in Sources */,
 				3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */,
 				3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */,

@@ -80,6 +80,25 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         withZeroFlag = "1"
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        DispatchQueue.main.async {
+            if self.isZeroSelected == true && self.isWithoutSelected == false {
+                self.withZero.setTitleColor(.white, for: .normal)
+                self.withZero.backgroundColor  =
+                UIColor(named: "AccentColor")
+                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+            }
+            else if self.isZeroSelected == false && self.isWithoutSelected == true {
+                self.withoutZero.setTitleColor(.white, for: .normal)
+                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
+                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+            }
+        }
+        
+    }
+    
+    
+    
     
     @IBAction func backPressed(_ sender: Any) {
         if checkSideMenu == true {
@@ -108,6 +127,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
+        
+        
         
     }
     
@@ -241,31 +262,39 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         if seatrching == true {
             if indexPath.section == 0 {
                 cell?.literalName.text = filterdBankArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = filterdBankArray[indexPath.row].securityID  ?? ""
+                
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filterdBankArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = filterdBankArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = filterdBankArray[indexPath.row].Security_Close_Price ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: filterdBankArray[indexPath.row].Security_Close_Price ?? "")
             }
             
             else if indexPath.section == 1 {
                 cell?.literalName.text = filteredInsuaranceArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = filteredInsuaranceArray[indexPath.row].securityID  ?? ""
-                cell?.sector.text = filteredInsuaranceArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = filteredInsuaranceArray[indexPath.row].Security_Close_Price ?? ""
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredInsuaranceArray[indexPath.row].securityID  ?? "")
                 
+                cell?.sector.text = filteredInsuaranceArray[indexPath.row].Security_Sector_Desc ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: filteredInsuaranceArray[indexPath.row].Security_Close_Price ?? "")
             }
             
             else if indexPath.section == 2 {
                 cell?.literalName.text = filteredServicesArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = filteredServicesArray[indexPath.row].securityID  ?? ""
+                
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredServicesArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = filteredServicesArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = filteredServicesArray[indexPath.row].Security_Close_Price ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: filteredServicesArray[indexPath.row].Security_Close_Price ?? "")
                 
             }
             else if indexPath.section == 3 {
                 cell?.literalName.text = filteredIndustryArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = filteredIndustryArray[indexPath.row].securityID  ?? ""
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredIndustryArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = filteredIndustryArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = filteredIndustryArray[indexPath.row].Security_Close_Price ?? ""
+                cell?.balance.text = self.doubleToArabic(value: filteredIndustryArray[indexPath.row].Security_Close_Price ?? "")
             }
             
             
@@ -276,32 +305,39 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             
             if indexPath.section == 0 {
                 cell?.literalName.text = bankArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = bankArray[indexPath.row].securityID  ?? ""
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: bankArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = bankArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = bankArray[indexPath.row].Security_Close_Price ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: bankArray[indexPath.row].Security_Close_Price ?? "")
             }
             
             else if indexPath.section == 1 {
                 cell?.literalName.text = insuaranceArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = insuaranceArray[indexPath.row].securityID  ?? ""
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: insuaranceArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = insuaranceArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = insuaranceArray[indexPath.row].Security_Close_Price ?? ""
+                cell?.balance.text = self.doubleToArabic(value: insuaranceArray[indexPath.row].Security_Close_Price ?? "")
                 
             }
             
             else if indexPath.section == 2 {
                 cell?.literalName.text = servicesArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = servicesArray[indexPath.row].securityID  ?? ""
-                cell?.sector.text = servicesArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = servicesArray[indexPath.row].Security_Close_Price ?? ""
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: servicesArray[indexPath.row].securityID  ?? "")
                 
+                cell?.sector.text = servicesArray[indexPath.row].Security_Sector_Desc ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: servicesArray[indexPath.row].Security_Close_Price ?? "")
             }
             
             else if indexPath.section == 3 {
                 cell?.literalName.text = industryArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = industryArray[indexPath.row].securityID  ?? ""
+                
+                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: industryArray[indexPath.row].securityID  ?? "")
+                
                 cell?.sector.text = industryArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = industryArray[indexPath.row].Security_Close_Price ?? ""
+                
+                cell?.balance.text = self.doubleToArabic(value: industryArray[indexPath.row].Security_Close_Price ?? "")
             }
             
         }

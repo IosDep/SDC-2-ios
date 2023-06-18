@@ -12,7 +12,9 @@ class AccountOwnerShape{
     
     
 
-    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency , MarketValue: String?
+    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency  , closePrice , Security_Reuter_Code: String?
+    
+    var MarketValue : Int?
 
     init(data: [String: Any]) {
         
@@ -42,6 +44,10 @@ class AccountOwnerShape{
         
         if let Security_Close_Price = data["Security_Close_Price"] as? String {
             self.Security_Close_Price = Security_Close_Price
+        }
+        
+        if let closePrice = data["closePrice"] as? String {
+            self.closePrice = closePrice
         }
         
         if let Quantity_Avilable = data["Quantity_Avilable"] as? String {
@@ -82,11 +88,17 @@ class AccountOwnerShape{
             self.securityReuterCode = securityReuterCode
         }
         
+        // Security_Reuter_Code
+        
+        if let Security_Reuter_Code = data["Security_Reuter_Code"] as? String {
+            self.Security_Reuter_Code = Security_Reuter_Code
+        }
+        
         if let Security_Name = data["Security_Name"] as? String {
             self.Security_Name = Security_Name
         }
         
-        if let MarketValue = data["MarketValue"] as? String {
+        if let MarketValue = data["MarketValue"] as? Int {
             self.MarketValue = MarketValue
         }
         
