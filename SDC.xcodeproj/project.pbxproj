@@ -21,6 +21,9 @@
 		3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */; };
 		3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA832A0BC47A00D13625 /* LastAction.swift */; };
 		3F8D2FF92A3F0B9400564271 /* SectorAnlysisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */; };
+		3F91502A2A40D6B300BE3FC0 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9150282A40D6B200BE3FC0 /* ChartCell.swift */; };
+		3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9150292A40D6B200BE3FC0 /* ChartCell.xib */; };
+		3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
@@ -142,6 +145,9 @@
 		3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSixVC.swift; sourceTree = "<group>"; };
 		3F8AFA832A0BC47A00D13625 /* LastAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAction.swift; sourceTree = "<group>"; };
 		3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorAnlysisModel.swift; sourceTree = "<group>"; };
+		3F9150282A40D6B200BE3FC0 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
+		3F9150292A40D6B200BE3FC0 /* ChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
+		3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartPopUp.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
@@ -379,6 +385,7 @@
 				87F4FD5029EA261800FF2485 /* AccountStatement.swift */,
 				87F4FD5229EA282300FF2485 /* OnePaperOwnerShape.swift */,
 				3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */,
+				3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -447,6 +454,8 @@
 				3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */,
 				3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */,
 				3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */,
+				3F9150282A40D6B200BE3FC0 /* ChartCell.swift */,
+				3F9150292A40D6B200BE3FC0 /* ChartCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -619,6 +628,7 @@
 				3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */,
 				8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */,
 				8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */,
+				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
 				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
@@ -765,6 +775,7 @@
 				8771087C29D04C870010AEBE /* NotfictionVC.swift in Sources */,
 				8761E54729DC4D6200CB72B5 /* AccountListModel.swift in Sources */,
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
+				3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */,
 				87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */,
 				3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */,
 				87D3E9B829DA9FCC006B6AA7 /* LoadingOverly.swift in Sources */,
@@ -825,6 +836,7 @@
 				8761E54129DC4A8A00CB72B5 /* AccountList.swift in Sources */,
 				8748CB48299029EE00E9AE81 /* NewMorhpic.swift in Sources */,
 				3FA51A4029F7E20300F19975 /* Notification.swift in Sources */,
+				3F91502A2A40D6B300BE3FC0 /* ChartCell.swift in Sources */,
 				3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */,
 				87B89AE129CFD6B900E82C1E /* ForgetPassword.swift in Sources */,
 				87D5A4AB29DEEFBB00F78DBE /* TradeAnlysis.swift in Sources */,

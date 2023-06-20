@@ -14,7 +14,7 @@ class SecurityOwnership{
 
     var clientNo, Security_Id , Security_Isin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value,Client_No,Trade_Currency , Member_No , Account_No , Security_Reuter_Code , Security_Sector , Balance_Date, Freezed_Flag , Security_Sector_Desc : String?
     
-    var MarketValue: Int?
+    var MarketValue: Double?
 
     init(data: [String: Any]) {
         
@@ -115,7 +115,7 @@ class SecurityOwnership{
             self.Security_Name = Security_Name
         }
         
-        if let MarketValue = data["MarketValue"] as? Int {
+        if let MarketValue = data["MarketValue"] as? Double {
             self.MarketValue = MarketValue
         }
       

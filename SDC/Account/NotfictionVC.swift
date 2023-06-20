@@ -55,7 +55,7 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
             
         }
         cell?.notificationTitle.text = notifications[indexPath.row].desc
-        cell?.dateCreated.text = notifications[indexPath.row].createdAt
+        cell?.dateCreated.text = self.convertDate(dateString: notifications[indexPath.row].createdAt ?? "")
         
 //        self.makeShadow(mainView: cell?.mainCardView)
 //        self.makeShadow(mainView: cell!.contentView)
@@ -160,4 +160,31 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 //        self.setupSideMenu()
 //
 //    }
+    
+    
+    
+    func convertDate(dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return nil
+        }
+        
+        if MOLHLanguage.isRTLLanguage() {
+            let arabicLocale = Locale(identifier: "ar")
+            dateFormatter.locale = arabicLocale
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+            
+        }
+        
+        else {
+            let englishLocale = Locale(identifier: "en")
+            dateFormatter.locale = englishLocale
+            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+        }
+        
+        return dateFormatter.string(from: date)
+    }
+
 }

@@ -207,7 +207,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             DispatchQueue.main.async {
                 self.withZero.setTitleColor(.white, for: .normal)
                 self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
                 self.withoutZero.backgroundColor  = .systemGray6
 //                self.withoutZero.cornerRadius = 12
                 self.withoutZero.borderColor =  UIColor(named: "AccentColor")
@@ -219,7 +219,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             DispatchQueue.main.async {
                 self.withoutZero.setTitleColor(.white, for: .normal)
                 self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
-                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal) 
                 self.withZero.backgroundColor  = .systemGray6
 //                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")

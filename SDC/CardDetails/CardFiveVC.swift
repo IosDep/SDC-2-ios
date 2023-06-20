@@ -14,6 +14,7 @@ import JGProgressHUD
 
 class CardFiveVC: UIViewController {
 
+    @IBOutlet weak var natStack: UIStackView!
     @IBOutlet weak var invNationality: UILabel!
     @IBOutlet weak var bellView: UIButton!
     @IBOutlet weak var sideMenuBtn: UIButton!
@@ -55,6 +56,9 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var fax: UILabel!
     @IBOutlet weak var email: UILabel!
     
+    
+    @IBOutlet weak var investorNo: UILabel!
+    
     @IBOutlet weak var guardianNat: UILabel!
     @IBOutlet weak var inestorType: UILabel!
     @IBOutlet weak var inestorNo: UILabel!
@@ -62,7 +66,7 @@ class CardFiveVC: UIViewController {
     var clientNum : String?
     var checkSideMenu = false
     var nationalities = [Nationality]()
-    
+    var NatStatus : String?
     
     @IBAction func backPressed(_ sender: Any) {
         if checkSideMenu == true {
@@ -137,8 +141,11 @@ class CardFiveVC: UIViewController {
                                     
                                     let data = jsonObj!["data"] as? [String:Any]
                                     
+                
+                                    
                                     let clientNo = data!["clientNo"] as? String
-                                    self.clientNum = self.convertIntToArabicNumbers(intString: clientNo ?? "")
+                                    self.clientNum = clientNo
+                                    self.investorNo.text = clientNo ?? ""
                                     
                                     let title = data!["title"] as? String
                                     self.nickname.text = title ?? ""
@@ -176,7 +183,7 @@ class CardFiveVC: UIViewController {
                                     let sexDesc = data!["sexDesc"] as? String
                                     self.gender.text = sexDesc ?? ""
                                     
-                                    let scientificQualificationDesc = data!["scientificQualificationDesc"] as? String
+                                    let scientificQualificationDesc = data!["scientificQualification"] as? String
                                     self.educationDegree.text = scientificQualificationDesc ?? ""
                                     
                                     let taxNo = data!["taxNo"] as? String
@@ -252,7 +259,17 @@ class CardFiveVC: UIViewController {
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""
                                     
-                                    // inestorNo
+                                    
+                                    // nationality
+                                    let nationality = data!["nationality"] as? String
+                                    self.email.text = nationality ?? ""
+                                    self.invNationality.text = nationality
+                                    
+                                    // other_nationality_status
+                                    let other_nationality_status = data!["other_nationality_status"] as? String
+                                    
+                                    self.NatStatus = other_nationality_status ?? ""
+                                    
                                     
                                     
                                     
@@ -261,8 +278,17 @@ class CardFiveVC: UIViewController {
                                     DispatchQueue.main.async {
                                         hud.dismiss(afterDelay: 1.5, animated: true,completion: {
                       
+                                        // hide and show stack
+                                            
+                                            if self.NatStatus == "1" {
+                                                self.natStack.isHidden = true
+                                            }
+                                            
+                                            else {
+                                                self.natStack.isHidden = false
+                                            }
+                                            
                                         })
-                                        
                                         
                                     }
                                     

@@ -14,7 +14,7 @@ class AccountOwnerShape{
 
     var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency  , closePrice , Security_Reuter_Code: String?
     
-    var MarketValue : Int?
+    var MarketValue : Double?
 
     init(data: [String: Any]) {
         
@@ -98,7 +98,7 @@ class AccountOwnerShape{
             self.Security_Name = Security_Name
         }
         
-        if let MarketValue = data["MarketValue"] as? Int {
+        if let MarketValue = data["MarketValue"] as? Double {
             self.MarketValue = MarketValue
         }
         

@@ -60,7 +60,7 @@ class CardTwoVc: UIViewController {
         //doubleToArabic
         closePrice.text = self.doubleToArabic(value: invOwnership?.Security_Close_Price ?? "")
         
-        if let value =  invOwnership?.MarketValue as? Int {
+        if let value =  invOwnership?.MarketValue as? Double {
             marketValue.text = self.doubleToArabic(value: "\(value)")
         }
         

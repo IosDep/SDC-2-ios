@@ -78,23 +78,24 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         self.busnissCard.addSubview(refreshControl)
         self.cerateBellView(bellview: self.bellView, count: "10")
         withZeroFlag = "1"
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         DispatchQueue.main.async {
             if self.isZeroSelected == true && self.isWithoutSelected == false {
                 self.withZero.setTitleColor(.white, for: .normal)
                 self.withZero.backgroundColor  =
                 UIColor(named: "AccentColor")
-                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
             }
             else if self.isZeroSelected == false && self.isWithoutSelected == true {
                 self.withoutZero.setTitleColor(.white, for: .normal)
                 self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
-                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+                
             }
         }
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     
@@ -464,7 +465,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 
             self.withZero.backgroundColor  =
                 UIColor(named: "AccentColor")
-            self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
             self.withoutZero.backgroundColor  = .systemGray6
 //            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
@@ -484,7 +485,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 self.withoutZero.setTitleColor(.white, for: .normal)
                 self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
                 
-                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
                 self.withZero.backgroundColor  = .systemGray6
 //                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
