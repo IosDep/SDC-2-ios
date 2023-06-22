@@ -109,7 +109,7 @@ class CardFourVC: UIViewController {
 
 
                                     let memberId = data!["memberId"] as? String
-                                    self.memberNumber.text = self.convertIntToArabicNumbers(intString: memberId ?? "")
+                                    self.memberNumber.text =  memberId ?? ""
                                     
                                     let memberName = data!["memberName"] as? String
                                     self.name.text = memberName ?? ""
@@ -118,10 +118,10 @@ class CardFourVC: UIViewController {
                                     self.documentType.text = idDocTypeDesc ?? ""
                                     
                                     let idDocNo = data!["idDocNo"] as? String
-                                    self.documentNumber.text = self.convertIntToArabicNumbers(intString: idDocNo ?? "")
+                                    self.documentNumber.text =  idDocNo ?? ""
                                     
                                     let accountNo = data!["accountNo"] as? String
-                                    self.accountID.text = self.convertIntToArabicNumbers(intString: accountNo ?? "")
+                                    self.accountID.text =  accountNo ?? ""
 
                                     let accountTypeDesc = data!["accountTypeDesc"] as? String
                                     self.accountType.text = accountTypeDesc ?? ""
@@ -141,10 +141,10 @@ class CardFourVC: UIViewController {
                                     self.identificationNumber.text = identificationNo ?? ""
                                     
                                     let pobox = data!["pobox"] as? String
-                                    self.postalBox.text = self.convertIntToArabicNumbers(intString: pobox ?? "")
+                                    self.postalBox.text =  pobox ?? ""
 
                                     let postalCode = data!["postalCode"] as? String
-                                    self.postalCode.text = self.convertIntToArabicNumbers(intString: postalCode ?? "")
+                                    self.postalCode.text =  postalCode ?? ""
                                     
                                     let postalCountry = data!["postalCountry"] as? String
                                     self.country.text = postalCountry ?? ""

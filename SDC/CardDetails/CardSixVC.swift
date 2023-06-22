@@ -26,15 +26,15 @@ class CardSixVC: UIViewController {
         super.viewDidLoad()
             self.cerateBellView(bellview: bellView, count: "12")
         corporationName.text = lastAction?.Member_Name ?? ""
-        corporationID.text = self.convertIntToArabicNumbers(intString: lastAction?.Member_Id ?? "")
+        corporationID.text =  lastAction?.Member_Id ?? ""
         isin.text = lastAction?.Isin ?? ""
         literalNum.text = lastAction?.Reuter_Code ?? ""
         actionDate.text = self.convertDateToArabicNumbers(dateString: lastAction?.Action_Date ?? "")
         action.text = lastAction?.Trans_Type_Desc ?? ""
         
         actionDescription.text = lastAction?.Action_Type_Desc ?? ""
-        beforeAction.text = self.convertIntToArabicNumbers(intString: lastAction?.Value_Before ?? "")
-        afterAction.text = self.convertIntToArabicNumbers(intString: lastAction?.Value_After ?? "")
+        beforeAction.text =  lastAction?.Value_Before ?? ""
+        afterAction.text =  lastAction?.Value_After ?? ""
         
     }
     

@@ -24,8 +24,8 @@ class LoginVC: UIViewController {
         super.viewDidLoad()
 #if DEBUG
 
-        userName.text = "investor_1@sdc.com"
-        password.text = "12345678"
+        userName.text = "9651010730"
+        password.text = "123456"
 #endif
         
         
@@ -119,7 +119,7 @@ class LoginVC: UIViewController {
      
         let endpoint = URL(string:APIConfig.Login)
         let param: [String: String] = [
-            "email": email,
+            "username": email,
             "password": password,
             "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en",
             "login_type": "1"

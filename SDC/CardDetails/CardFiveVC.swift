@@ -5,6 +5,11 @@
 //  Created by Razan Barq on 17/04/2023.
 //
 
+
+// 9651010730
+
+// 123456
+
 import UIKit
 import Alamofire
 import MOLH
@@ -14,6 +19,9 @@ import JGProgressHUD
 
 class CardFiveVC: UIViewController {
 
+    @IBOutlet weak var postalCity: UILabel!
+    @IBOutlet weak var postalCountry: UILabel!
+    @IBOutlet weak var otherNat: UILabel!
     @IBOutlet weak var natStack: UIStackView!
     @IBOutlet weak var invNationality: UILabel!
     @IBOutlet weak var bellView: UIButton!
@@ -195,20 +203,20 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let pobox = data!["pobox"] as? String
-                                    self.postalBox.text = self.convertIntToArabicNumbers(intString: pobox ?? "")
+                                    self.postalBox.text =  pobox ?? ""
                                     
                                     
                                     let
                                     postalCde = data!["postalCode"] as? String
-                                    self.postalCode.text = self.convertIntToArabicNumbers(intString: postalCde ?? "")
+                                    self.postalCode.text =  postalCde ?? ""
                                     
                                     
-                                    let postalCountry = data!["postalCountry"] as? String
-                                    self.country.text = postalCountry ?? ""
+                                    let Country = data!["resCountry"] as? String
+                                    self.country.text = Country ?? ""
                                     
                                     
-                                    let postalCity = data!["postalCity"] as? String
-                                    self.city.text = postalCity ?? ""
+                                    let City = data!["resCity"] as? String
+                                    self.city.text = City ?? ""
                                     
                                     let idDocTypeDesc = data!["idDocTypeDesc"] as? String
                                     self.documentType.text = idDocTypeDesc ?? ""
@@ -220,13 +228,14 @@ class CardFiveVC: UIViewController {
                                     self.documentReference.text = idDocReference ?? ""
                                     
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text = self.convertDateToArabicNumbers(dateString: idDocDate ?? "")
+                                    self.releaseDate.text =
+                                                                idDocDate ?? ""
                                     
                                     let identificationNo = data!["identificationNo"] as? String
                                     self.identificationNumber.text = identificationNo
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = self.convertDateToArabicNumbers(dateString: idDocExpDate ?? "")
+                                    self.expiryDate.text =   idDocExpDate ?? ""
                                     
                                     
                                     // resAddress1
@@ -245,16 +254,16 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let phone = data!["phone"] as? String
-                                    self.phone.text = self.convertIntToArabicNumbers(intString: phone ?? "")
+                                    self.phone.text =  phone ?? ""
                                     
                                     let fax = data!["fax"] as? String
                                     self.fax.text = fax ?? ""
                                     
                                     let mobile = data!["mobile"] as? String
-                                    self.mobile.text = self.doubleToArabic(value: mobile ?? "")
+                                    self.mobile.text =  mobile ?? ""
                                     
                                     let birthPlace = data!["birthPlace"] as? String
-                                    self.placeOfBirth                                   .text = birthPlace ?? ""
+                                    self.placeOfBirth.text = birthPlace ?? ""
                                     
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""
@@ -262,15 +271,25 @@ class CardFiveVC: UIViewController {
                                     
                                     // nationality
                                     let nationality = data!["nationality"] as? String
-                                    self.email.text = nationality ?? ""
+                                    
                                     self.invNationality.text = nationality
+                                    self.otherNat.text = nationality
                                     
                                     // other_nationality_status
                                     let other_nationality_status = data!["other_nationality_status"] as? String
                                     
                                     self.NatStatus = other_nationality_status ?? ""
                                     
+                            
+                                    // postalCountry
                                     
+                                    let posta = data!["postalCountry"] as? String
+                                    
+                                    self.postalCountry.text = posta
+                                    
+                                    let postalccity = data!["postalCity"] as? String
+                                    
+                                    self.postalCity.text = postalccity
                                     
                                     
                                     self.getNationalities()

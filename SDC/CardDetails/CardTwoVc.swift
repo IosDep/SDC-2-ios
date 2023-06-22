@@ -11,6 +11,7 @@ import UIKit
 
 class CardTwoVc: UIViewController {
 
+    @IBOutlet weak var sectorName: UILabel!
     @IBOutlet weak var reuterCode: UILabel!
     @IBOutlet weak var bellView : UIView!
     @IBOutlet weak var currentBalance: UILabel!
@@ -35,34 +36,48 @@ class CardTwoVc: UIViewController {
         super.viewDidLoad()
         
         
-        currentBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Owned ?? "")
+        currentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Owned ?? "")
+
         
-        freeBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Avilable ?? "")
+        freeBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Avilable ?? "")
         
-        pledgedBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Pledge ?? "")
+        pledgedBalance.text = self.numStringFormat(value:
+                invOwnership?.Quantity_Pledge ?? "")
+       
         
-        reservedBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Freezed ?? "")
+        reservedBalance.text = self.numStringFormat(value:         invOwnership?.Quantity_Freezed ?? ""
+)
         
-        nonCurrentBalance.text = self.convertIntToArabicNumbers(intString: invOwnership?.Quantity_Unlisted ?? "")
         
-        securityID.text = self.convertIntToArabicNumbers(intString: invOwnership?.securityID ?? "")
+        nonCurrentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Unlisted ?? "") 
+        
+        securityID.text =  invOwnership?.securityID ?? ""
         
         securityName.text = invOwnership?.Security_Name ?? ""
         reuterCode.text = invOwnership?.Security_Reuter_Code ?? ""
         iSSN.text = invOwnership?.securityIsin ?? ""
         
         
-        pendingIn.text = self.convertIntToArabicNumbers(intString: invOwnership?.Pending_In ?? "")
+        pendingIn.text = self.numStringFormat(value:         invOwnership?.Pending_In ?? "")
         
         
-        pendingOut.text = self.convertIntToArabicNumbers(intString: invOwnership?.Pending_Out ?? "")
+        pendingOut.text = self.numStringFormat(value: invOwnership?.Pending_Out ?? "")
         
         //doubleToArabic
-        closePrice.text = self.doubleToArabic(value: invOwnership?.Security_Close_Price ?? "")
+        closePrice.text =  invOwnership?.closePrice ?? ""
+        
+        sectorName.text = invOwnership?.Security_Sector_Desc ?? ""
+        
         
         if let value =  invOwnership?.MarketValue as? Double {
-            marketValue.text = self.doubleToArabic(value: "\(value)")
-        }
+            marketValue.text = self.numFormat(value: value )
+                    }
+        
+    
+//        if let value =  invOwnership?.MarketValue as? Double {
+//            marketValue.text =  self.numFormat(value: "\(value)")
+//
+//        }
         
         self.cerateBellView(bellview: bellView, count: "12")
         

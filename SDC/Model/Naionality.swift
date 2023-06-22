@@ -45,6 +45,7 @@ class Nationality{
         if let Client_Status_Desc = data["Client_Status_Desc"] as? String {
             self.Client_Status_Desc = Client_Status_Desc
         }
+       
         
         
         

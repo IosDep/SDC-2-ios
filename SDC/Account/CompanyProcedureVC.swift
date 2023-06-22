@@ -153,7 +153,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             cell?.mainCardView.layer.cornerRadius =  8
             let data = arr_search[indexPath.row]
             cell?.literalNum.text = data.Member_Name ?? ""
-            cell?.literalName.text =  self.convertIntToArabicNumbers(intString: data.Member_Id ?? "")
+            cell?.literalName.text =   data.Member_Id ?? ""
             cell?.balance.text = data.Action_Type_Desc ?? ""
             
         }
@@ -162,7 +162,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             cell?.mainCardView.layer.cornerRadius =  8
             let data = lastAction[indexPath.row]
             cell?.literalNum.text = data.Member_Name ?? ""
-            cell?.literalName.text =  self.convertIntToArabicNumbers(intString: data.Member_Id ?? "")
+            cell?.literalName.text =   data.Member_Id ?? ""
             cell?.balance.text = data.Action_Type_Desc ?? ""
         
         }

@@ -19,11 +19,11 @@ extension UIViewController {
         UIGraphicsBeginImageContext(layer.frame.size)
         
         layer.render(in: UIGraphicsGetCurrentContext()!)
-
+        
         let outputImage = UIGraphicsGetImageFromCurrentImageContext()
-
+        
         UIGraphicsEndImageContext()
-
+        
         return outputImage!
     }
     func makeShadow(mainView:UIView){
@@ -36,9 +36,9 @@ extension UIViewController {
     func cerateBellView(bellview:UIView,count:String){
         var imageViewWithCount: UIView!
         var countLabel: UILabel!
-
-
-
+        
+        
+        
         // Create the image view
         let imageView = UIImageView(image: UIImage(named: "bells"))
         imageView.contentMode = .center
@@ -50,27 +50,27 @@ extension UIViewController {
         countLabel.layer.cornerRadius = 9
         countLabel.clipsToBounds = true
         countLabel.text = count
-
+        
         imageViewWithCount = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
         imageViewWithCount.addSubview(imageView)
         imageViewWithCount.addSubview(countLabel)
-
+        
         imageViewWithCount.center = CGPoint(x: bellview.frame.size.width/2, y: bellview.frame.size.height/2)
         let myButton = UIButton()
         myButton.setTitle(" ".localized(), for: .normal)
         myButton.setTitleColor(.blue, for: .normal)
         myButton.frame = CGRect(x: 0, y: 0, width: 100, height: 50)
         self.view.addSubview(myButton)
-
+        
         myButton.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
-
-       
-
+        
+        
+        
         bellview.addSubview(imageViewWithCount)
         bellview.addSubview(myButton)
-
-
-
+        
+        
+        
     }
     
     func seassionExpired(msg:String){
@@ -78,22 +78,22 @@ extension UIViewController {
         
         let action = CDAlertViewAction(title: "Cancel".localized(), font: UIFont.systemFont(ofSize: 17), textColor: UIColor.red, backgroundColor: UIColor.white, handler: { action in
             
-//            rest cash token cause it is expired
+            //            rest cash token cause it is expired
             Helper.shared.saveToken(auth: "")
             Helper.shared.saveUserId(id: 0)
             Helper.shared.SaveSeassionId(seassionId: "")
-
-                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                               appDelegate.notLogin()
-                return true
-            })
-
-
-            alert.add(action: action)
+            
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.notLogin()
+            return true
+        })
+        
+        
+        alert.add(action: action)
         
         alert.show()
-            
-
+        
+        
         
         
         
@@ -103,7 +103,7 @@ extension UIViewController {
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "NotfictionVC") as! NotfictionVC
         vc.modalPresentationStyle = .fullScreen
-  
+        
         self.present(vc, animated: true)
     }
     func addGradientForBtn(btn: UIButton, sizeForBtn: Int, height: Int) {
@@ -113,7 +113,7 @@ extension UIViewController {
         let color2 = UIColor(red: 0/255, green: 128/255, blue: 0/255, alpha: 1)
         
         let gradient: CAGradientLayer = CAGradientLayer()
-
+        
         gradient.colors = [color1.cgColor, color2.cgColor]
         gradient.frame.size = btn.frame.size
         gradient.locations = [0.0, 1.0]
@@ -134,9 +134,9 @@ extension UIViewController {
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = color
             appearance.titleTextAttributes = [.font:
-            UIFont.boldSystemFont(ofSize: 20.0),
-                                          .foregroundColor: UIColor.white]
-
+                                                UIFont.boldSystemFont(ofSize: 20.0),
+                                              .foregroundColor: UIColor.white]
+            
             // Customizing our navigation bar
             navigationController?.navigationBar.tintColor = .white
             navigationController?.navigationBar.standardAppearance = appearance
@@ -147,8 +147,8 @@ extension UIViewController {
             //navigationController?.navigationBar.barTintColor = .white
             navigationController?.navigationBar.backgroundColor = color
             navigationController?.navigationBar.titleTextAttributes = [.font:
-            UIFont.boldSystemFont(ofSize: 20.0),
-                                          .foregroundColor: UIColor.white]
+                                                                        UIFont.boldSystemFont(ofSize: 20.0),
+                                                                       .foregroundColor: UIColor.white]
         }
     }
     
@@ -156,11 +156,11 @@ extension UIViewController {
         self.setupSideMenu()
         if MOLHLanguage.isRTLLanguage() {
             present(SideMenuManager.default.rightMenuNavigationController!, animated: true, completion: nil)
-
+            
         } else {
             present(SideMenuManager.default.leftMenuNavigationController!, animated: true, completion: nil)
-
-
+            
+            
         }
         
     }
@@ -170,9 +170,9 @@ extension UIViewController {
             appearance.configureWithOpaqueBackground()
             appearance.backgroundColor = .white
             appearance.titleTextAttributes = [.font:
-            UIFont.boldSystemFont(ofSize: 20.0),
-                                          .foregroundColor: UIColor.black]
-
+                                                UIFont.boldSystemFont(ofSize: 20.0),
+                                              .foregroundColor: UIColor.black]
+            
             // Customizing our navigation bar
             navigationController?.navigationBar.tintColor = .black
             navigationController?.navigationBar.standardAppearance = appearance
@@ -182,8 +182,8 @@ extension UIViewController {
             navigationController?.navigationBar.tintColor = .black
             navigationController?.navigationBar.backgroundColor = .white
             navigationController?.navigationBar.titleTextAttributes = [.font:
-            UIFont.boldSystemFont(ofSize: 20.0),
-                                          .foregroundColor: UIColor.black]
+                                                                        UIFont.boldSystemFont(ofSize: 20.0),
+                                                                       .foregroundColor: UIColor.black]
         }
     }
     
@@ -194,41 +194,41 @@ extension UIViewController {
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 1.5, animated: true, completion: {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//            appDelegate.notLogin()
+            //            appDelegate.notLogin()
         })
     }
     
     func showErrorHud(msg: String) {
-//        let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = msg
-//        hud.indicatorView = JGProgressHUDErrorIndicatorView()
-//        hud.show(in: self.view)
-//        hud.dismiss(afterDelay: 1.5)
-//
+        //        let hud = JGProgressHUD(style: .light)
+        //        hud.textLabel.text = msg
+        //        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        //        hud.show(in: self.view)
+        //        hud.dismiss(afterDelay: 1.5)
+        //
         Loaf(msg, state: .error,location: .top, sender: self).show()
-
+        
     }
     
     
     
     func showSuccessHud(msg: String) {
-//        let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = msg
-//        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-//        hud.show(in: self.view)
-//        hud.dismiss(afterDelay: 1.5)
-//        hud.dismiss(afterDelay: 1.5)
-
+        //        let hud = JGProgressHUD(style: .light)
+        //        hud.textLabel.text = msg
+        //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        //        hud.show(in: self.view)
+        //        hud.dismiss(afterDelay: 1.5)
+        //        hud.dismiss(afterDelay: 1.5)
+        
         Loaf(msg, state: .success,location: .top, sender: self).show()
     }
     func showErrorHud(msg: String, hud: JGProgressHUD) {
-//        hud.indicatorView = JGProgressHUDErrorIndicatorView()
-//        hud.textLabel.text = msg
-//        hud.dismiss(afterDelay: 1.5)
+        //        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        //        hud.textLabel.text = msg
+        //        hud.dismiss(afterDelay: 1.5)
         hud.dismiss(afterDelay: 1.5)
-
+        
         Loaf(msg, state: .error,location: .top, sender: self).show()
-
+        
         
     }
     @IBAction func notfication(_ sender: Any) {
@@ -237,7 +237,7 @@ extension UIViewController {
         
         let vc = storyBoard.instantiateViewController(withIdentifier: "NotfictionVC") as! NotfictionVC
         vc.modalPresentationStyle = .fullScreen
-  
+        
         self.present(vc, animated: true)
         
         
@@ -254,14 +254,14 @@ extension UIViewController {
     @IBAction func dismiss(_ sender: Any) {self.dismiss(animated: true)}
     
     @IBAction func setupMenu(_ sender: Any) {self.side_menu()}
-
+    
     
     func showSuccessHud(msg: String, hud: JGProgressHUD) {
-//        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
-//        hud.textLabel.text = msg
-//        hud.dismiss(afterDelay: 1.5)
+        //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        //        hud.textLabel.text = msg
+        //        hud.dismiss(afterDelay: 1.5)
         hud.dismiss(afterDelay: 1.5)
-
+        
         Loaf(msg, state: .success,location: .top, sender: self).show()
     }
     
@@ -276,24 +276,24 @@ extension UIViewController {
     func setupSideMenu() {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let menuController = storyBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
-  
+        
         let MenuNavigationController = SideMenuNavigationController(rootViewController: menuController)
         SideMenuManager.default.rightMenuNavigationController = nil
         SideMenuManager.default.leftMenuNavigationController = nil
         if MOLHLanguage.isRTLLanguage() {
-
+            
             
             SideMenuManager.default.rightMenuNavigationController = MenuNavigationController
             SideMenuManager.default.rightMenuNavigationController?.menuWidth = 250
-
+            
         } else {
             SideMenuManager.default.leftMenuNavigationController = MenuNavigationController
             SideMenuManager.default.leftMenuNavigationController?.menuWidth = 250
-
+            
         }
         
-//        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
-//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navigationController!.navigationBar)
+        //        SideMenuManager.default.addPanGestureToPresent(toView: navigationController!.navigationBar)
+        //        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: navigationController!.navigationBar)
     }
     
     func internetError(hud: JGProgressHUD) {
@@ -310,270 +310,270 @@ extension UIViewController {
     
     func navigationText(title: String) {
         navigationItem.backBarButtonItem = UIBarButtonItem(
-        title: "", style: .plain, target: nil, action: nil)
+            title: "", style: .plain, target: nil, action: nil)
         self.navigationItem.title = title
     }
     
     
     func setupNavBar(title:String){
         var imageViewWithCount: UIView!
-          var countLabel: UILabel!
+        var countLabel: UILabel!
         
         
         self.navColor()
         // Create the image view
-          let imageView = UIImageView(image: UIImage(named: "bells"))
+        let imageView = UIImageView(image: UIImage(named: "bells"))
         imageView.contentMode = .center
         self.view.backgroundColor = .white
-          
-          // Create the count label
-          countLabel = UILabel(frame: CGRect(x: 15, y: -5, width: 20, height: 20))
-          countLabel.textColor = .white
-          countLabel.font = UIFont.boldSystemFont(ofSize: 12)
-          countLabel.textAlignment = .center
-          countLabel.backgroundColor = .red
-          countLabel.layer.cornerRadius = 10
-          countLabel.clipsToBounds = true
-          countLabel.text = "0"
         
-          // Create the container view that combines the image view and count label
-          imageViewWithCount = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
-          imageViewWithCount.addSubview(imageView)
-          imageViewWithCount.addSubview(countLabel)
+        // Create the count label
+        countLabel = UILabel(frame: CGRect(x: 15, y: -5, width: 20, height: 20))
+        countLabel.textColor = .white
+        countLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        countLabel.textAlignment = .center
+        countLabel.backgroundColor = .red
+        countLabel.layer.cornerRadius = 10
+        countLabel.clipsToBounds = true
+        countLabel.text = "0"
+        
+        // Create the container view that combines the image view and count label
+        imageViewWithCount = UIView(frame: CGRect(x: 0, y: 0, width: 30, height: 30))
+        imageViewWithCount.addSubview(imageView)
+        imageViewWithCount.addSubview(countLabel)
         let menu = UIBarButtonItem(image: UIImage(named:  "menus"), style: .plain, target: self, action: #selector(sideMenu))
-
-          // Add the container view to the navigation bar as a custom UIBarButtonItem
-          let imageBarButton = UIBarButtonItem(customView: imageViewWithCount)
-          
+        
+        // Add the container view to the navigation bar as a custom UIBarButtonItem
+        let imageBarButton = UIBarButtonItem(customView: imageViewWithCount)
+        
         
         navigationItem.rightBarButtonItems = [imageBarButton, menu]
         
-
+        
     }
     
     
     @objc func bell() {
         // Handle home button tap
     }
-
+    
     @objc func sideMenu() {
         // Handle message button tap
     }
-
-   
-//
-//    func addToFavourite(item: ItemsModel, completionHandler: @escaping ((Bool) -> Void)) {
-//        let defaults = UserDefaults.standard
-//        let id = defaults.value(forKey: "id") as? String
-//        print("idsss")
-//        print(id)
-//        if id == nil {
-//            let hud = JGProgressHUD(style: .light)
-//            hud.indicatorView = JGProgressHUDErrorIndicatorView()
-//            hud.textLabel.text = "Please login first".localized()
-//            hud.show(in: self.view)
-//            hud.dismiss(afterDelay: 1.5, animated: true, completion: {
-//                let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//                appDelegate.notLogin()
-//            })
-//
-//        } else {
-//            let hud = JGProgressHUD(style: .light)
-//            hud.textLabel.text = "Please Wait".localized()
-//            hud.show(in: self.view)
-//
-//            let favouriteUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.App_Ext + ServerConstants.ADDFAVOURITE_URL)
-//
-//            let favouriteParam: [String: Any] = [
-//                "uid":id!,
-//                "product_id":"\(item.pid!)"
-//                ,
-//                "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
-//            ]
-//
-//            print("favouriteParam")
-//            print(favouriteParam)
-//            AF.request(favouriteUrl!, method: .post, parameters: favouriteParam).response { (response) in
-//                if response.error == nil {
-//                    do {
-//                        let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-//
-//                        if let msg = jsonObj!["msg"] as? [String: Any] {
-//                             let status = msg["status"] as? Int
-//
-//                                if status == 1 {
-//
-//                                    if let message = msg["message"] as? String {
-//                                        DispatchQueue.main.async {
-//                                            self.showSuccessHud(msg: message, hud: hud)
-//                                            completionHandler(true)
-//
-//                                        }
-//
-//                                    }
-//
-//                                } else {
-//                                    if let message = msg["message"] as? String {
-//                                        DispatchQueue.main.async {
-//                                            self.showErrorHud(msg: message, hud: hud)
-//                                            completionHandler(false)
-//
-//                                        }
-//                                    }
-//
-//                            }
-//                        }
-//
-//                    } catch let err as NSError {
-//                        print("Error: \(err)")
-//                        self.serverError(hud: hud)
-//                    }
-//                } else {
-//                    print("Error")
-//                    self.internetError(hud: hud)
-//                }
-//            }
-//        }
-//    }
-//
-
-
-//    func addToCart(itemId: Int, quantity: String,price:Int, completionHandler: @escaping ((Bool) -> Void)) {
-//        let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = "Please Wait".localized()
-//        hud.show(in: self.view)
-//
-//        let defaults = UserDefaults.standard
-//        let id = defaults.value(forKey: "id") as? Int
-//
-//        var addToCartUrl: URL?
-//        var addToCartParam: [String: Any]?
-//
-//
-//            addToCartUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.ADDTOCART_URL)
-//            addToCartParam = [
-//                "uid": String(id!),
-//                "vid": String(itemId),
-//                "quantity": quantity,
-//                "price": price,
-//
-//                "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
-//            ]
-//
-//
-//
-//        AF.request(addToCartUrl!, method: .post, parameters: addToCartParam).response { (response) in
-//            if response.error == nil {
-//                do {
-//                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-//
-//                    if jsonObj != nil {
-//                        if let msg = jsonObj!["msg"] as? [String :Any] {
-//                            if let status = msg["status"] as? Int{
-//
-//
-//
-//                                if status == 1 {
-//                            if let message = msg["message"] as? String{
-//                                self.showSuccessHud(msg: message)
-//
-//                            }
-//                                }else {
-//                                    if let message = msg["message"] as? String{
-//                                        self.showSuccessHud(msg: message)
-//
-//                                    self.showErrorHud(msg: message)
-//                                    }
-//                                }
-//
-//
-//                            }
-//
-//                        }
-//                    }
-//
-//                } catch let err as NSError {
-//                    print("Error: \(err)")
-//                    self.serverError(hud: hud)
-//                }
-//            } else {
-//                print("Error")
-//                self.internetError(hud: hud)
-//            }
-//        }
-//    }
     
- 
- 
-//    func addToCart(itemId: String, quantity: String,price:Double, completionHandler: @escaping ((Bool) -> Void)) {
-//        let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = "Please Wait".localized()
-//        hud.show(in: self.view)
-//
-//        let defaults = UserDefaults.standard
-//        let id = defaults.value(forKey: "id") as? String
-//
-//
-//
-//        var addToCartUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.App_Ext + ServerConstants.ADDTOCART_URL)
-//
-//        let addToCartParam: [String: Any] = [
-//            "uid": id ?? "0",
-//            "vid": String(itemId),
-//            "quantity": quantity,
-//            "price" :price,
-//            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
-//        ]
-//
-//
-//        print("CartParam")
-//        print(addToCartParam)
-//        print(addToCartUrl)
-//
-//        AF.request(addToCartUrl!, method: .post, parameters: addToCartParam).response { (response) in
-//            if response.error == nil {
-//                do {
-//                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-//
-//                    if jsonObj != nil {
-//                        if let msg = jsonObj!["msg"] as? [String:Any] {
-//
-//                            let status = msg["status"] as? Int
-//
-//                            if status == 1 {
-//                                if let message = msg["message"] as? String {
-//                                    DispatchQueue.main.async {
-//                                        completionHandler(true)
-//                                        self.showSuccessHud(msg: message, hud: hud)
-//                                    }
-//                                }
-//                            }else {
-//                                if let message = msg["message"] as? String {
-//                                    DispatchQueue.main.async {
-//                                        completionHandler(false)
-//                                        self.showErrorHud(msg: message, hud: hud)
-//                                    }
-//                                }
-//
-//                            }
-//
-//                        }
-//
-//                    }
-//
-//
-//                } catch let err as NSError {
-//                    print("Error: \(err)")
-//                    self.serverError(hud: hud)
-//                }
-//            } else {
-//                print("Error")
-//                self.internetError(hud: hud)
-//            }
-//        }
-//    }
     
-//
+    //
+    //    func addToFavourite(item: ItemsModel, completionHandler: @escaping ((Bool) -> Void)) {
+    //        let defaults = UserDefaults.standard
+    //        let id = defaults.value(forKey: "id") as? String
+    //        print("idsss")
+    //        print(id)
+    //        if id == nil {
+    //            let hud = JGProgressHUD(style: .light)
+    //            hud.indicatorView = JGProgressHUDErrorIndicatorView()
+    //            hud.textLabel.text = "Please login first".localized()
+    //            hud.show(in: self.view)
+    //            hud.dismiss(afterDelay: 1.5, animated: true, completion: {
+    //                let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    //                appDelegate.notLogin()
+    //            })
+    //
+    //        } else {
+    //            let hud = JGProgressHUD(style: .light)
+    //            hud.textLabel.text = "Please Wait".localized()
+    //            hud.show(in: self.view)
+    //
+    //            let favouriteUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.App_Ext + ServerConstants.ADDFAVOURITE_URL)
+    //
+    //            let favouriteParam: [String: Any] = [
+    //                "uid":id!,
+    //                "product_id":"\(item.pid!)"
+    //                ,
+    //                "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+    //            ]
+    //
+    //            print("favouriteParam")
+    //            print(favouriteParam)
+    //            AF.request(favouriteUrl!, method: .post, parameters: favouriteParam).response { (response) in
+    //                if response.error == nil {
+    //                    do {
+    //                        let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+    //
+    //                        if let msg = jsonObj!["msg"] as? [String: Any] {
+    //                             let status = msg["status"] as? Int
+    //
+    //                                if status == 1 {
+    //
+    //                                    if let message = msg["message"] as? String {
+    //                                        DispatchQueue.main.async {
+    //                                            self.showSuccessHud(msg: message, hud: hud)
+    //                                            completionHandler(true)
+    //
+    //                                        }
+    //
+    //                                    }
+    //
+    //                                } else {
+    //                                    if let message = msg["message"] as? String {
+    //                                        DispatchQueue.main.async {
+    //                                            self.showErrorHud(msg: message, hud: hud)
+    //                                            completionHandler(false)
+    //
+    //                                        }
+    //                                    }
+    //
+    //                            }
+    //                        }
+    //
+    //                    } catch let err as NSError {
+    //                        print("Error: \(err)")
+    //                        self.serverError(hud: hud)
+    //                    }
+    //                } else {
+    //                    print("Error")
+    //                    self.internetError(hud: hud)
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    
+    
+    //    func addToCart(itemId: Int, quantity: String,price:Int, completionHandler: @escaping ((Bool) -> Void)) {
+    //        let hud = JGProgressHUD(style: .light)
+    //        hud.textLabel.text = "Please Wait".localized()
+    //        hud.show(in: self.view)
+    //
+    //        let defaults = UserDefaults.standard
+    //        let id = defaults.value(forKey: "id") as? Int
+    //
+    //        var addToCartUrl: URL?
+    //        var addToCartParam: [String: Any]?
+    //
+    //
+    //            addToCartUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.ADDTOCART_URL)
+    //            addToCartParam = [
+    //                "uid": String(id!),
+    //                "vid": String(itemId),
+    //                "quantity": quantity,
+    //                "price": price,
+    //
+    //                "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+    //            ]
+    //
+    //
+    //
+    //        AF.request(addToCartUrl!, method: .post, parameters: addToCartParam).response { (response) in
+    //            if response.error == nil {
+    //                do {
+    //                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+    //
+    //                    if jsonObj != nil {
+    //                        if let msg = jsonObj!["msg"] as? [String :Any] {
+    //                            if let status = msg["status"] as? Int{
+    //
+    //
+    //
+    //                                if status == 1 {
+    //                            if let message = msg["message"] as? String{
+    //                                self.showSuccessHud(msg: message)
+    //
+    //                            }
+    //                                }else {
+    //                                    if let message = msg["message"] as? String{
+    //                                        self.showSuccessHud(msg: message)
+    //
+    //                                    self.showErrorHud(msg: message)
+    //                                    }
+    //                                }
+    //
+    //
+    //                            }
+    //
+    //                        }
+    //                    }
+    //
+    //                } catch let err as NSError {
+    //                    print("Error: \(err)")
+    //                    self.serverError(hud: hud)
+    //                }
+    //            } else {
+    //                print("Error")
+    //                self.internetError(hud: hud)
+    //            }
+    //        }
+    //    }
+    
+    
+    
+    //    func addToCart(itemId: String, quantity: String,price:Double, completionHandler: @escaping ((Bool) -> Void)) {
+    //        let hud = JGProgressHUD(style: .light)
+    //        hud.textLabel.text = "Please Wait".localized()
+    //        hud.show(in: self.view)
+    //
+    //        let defaults = UserDefaults.standard
+    //        let id = defaults.value(forKey: "id") as? String
+    //
+    //
+    //
+    //        var addToCartUrl = URL(string: ServerConstants.BASE_URL + ServerConstants.App_Ext + ServerConstants.ADDTOCART_URL)
+    //
+    //        let addToCartParam: [String: Any] = [
+    //            "uid": id ?? "0",
+    //            "vid": String(itemId),
+    //            "quantity": quantity,
+    //            "price" :price,
+    //            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+    //        ]
+    //
+    //
+    //        print("CartParam")
+    //        print(addToCartParam)
+    //        print(addToCartUrl)
+    //
+    //        AF.request(addToCartUrl!, method: .post, parameters: addToCartParam).response { (response) in
+    //            if response.error == nil {
+    //                do {
+    //                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+    //
+    //                    if jsonObj != nil {
+    //                        if let msg = jsonObj!["msg"] as? [String:Any] {
+    //
+    //                            let status = msg["status"] as? Int
+    //
+    //                            if status == 1 {
+    //                                if let message = msg["message"] as? String {
+    //                                    DispatchQueue.main.async {
+    //                                        completionHandler(true)
+    //                                        self.showSuccessHud(msg: message, hud: hud)
+    //                                    }
+    //                                }
+    //                            }else {
+    //                                if let message = msg["message"] as? String {
+    //                                    DispatchQueue.main.async {
+    //                                        completionHandler(false)
+    //                                        self.showErrorHud(msg: message, hud: hud)
+    //                                    }
+    //                                }
+    //
+    //                            }
+    //
+    //                        }
+    //
+    //                    }
+    //
+    //
+    //                } catch let err as NSError {
+    //                    print("Error: \(err)")
+    //                    self.serverError(hud: hud)
+    //                }
+    //            } else {
+    //                print("Error")
+    //                self.internetError(hud: hud)
+    //            }
+    //        }
+    //    }
+    
+    //
     
     
     func convertDateAndTimeToArabicNumbers(dateString: String) -> String? {
@@ -591,30 +591,58 @@ extension UIViewController {
         return dateFormatter.string(from: date)
     }
     
-    func convertDateToArabicNumbers(dateString: String) -> String? {
+    func convertDocDate(dateString: String) -> String? {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss" 
+        dateFormatter.dateFormat = "yyyy-dd-MM HH:mm:ss"
         
         guard let date = dateFormatter.date(from: dateString) else {
             return nil
         }
         
-        if MOLHLanguage.isRTLLanguage() {
-            let arabicLocale = Locale(identifier: "ar")
-            dateFormatter.locale = arabicLocale
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
-            
-        }
-        
-        else {
-            let englishLocale = Locale(identifier: "en")
-            dateFormatter.locale = englishLocale
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
-        }
+        //        if MOLHLanguage.isRTLLanguage() {
+        //            let arabicLocale = Locale(identifier: "ar")
+        //            dateFormatter.locale = arabicLocale
+        //            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+        //
+        //        }
+        //
+        //        else {
+        let englishLocale = Locale(identifier: "en")
+        dateFormatter.locale = englishLocale
+        dateFormatter.setLocalizedDateFormatFromTemplate("MM-dd-yyyy")
+        //        }
         
         return dateFormatter.string(from: date)
     }
-
+    
+    
+    
+    
+    
+    func convertDateToArabicNumbers(dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-dd-MM HH:mm:ss"
+        
+        guard let date = dateFormatter.date(from: dateString) else {
+            return nil
+        }
+        
+        //        if MOLHLanguage.isRTLLanguage() {
+        //            let arabicLocale = Locale(identifier: "ar")
+        //            dateFormatter.locale = arabicLocale
+        //            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+        //
+        //        }
+        //
+        //        else {
+        let englishLocale = Locale(identifier: "en")
+        dateFormatter.locale = englishLocale
+        dateFormatter.setLocalizedDateFormatFromTemplate("MM-dd-yyyy")
+        //        }
+        
+        return dateFormatter.string(from: date)
+    }
+    
     func convertTimeToArabicNumbers(timeString: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -628,22 +656,22 @@ extension UIViewController {
         timeFormatter.locale = arabicLocale
         timeFormatter.dateStyle = .none
         timeFormatter.timeStyle = .medium
-
-
+        
+        
         timeFormatter.setLocalizedDateFormatFromTemplate("HH:mm:ss") // Set the output time format
         
         return timeFormatter.string(from: date)
     }
     
-
     
     
-    func convertIntToArabicNumbers(intString: String) -> String? {
+    
+    func digitNumber(intString: String) -> String? {
         
         let numberFormatter = NumberFormatter()
         
         if MOLHLanguage.isRTLLanguage() {
-            numberFormatter.locale = Locale(identifier: "ar") // Set the Arabic locale
+            numberFormatter.locale = Locale(identifier: "en") // Set the Arabic locale
             guard let number = numberFormatter.number(from: intString) else {
                 return nil
             }
@@ -663,43 +691,82 @@ extension UIViewController {
     }
     
     
-    func doubleToArabic(value: String) -> String {
+    func numFormat(value: Double) -> String {
+        let formatter = NumberFormatter()
         
-        if MOLHLanguage.isRTLLanguage() {
-            let arabicNumerals: [Character: Character] = [
-                "0": "٠",
-                "1": "١",
-                "2": "٢",
-                "3": "٣",
-                "4": "٤",
-                "5": "٥",
-                "6": "٦",
-                "7": "٧",
-                "8": "٨",
-                "9": "٩",
-                ".": "."
-            ]
-            
-            let strValue = String(value)
-            var arabicValue = ""
-            
-            for char in strValue {
-                let arabicChar = arabicNumerals[char] ?? char
-                arabicValue.append(arabicChar)
-            }
-            
-            return arabicValue
-            
+        formatter.locale = Locale(identifier: "en") // Set the Arabic locale
+
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        // Format the number with commas and decimal places
+        guard let formattedNumber = formatter.string(from: NSNumber(value: value)) else {
+            // Assign the formatted number to the label
+            return ""
         }
         
-        else {
-            return value
+        return formattedNumber
+    }
+    
+    
+    
+    func numStringFormat(value: String) -> String {
+        let formatter = NumberFormatter()
+        
+        formatter.locale = Locale(identifier: "en") // Set the desired locale
+        
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        
+        if let number = formatter.number(from: value) {
+            return formatter.string(from: number) ?? ""
+        }
+        
+        return ""
+    }
+
+    
+    
+        func doubleToArabic(value: String) -> String {
+            
+            if MOLHLanguage.isRTLLanguage() {
+                let arabicNumerals: [Character: Character] = [
+                    "0": "٠",
+                    "1": "١",
+                    "2": "٢",
+                    "3": "٣",
+                    "4": "٤",
+                    "5": "٥",
+                    "6": "٦",
+                    "7": "٧",
+                    "8": "٨",
+                    "9": "٩",
+                    ".": "."
+                ]
+                
+                let strValue = String(value)
+                var arabicValue = ""
+                
+                for char in strValue {
+                    let arabicChar = arabicNumerals[char] ?? char
+                    arabicValue.append(arabicChar)
+                }
+                
+                return arabicValue
+                
+            }
+            
+            else {
+                return value
+            }
+            
         }
         
     }
-
-
-}
+        
+    
 
 
 

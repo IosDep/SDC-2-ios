@@ -266,7 +266,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             
             let data  = lastTransarr[indexPath.row]
             
-            cell?.firstlbl.text =  self.convertIntToArabicNumbers(intString: data.Security_Id ?? "")
+            cell?.firstlbl.text =   data.Security_Id ?? ""
             
             cell?.secondlbl.text = data.Security_Name
             

@@ -6,12 +6,14 @@
 //
 
 import Foundation
-class InvestoreOwnerShape{
-    
-    
-    
 
-    var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value , Security_Sector  : String?
+struct InvestoreOwnerShapeHolder {
+    var title: String?
+    var array: [InvestoreOwnerShape]?
+}
+class InvestoreOwnerShape{
+ 
+    var clientNo, securityID, securityIsin, Security_Reuter_Code,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Security_Sector_Desc, Nominal_Value , Security_Sector , Trade_Currency, closePrice : String?
     var  MarketValue : Double?
 
     init(data: [String: Any]) {
@@ -88,6 +90,19 @@ class InvestoreOwnerShape{
         if let Security_Sector = data["Security_Sector"] as? String {
             self.Security_Sector = Security_Sector
         }
+        
+        // Trade_Currency
+        
+        if let Trade_Currency = data["Trade_Currency"] as? String {
+            self.Trade_Currency = Trade_Currency
+        }
+        
+        // closePrice
+        if let closePrice = data["closePrice"] as? String {
+            self.closePrice = closePrice
+        }
+        
+        
     }
     
     
@@ -95,5 +110,4 @@ class InvestoreOwnerShape{
 
 class PartialData {
     var  MarketValue : String?
-
 }

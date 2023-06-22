@@ -10,6 +10,8 @@ import UIKit
 class NatPickerCell: UITableViewCell {
     
     
+    @IBOutlet weak var investorNum: UILabel!
+    
     @IBOutlet weak var name: UILabel!
     
     @IBOutlet weak var nationality: UILabel!

@@ -127,7 +127,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 //
 //        else {
             cell?.literalName.text = securityOwnership[indexPath.row].Security_Name
-        cell?.literalNum.text = self.convertIntToArabicNumbers(intString: securityOwnership[indexPath.row].Security_Id ?? "")
+        cell?.literalNum.text =  securityOwnership[indexPath.row].Security_Id ?? ""
         
         cell?.sector.text =  securityOwnership[indexPath.row].Security_Sector_Desc ?? ""
         

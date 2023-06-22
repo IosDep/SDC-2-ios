@@ -83,8 +83,8 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let data = accountList[indexPath.row]
         cell?.memberName.text = data.Member_Name
-        cell?.memberNum.text = self.convertIntToArabicNumbers(intString: data.Member_No ?? "")
-        cell?.accountNum.text = self.convertIntToArabicNumbers(intString: data.Account_No ?? "")
+        cell?.memberNum.text =  data.Member_No ?? ""
+        cell?.accountNum.text =  data.Account_No ?? ""
         cell?.accountName.text = data.accountTypeDesc
         
         

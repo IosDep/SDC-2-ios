@@ -41,7 +41,7 @@ class CardThereVc: UIViewController {
         mainStack.isLayoutMarginsRelativeArrangement = true
         
         
-        transactionNumber.text =  self.convertIntToArabicNumbers(intString: trans?.Trans_No ?? "")
+        transactionNumber.text =   trans?.Trans_No ?? ""
         
         
         
@@ -66,19 +66,19 @@ class CardThereVc: UIViewController {
         
         securityName.text = trans?.Security_Name ?? ""
         
-        memberNumber.text = self.convertIntToArabicNumbers(intString: trans?.Member_No ?? "")
+        memberNumber.text =  trans?.Member_No ?? ""
         
         memberName.text = trans?.Member_Name ?? ""
         
-        accountID.text = self.convertIntToArabicNumbers(intString: trans?.Account_No ?? "")
+        accountID.text =  trans?.Account_No ?? ""
         
-        accountType.text = self.convertIntToArabicNumbers(intString: trans?.Account_Type ?? "")
+        accountType.text =  trans?.Account_Type ?? ""
         
-        clientNumber.text = self.convertIntToArabicNumbers(intString: trans?.Client_No ?? "")
+        clientNumber.text =  trans?.Client_No ?? ""
         
         descriptionI.text = trans?.Trans_Maj_Code_Desc ?? ""
         exactDescription.text = trans?.Trans_Min_Code_Desc ?? ""
-        quantity.text = self.convertIntToArabicNumbers(intString: trans?.Quantity ?? "")
+        quantity.text =  trans?.Quantity ?? ""
         
         price.text = self.doubleToArabic(value: trans?.Price ?? "")
         
@@ -88,7 +88,7 @@ class CardThereVc: UIViewController {
         postDate.text =
         self.convertDateToArabicNumbers(dateString:         trans?.Post_Date ?? "")
         
-        transID.text = self.convertIntToArabicNumbers(intString: trans?.Rel_Trans_No ?? "")
+        transID.text =  trans?.Rel_Trans_No ?? ""
 
         self.cerateBellView(bellview: bellView, count: "12")
         

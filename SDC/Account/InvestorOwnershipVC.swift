@@ -10,10 +10,13 @@ import Alamofire
 import JGProgressHUD
 import MOLH
 
-class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate , InvestorOwnershipDelegate {
+class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate , InvestorOwnershipDelegate , SelectedNatDelegate {
+   
+    @IBOutlet weak var totalValueStack: UIStackView!
     
+    @IBOutlet weak var currencyBtn: UIButton!
     
-    
+    @IBOutlet weak var totalValue: UILabel!
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var busnissCard: UITableView!
@@ -26,11 +29,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
     var withZeroFlag : String?
-    var seatrching = false
+    var isSearching = false
+    var data, filteredData , dolarData , dolarFilteredData: [InvestoreOwnerShapeHolder]?
     var invOwnership = [InvestoreOwnerShape]()
     var invAccount = [InvestoreOwnerShape]()
     var arr_search = [InvestoreOwnerShape]()
-    
+    var dinarArray = [InvestoreOwnerShape]()
+    var dolarArray = [InvestoreOwnerShape]()
     var bankArray = [InvestoreOwnerShape]()
     var servicesArray = [InvestoreOwnerShape]()
     var insuaranceArray = [InvestoreOwnerShape]()
@@ -40,15 +45,27 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var filteredServicesArray = [InvestoreOwnerShape]()
     var filteredInsuaranceArray = [InvestoreOwnerShape]()
     var filteredIndustryArray = [InvestoreOwnerShape]()
-    
+    var options : [String] = []
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
     var checkSideMenu = false
-    
-    
+    var totalDolar : Double?
+    var totalDinar : Double?
+    var currencyFlag : String?
     // 3 services  4 industry
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.makeShadow(mainView: totalValueStack)
+//        self.makeShadow(mainView: cell!.contentView)
+//        cell?.mainCardView.layer.cornerRadius = 10
+//        cell?.mainCardView.clipsToBounds = true
+//        cell?.mainCardView.layer.borderWidth = 0
+//        cell?.mainCardView.layer.shadowColor = UIColor.black.cgColor
+//        cell?.mainCardView.layer.shadowOffset = CGSize(width: 0, height: 0)
+//        cell?.mainCardView.layer.shadowRadius = 5
+//        cell?.mainCardView.layer.shadowOpacity = 0.2
+//        cell?.mainCardView.layer.masksToBounds = false        self.currencyFlag = "1"
+        
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
         if checkSideMenu == true {
@@ -57,16 +74,14 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             sideMenuBtn.isEnabled = false
         }
         
-        isZeroSelected = true
-        isWithoutSelected = false
+        isWithoutSelected = true
+        isZeroSelected = false
         withZeroFlag = "1"
         highlightedButtons()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
-        
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
-        
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
         
         busnissCard.register(UINib(nibName: "SectionNameView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "SectionNameView")
@@ -112,8 +127,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     }
     
     @IBAction func searchPressed(_ sender: Any) {
-        self.seatrching = true
-        seatrching = false
+        self.isSearching = true
+        isSearching = false
         didPullToRefresh()
         busnissCard.reloadData()
     }
@@ -121,18 +136,14 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
-        seatrching = false
+        isSearching = false
         self.arr_search.removeAll()
         self.busnissCard.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
-        
-        
-        
     }
-    
     
     
     //    refresh action
@@ -149,71 +160,164 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
             self.busnissCard.reloadData()
         }
-        
-        
-        
+      
     }
     
     
+    @IBAction func currencyPressed(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CurrencyPicker") as! CurrencyPicker
+        vc.selectedNatDelegate = self
+        self.present(vc, animated: true)
+        
+    }
+    
+    func getSelectdPicker(selectdTxt: String, flag: String) {
+        currencyBtn.setTitle(selectdTxt, for: .normal)
+        if flag == "1" {
+            totalValue.text = self.numFormat(value: totalDinar ?? 0.0)
+            self.currencyFlag = "1"
+        }
+        else if flag == "22"{
+            totalValue.text = self.numFormat(value: totalDolar ?? 0.0)
+            self.currencyFlag = "22"
+        }
+        
+        DispatchQueue.main.async {
+            self.busnissCard.reloadData()
+
+        }
+    }
+    
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        
+        
+        if !isSearching {
+            
+            if currencyFlag == "1" {
+                if let data {
+                    let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                }
+            }
+            
+            else if currencyFlag == "22" {
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                }
+                
+            }
+            
+            
+            
+            
+            
+        }
+        
+        
+        
+        else {
+            
+            if currencyFlag == "1" {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                }
+                
+                
+            }
+            
+            else if currencyFlag == "22" {
+                if let dolarFilteredData {
+                    let newData = dolarFilteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                }
+            }
+        
+        }
+        
+        return 0
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        if seatrching == true {
-            switch section {
-            case 0:
-                return filterdBankArray.count
-            case 1:
-                return filteredInsuaranceArray.count
-            case 2:
-                return filteredServicesArray.count
-            case 3:
-                return filteredIndustryArray.count
-            default:
-                print("default")
-                return 0
+        if isSearching {
+            
+            if currencyFlag == "1" {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
             }
-        }
-        
-        else {
-            switch section {
-            case 0:
-                return bankArray.count
-            case 1:
-                return insuaranceArray.count
-            case 2:
-                return servicesArray.count
-            case 3:
-                return industryArray.count
-            default:
-                print("default")
-                return 0
+            
+            else if currencyFlag == "22" {
+                if let dolarFilteredData {
+                    let newData = dolarFilteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
             }
         }
        
         
+        else {
+            if currencyFlag == "1" {
+                if let data {
+                    let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
+            }
+            
+            else if currencyFlag == "22"{
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
+            }
+        }
+        
+        return 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = busnissCard.dequeueReusableHeaderFooterView(withIdentifier: "SectionNameView") as! SectionNameView
-        switch section{
-        case 0:
-            headerView.sectionName.text = "Banks".localized()
-        case 1:
-            headerView.sectionName.text = "Insuarance".localized()
-        case 2:
-            headerView.sectionName.text = "Services".localized()
-        case 3:
-            headerView.sectionName.text = "Industry".localized()
+        if !isSearching {
             
-        default:
-            print("default")
+            if currencyFlag == "1" {
+                if let data {
+                    let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            }
+            
+            else {
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            }
+            
         }
         
+        else {
+            if currencyFlag == "1" {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            }
+            
+            else if currencyFlag == "22" {
+                if let dolarFilteredData {
+                    let newData = dolarFilteredData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            }
+            
+        }
         return headerView
     }
     
@@ -223,166 +327,158 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
-                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
-                vc.modalPresentationStyle = .fullScreen
         
-        if indexPath.section == 0 {
-            vc.invOwnership = self.bankArray[indexPath.row]
-        }
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
+        vc.modalPresentationStyle = .fullScreen
         
-        else if indexPath.section == 1 {
-            vc.invOwnership = self.insuaranceArray[indexPath.row]
-        }
-        
-        else if indexPath.section == 2 {
-            vc.invOwnership = self.servicesArray[indexPath.row]
-        }
-        
-        else if indexPath.section == 3 {
-            vc.invOwnership = self.industryArray[indexPath.row]
-        }
-            self.present(vc, animated: true)
-        
-    }
-    
-    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-    //        return 500
-    //
-    //    }
-    
-    
-    
-    
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
-        cell?.addtionalStack.isHidden = false
-        cell?.mainCardView.layer.cornerRadius =  25
-        if seatrching == true {
-            if indexPath.section == 0 {
-                cell?.literalName.text = filterdBankArray[indexPath.row].Security_Name ?? ""
-                
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filterdBankArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = filterdBankArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: filterdBankArray[indexPath.row].Security_Close_Price ?? "")
+        if !isSearching {
+            if currencyFlag == "1" {
+                if let data {
+                    let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                    vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
             }
             
-            else if indexPath.section == 1 {
-                cell?.literalName.text = filteredInsuaranceArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredInsuaranceArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = filteredInsuaranceArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: filteredInsuaranceArray[indexPath.row].Security_Close_Price ?? "")
+            else {
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
             }
-            
-            else if indexPath.section == 2 {
-                cell?.literalName.text = filteredServicesArray[indexPath.row].Security_Name ?? ""
-                
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredServicesArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = filteredServicesArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: filteredServicesArray[indexPath.row].Security_Close_Price ?? "")
-                
-            }
-            else if indexPath.section == 3 {
-                cell?.literalName.text = filteredIndustryArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: filteredIndustryArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = filteredIndustryArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = self.doubleToArabic(value: filteredIndustryArray[indexPath.row].Security_Close_Price ?? "")
-            }
-            
-            
-            
         }
+        
         
         else {
             
-            if indexPath.section == 0 {
-                cell?.literalName.text = bankArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: bankArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = bankArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: bankArray[indexPath.row].Security_Close_Price ?? "")
-            }
-            
-            else if indexPath.section == 1 {
-                cell?.literalName.text = insuaranceArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: insuaranceArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = insuaranceArray[indexPath.row].Security_Sector_Desc ?? ""
-                cell?.balance.text = self.doubleToArabic(value: insuaranceArray[indexPath.row].Security_Close_Price ?? "")
+            if currencyFlag == "1" {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
                 
             }
             
-            else if indexPath.section == 2 {
-                cell?.literalName.text = servicesArray[indexPath.row].Security_Name ?? ""
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: servicesArray[indexPath.row].securityID  ?? "")
+            
+            else if currencyFlag == "22" {
+                if let dolarFilteredData {
+                    let newData = dolarFilteredData.filter({!($0.array?.isEmpty ?? true)})
+                    vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
                 
-                cell?.sector.text = servicesArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: servicesArray[indexPath.row].Security_Close_Price ?? "")
+            }
+           
+        }
+        self.present(vc, animated: true)
+        
+    }
+    
+   
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
+        cell?.addtionalStack.isHidden = false
+        cell?.mainCardView.layer.cornerRadius =  25
+        
+        
+        if isSearching  {
+            
+            if currencyFlag == "1" {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].securityIsin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
             }
             
-            else if indexPath.section == 3 {
-                cell?.literalName.text = industryArray[indexPath.row].Security_Name ?? ""
-                
-                cell?.literalNum.text = self.convertIntToArabicNumbers(intString: industryArray[indexPath.row].securityID  ?? "")
-                
-                cell?.sector.text = industryArray[indexPath.row].Security_Sector_Desc ?? ""
-                
-                cell?.balance.text = self.doubleToArabic(value: industryArray[indexPath.row].Security_Close_Price ?? "")
+            else if currencyFlag == "22" {
+                if let dolarFilteredData {
+                    let newData = dolarFilteredData.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].securityIsin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
             }
             
         }
         
         
         
-//        if seatrching == true {
-//
-//                    switch  indexPath.section {
-//                    case 0:
-//                        cell?.invAccount = filterdBankArray
-//                    case 1:
-//                        cell?.invAccount = insuaranceArray
-//                    case 2:
-//                        cell?.invAccount = servicesArray
-//                    case 3:
-//                        cell?.invAccount = industryArray
-//                    default:
-//                        print("defaulttt")
-//                    }
-//
-//                }
-//
-//                else {
-//
-//                    switch indexPath.section {
-//
-//                    case 0:                            cell?.invAccount = bankArray
-//
-//                    case 1:                            cell?.invAccount = insuaranceArray
-//
-//                    case 2:                            cell?.invAccount = servicesArray
-//
-//                    case 3 :
-//                        cell?.invAccount = industryArray
-//
-//                    default:
-//                        print("defaulttt")
-//                    }
-//
-//                }
-//        cell?.investorOwnershipDelegate = self
-        return cell!
+        else {
+            if currencyFlag == "1" {
+                if let data {
+                    let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].securityIsin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
 
+            }
+            
+            else if currencyFlag == "22" {
+                
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].securityIsin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
+        }
+            
+        }
+        
+        
+        
+        //        if seatrching == true {
+        //
+        //                    switch  indexPath.section {
+        //                    case 0:
+        //                        cell?.invAccount = filterdBankArray
+        //                    case 1:
+        //                        cell?.invAccount = insuaranceArray
+        //                    case 2:
+        //                        cell?.invAccount = servicesArray
+        //                    case 3:
+        //                        cell?.invAccount = industryArray
+        //                    default:
+        //                        print("defaulttt")
+        //                    }
+        //
+        //                }
+        //
+        //                else {
+        //
+        //                    switch indexPath.section {
+        //
+        //                    case 0:                            cell?.invAccount = bankArray
+        //
+        //                    case 1:                            cell?.invAccount = insuaranceArray
+        //
+        //                    case 2:                            cell?.invAccount = servicesArray
+        //
+        //                    case 3 :
+        //                        cell?.invAccount = industryArray
+        //
+        //                    default:
+        //                        print("defaulttt")
+        //                    }
+        //
+        //                }
+        //        cell?.investorOwnershipDelegate = self
+        return cell!
+        
         
     }
     
@@ -390,62 +486,99 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     // delegate when pressed on card inside cell
     
     func cardSelected(invAccount: InvestoreOwnerShape) {
-                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
-                vc.modalPresentationStyle = .fullScreen
-                vc.invOwnership = invAccount
-                self.present(vc, animated: true)
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CardTwoVc") as! CardTwoVc
+        vc.modalPresentationStyle = .fullScreen
+        vc.invOwnership = invAccount
+        self.present(vc, animated: true)
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if MOLHLanguage.isArabic(){
-            
-//            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            
-            self.filterdBankArray = self.bankArray.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            
-            self.filteredInsuaranceArray = self.insuaranceArray.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            
-            self.filteredServicesArray = self.servicesArray.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            
-            self.filteredIndustryArray = self.industryArray.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            
-            
-            self.seatrching = true
-            
-//             self.filteredIndustryArray = self.arr_search.filter({($0 .Security_Sector)! == "4"})
-//
-//             self.filteredServicesArray = self.arr_search.filter({($0 .Security_Sector)! == "3"})
-//
-//            self.filteredInsuaranceArray = self.invAccount.filter({($0 .Security_Sector)! == "2"})
-//
-//             self.filterdBankArray = self.arr_search.filter({($0 .Security_Sector)! == "1"})
-            
+        
+        if searchText == "" {
+            isSearching = false
+            filteredData = []
+            dolarFilteredData = []
             self.busnissCard.reloadData()
+            return
+        }
+//        if MOLHLanguage.isArabic(){
             
+            //            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+            filteredData = []
+            dolarFilteredData = []
+        if currencyFlag == "1" {
             
-        } else {
-            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
-            self.seatrching = true
-            
-            self.filteredIndustryArray = self.arr_search.filter({($0 .Security_Sector)! == "4"})
-            
-            self.filteredServicesArray = self.arr_search.filter({($0 .Security_Sector)! == "3"})
-            
-            self.filteredInsuaranceArray = self.arr_search.filter({($0 .Security_Sector)! == "2"})
-            
-            self.filterdBankArray = self.arr_search.filter({($0 .Security_Sector)! == "1"})
-            
-            
-            self.busnissCard.reloadData()
+            if let data {
+                let newData = data.filter({!($0.array?.isEmpty ?? true)})
+                for item in newData {
+                    var itemsArray: [InvestoreOwnerShape]? = []
+                    if let itemArray = item.array {
+                        for innerItem in itemArray{
+                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false {
+                                itemsArray?.append(innerItem)
+                            }
+                        }
+                    }
+                    filteredData?.append(InvestoreOwnerShapeHolder(title: item.title, array: itemsArray))
+                }
+            }
+
             
         }
+        
+        else if currencyFlag == "22" {
+            if let dolarData {
+                let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                for item in newData {
+                    var itemsArray: [InvestoreOwnerShape]? = []
+                    if let itemArray = item.array {
+                        for innerItem in itemArray{
+                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false {
+                                itemsArray?.append(innerItem)
+                            }
+                        }
+                    }
+                    dolarFilteredData?.append(InvestoreOwnerShapeHolder(title: item.title, array: itemsArray))
+                }
+            }
+
+        }
+        
+            
+        
+            self.isSearching = true
+            self.busnissCard.reloadData()
+        
+        
+        
+        
+            
+            
+//        } else {
+//            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+//            self.isSearching = true
+//
+//            self.filteredIndustryArray = self.arr_search.filter({($0 .Security_Sector)! == "4"})
+//
+//            self.filteredServicesArray = self.arr_search.filter({($0 .Security_Sector)! == "3"})
+//
+//            self.filteredInsuaranceArray = self.arr_search.filter({($0 .Security_Sector)! == "2"})
+//
+//            self.filterdBankArray = self.arr_search.filter({($0 .Security_Sector)! == "1"})
+//
+//
+//            self.busnissCard.reloadData()
+//
+//        }
     }
 
     
 //    search
     func cancelbtn (search:UISearchBar){
-        self.seatrching = false
+        self.isSearching = false
+        filteredData = []
+        dolarFilteredData = []
         search_bar.text = ""
         view.endEditing(true)
         busnissCard.reloadData()
@@ -458,7 +591,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         // with zeros
         
         if isZeroSelected == true && isWithoutSelected == false {
-            self.withZeroFlag = "1"
+            self.withZeroFlag = "2"
             DispatchQueue.main.async{
          
             self.withZero.setTitleColor(.white, for: .normal)
@@ -466,7 +599,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             self.withZero.backgroundColor  =
                 UIColor(named: "AccentColor")
                 self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-            self.withoutZero.backgroundColor  = .systemGray6
+            self.withoutZero.backgroundColor  = .white
 //            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
@@ -481,12 +614,14 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         // without zeros
         
         else if isZeroSelected == false && isWithoutSelected == true {
+            self.withZeroFlag = "1"
+
             DispatchQueue.main.async {
                 self.withoutZero.setTitleColor(.white, for: .normal)
                 self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
                 
                 self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-                self.withZero.backgroundColor  = .systemGray6
+                self.withZero.backgroundColor  = .white
 //                self.withZero.cornerRadius = 12
                 self.withZero.borderColor =  UIColor(named: "AccentColor")
                 self.withZero.borderWidth = 1
@@ -505,7 +640,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         servicesArray.removeAll()
         industryArray.removeAll()
         busnissCard.reloadData()
-            withZeroFlag = "1"
+            withZeroFlag = "2"
             isZeroSelected = true
             isWithoutSelected = false
             highlightedButtons()
@@ -519,7 +654,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         servicesArray.removeAll()
         industryArray.removeAll()
         busnissCard.reloadData()
-        withZeroFlag = "0"
+        withZeroFlag = "1"
         isWithoutSelected = true
         isZeroSelected = false
         highlightedButtons()
@@ -542,7 +677,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 
     
      
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": "en" ,
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" ,
                                     "with_zero" : withZero
  ]
      
@@ -558,70 +693,107 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
-                                            for item in data {
-                                                let model = InvestoreOwnerShape(data: item)
-                                                self.invAccount.append(model)
-                                                
-                                                
-                                                
-                                 
-                                            }
+                                    for item in data {
+                                        let model = InvestoreOwnerShape(data: item)
+                                        
+                                
+                                        self.invAccount.append(model)
+                                        
+                                       
+                                        
+                                    }
+                                    
+                                    self.dinarArray += self.invAccount.filter({ $0.Trade_Currency == "1" })
+
+                                    self.dolarArray += self.invAccount.filter({ $0.Trade_Currency == "22" })
                                     
                                     // Security_Sector_Desc
                                     
-//                                    for inv in self.invAccount {
-//                                        if inv.Security_Sector == "3" {
-//                                            self.industryArray.append(inv)
-//                                        }
-//
-//                                        else if inv.Security_Sector == "4" {
-//                                            self.servicesArray.append(inv)
-//                                        }
-//
-//                                        else if inv.Security_Sector == "1" {
-//                                            self.bankArray.append(inv)
-//                                        }
-//
-//
-//                                        else if inv.Security_Sector == "2" {
-//                                            self.insuaranceArray.append(inv)
-//                                        }
-//
-//
-//
-//                                    }
+                                    //                                    for inv in self.invAccount {
+                                    //                                        if inv.Security_Sector == "3" {
+                                    //                                            self.industryArray.append(inv)
+                                    //                                        }
+                                    //
+                                    //                                        else if inv.Security_Sector == "4" {
+                                    //                                            self.servicesArray.append(inv)
+                                    //                                        }
+                                    //
+                                    //                                        else if inv.Security_Sector == "1" {
+                                    //                                            self.bankArray.append(inv)
+                                    //                                        }
+                                    //
+                                    //
+                                    //                                        else if inv.Security_Sector == "2" {
+                                    //                                            self.insuaranceArray.append(inv)
+                                    //                                        }
+                                    //
+                                    //
+                                    //
+                                    //                                    }
                                     
-                                   
-                                    self.industryArray = self.invAccount.filter({($0 .Security_Sector)! == "4"})
+                                    self.data = []
+                                    self.dolarData = []
                                     
-                                    self.servicesArray = self.invAccount.filter({($0 .Security_Sector)! == "3"})
+                                    self.data?
+                                        .append(InvestoreOwnerShapeHolder(title: "Bank".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "1"})))
+                                    self.data?
+                                        .append(InvestoreOwnerShapeHolder(title: "Insurance".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "2"})))
+                                    self.data?
+                                        .append(InvestoreOwnerShapeHolder(title: "Services".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "3"})))
+                                        self.data?
+                                            .append(InvestoreOwnerShapeHolder(title: "Industry".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "4"})))
                                     
                                     
-                                    self.bankArray = self.invAccount.filter({($0 .Security_Sector)! == "1"})
+                                    
+                                    self.dolarData?
+                                        .append(InvestoreOwnerShapeHolder(title: "Bank".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "1"})))
+                                    self.dolarData?
+                                        .append(InvestoreOwnerShapeHolder(title: "Insurance".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "2"})))
+                                    self.dolarData?
+                                        .append(InvestoreOwnerShapeHolder(title: "Services".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "3"})))
+                                        self.dolarData?
+                                            .append(InvestoreOwnerShapeHolder(title: "Industry".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "4"})))
                                     
                                     
-                                    self.insuaranceArray = self.invAccount.filter({($0 .Security_Sector)! == "2"})
-                                    
-                                    
-                                            DispatchQueue.main.async {
-                                                self.busnissCard.reloadData()
-                                                self.refreshControl?.endRefreshing()
-                                                hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                                
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
-
-                                            }
-                                        }
-                                
+                    DispatchQueue.main.async {
+                                       
+                    self.busnissCard.reloadData()
+                    self.refreshControl?.endRefreshing()
+                                        hud.dismiss()
+                                        //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                        
+                                        //                                                if self.car_arr.count == 0{
+                                        //
+                                        //
+                                        //                                                    self.noDataImage.isHidden = false
+                                        //                                                }else{
+                                        //
+                                        //                                                    self.noDataImage.isHidden = true
+                                        //                                                }
+                                        
                                     }
+                                }
+                                
+                                // market_value
+                                
+                                if let total = jsonObj!["total"] as? [String: Any]{
+                                    if let dinar = total["1"] as? [String: Any]{
+                                        
+                                        let market_value = dinar["market_value"] as? Double
+                                        
+                                        self.totalDinar = market_value
+                                        self.totalValue.text = self.numFormat(value: market_value ?? 0.0)
+                                        
+                                    }
+                                    
+                                    if let dolar = total["22"] as? [String: Any]{
+                                        
+                                        let market_value = dolar["market_value"] as? Double
+                                        self.totalDolar = market_value
+                                        
+                                    }
+                                }
+                            }
 //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
@@ -655,47 +827,47 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         }
     }
     
-    
+//
     @IBOutlet weak var headerView: UIView!
     var previousScrollViewYOffset: CGFloat = 0
     var headerViewIsHidden = false
 
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentScrollViewYOffset = scrollView.contentOffset.y
-        
-        if currentScrollViewYOffset <= 0 {
-              // User is at the top of the table view
-            headerView.isHidden = false
-          } else {
-              // User has scrolled down
-              headerView.isHidden = true
-          }
-        if currentScrollViewYOffset > previousScrollViewYOffset {
-            // scrolling down
-            if !headerViewIsHidden {
-                headerViewIsHidden = true
-                headerConstrianett.constant = 600
-
-                
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 0
-                }
-            }
-        } else {
-            // scrolling up
-            if headerViewIsHidden {
-                headerConstrianett.constant = 494
-
-                headerViewIsHidden = false
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 1
-                    
-                }
-            }
-        }
-        
-        previousScrollViewYOffset = currentScrollViewYOffset
+//        let currentScrollViewYOffset = scrollView.contentOffset.y
+//
+//        if currentScrollViewYOffset <= 0 {
+//              // User is at the top of the table view
+//            headerView.isHidden = false
+//          } else {
+//              // User has scrolled down
+//              headerView.isHidden = true
+//          }
+//        if currentScrollViewYOffset > previousScrollViewYOffset {
+//            // scrolling down
+//            if !headerViewIsHidden {
+//                headerViewIsHidden = true
+//                headerConstrianett.constant = 600
+//
+//
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 0
+//                }
+//            }
+//        } else {
+//            // scrolling up
+//            if headerViewIsHidden {
+//                headerConstrianett.constant = 494
+//
+//                headerViewIsHidden = false
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 1
+//
+//                }
+//            }
+//        }
+//
+//        previousScrollViewYOffset = currentScrollViewYOffset
     }
 
 }

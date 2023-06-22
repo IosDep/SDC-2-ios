@@ -21,6 +21,9 @@
 		3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */; };
 		3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8AFA832A0BC47A00D13625 /* LastAction.swift */; };
 		3F8D2FF92A3F0B9400564271 /* SectorAnlysisModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */; };
+		3F8D55702A4432F100AD075F /* CurrencyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */; };
+		3F8D55712A4432F100AD075F /* CurrencyCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */; };
+		3F8D55732A4433A800AD075F /* CurrencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D55722A4433A800AD075F /* CurrencyPicker.swift */; };
 		3F91502A2A40D6B300BE3FC0 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9150282A40D6B200BE3FC0 /* ChartCell.swift */; };
 		3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9150292A40D6B200BE3FC0 /* ChartCell.xib */; };
 		3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */; };
@@ -145,6 +148,9 @@
 		3F8AFA812A0BAFB800D13625 /* CardSixVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardSixVC.swift; sourceTree = "<group>"; };
 		3F8AFA832A0BC47A00D13625 /* LastAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastAction.swift; sourceTree = "<group>"; };
 		3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectorAnlysisModel.swift; sourceTree = "<group>"; };
+		3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellTableViewCell.swift; sourceTree = "<group>"; };
+		3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCellTableViewCell.xib; sourceTree = "<group>"; };
+		3F8D55722A4433A800AD075F /* CurrencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPicker.swift; sourceTree = "<group>"; };
 		3F9150282A40D6B200BE3FC0 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		3F9150292A40D6B200BE3FC0 /* ChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
 		3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartPopUp.swift; sourceTree = "<group>"; };
@@ -293,6 +299,7 @@
 				87D3E9B129DA9D39006B6AA7 /* LoginVC.swift */,
 				3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */,
 				3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */,
+				3F8D55722A4433A800AD075F /* CurrencyPicker.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -456,6 +463,8 @@
 				3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */,
 				3F9150282A40D6B200BE3FC0 /* ChartCell.swift */,
 				3F9150292A40D6B200BE3FC0 /* ChartCell.xib */,
+				3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */,
+				3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -628,6 +637,7 @@
 				3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */,
 				8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */,
 				8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */,
+				3F8D55712A4432F100AD075F /* CurrencyCellTableViewCell.xib in Resources */,
 				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
@@ -772,6 +782,7 @@
 				3FB0EF832A38FB1700D72C4C /* InvestorOwnershipCell.swift in Sources */,
 				87B05CF229C0730700EAA41D /* DesignableClass.swift in Sources */,
 				871CC1DD29CFEF390013F612 /* MonthlyValue.swift in Sources */,
+				3F8D55702A4432F100AD075F /* CurrencyCellTableViewCell.swift in Sources */,
 				8771087C29D04C870010AEBE /* NotfictionVC.swift in Sources */,
 				8761E54729DC4D6200CB72B5 /* AccountListModel.swift in Sources */,
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
@@ -786,6 +797,7 @@
 				3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */,
 				8748CB4D2990562B00E9AE81 /* Login.swift in Sources */,
 				87B89AD929CFC78B00E82C1E /* DocumentType.swift in Sources */,
+				3F8D55732A4433A800AD075F /* CurrencyPicker.swift in Sources */,
 				87B614FB29D15C690039813A /* HeaderDataXIB.swift in Sources */,
 				87B614F829D15B1D0039813A /* InvestorAccountOwnerShape.swift in Sources */,
 				87D3E9B429DA9DD8006B6AA7 /* Helper.swift in Sources */,

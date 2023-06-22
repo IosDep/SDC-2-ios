@@ -114,8 +114,8 @@
 "Investor classification" = "تصنيف المستثمر" ;
 "Investor type" = "نوع المستثمر" ;
 "Investor status" = "حالة المستثمر" ;
-"Language" = "اللغة" ;
-"Birth date" = "تاريخ الولادة" ;
+"Language" = "لغة التخاطب" ;
+"Birth date" = "تاريخ الميلاد" ;
 "Gender" = "الجنس" ;
 "Education Degree" = "التحصيل العلمي" ;
 "Tax number" = "الرقم الضريبي" ;
@@ -132,7 +132,7 @@
 "  Ownership analysis by sector" = "تحليل الملكية حسب القطاع" ;
 "Investor Ownership" = "ملكية المستثمر" ;
 "Account Ownership" = "ملكية الحساب" ;
-"Investor Information" = "معلومات المستثمر" ;
+"Investor Information" = "بيانات المستثمر" ;
 "Investor Accounts" = "حسابات المستثمر" ;
 "Account settings" = "إعدادات الحساب" ;
 "Search" = "بحث";
@@ -219,7 +219,7 @@
 "Notifications"="الإشعارات";
 "Investor name"="اسم المستثمر";
 "All Nationalities"="جميع الجنسيات";
-"Place of birth"="مكان الولادة";
+"Place of birth"="مكان الميلاد";
 "ID type"="نوع الوثيقة";
 "ID No."="رقم الوثيقة";
 "Identity Card No"="رقم الهوية";
@@ -276,7 +276,7 @@
 "Investor Name" = "اسم المستثمر";
 "Mother Name" = "اسم الأم";
 "Basic Investor's Data" = "البيانات الأساسية للمستثمر";
-"P.O. Box    " = "صنذوق البريد";
+"P.O. Box" = "صنذوق البريد";
 "Birth Place    " = "مكان الميلاد";
 "Identification Document Data" = "بيانات الوثيقة";
 "Postal Address" = "بيانات العنوان البريدي" ;
@@ -286,3 +286,7 @@
 "Press to show Nationality" = "اضغط لعرض الجنسيات الأخرى";
 "Other Nationalities" = "بيانات الجنسيات الأخرى";
 "Name" = "الإسم";
+
+"Total Market Value" = "المجموع الكلي للقيمة السوقية";
+"Owned Balance" = "الرصيد الحالي" ;
+"Security Name" = "اسم الورقة المالية";

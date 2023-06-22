@@ -22,6 +22,9 @@ class NatPickerVC: UIViewController , UITableViewDataSource , UITableViewDelegat
         self.tableView.register(UINib(nibName: "NatPickerCell", bundle: nil), forCellReuseIdentifier: "NatPickerCell")
     }
     
+    
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return nationalities.count ?? 0
     }
@@ -34,14 +37,20 @@ class NatPickerVC: UIViewController , UITableViewDataSource , UITableViewDelegat
                    cell = nib[0] as? NatPickerCell
                }
        else {
+           cell?.investorNum.text = nationalities[indexPath.row].Client_No
            cell?.name.text = nationalities[indexPath.row].Client_Name ?? ""
            cell?.nationality.text = nationalities[indexPath.row].Nationality ?? ""
-           cell?.invStatus.text = nationalities[indexPath.row].Client_Status ?? ""
+           cell?.invStatus.text = nationalities[indexPath.row].Client_Status_Desc ?? ""
 
        }
        
        return cell!
     }
+    
+    
+    
+    
+    
   }
 
 protocol SelectedNatDelegate{

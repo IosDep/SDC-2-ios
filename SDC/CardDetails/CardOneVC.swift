@@ -59,7 +59,7 @@ class CardOneVC: UIViewController {
         self.cerateBellView(bellview: bellView, count: "12")
         
         if checkOnepaper == true {
-        
+            
             currantBalance.text =  securityOwnership?.Quantity_Owned ?? ""
             freeBalance.text =  securityOwnership?.Quantity_Avilable ?? ""
             bledgedBalance.text =  securityOwnership?.Quantity_Pledge ?? ""
@@ -78,16 +78,20 @@ class CardOneVC: UIViewController {
             
             isin.text = securityOwnership?.Security_Isin ?? ""
             
-//            clientNum.text = self.doubleToArabic(value: securityOwnership?.Client_No ?? "")
-//
-//            nominalValue.text = self.doubleToArabic(value: securityOwnership?.Nominal_Value  ?? "")
+            //            clientNum.text = self.doubleToArabic(value: securityOwnership?.Client_No ?? "")
+            //
+            //            nominalValue.text = self.doubleToArabic(value: securityOwnership?.Nominal_Value  ?? "")
             securityName.text = securityOwnership?.Security_Name ?? ""
             
-//            tradeCuurency.text = self.doubleToArabic(value: securityOwnership?.Trade_Currency ?? "")
-            if let value = securityOwnership?.MarketValue as? Double {
-                marketValue.text = "\(value)"
-            }        }
-        
+            marketValue.text = self.numFormat(value: securityOwnership?.MarketValue ?? 0.0)
+            
+            //            tradeCuurency.text = self.doubleToArabic(value: securityOwnership?.Trade_Currency ?? "")
+            //            if let value = securityOwnership?.MarketValue as? Double {
+            //                marketValue.text = "\(value)"
+            //            }        }
+            //
+        }
+            
         else {
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
             currantBalance.text =  invAccount?.Quantity_Owned ?? ""
@@ -106,9 +110,11 @@ class CardOneVC: UIViewController {
 //
 //            tradeCuurency.text = self.doubleToArabic(value: invAccount?.Trade_Currency ?? "")
             
-            if let value =  invAccount?.MarketValue as? Double {
-                marketValue.text =  "\(value)"
-            }
+            marketValue.text = self.numFormat(value: invAccount?.MarketValue ?? 0.0)
+            
+//            if let value =  invAccount?.MarketValue as? Double {
+//                marketValue.text =  "\(value)"
+//            }
           
         }
       

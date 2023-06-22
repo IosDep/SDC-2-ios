@@ -67,13 +67,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Lb8-AT-x12">
                                                 <rect key="frame" x="0.0" y="32.333333333333336" width="376" height="31.333333333333336"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security ID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGv-Ka-QiD" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISIN" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SGv-Ka-QiD" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="188" height="31.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Security ID"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="ISIN"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uEG-gi-D8N">
@@ -87,13 +87,13 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="8KX-Yj-JWC">
                                                 <rect key="frame" x="0.0" y="64.666666666666671" width="376" height="31"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyG-i1-ANt" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fyG-i1-ANt" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="188" height="31"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Security name"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Security Name"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="13231" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYx-2S-n6A">
@@ -107,12 +107,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fCn-6R-TR1">
                                                 <rect key="frame" x="0.0" y="96.666666666666671" width="376" height="31.333333333333329"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGU-oc-115" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGU-oc-115" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="188" height="31.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Owned balance"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Owned Balance"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-EU-KhG">
@@ -192,13 +192,13 @@
     </objects>
     <designables>
         <designable name="SGv-Ka-QiD">
-            <size key="intrinsicContentSize" width="62" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="23" height="14.333333333333334"/>
         </designable>
         <designable name="fyG-i1-ANt">
-            <size key="intrinsicContentSize" width="81" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="83" height="14.333333333333334"/>
         </designable>
         <designable name="iGU-oc-115">
-            <size key="intrinsicContentSize" width="87.666666666666671" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="88" height="14.333333333333334"/>
         </designable>
     </designables>
     <resources>
