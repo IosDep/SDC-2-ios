@@ -15,7 +15,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     @IBOutlet weak var tableVIew: UITableView!
     @IBOutlet weak var roundview: UIView!
     @IBOutlet weak var bellView: UIView!
-    @IBOutlet weak var backBtn: UIButton!
+//    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var sideMenuBtn: UIButton!
     
     var accountList =  [AccountListModel]()
@@ -23,6 +23,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     var invInfo =  [AccountInfo]()
     var memberId:String = ""
     var accountNo:String = ""
+    var securityId:String = ""
     var checkSideMenu = false
     var refreshControl: UIRefreshControl!
     
@@ -30,8 +31,10 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkSideMenu == true {
-            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
-            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+            sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        }
+        else {
+            sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)
         }
         tableVIew.dataSource = self
         tableVIew.delegate = self
@@ -48,14 +51,17 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         // Do any additional setup after loading the view.
     }
     
-    @IBAction func backPressed(_ sender: Any) {
-        if checkSideMenu == true {
-            self.dismiss(animated: true, completion: {
-                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                self.present(vc, animated: true, completion: nil)
-            })
+   
+    
+    @IBAction func setupMenu(_ sender: Any) {
+        
+        if self.checkSideMenu == true {
+            self.dismiss(animated: true)
         }
+        else if checkSideMenu == false {
+            self.side_menu()
+        }
+        
     }
     
     @objc func didPullToRefresh() {
@@ -109,6 +115,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         vc.modalPresentationStyle = .fullScreen
         vc.memberId = self.accountList[sender.tag].Member_No ?? ""
         vc.accountNo =  self.accountList [sender.tag].Account_No ?? ""
+        
         self.present(vc, animated: true)
         
     }

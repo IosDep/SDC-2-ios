@@ -253,8 +253,17 @@ extension UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {self.dismiss(animated: true)}
     
-    @IBAction func setupMenu(_ sender: Any) {self.side_menu()}
-    
+//    @IBAction func setupMenu(_ sender: Any) {
+//        
+//        if self.checkSideMenu == true {
+//            self.dismiss(animated: true)
+//        }
+//        else if checkSideMenu == false {
+//            self.side_menu()
+//        }
+//        
+//    }
+//    
     
     func showSuccessHud(msg: String, hud: JGProgressHUD) {
         //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
@@ -626,19 +635,10 @@ extension UIViewController {
         guard let date = dateFormatter.date(from: dateString) else {
             return nil
         }
-        
-        //        if MOLHLanguage.isRTLLanguage() {
-        //            let arabicLocale = Locale(identifier: "ar")
-        //            dateFormatter.locale = arabicLocale
-        //            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
-        //
-        //        }
-        //
-        //        else {
+       
         let englishLocale = Locale(identifier: "en")
         dateFormatter.locale = englishLocale
         dateFormatter.setLocalizedDateFormatFromTemplate("MM-dd-yyyy")
-        //        }
         
         return dateFormatter.string(from: date)
     }
@@ -911,7 +911,4 @@ extension UIView {
             return layer.shadowRadius
         }
     }
-    
-    
-    
 }

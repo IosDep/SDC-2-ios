@@ -15,6 +15,7 @@ import Alamofire
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     
+    @IBOutlet weak var lastUpdateInfo: UILabel!
     @IBOutlet weak var lastloginInfo: UILabel!
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
@@ -30,18 +31,29 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var valueChart  = [Double]()
     var notificationCount : String?
     var checkSideMenu = false
-    
     var tradeAnlysis = [TradeAnlysis]()
+    var currencyFlag : String?
+    
     var bank = SectorAnylisisModel(data: [:])
     var insuarance = SectorAnylisisModel(data: [:])
     var service = SectorAnylisisModel(data: [:])
-    var industry = SectorAnylisisModel(data: [:])
+    var industrry = SectorAnylisisModel(data: [:])
     var totalAnlysis = SectorAnylisisModel(data: [:])
     var quantities : [Double] = []
     var securities  : [Double] = []
     var marketValues : [Double] = []
     var categories = [String]()
+    var pieTableHolder = [PieTableHolder]()
     
+    var dbank = SectorAnylisisModel(data: [:])
+    var dinsuarance = SectorAnylisisModel(data: [:])
+    var dservice = SectorAnylisisModel(data: [:])
+    var dindustry = SectorAnylisisModel(data: [:])
+    var dtotalAnlysis = SectorAnylisisModel(data: [:])
+    var dquantities : [Double] = []
+    var dsecurities  : [Double] = []
+    var dmarketValues : [Double] = []
+    var dpieTableHolder = [PieTableHolder]()
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
@@ -88,21 +100,17 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     
     @IBAction func dolarPressed(_ sender: Any) {
+        currencyFlag = "22"
+        busnissCard.reloadData()
         isDolarSelected = true
         isDinarSelected = false
         highlightedButtons()
     }
     
-    @IBAction func backPressed(_ sender: Any) {
-        
-        self.dismiss(animated: true, completion: {
-            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-            let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-            self.present(vc, animated: true, completion: nil)
-        })
-    }
     
     @IBAction func dinarPressed(_ sender: Any) {
+        currencyFlag = "1"
+        busnissCard.reloadData()
         isDolarSelected = false
         isDinarSelected = true
         highlightedButtons()
@@ -113,17 +121,18 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         super.viewDidLoad()
         self.busnissCard.tag = 1
         self.anlyssSection.tag = 2
+        currencyFlag = "1"
         
-        self.getInvestoreInfo()
-        isDolarSelected = true
-        isDinarSelected = false
+//        self.getInvestoreInfo()
+        isDolarSelected = false
+        isDinarSelected = true
         highlightedButtons()
+        
         if checkSideMenu == true {
-            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
-            sideMenuBtn.isHidden = true
+            sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         }
         else {
-            backBtn.isHidden = true
+            sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)
         }
         
         busnissCard.delegate = self
@@ -162,9 +171,20 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.getLastDate()
         //        self.getOwnerShapeList()
         //        self.getTradingValue()
-        //        self.getInvestoreInfo()
         
         
+        
+    }
+    
+    
+    @IBAction func setupMenu(_ sender: Any) {
+        
+        if self.checkSideMenu == true {
+            self.dismiss(animated: true)
+        }
+        else if checkSideMenu == false {
+            self.side_menu()
+        }
         
     }
     
@@ -208,7 +228,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             let vc = storyBoard.instantiateViewController(withIdentifier: "CardThereVc") as! CardThereVc
             vc.modalPresentationStyle = .fullScreen
             vc.trans = self.lastTransarr[indexPath.row]
-            
+        
             self.present(vc, animated: true)
         }
         
@@ -220,18 +240,25 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             vc.bank = self.bank
             vc.insuarance = self.insuarance
             vc.service = self.service
-            vc.industry = self.industry
+            vc.industry = self.industrry
             vc.totalAnlysis = totalAnlysis
+//            vc.pieFlag = indexPath.row
+        
+            vc.pieTableHolder = self.pieTableHolder
+
             if indexPath.row == 0 {
                 vc.chartValues = securities
+                vc.pieFlag = 0
             }
             
             else if indexPath.row == 1 {
                 vc.chartValues = quantities
+                vc.pieFlag = 1
             }
             
             else if indexPath.row == 2 {
                 vc.chartValues = marketValues
+                vc.pieFlag = 2
             }
             
             vc.modalPresentationStyle = .popover
@@ -279,6 +306,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         }
         
         else {
+            
             var cell = self.anlyssSection.dequeueReusableCell(withReuseIdentifier: "HomePropretyXib", for: indexPath) as? HomePropretyXib
             if cell == nil {
                 let nib: [Any] = Bundle.main.loadNibNamed("HomePropretyXib", owner: self, options: nil)!
@@ -296,7 +324,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             cell?.layer.masksToBounds = false
             
             if indexPath.row == 0 {
+                
+                
+                
                 cell?.title.text = "Shareholders" .localized()
+                
+                
                 if (securities.count != 0)  {
                     customizeChart(dataPoints: categories, values: securities,pieChartView: (cell?.chartView!)!)
                 }
@@ -304,28 +337,50 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             }
             
            else if indexPath.row == 1 {
-               if (quantities.count != 0)  {
-                   cell?.title.text = "Securities" .localized()
-                    customizeChart(dataPoints: categories, values: quantities,pieChartView: (cell?.chartView!)!)
-                 
+               
+               if currencyFlag == "1" {
+                   if (quantities.count != 0)  {
+                       cell?.title.text = "Securities" .localized()
+                        customizeChart(dataPoints: categories, values: quantities,pieChartView: (cell?.chartView!)!)
+                     
+                   }
+                   
                }
+               
+               else if currencyFlag == "22" {
+                   if (quantities.count != 0)  {
+                       cell?.title.text = "Securities" .localized()
+                        customizeChart(dataPoints: categories, values: dquantities,pieChartView: (cell?.chartView!)!)
+                     
+                   }
+               }
+               
+               
                         }
             
             else if indexPath.row == 2 {
-                if (marketValues.count != 0)  {
+                
+                if currencyFlag == "1" {
+                    if (marketValues.count != 0)  {
+                        
+                        cell?.title.text = "Market Value" .localized()
+                        customizeChart(dataPoints: categories, values: marketValues ,pieChartView: (cell?.chartView!)!)
+                    }
                     
-                    cell?.title.text = "Market Value" .localized()
-                    customizeChart(dataPoints: categories, values: marketValues ,pieChartView: (cell?.chartView!)!)
                 }
                 
+                else if currencyFlag == "22" {
+                    if (marketValues.count != 0)  {
+                        
+                        cell?.title.text = "Market Value" .localized()
+                        customizeChart(dataPoints: categories, values: dmarketValues ,pieChartView: (cell?.chartView!)!)
+                    }
+                }
+            
             }
-            
-            
-            
+       
             return cell!
-            
-            
-            
+  
         }
         
         
@@ -369,7 +424,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         var colors: [UIColor] = []
         colors = [UIColor(red: 1.00, green: 0.95, blue: 0.50, alpha: 1.00)
                   , UIColor(red: 1.00, green: 0.60, blue: 0.00, alpha: 1.00)
-                  , UIColor(red: 0.82, green: 0.83, blue: 0.84, alpha: 1.00) , UIColor(red: 0.30, green: 0.76, blue: 0.55, alpha: 1.00)]
+                  ,   UIColor(red: 0.30, green: 0.76, blue: 0.55, alpha: 1.00) , UIColor(red: 0.82, green: 0.83, blue: 0.84, alpha: 1.00) ]
         return colors
     }
     
@@ -538,6 +593,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         self.totalAnlysis = model
                                         
                                     }
+                                    
+                                    if let dolar = total["22"] as? [String: Any] {
+                                        let model = SectorAnylisisModel(data: dolar)
+                                        self.dtotalAnlysis = model
+                                        
+                                    }
                                 }
                                 
                                 if let ownershipBysector = jsonObj!["ownershipBysector"] as? [String: Any]{
@@ -555,9 +616,17 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                             
                                             let marketVal = ( model.market_value! / (self.totalAnlysis.market_value ?? 0.0) ) * 100
                                             
+                                            
+                                            
                                             self.quantities.append(qun)
+                                            
+                                            
                                             self.securities.append(sec)
-                                            self.marketValues.append(marketVal )
+                                            
+                                           
+                                                self.marketValues.append(marketVal)
+                                        
+                                        
                                         }
                                         
                                         if let insurance = one["Insurance"] as? [String: Any] {
@@ -576,21 +645,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                             self.marketValues.append(marketVal )
                                         }
                                         
-                                        if let industry = one["Industry"] as? [String: Any] {
-                                            
-                                            let model = SectorAnylisisModel(data: industry)
-                                            self.industry = model
-                                            
-                                            let qun = ( model.Quantity! / (self.totalAnlysis.Quantity ?? 0.0) ) * 100
-                                            
-                                            let sec = ( model.sec_count! / (self.totalAnlysis.sec_count ?? 0.0) ) * 100
-                                            
-                                            let marketVal = ( model.market_value! / (self.totalAnlysis.market_value ?? 0.0) ) * 100
-                                            
-                                            self.quantities.append(qun)
-                                            self.securities.append(sec)
-                                            self.marketValues.append(marketVal )
-                                        }
                                         
                                         if let Services = one["Services"] as? [String: Any] {
                                             
@@ -610,8 +664,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         }
                                         
                                         if let industry = one["Industry"] as? [String: Any] {
+                                            
                                             let model = SectorAnylisisModel(data: industry)
-                                            self.industry = model
+                                            self.industrry = model
                                             let qun = ( model.Quantity! / (self.totalAnlysis.Quantity ?? 0.0) ) * 100
                                             
                                             let sec = ( model.sec_count! / (self.totalAnlysis.sec_count ?? 0.0) ) * 100
@@ -624,8 +679,119 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         }
                                         
                                         
+                                        if self.bank.sec_count != 0 && self.bank.Quantity != 0 && self.bank.market_value != 0 {
+                                            self.pieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.bank))
+                                        }
+                                        
+                                         if self.insuarance.sec_count != 0 && self.insuarance.Quantity != 0 && self.insuarance.market_value != 0 {
+                                            self.pieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.insuarance))
+                                        }
+                                        
+                                         if self.service.sec_count != 0 && self.service.Quantity != 0 && self.service.market_value != 0 {
+                                            self.pieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.service))
+                                        }
+                                        
+                                        if self.industrry.sec_count != 0 && self.industrry.Quantity != 0 && self.industrry.market_value != 0 {
+                                            self.pieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.industrry))
+                                        }
                                         
                                     }
+                                    
+                                    if let dolar = ownershipBysector["22"] as? [String: Any] {
+                                        
+                                        if let banks = dolar["Banks"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: banks)
+                                            
+                                            self.dbank = model
+                                            
+                                            let dqun = ( model.Quantity! / (self.dtotalAnlysis.Quantity ?? 0.0) ) * 100
+                                            
+                                            let dsec = ( model.sec_count! / (self.dtotalAnlysis.sec_count ?? 0.0) ) * 100
+                                            
+                                            let dmarketVal = ( model.market_value! / (self.dtotalAnlysis.market_value ?? 0.0) ) * 100
+                                            
+                                            
+                                            
+                                    self.dquantities.append(dqun)
+                                            
+                                    self.dsecurities.append(dsec)
+                                            
+                                    self.dmarketValues.append(dmarketVal)
+                                            
+                                            
+                                        }
+                                        
+                                    if let insurance = dolar["Insurance"] as? [String: Any] {
+                                            let model = SectorAnylisisModel(data: insurance)
+                                            
+                                    self.dinsuarance = model
+                                            
+                                            let dqun = ( self.insuarance.Quantity! / (self.dtotalAnlysis.Quantity ?? 0.0) ) * 100
+                                            
+                                            let dsec = ( model.sec_count! / (self.dtotalAnlysis.sec_count ?? 0.0) ) * 100
+                                            
+                                            let dmarketVal = ( model.market_value! / (self.dtotalAnlysis.market_value ?? 0.0) ) * 100
+                                            
+                                        self.dquantities.append(dqun)
+                                        self.dsecurities.append(dsec)
+                                        self.dmarketValues.append(dmarketVal )
+                                        }
+                                        
+                                        
+                                        if let Services = dolar["Services"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: Services)
+                                            
+                                            self.dservice = model
+                                            
+                                            let dqun = ( model.Quantity! / (self.dtotalAnlysis.Quantity ?? 0.0) ) * 100
+                                            
+                                            let dsec = ( model.sec_count! / (self.dtotalAnlysis.sec_count ?? 0.0) ) * 100
+                                            
+                                            let dmarketVal = ( model.market_value! / (self.dtotalAnlysis.market_value ?? 0.0) ) * 100
+                                            
+                                            self.dquantities.append(dqun)
+                                            self.dsecurities.append(dsec)
+                                            self.dmarketValues.append(dmarketVal)
+                                        }
+                                        
+                                        if let industry = dolar["Industry"] as? [String: Any] {
+                                            
+                                            let model = SectorAnylisisModel(data: industry)
+                                            self.dindustry = model
+                                            let dqun = ( model.Quantity! / (self.dtotalAnlysis.Quantity ?? 0.0) ) * 100
+                                            
+                                            let dsec = ( model.sec_count! / (self.dtotalAnlysis.sec_count ?? 0.0) ) * 100
+                                            
+                                            let dmarketVal = ( model.market_value! / (self.dtotalAnlysis.market_value ?? 0.0) ) * 100
+                                            
+                                            self.dquantities.append(dqun)
+                                            self.dsecurities.append(dsec)
+                                            self.dmarketValues.append(dmarketVal )
+                                        }
+                                        
+                                        
+                                        if self.dbank.sec_count != 0 && self.dbank.Quantity != 0 && self.dbank.market_value != 0 {
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.dbank))
+                                        }
+                                        
+                                        else if self.dinsuarance.sec_count != 0 && self.dinsuarance.Quantity != 0 && self.dinsuarance.market_value != 0 {
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.dinsuarance))
+                                        }
+                                        
+                                        else if self.dservice.sec_count != 0 && self.dservice.Quantity != 0 && self.dservice.market_value != 0 {
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.dservice))
+                                        }
+                                        
+                                        else if self.dindustry.sec_count != 0 && self.dindustry.Quantity != 0 && self.dindustry.market_value != 0 {
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.dindustry))
+                                        }
+                                        
+                                    }
+                                    
+                                    
+                                    
                                     
                                 }
                                 
@@ -669,15 +835,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     
-    
     func getOwnerShapeList(){
         
         //
         let hud = JGProgressHUD(style: .light)
         //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
-        
-        
         
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
         ]
@@ -791,16 +954,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                 let sysDate =     data!["sysDate"] as? String
                                 let lastUpdate =     data!["lastUpdate"] as? String
                                 
-                                self.lastloginInfo.text  =    MOLHLanguage.isRTLLanguage() ? self.convertDateAndTimeToArabicNumbers(dateString: sysDate ?? ""): sysDate ?? ""
-                                
-                                //convertDateToArabicNumbers
-                                
-                                
-                                //                                    self.lastloginInfo.text =  sysDate ?? "" +  (lastUpdate ?? "")
-                                //
-                                
-                                
-                                
+                                self.lastloginInfo.text  = sysDate
+                                self.lastUpdateInfo.text = lastUpdate
                                 
                             }
                             //                             Session ID is Expired
@@ -923,4 +1078,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     
+}
+
+struct PieTableHolder {
+    var title : String
+    var array : SectorAnylisisModel
 }

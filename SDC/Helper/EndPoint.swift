@@ -16,7 +16,7 @@ class APIConfig {
     static let GetAccountOwnerShpe = BaseURL  + "investor_information/getAccountOwnership"
 
     static let GetLastAction = BaseURL  + "investor_information/lastcorporateactions"
-    
+        
     static let GetLastTrans = BaseURL  + "investor_information/getLastTrans"
     static let OwnershipAnalysis = BaseURL  + "investor_information/ownershipAnalysis"
     static let TradesAnalysis = BaseURL  + "investor_information/tradesAnalysis"
@@ -26,7 +26,7 @@ class APIConfig {
     static let GetNationality = BaseURL  + "investor_information/getOtherNat"
     
     static let ChangePassword = BaseURL  + "authentication/changePassword"
-    static let GetSecurityOwnership = BaseURL  + "investor_information/getSecurityOwnership"
+    static let GetSecurityOwnership = BaseURL  + "investor_information/getSecurityOwnershipWithGetAccountsList"
 
     static let GetSysDates = BaseURL + "investor_information/getSysDates"
 //    static let baseURL = "http://preinsouq1-001-site1.btempurl.com/api" //

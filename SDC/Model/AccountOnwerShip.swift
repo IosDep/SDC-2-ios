@@ -9,10 +9,7 @@ import Foundation
 
 class AccountOwnerShape{
     
-    
-    
-
-    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency  , closePrice , Security_Reuter_Code: String?
+    var clientNo, securityID, securityIsin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value, Security_Sector_Desc,Client_No,Trade_Currency  , closePrice , Security_Reuter_Code , Security_Sector : String?
     
     var MarketValue : Double?
 
@@ -102,7 +99,11 @@ class AccountOwnerShape{
             self.MarketValue = MarketValue
         }
         
+        // Security_Sector
         
+        if let Security_Sector = data["Security_Sector"] as? String {
+            self.Security_Sector = Security_Sector
+        }
         
     }
     

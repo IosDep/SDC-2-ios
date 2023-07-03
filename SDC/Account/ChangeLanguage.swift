@@ -13,7 +13,7 @@ class ChangeLanguage: UIViewController {
     @IBOutlet weak var arabicBtn: DesignableButton!
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var langView: UIStackView!
-    @IBOutlet weak var bellView: UIView!
+//    @IBOutlet weak var bellView: UIView!
     @IBOutlet weak var majoreView: UIView!
     @IBOutlet weak var enimaeg: UIImageView!
     @IBOutlet weak var arimage: UIImageView!
@@ -21,7 +21,7 @@ class ChangeLanguage: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-        self.cerateBellView(bellview: bellView, count: "12")
+//        self.cerateBellView(bellview: bellView, count: "12")
         self.langView.layer.cornerRadius = 23
         self.langView.layer.backgroundColor = UIColor.black.cgColor
         self.langView.backgroundColor = UIColor.systemBackground

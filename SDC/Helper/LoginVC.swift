@@ -22,12 +22,6 @@ class LoginVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-#if DEBUG
-
-        userName.text = "9651010730"
-        password.text = "123456"
-#endif
-        
         
         if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
 
@@ -49,6 +43,12 @@ class LoginVC: UIViewController {
 
          AgreeIconClick = false
         }
+        
+#if DEBUG
+        
+        userName.text = "9651010730"
+        password.text = "123456"
+#endif
         
         
     }

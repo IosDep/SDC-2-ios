@@ -15,8 +15,10 @@ import JGProgressHUD
 class CardFourVC: UIViewController {
     
 
+    @IBOutlet weak var pCity: UILabel!
+    @IBOutlet weak var pCountry: UILabel!
     @IBOutlet weak var backgroundStack: UIStackView!
-    @IBOutlet weak var bellView : UIView!
+//    @IBOutlet weak var bellView : UIView!
     @IBOutlet weak var memberNumber: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var documentType: UILabel!
@@ -65,7 +67,7 @@ class CardFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAccountInfo()
-        self.cerateBellView(bellview: bellView, count: "12")
+//        self.cerateBellView(bellview: bellView, count: "12")
         
     }
     override func viewDidLayoutSubviews() {
@@ -152,6 +154,14 @@ class CardFourVC: UIViewController {
                                     let postalCity = data!["postalCity"] as? String
                                     self.city.text = postalCity ?? ""
                                     
+                                    let country = data!["resCountry"] as? String
+                                    self.pCountry.text = postalCountry ?? ""
+                                    
+                                    let city = data!["resCity"] as? String
+                                    self.pCity.text = city ?? ""
+                                    
+                                    
+                                    
                                     let bankName = data!["bankName"] as? String
                                     self.bankName.text = bankName ?? ""
                                     
@@ -196,13 +206,13 @@ class CardFourVC: UIViewController {
                                     
                                     
                                     let phone = data!["phone"] as? String
-                                    self.phone.text = self.doubleToArabic(value: phone ?? "")
+                                    self.phone.text =  phone ?? ""
                                     
                                     let fax = data!["fax"] as? String
                                     self.fax.text = fax ?? ""
                                     
                                     let mobile = data!["mobile"] as? String
-                                    self.mobile.text = self.doubleToArabic(value: mobile ?? "")
+                                    self.mobile.text =  mobile ?? ""
                                     
                                     let email = data!["email"] as? String
                                     self.email.text = email ?? ""

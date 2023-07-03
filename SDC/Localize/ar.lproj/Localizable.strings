@@ -290,3 +290,25 @@
 "Total Market Value" = "المجموع الكلي للقيمة السوقية";
 "Owned Balance" = "الرصيد الحالي" ;
 "Security Name" = "اسم الورقة المالية";
+"Guardian Data" = "بيانات النيابة عن المستثمر";
+"Investor Account Information" = "بيانات المستثمر لدى العضو";
+"Choose currency " = "اختر العملة" ;
+"Membership Type" = "نوع العضوية";
+"Member Name" = "اسم العضو";
+"Company" = "الشركة";
+"Transaction Type" = "نوع التحويل";
+"Action Type" = "نوعل الحركة";
+"Before Action" = "قبل الحركة";
+"After Action" = "بعد الحركة";
+
+"Transaction Information" = "معلومات الحركة";
+
+"Account Information" = "معلومات الحساب";
+
+"Transaction Type" = "نوع الحركة";
+"Date" = "تاريخ الحركة" ;
+"Total" = "المجموع";
+"Last update time" = "تم التحديث";
+"Last login" = "آخر دخول";
+"Category" = "الفئة";
+"choose" = "اختر";

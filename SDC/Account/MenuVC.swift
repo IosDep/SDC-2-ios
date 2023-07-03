@@ -61,18 +61,11 @@ class MenuVC: UIViewController {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
 
          if sender.tag == Actions.home.rawValue {
-             if self.tabBarController?.selectedIndex ==  0 {
-                 self.dismiss(animated:  true)
-                 
-             }
-             else {
-                 self.dismiss(animated: true, completion: {
-                     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                     let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                     self.present(vc, animated: true, completion: nil)
-                 })
-                 
-             }
+             let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
+                 vc.checkSideMenu = true
+             vc.modalPresentationStyle = .fullScreen
+             self.present(vc, animated: true)
+
 
          }
              else if sender.tag == Actions.invInfo.rawValue {

@@ -11,65 +11,97 @@ import Alamofire
 import JGProgressHUD
 import MOLH
 
-class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate {
+class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate , SelectedNatDelegate {
     
+    
+    
+    
+    @IBOutlet weak var categoryBtn: DesignableButton!
     @IBOutlet weak var busnissCard: UITableView!
+    
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
-//    @IBOutlet weak var withoutZero: DesignableButton!
-//    @IBOutlet weak var withZero: DesignableButton!
+    //    @IBOutlet weak var withoutZero: DesignableButton!
+    //    @IBOutlet weak var withZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
     
     var seatrching = false
-    
-    @IBOutlet weak var bellView: UIView!
+    var pickerData : [String] = []
+    //    @IBOutlet weak var bellView: UIView!
     var invOwnership = [InvestoreOwnerShape]()
     var lastAction = [LastAction]()
     var arr_search = [LastAction]()
     var backColor = UIColor(red: 0.00, green: 0.78, blue: 0.42, alpha: 1.00)
     var checkSideMenu = false
     var withZeroFlag : String?
-
-
+    var publicCompanies = [LastAction]()
+    var financialCompanies = [LastAction]()
+    var custodians = [LastAction]()
+    var filteredData = [LastAction]()
+    var counter : Int?
+    var categoryFlag : Int?
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.withoutZero.cornerRadius = 12
-//        self.withZero.cornerRadius = 12
-//
+        //        self.withoutZero.cornerRadius = 12
+        //        self.withZero.cornerRadius = 12
+        //
         isZeroSelected = true
         isWithoutSelected = false
         withZeroFlag = "1"
-//        highlightedButtons()
+        //        highlightedButtons()
         self.getLastactions(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
-
+        
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
-        self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
-
+        self.busnissCard.register(UINib(nibName: "LastCoorporationActionCell", bundle: nil), forCellReuseIdentifier: "LastCoorporationActionCell")
+        
         view.layer.zPosition = 999
         busnissCard.contentInsetAdjustmentBehavior = .never
-        
-//        self.withZero.titleLabel?.tintColor = .white
-//        self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-//        self.withZero.cornerRadius = 12
-//refreshControl
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.busnissCard.addSubview(refreshControl)
         
-        self.cerateBellView(bellview: self.bellView, count: "10")
+        //        self.cerateBellView(bellview: self.bellView, count: "10")
         
-        // Do any additional setup after loading the view.
     }
-    // self.dismiss(animated: true, completion: {
-//    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-//    let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-//    self.present(vc, animated: true, completion: nil)
-//})
     
-   
+    
+    
+    @IBAction func categoryPressed(_ sender: Any) {
+        
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CurrencyPicker") as! CurrencyPicker
+        vc.selectedNatDelegate = self
+        vc.checkCompanyAction = true
+        vc.categories = self.pickerData
+//        vc.modalPresentationStyle = .overCurrentContext
+        self.present(vc, animated: true)
+    }
+    
+    func getSelectdPicker(selectdTxt: String, flag: String) {
+        
+        if selectdTxt == "Public ShareHolding Companies"{
+            categoryBtn.setTitle(selectdTxt, for: .normal)
+            categoryFlag = 0
+    }
+        
+        if selectdTxt == "Finincial Services Companies" {
+            categoryBtn.setTitle(selectdTxt, for: .normal)
+            categoryFlag = 1
+        }
+        
+        if selectdTxt == "Custodians" {
+            categoryBtn.setTitle(selectdTxt, for: .normal)
+            categoryFlag = 2
+        }
+        
+        busnissCard.reloadData()
+        
+     }
     
     @IBAction func backPressed(_ sender: Any) {
         self.dismiss(animated: true, completion: {
@@ -90,16 +122,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         @objc func didPullToRefresh() {
             self.lastAction.removeAll()
             self.busnissCard.reloadData()
-            if isZeroSelected == true && isWithoutSelected == false {
-                self.getLastactions(withZero: self.withZeroFlag ?? "")
-                self.busnissCard.reloadData()
 
-            }
-            
-            else if isZeroSelected == false && isWithoutSelected == true {
-                self.getLastactions(withZero: self.withZeroFlag ?? "")
-                self.busnissCard.reloadData()
-            }
         }
     
     @IBAction func clearBtnPressed(_ sender: Any) {
@@ -114,78 +137,173 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
 
         }
         
-        else if isZeroSelected == false && isWithoutSelected == true {
-            self.getLastactions(withZero: self.withZeroFlag ?? "")
-            self.busnissCard.reloadData()
-        }    }
+        
+        }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         if seatrching{
-            return arr_search.count
+            return filteredData.count
+            
         }
         
         else {
-            return self.lastAction.count
+            
+            if categoryFlag == 0 {
+                return publicCompanies.count
+            }
+            
+            else if categoryFlag == 1 {
+                return financialCompanies.count
+            }
+            
+            else  {
+                return custodians.count
+
+            }
         }
+        return 0
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "CardSixVC") as! CardSixVC
-        vc.lastAction = self.lastAction[indexPath.row]
-        vc.modalPresentationStyle = .fullScreen
-        self.present(vc, animated: true)
-    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
-        cell?.addtionalStack.isHidden = true
-        cell?.firstLbl.text = "Corporation name".localized()
-        cell?.secondLbl.text = "Corporation ID".localized()
-        cell?.thirdLbl.text = "Action description".localized()
-        
+        var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "LastCoorporationActionCell", for: indexPath) as? LastCoorporationActionCell
+       
+        cell?.mainView.layer.cornerRadius =  20
+
         if cell == nil {
-            let nib: [Any] = Bundle.main.loadNibNamed("BusnissCardTable", owner: self, options: nil)!
-            cell = nib[0] as? BusnissCardTable
+            let nib: [Any] = Bundle.main.loadNibNamed("LastCoorporationActionCell", owner: self, options: nil)!
+            cell = nib[0] as? LastCoorporationActionCell
         }
         
         if seatrching == true {
             
-            cell?.mainCardView.layer.cornerRadius =  8
-            let data = arr_search[indexPath.row]
-            cell?.literalNum.text = data.Member_Name ?? ""
-            cell?.literalName.text =   data.Member_Id ?? ""
-            cell?.balance.text = data.Action_Type_Desc ?? ""
+            let categoryData = filteredData[indexPath.row]
+            cell?.company.text = categoryData.Member_Alias
+            cell?.actionDate.text = categoryData.Action_Date
+            cell?.transType.text = categoryData.Trans_Type_Desc
+            cell?.actionType.text = categoryData.Action_Type_Desc
+            cell?.beforeAction.text = categoryData.Value_Before
+            cell?.afterAction.text  = categoryData.Value_After
+            cell?.percentage.text = categoryData.percentageChange
             
         }
         
         else {
-            cell?.mainCardView.layer.cornerRadius =  8
-            let data = lastAction[indexPath.row]
-            cell?.literalNum.text = data.Member_Name ?? ""
-            cell?.literalName.text =   data.Member_Id ?? ""
-            cell?.balance.text = data.Action_Type_Desc ?? ""
-        
+            
+            if publicCompanies[indexPath.row].color == "arrow_green" {
+                cell?.percentage.textColor = UIColor(named: "AccentColor")
+                cell?.arrowBtn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
+                cell?.arrowBtn.tintColor = UIColor(named: "AccentColor")
+            }
+                
+                else if  publicCompanies[indexPath.row].color == "arrow_red" {
+                    
+                    cell?.percentage.textColor = .red
+                    let image = UIImage(systemName: "arrow.down")?.withTintColor(.red , renderingMode: .alwaysTemplate)
+                    cell?.arrowBtn.setImage(image, for: .normal)
+                    
+                    
+            }
+            
+            else if publicCompanies[indexPath.row].color == "arrow_grey" {
+                cell?.percentage.textColor = .systemGray3
+                cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+                cell?.arrowBtn.tintColor = .systemGray3
+                
         }
+            
+            if categoryFlag == 0 {
+                let categoryData = publicCompanies[indexPath.row]
+                cell?.company.text = categoryData.Member_Alias
+                cell?.actionDate.text =  categoryData.Action_Date
+                cell?.transType.text = categoryData.Trans_Type_Desc
+                cell?.actionType.text = categoryData.Action_Type_Desc
+                cell?.beforeAction.text = categoryData.Value_Before
+                cell?.afterAction.text  = categoryData.Value_After
+                cell?.percentage.text = categoryData.percentageChange
+            }
+            else if categoryFlag == 1 {
+                let categoryData = financialCompanies[indexPath.row]
+                cell?.company.text = categoryData.Member_Alias
+                cell?.actionDate.text = categoryData.Action_Date
+                cell?.transType.text = categoryData.Trans_Type_Desc
+                cell?.actionType.text = categoryData.Action_Type_Desc
+                cell?.beforeAction.text = categoryData.Value_Before
+                cell?.afterAction.text  = categoryData.Value_After
+                cell?.percentage.text = categoryData.percentageChange
+
+            }
+            else {
+                let categoryData = custodians[indexPath.row]
+                cell?.company.text = categoryData.Member_Alias
+                cell?.actionDate.text = categoryData.Action_Date
+                cell?.transType.text = categoryData.Trans_Type_Desc
+                cell?.actionType.text = categoryData.Action_Type_Desc
+                cell?.beforeAction.text = categoryData.Value_Before
+                cell?.afterAction.text  = categoryData.Value_After
+                cell?.percentage.text = categoryData.percentageChange
+            }
+        }
+        
         
         return cell!
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
-    }
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//        return 180
+//    }
+    
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        if MOLHLanguage.isArabic(){
-            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
-        self.seatrching = true
+        
+        if searchText == "" {
+            seatrching = false
+            filteredData = []
             self.busnissCard.reloadData()
-            
-        } else {
-            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
-            self.seatrching = true
-                self.busnissCard.reloadData()
+            return
+        }
+        
+        
+        filteredData = []
+        
+        if categoryFlag == 0 {
+            for item in publicCompanies{
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                    filteredData.append(item)
+                }
+            }
             
         }
+        else if categoryFlag == 1 {
+            for item in financialCompanies{
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                    filteredData.append(item)
+                }
+            }
+        }
+            else if categoryFlag == 2 {
+                for item in custodians{
+                    if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                        filteredData.append(item)
+                    }
+            }
+        }
+        
+        
+        
+//        if MOLHLanguage.isArabic(){
+//            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
+//        self.seatrching = true
+//            self.busnissCard.reloadData()
+//
+//        } else {
+//            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
+//            self.seatrching = true
+//                self.busnissCard.reloadData()
+//
+//        }
     }
     
 //    search
@@ -279,17 +397,82 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                     if jsonObj != nil {
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
-                                            for item in data {
-                                                let model = LastAction(data: item)
-                                                self.lastAction.append(model)
-                                 
-                                            }
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                    
+                                    // public_shareholding_companies
+                                    
+                                    if let public_shareholding_companies = data["public_shareholding_companies"] as? [[String: Any]]{
+                                        
+                                        
+                                    for item in public_shareholding_companies  {
+                                        let model = LastAction(data: item)
+                                    self.publicCompanies.append(model)
+                                        
+    
+                                                }
+                                        
+                                    }
+                                    
+                                    if self.publicCompanies.isEmpty == false{
+                                        self.counter = (self.counter ?? 0) + 1
+                                        self.pickerData.append("Public ShareHolding Companies")
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    if let financial_services_companies = data["financial_services_companies"] as? [[String: Any]]{
+                                        
+                                        for item in financial_services_companies  {
+                                            let model = LastAction(data: item)
+                                        self.financialCompanies.append(model)
+        
+                                                    }
+                                        
+                                    }
+                                    
+                                    if self.financialCompanies.isEmpty == false{
+                                        self.counter = (self.counter ?? 0) + 1
+                                        
+                                        self.pickerData.append("Finincial Services Companies")
+                                    }
+                                    
+                                    if let custodians = data["custodians"] as? [[String: Any]]{
+                                        
+                                        for item in custodians  {
+                                            let model = LastAction(data: item)
+                                        self.custodians.append(model)
+        
+                                      }
+                                        
+                                        if self.custodians.isEmpty == false{
+                                            self.counter = (self.counter ?? 0) + 1
                                             
-                                            DispatchQueue.main.async {
-                                                self.busnissCard.reloadData()
-                                                self.refreshControl?.endRefreshing()
-                                                hud.dismiss()
+                                            self.pickerData.append("Custodians")
+                                        }
+                                        
+                                        
+                                        
+                                    }
+                                    
+                                    DispatchQueue.main.async {
+//                                        self.busnissCard.reloadData()
+                                        self.refreshControl?.endRefreshing()
+                                        hud.dismiss()
+                                    }
+                                    
+                                    
+//                                            for item in data {
+//                                                let model = LastAction(data: item)
+//                                                self.lastAction.append(model)
+//
+//                                            }
+//
+//                                            DispatchQueue.main.async {
+//                                                self.busnissCard.reloadData()
+//                                                self.refreshControl?.endRefreshing()
+//                                                hud.dismiss()
 //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
                                                 
 //                                                if self.car_arr.count == 0{
@@ -301,8 +484,12 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
 //                                                    self.noDataImage.isHidden = true
 //                                                }
 
-                                            }
+//                                            }
                                         }
+                                
+                                
+                                
+                                
                                 
                                     }
 //                             Session ID is Expired
@@ -382,4 +569,10 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         previousScrollViewYOffset = currentScrollViewYOffset
     }
 
+}
+
+
+struct CoorporationActionHolder {
+    var title: String?
+    var array: [LastAction]?
 }

@@ -10,6 +10,8 @@
 		364D455FB1D4360B43DA4153 /* Pods_SDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */; };
 		3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1038992A02704E004594ED /* SecurityOwnership.swift */; };
 		3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */; };
+		3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */; };
+		3F1B3CE92A487F35006F0FAE /* LastCoorporationActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */; };
 		3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */; };
 		3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */; };
 		3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */; };
@@ -24,6 +26,7 @@
 		3F8D55702A4432F100AD075F /* CurrencyCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */; };
 		3F8D55712A4432F100AD075F /* CurrencyCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */; };
 		3F8D55732A4433A800AD075F /* CurrencyPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8D55722A4433A800AD075F /* CurrencyPicker.swift */; };
+		3F9065822A48205A008268D3 /* PartialDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9065812A482059008268D3 /* PartialDataModel.swift */; };
 		3F91502A2A40D6B300BE3FC0 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9150282A40D6B200BE3FC0 /* ChartCell.swift */; };
 		3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9150292A40D6B200BE3FC0 /* ChartCell.xib */; };
 		3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */; };
@@ -36,6 +39,10 @@
 		3FB0EF862A391F4500D72C4C /* sectorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */; };
 		3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */; };
 		3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A982A03DBA200C74E58 /* InvInfo.swift */; };
+		3FD7E34C2A498314003EC702 /* CompanyCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */; };
+		3FD7E34D2A498314003EC702 /* CompanyCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FD7E34B2A498314003EC702 /* CompanyCategoryCell.xib */; };
+		3FD7E3502A49CE0D003EC702 /* PieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7E34E2A49CE0D003EC702 /* PieTableCell.swift */; };
+		3FD7E3512A49CE0D003EC702 /* PieTableCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FD7E34F2A49CE0D003EC702 /* PieTableCell.xib */; };
 		3FFBE3CB2A392186000A3503 /* sectorHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */; };
 		3FFBE3CD2A39E8C6000A3503 /* SectionNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */; };
 		3FFBE3CF2A39E8E9000A3503 /* SectionNameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */; };
@@ -138,6 +145,8 @@
 		35A43BAA4BE44B9CDDE441CD /* Pods-SDCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.release.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.release.xcconfig"; sourceTree = "<group>"; };
 		3F1038992A02704E004594ED /* SecurityOwnership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityOwnership.swift; sourceTree = "<group>"; };
 		3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnwerShip.swift; sourceTree = "<group>"; };
+		3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastCoorporationActionCell.swift; sourceTree = "<group>"; };
+		3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastCoorporationActionCell.xib; sourceTree = "<group>"; };
 		3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerVC.swift; sourceTree = "<group>"; };
 		3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerCell.swift; sourceTree = "<group>"; };
 		3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NatPickerCell.xib; sourceTree = "<group>"; };
@@ -151,6 +160,7 @@
 		3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCellTableViewCell.swift; sourceTree = "<group>"; };
 		3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CurrencyCellTableViewCell.xib; sourceTree = "<group>"; };
 		3F8D55722A4433A800AD075F /* CurrencyPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPicker.swift; sourceTree = "<group>"; };
+		3F9065812A482059008268D3 /* PartialDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartialDataModel.swift; sourceTree = "<group>"; };
 		3F9150282A40D6B200BE3FC0 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		3F9150292A40D6B200BE3FC0 /* ChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
 		3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartPopUp.swift; sourceTree = "<group>"; };
@@ -163,6 +173,10 @@
 		3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectorHeaderView.swift; sourceTree = "<group>"; };
 		3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfo.swift; sourceTree = "<group>"; };
 		3FB42A982A03DBA200C74E58 /* InvInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvInfo.swift; sourceTree = "<group>"; };
+		3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCategoryCell.swift; sourceTree = "<group>"; };
+		3FD7E34B2A498314003EC702 /* CompanyCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCategoryCell.xib; sourceTree = "<group>"; };
+		3FD7E34E2A49CE0D003EC702 /* PieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieTableCell.swift; sourceTree = "<group>"; };
+		3FD7E34F2A49CE0D003EC702 /* PieTableCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PieTableCell.xib; sourceTree = "<group>"; };
 		3FFBE3CA2A392186000A3503 /* sectorHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = sectorHeaderView.xib; sourceTree = "<group>"; };
 		3FFBE3CC2A39E8C5000A3503 /* SectionNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionNameView.swift; sourceTree = "<group>"; };
 		3FFBE3CE2A39E8E9000A3503 /* SectionNameView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SectionNameView.xib; sourceTree = "<group>"; };
@@ -437,6 +451,8 @@
 			children = (
 				8736F53229C7218900A6A567 /* HeaderView.swift */,
 				8736F53329C7218900A6A567 /* HeaderView.xib */,
+				3FD7E34E2A49CE0D003EC702 /* PieTableCell.swift */,
+				3FD7E34F2A49CE0D003EC702 /* PieTableCell.xib */,
 				87C59C7C29C13C7900EB0C40 /* BusnissCard.swift */,
 				87C59C7D29C13C7900EB0C40 /* BusnissCard.xib */,
 				876758A829C75935000F3CBC /* BusnissCardTable.swift */,
@@ -465,6 +481,10 @@
 				3F9150292A40D6B200BE3FC0 /* ChartCell.xib */,
 				3F8D556E2A4432F100AD075F /* CurrencyCellTableViewCell.swift */,
 				3F8D556F2A4432F100AD075F /* CurrencyCellTableViewCell.xib */,
+				3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */,
+				3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */,
+				3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */,
+				3FD7E34B2A498314003EC702 /* CompanyCategoryCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -496,6 +516,7 @@
 				3F8AFA832A0BC47A00D13625 /* LastAction.swift */,
 				3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */,
 				3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */,
+				3F9065812A482059008268D3 /* PartialDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -637,6 +658,7 @@
 				3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */,
 				8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */,
 				8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */,
+				3F1B3CE92A487F35006F0FAE /* LastCoorporationActionCell.xib in Resources */,
 				3F8D55712A4432F100AD075F /* CurrencyCellTableViewCell.xib in Resources */,
 				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
@@ -647,10 +669,12 @@
 				3FFBE3CB2A392186000A3503 /* sectorHeaderView.xib in Resources */,
 				8761E54529DC4B3B00CB72B5 /* AccountListXib.xib in Resources */,
 				87B614FC29D15C690039813A /* HeaderDataXIB.xib in Resources */,
+				3FD7E3512A49CE0D003EC702 /* PieTableCell.xib in Resources */,
 				8768982929D00C3B00636503 /* HomePropretyXib.xib in Resources */,
 				3FFBE3CF2A39E8E9000A3503 /* SectionNameView.xib in Resources */,
 				87C59C7F29C13C7900EB0C40 /* BusnissCard.xib in Resources */,
 				87CE38EC29EBC78800FD09D5 /* TradingXibView.xib in Resources */,
+				3FD7E34D2A498314003EC702 /* CompanyCategoryCell.xib in Resources */,
 				8734D28B295C32570044B0F7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -787,6 +811,7 @@
 				8761E54729DC4D6200CB72B5 /* AccountListModel.swift in Sources */,
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
 				3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */,
+				3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */,
 				87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */,
 				3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */,
 				87D3E9B829DA9FCC006B6AA7 /* LoadingOverly.swift in Sources */,
@@ -799,11 +824,13 @@
 				87B89AD929CFC78B00E82C1E /* DocumentType.swift in Sources */,
 				3F8D55732A4433A800AD075F /* CurrencyPicker.swift in Sources */,
 				87B614FB29D15C690039813A /* HeaderDataXIB.swift in Sources */,
+				3FD7E34C2A498314003EC702 /* CompanyCategoryCell.swift in Sources */,
 				87B614F829D15B1D0039813A /* InvestorAccountOwnerShape.swift in Sources */,
 				87D3E9B429DA9DD8006B6AA7 /* Helper.swift in Sources */,
 				3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */,
 				8775B921298FB7770052C551 /* HomeVC.swift in Sources */,
 				3FB0EF862A391F4500D72C4C /* sectorHeaderView.swift in Sources */,
+				3F9065822A48205A008268D3 /* PartialDataModel.swift in Sources */,
 				87F4FD5329EA282300FF2485 /* OnePaperOwnerShape.swift in Sources */,
 				87B05CE329C06D5D00EAA41D /* WelcomePageVC.swift in Sources */,
 				8736F52F29C70DB800A6A567 /* AccountVC.swift in Sources */,
@@ -827,6 +854,7 @@
 				8736F53129C7184600A6A567 /* BellCountView.swift in Sources */,
 				8736F53429C7218900A6A567 /* HeaderView.swift in Sources */,
 				3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */,
+				3FD7E3502A49CE0D003EC702 /* PieTableCell.swift in Sources */,
 				3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */,
 				87D3E9B629DA9F5E006B6AA7 /* ApiCaler.swift in Sources */,
 				8707FB4C29E9EFB7004CB6AA /* PopUpOTP.swift in Sources */,

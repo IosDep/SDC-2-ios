@@ -14,7 +14,7 @@ import JGProgressHUD
 
 
 class ForgetPassword: UIViewController {
-    @IBOutlet weak var bellView: UIView!
+//    @IBOutlet weak var bellView: UIView!
     @IBOutlet weak var backView: UIStackView!
     @IBOutlet weak var oldPassword: UITextField!
     @IBOutlet weak var newPasswrod: UITextField!
@@ -40,7 +40,7 @@ class ForgetPassword: UIViewController {
         backView.layer.shadowOffset = .zero
         backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
         backView.layer.shouldRasterize = true
-        self.cerateBellView(bellview: bellView, count: "12")
+//        self.cerateBellView(bellview: bellView, count: "12")
         self.majorView.backgroundColor = .white
             
         if checkOldPassword == true {

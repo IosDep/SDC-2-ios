@@ -10,10 +10,9 @@
 import Foundation
 class LastAction{
     
-    var  Member_Name , Member_Id , Isin , Action_Type_Desc , Action_Date , Reuter_Code , Trans_Type_Desc , Value_Before , Value_After: String?
-
+    var  Member_Name , Member_Id , Isin , Action_Type_Desc , Action_Date , Reuter_Code , Trans_Type_Desc , Value_Before , Value_After , Member_Alias , color , percentageChange: String?
+    
     init(data: [String: Any]) {
-        
         
         
         if let Member_Name = data["Member_Name"] as? String {
@@ -56,6 +55,20 @@ class LastAction{
             self.Value_After = Value_After
         }
         
+        // Member_Alias
+        
+        
+        if let Member_Alias = data["Member_Alias"] as? String {
+            self.Member_Alias = Member_Alias
+        }
+        
+        if let color = data["color"] as? String {
+            self.color = color
+        }
+        
+        if let percentageChange = data["percentageChange"] as? String {
+            self.percentageChange = percentageChange
+        }
         
         
     }

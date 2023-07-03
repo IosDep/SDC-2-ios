@@ -38,4 +38,9 @@
             <point key="canvasLocation" x="-6.8702290076335872" y="45.070422535211272"/>
         </tableViewCell>
     </objects>
+    <designables>
+        <designable name="Tdp-eZ-M4Z">
+            <size key="intrinsicContentSize" width="41.333333333333336" height="20.333333333333332"/>
+        </designable>
+    </designables>
 </document>

@@ -11,20 +11,28 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
     
     
     @IBOutlet weak var tableView: UITableView!
+    
     var selectedNatDelegate:SelectedNatDelegate?
+    var checkCompanyAction : Bool?
+    var categories : [String] = []
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tableView.register(UINib(nibName: "CurrencyCellTableViewCell", bundle: nil), forCellReuseIdentifier: "CurrencyCellTableViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.tableView.register(UINib(nibName: "CurrencyCellTableViewCell", bundle: nil), forCellReuseIdentifier: "CurrencyCellTableViewCell")
+        self.tableView.reloadData()
     }
     
     
-    
+
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if checkCompanyAction == true {
+            return categories.count
+        }
+        
         return 2
     }
     
@@ -36,16 +44,21 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
                    cell = nib[0] as? CurrencyCellTableViewCell
                }
        else {
-//           s
-           switch indexPath.row {
-           case 0 :
-               cell?.currency.text = "Dinar"
-           case 1 :
-               cell?.currency.text = "Dollar"
-           default:
-               print("Defaultt")
+           
+           if checkCompanyAction == true {
+               cell?.currency.text = categories[indexPath.row]
            }
-
+           
+           else {
+               switch indexPath.row {
+               case 0 :
+                   cell?.currency.text = "JOD"
+               case 1 :
+                   cell?.currency.text = "USD"
+               default:
+                   print("Defaultt")
+               }
+           }
        }
        
        return cell!
@@ -54,19 +67,33 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        switch indexPath.row {
-        case 0 :
-            self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "Dinar", flag: "1")
-                        
-        case 1 :
-            self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "Dolar", flag: "22")
+        
+        if checkCompanyAction == true {
             
-        default:
-            print("Defaultt")
+            self.selectedNatDelegate?.getSelectdPicker(selectdTxt: categories[indexPath.row], flag: "\(indexPath.row)")
         }
+        
+        else {
+            switch indexPath.row {
+            case 0 :
+                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "JOD", flag: "1")
+                            
+            case 1 :
+                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "USD", flag: "22")
+                
+            default:
+                print("Defaultt")
+            }
+        }
+        
         
         self.dismiss(animated: true)
 
+    }
+    
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
     
     

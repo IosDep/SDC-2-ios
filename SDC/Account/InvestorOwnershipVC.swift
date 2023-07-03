@@ -13,9 +13,7 @@ import MOLH
 class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate,UIScrollViewDelegate , InvestorOwnershipDelegate , SelectedNatDelegate {
    
     @IBOutlet weak var totalValueStack: UIStackView!
-    
     @IBOutlet weak var currencyBtn: UIButton!
-    
     @IBOutlet weak var totalValue: UILabel!
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var backBtn: UIButton!
@@ -55,35 +53,33 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.currencyBtn.setTitle("JOD", for: .normal)
+        self.currencyFlag = "1"
         self.makeShadow(mainView: totalValueStack)
-//        self.makeShadow(mainView: cell!.contentView)
-//        cell?.mainCardView.layer.cornerRadius = 10
-//        cell?.mainCardView.clipsToBounds = true
-//        cell?.mainCardView.layer.borderWidth = 0
-//        cell?.mainCardView.layer.shadowColor = UIColor.black.cgColor
-//        cell?.mainCardView.layer.shadowOffset = CGSize(width: 0, height: 0)
-//        cell?.mainCardView.layer.shadowRadius = 5
-//        cell?.mainCardView.layer.shadowOpacity = 0.2
-//        cell?.mainCardView.layer.masksToBounds = false        self.currencyFlag = "1"
         
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
+        
         if checkSideMenu == true {
-            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
-            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
-            sideMenuBtn.isEnabled = false
+            sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+            bellView.isHidden = true
+        }
+        
+        else if checkSideMenu == false {
+            sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)
+            bellView.isHidden = false
+
         }
         
         isWithoutSelected = true
         isZeroSelected = false
         withZeroFlag = "1"
+        currencyFlag = "1"
         highlightedButtons()
-        self.getInvestoreInfo(withZero: withZeroFlag ?? "")
         search_bar.delegate = self
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
-        
         busnissCard.register(UINib(nibName: "SectionNameView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "SectionNameView")
         
         view.layer.zPosition = 999
@@ -92,28 +88,40 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.busnissCard.addSubview(refreshControl)
         self.cerateBellView(bellview: self.bellView, count: "10")
-        withZeroFlag = "1"
-        DispatchQueue.main.async {
-            if self.isZeroSelected == true && self.isWithoutSelected == false {
-                self.withZero.setTitleColor(.white, for: .normal)
-                self.withZero.backgroundColor  =
-                UIColor(named: "AccentColor")
-                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-            }
-            else if self.isZeroSelected == false && self.isWithoutSelected == true {
-                self.withoutZero.setTitleColor(.white, for: .normal)
-                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
-                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-                
-            }
-        }
+        
+//        DispatchQueue.main.async {
+//            if self.isZeroSelected == true && self.isWithoutSelected == false {
+//                self.withZero.setTitleColor(.white, for: .normal)
+//                self.withZero.backgroundColor  =
+//                UIColor(named: "AccentColor")
+//                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+//            }
+//            else if self.isZeroSelected == false && self.isWithoutSelected == true {
+//                self.withoutZero.setTitleColor(.white, for: .normal)
+//                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
+//                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+//
+//            }
+//        }
     }
+    
+    @IBAction func setupMenu(_ sender: Any) {
+        
+        if self.checkSideMenu == true {
+            self.dismiss(animated: true)
+        }
+        
+        else if checkSideMenu == false {
+            self.side_menu()
+        }
+        
+    }
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
     }
-    
-    
     
     
     @IBAction func backPressed(_ sender: Any) {
@@ -137,7 +145,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
         isSearching = false
-        self.arr_search.removeAll()
+        self.filteredData?.removeAll()
         self.busnissCard.reloadData()
     }
     
@@ -195,14 +203,12 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         
         
         if !isSearching {
-            
             if currencyFlag == "1" {
                 if let data {
                     let newData = data.filter({!($0.array?.isEmpty ?? true)})
                     return newData.count
                 }
             }
-            
             else if currencyFlag == "22" {
                 if let dolarData {
                     let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
@@ -210,10 +216,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 }
                 
             }
-            
-            
-            
-            
             
         }
         
@@ -238,7 +240,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             }
         
         }
-        
         return 0
     }
     
@@ -246,7 +247,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if isSearching {
-            
             if currencyFlag == "1" {
                 if let filteredData {
                     let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
@@ -372,13 +372,12 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         self.present(vc, animated: true)
         
     }
-    
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
+        
         cell?.addtionalStack.isHidden = false
         cell?.mainCardView.layer.cornerRadius =  25
-        
         
         if isSearching  {
             
@@ -408,8 +407,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             
         }
         
-        
-        
         else {
             if currencyFlag == "1" {
                 if let data {
@@ -438,48 +435,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         }
             
         }
-        
-        
-        
-        //        if seatrching == true {
-        //
-        //                    switch  indexPath.section {
-        //                    case 0:
-        //                        cell?.invAccount = filterdBankArray
-        //                    case 1:
-        //                        cell?.invAccount = insuaranceArray
-        //                    case 2:
-        //                        cell?.invAccount = servicesArray
-        //                    case 3:
-        //                        cell?.invAccount = industryArray
-        //                    default:
-        //                        print("defaulttt")
-        //                    }
-        //
-        //                }
-        //
-        //                else {
-        //
-        //                    switch indexPath.section {
-        //
-        //                    case 0:                            cell?.invAccount = bankArray
-        //
-        //                    case 1:                            cell?.invAccount = insuaranceArray
-        //
-        //                    case 2:                            cell?.invAccount = servicesArray
-        //
-        //                    case 3 :
-        //                        cell?.invAccount = industryArray
-        //
-        //                    default:
-        //                        print("defaulttt")
-        //                    }
-        //
-        //                }
-        //        cell?.investorOwnershipDelegate = self
         return cell!
-        
-        
     }
     
     
@@ -606,8 +562,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                 self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
 
         }
-            
-
         
         }
         
@@ -635,11 +589,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBAction func withZeero(btn:UIButton){
         invAccount.removeAll()
-        bankArray.removeAll()
-        insuaranceArray.removeAll()
-        servicesArray.removeAll()
-        industryArray.removeAll()
-        busnissCard.reloadData()
+        data?.removeAll()
+        dolarData?.removeAll()
+        dinarArray.removeAll()
+        dolarArray.removeAll()
+        currencyFlag = "1"
+        currencyBtn.setTitle("Dinar", for: .normal)
+//        busnissCard.reloadData()
             withZeroFlag = "2"
             isZeroSelected = true
             isWithoutSelected = false
@@ -649,11 +605,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBAction func withoutZeero(btn:UIButton){
         invAccount.removeAll()
-        bankArray.removeAll()
-        insuaranceArray.removeAll()
-        servicesArray.removeAll()
-        industryArray.removeAll()
-        busnissCard.reloadData()
+        data?.removeAll()
+        dolarData?.removeAll()
+        dolarArray.removeAll()
+        dinarArray.removeAll()
+//        busnissCard.reloadData()
         withZeroFlag = "1"
         isWithoutSelected = true
         isZeroSelected = false
@@ -695,11 +651,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
                                         let model = InvestoreOwnerShape(data: item)
-                                        
                                 
                                         self.invAccount.append(model)
-                                        
-                                       
                                         
                                     }
                                     
@@ -833,41 +786,82 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var headerViewIsHidden = false
 
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        let currentScrollViewYOffset = scrollView.contentOffset.y
-//
-//        if currentScrollViewYOffset <= 0 {
-//              // User is at the top of the table view
-//            headerView.isHidden = false
-//          } else {
-//              // User has scrolled down
-//              headerView.isHidden = true
-//          }
-//        if currentScrollViewYOffset > previousScrollViewYOffset {
-//            // scrolling down
-//            if !headerViewIsHidden {
-//                headerViewIsHidden = true
-//                headerConstrianett.constant = 600
-//
-//
-//                UIView.animate(withDuration: 0.2) {
-//                    self.headerView.alpha = 0
-//                }
-//            }
-//        } else {
-//            // scrolling up
-//            if headerViewIsHidden {
-//                headerConstrianett.constant = 494
-//
-//                headerViewIsHidden = false
-//                UIView.animate(withDuration: 0.2) {
-//                    self.headerView.alpha = 1
-//
-//                }
-//            }
-//        }
-//
-//        previousScrollViewYOffset = currentScrollViewYOffset
-    }
+    var viewHeight: CGFloat = 180
+    private var isAnimationInProgress = false
 
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isAnimationInProgress {
+            
+            // Check if an animation is required
+            if scrollView.contentOffset.y > .zero &&
+                headerConstrianett.constant > .zero {
+                
+                headerConstrianett.constant = .zero
+                headerView.isHidden = true
+                animateTopViewHeight()
+            }
+            else if scrollView.contentOffset.y <= .zero
+                        && headerConstrianett.constant <= .zero {
+                
+                headerConstrianett.constant = viewHeight
+                headerView.isHidden = false
+                animateTopViewHeight()
+            }
+        }
+    }
+    
+    private func animateTopViewHeight() {
+        
+        // Lock the animation functionality
+        isAnimationInProgress = true
+        
+        UIView.animate(withDuration: 0.2) {
+            
+            self.view.layoutIfNeeded()
+            
+        } completion: { [weak self] (_) in
+            
+            // Unlock the animation functionality
+            self?.isAnimationInProgress = false
+        }
+    }
 }
+
+
+
+//        if seatrching == true {
+//
+//                    switch  indexPath.section {
+//                    case 0:
+//                        cell?.invAccount = filterdBankArray
+//                    case 1:
+//                        cell?.invAccount = insuaranceArray
+//                    case 2:
+//                        cell?.invAccount = servicesArray
+//                    case 3:
+//                        cell?.invAccount = industryArray
+//                    default:
+//                        print("defaulttt")
+//                    }
+//
+//                }
+//
+//                else {
+//
+//                    switch indexPath.section {
+//
+//                    case 0:                            cell?.invAccount = bankArray
+//
+//                    case 1:                            cell?.invAccount = insuaranceArray
+//
+//                    case 2:                            cell?.invAccount = servicesArray
+//
+//                    case 3 :
+//                        cell?.invAccount = industryArray
+//
+//                    default:
+//                        print("defaulttt")
+//                    }
+//
+//                }
+//        cell?.investorOwnershipDelegate = self

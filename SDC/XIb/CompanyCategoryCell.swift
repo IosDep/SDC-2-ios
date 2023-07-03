@@ -1,20 +1,17 @@
 //
-//  PickerCell.swift
+//  CompanyCategoryCell.swift
 //  SDC
 //
-//  Created by Razan Barq on 02/05/2023.
+//  Created by Razan Barq on 26/06/2023.
 //
 
 import UIKit
 
-class PickerCell: UITableViewCell {
-    
+class CompanyCategoryCell: UITableViewCell {
 
-    @IBOutlet weak var reuterCode: UILabel!
-    
-    @IBOutlet weak var title: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

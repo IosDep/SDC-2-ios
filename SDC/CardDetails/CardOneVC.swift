@@ -11,6 +11,12 @@ class CardOneVC: UIViewController {
     
     // Security info
     
+    @IBOutlet weak var additionalView: UIView!
+    @IBOutlet weak var secondLabel: DesignableLabel2!
+    @IBOutlet weak var firstLabel: DesignableLabel2!
+    
+    @IBOutlet weak var thirdLabel: DesignableLabel2!
+    @IBOutlet weak var sectorName: UILabel!
     @IBOutlet weak var bellView : UIView!
    
     @IBOutlet weak var clientNum: UILabel!
@@ -38,7 +44,6 @@ class CardOneVC: UIViewController {
     
     @IBOutlet weak var securityID: UILabel!
     
-    
     @IBOutlet weak var isin: UILabel!
     @IBOutlet weak var securityName: UILabel!
     @IBOutlet weak var additionalStack: UIStackView!
@@ -59,6 +64,11 @@ class CardOneVC: UIViewController {
         self.cerateBellView(bellview: bellView, count: "12")
         
         if checkOnepaper == true {
+            additionalStack.isHidden = false
+            additionalView.isHidden = false
+            firstLabel.text = "Membership Type".localized()
+            secondLabel.text = "Member Name".localized()
+            thirdLabel.text = "Account No.".localized()
             
             currantBalance.text =  securityOwnership?.Quantity_Owned ?? ""
             freeBalance.text =  securityOwnership?.Quantity_Avilable ?? ""
@@ -93,6 +103,8 @@ class CardOneVC: UIViewController {
         }
             
         else {
+            additionalStack.isHidden = true
+            additionalView.isHidden = true
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
             currantBalance.text =  invAccount?.Quantity_Owned ?? ""
             freeBalance.text =  invAccount?.Quantity_Avilable ?? ""

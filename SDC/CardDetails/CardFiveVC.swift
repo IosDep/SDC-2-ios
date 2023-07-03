@@ -26,7 +26,7 @@ class CardFiveVC: UIViewController {
     @IBOutlet weak var invNationality: UILabel!
     @IBOutlet weak var bellView: UIButton!
     @IBOutlet weak var sideMenuBtn: UIButton!
-    @IBOutlet weak var backBtn: UIButton!
+//    @IBOutlet weak var backBtn: UIButton!
     @IBOutlet weak var nickname: UILabel!
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var investorNat: UILabel!
@@ -76,15 +76,18 @@ class CardFiveVC: UIViewController {
     var nationalities = [Nationality]()
     var NatStatus : String?
     
-    @IBAction func backPressed(_ sender: Any) {
-        if checkSideMenu == true {
-            self.dismiss(animated: true, completion: {
-                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                let vc = storyBoard.instantiateViewController(withIdentifier: "HomeVC") as! HomeVC
-                self.present(vc, animated: true, completion: nil)
-            })
+
+    @IBAction func setupMenu(_ sender: Any) {
+        
+        if self.checkSideMenu == true {
+            self.dismiss(animated: true)
         }
+        else if checkSideMenu == false {
+            self.side_menu()
+        }
+        
     }
+    
     
     override func viewDidLayoutSubviews() {
         securityStack.roundCorners([.topLeft, .topRight], radius: 12)
@@ -103,8 +106,10 @@ class CardFiveVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if checkSideMenu == true {
-            backBtn.setImage(UIImage(systemName: "chevron.forward"), for: .normal)
-            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+            sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+        }
+        else if checkSideMenu == false {
+            sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)
         }
         
         self.cerateBellView(bellview: bellView, count: "12")

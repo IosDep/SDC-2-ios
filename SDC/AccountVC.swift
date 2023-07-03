@@ -31,7 +31,7 @@ class AccountVC: UIViewController {
         case LOGOUT = 7
 
     }
-    @IBOutlet weak var bellview: UIView!
+//    @IBOutlet weak var bellview: UIView!
     
     
     @IBOutlet weak var scrollViewHolder: UIView!
@@ -67,7 +67,7 @@ class AccountVC: UIViewController {
 //        }
 //
         
-        self.cerateBellView(bellview: self.bellview, count: "10")
+//        self.cerateBellView(bellview: self.bellview, count: "10")
         
         
     }

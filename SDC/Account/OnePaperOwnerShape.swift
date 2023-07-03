@@ -10,12 +10,20 @@ import Alamofire
 import MOLH
 import JGProgressHUD
 
+struct SecurityOwnerShapeHolder {
+    var title: String?
+    var array: [SecurityOwnership]?
+}
 
-class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate , DataSelectedDelegate{
+
+
+class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate,UISearchBarDelegate , DataSelectedDelegate , SelectedNatDelegate{
     
     
+    @IBOutlet weak var searchStack: UIStackView!
     
-    
+    @IBOutlet weak var staticCellInfo: UIView!
+    @IBOutlet weak var securityNameLabel: UIButton!
     @IBOutlet weak var withZero: DesignableButton!
     @IBOutlet weak var withoutZero: DesignableButton!
     @IBOutlet weak var paperNameBtn: UIButton!
@@ -25,7 +33,26 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var busnissCard: UITableView!
     @IBOutlet weak var headerView: UIView!
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
-    @IBOutlet weak var bellView: UIView!
+    @IBOutlet weak var staticCellView: UIView!
+    @IBOutlet weak var isinLabel: UILabel!
+    @IBOutlet weak var reuterCode: UILabel!
+    @IBOutlet weak var secNameLabel: UILabel!
+    @IBOutlet weak var secStatusLabel: UILabel!
+    @IBOutlet weak var secMarketLabel: UILabel!
+    
+//    @IBOutlet weak var bellView: UIView!
+    
+    var totalDolar : Double?
+    var totalDinar : Double?
+    var currencyFlag : String?
+    var isSearching = false
+
+    
+    var dinarData, filteredData , dolarData , dolarFilteredData: [SecurityOwnerShapeHolder]?
+    
+    var dinarArray = [SecurityOwnership]()
+    var dolarArray = [SecurityOwnership]()
+    var dataArray = [PartialDataModel]()
     
     
     var memberId:String = ""
@@ -52,27 +79,27 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchStack.isHidden = true
+        staticCellInfo.isHidden = true
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
-        isZeroSelected = true
-        isWithoutSelected = false
+        isZeroSelected = false
+        isWithoutSelected = true
         withZeroFlag = "1"
+        
         
         if checkSideMenu == true {
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
         
-        self.cerateBellView(bellview: bellView, count: "12")
+//        self.cerateBellView(bellview: bellView, count: "12")
         self.getInvestoreInfo(withZero: withZeroFlag ?? "")
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
-        
-        
+        busnissCard.register(UINib(nibName: "SectionNameView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "SectionNameView")
         search_bar.delegate = self
-        
-        
-        
         //refreshControl
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
@@ -82,9 +109,18 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     //    refresh action
     @objc func didPullToRefresh() {
         self.invAccount.removeAll()
-        self.busnissCard.reloadData()
+//        self.busnissCard.reloadData()
         
+    }
+    
+    
+    
+    @IBAction func currencyPressed(_ sender: Any) {
         
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "CurrencyPicker") as! CurrencyPicker
+        vc.selectedNatDelegate = self
+        self.present(vc, animated: true)
     }
     
     
@@ -97,47 +133,181 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         search_bar.text = ""
         seatrching = false
         self.arr_search.removeAll()
-        busnissCard.reloadData()
+//        busnissCard.reloadData()
     }
+    
+    
+    // jod usd option
+    
+    func getSelectdPicker(selectdTxt: String, flag: String) {
+//        currencyBtn.setTitle(selectdTxt, for: .normal)
+//        if flag == "1" {
+//            totalValue.text = self.numFormat(value: totalDinar ?? 0.0)
+//            self.currencyFlag = "1"
+//        }
+//        else if flag == "22"{
+//            totalValue.text = self.numFormat(value: totalDolar ?? 0.0)
+//            self.currencyFlag = "22"
+//        }
+//
+//        DispatchQueue.main.async {
+//            self.busnissCard.reloadData()
+//
+//
+//        }
+    }
+    
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        if !isSearching {
+                if let dinarData {
+                    let newData = dinarData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                }
+           
+        }
+        
+        else {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData.count
+                
+            }
+        }
+        
+        return 0
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return securityOwnership.count ?? 2
+        if isSearching {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
+            
+        }
+       
+        
+        else {
+                if let dinarData {
+                    let newData = dinarData.filter({!($0.array?.isEmpty ?? true)})
+                    return newData[section].array?.count ?? 0
+                }
+        }
+        
+        return 0
     }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let headerView = busnissCard.dequeueReusableHeaderFooterView(withIdentifier: "SectionNameView") as! SectionNameView
+        if !isSearching {
+            
+                if let dinarData {
+                    let newData = dinarData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            
+                if let dolarData {
+                    let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+        }
+        
+        else {
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    headerView.sectionName.text = newData[section].title ?? ""
+                }
+            }
+        
+        return headerView
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
-        vc.modalPresentationStyle = .fullScreen
         vc.checkOnepaper = true
-        vc.securityOwnership = self.securityOwnership[indexPath.row]
+        vc.modalPresentationStyle = .fullScreen
+        
+        if !isSearching {
+                if let dinarData {
+                    let newData = dinarData.filter({!($0.array?.isEmpty ?? true)})
+                    vc.securityOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
+        }
+        
+        
+        else {
+            if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    vc.securityOwnership = newData[indexPath.section].array?[indexPath.row]
+                }
+        }
         self.present(vc, animated: true)
+        
     }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
         
-//        if isCleared == true {
-//            cell?.literalName.text = clearedSecData[indexPath.row].Security_Name
-//            cell?.literalNum.text = clearedSecData[indexPath.row].Security_Id
-//            cell?.balance.text =
-//            clearedSecData[indexPath.row].Nominal_Value
-//        }
+        
+        cell?.addtionalStack.isHidden = true
+        cell?.firstLbl.text = "Corporation name".localized()
+        cell?.secondLbl.text = "Corporation ID".localized()
+        cell?.thirdLbl.text = "Action description".localized()
+        
+        
+//            cell?.literalName.text = securityOwnership[indexPath.row].Security_Name
+//        cell?.literalNum.text =  securityOwnership[indexPath.row].Security_Id ?? ""
 //
-//        else {
-            cell?.literalName.text = securityOwnership[indexPath.row].Security_Name
-        cell?.literalNum.text =  securityOwnership[indexPath.row].Security_Id ?? ""
-        
-        cell?.sector.text =  securityOwnership[indexPath.row].Security_Sector_Desc ?? ""
-        
-        cell?.balance.text = self.doubleToArabic(value: securityOwnership[indexPath.row].Security_Close_Price ?? "")
+//        cell?.sector.text =  securityOwnership[indexPath.row].Security_Sector_Desc ?? ""
+//
+//        cell?.balance.text = self.doubleToArabic(value: securityOwnership[indexPath.row].Security_Close_Price ?? "")
             
             
-//        }
+        cell?.mainCardView.layer.cornerRadius =  25
+        
+        if isSearching  {
+            
+                if let filteredData {
+                    let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].Security_Isin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
+            
+        }
+        
+        
+        
+        else {
+                if let dinarData {
+                    let newData = dinarData.filter({!($0.array?.isEmpty ?? true)})
+                    cell?.literalName.text = newData[indexPath.section].array?[indexPath.row].Security_Reuter_Code ?? ""
+                    cell?.literalNum.text =  newData[indexPath.section].array?[indexPath.row].Security_Isin  ?? ""
+                    
+                    cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
+                    
+                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                }
+        }
         
         return cell!
-        
+
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 180
@@ -179,71 +349,66 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         self.paperNameBtn.setTitle("-", for: .normal)
         self.literalNumBtn.setTitle("-", for: .normal)
         securityOwnership.removeAll()
-        self.busnissCard.reloadData()
+//        self.busnissCard.reloadData()
         
     }
     
     
     @IBAction func withZeero(btn:UIButton){
-        DispatchQueue.main.async {
-            self.securityOwnership.removeAll()
-            self.busnissCard.reloadData()
-        }
-        secData.removeAll()
-        self.paperNameBtn.setTitle("-", for: .normal)
-        self.literalNumBtn.setTitle("-", for: .normal)
-        withZeroFlag = "1"
-        isZeroSelected = true
-        isWithoutSelected = false
-        highlightedButtons()
+//        self.securityOwnership.removeAll()
+//        self.dinarData?.removeAll()
+//        self.filteredData?.removeAll()
+//        self.paperNameBtn.setTitle("-", for: .normal)
+//        searchStack.isHidden = true
+//        withZeroFlag = "2"
+//        isZeroSelected = true
+//        isWithoutSelected = false
+//        highlightedButtons()
         
     }
     
     //function for change background selected background color for with and without zero btn
-    
-    func highlightedButtons() {
-        
-        if isZeroSelected  == true && isWithoutSelected == false {
-            DispatchQueue.main.async {
-                self.withZero.setTitleColor(.white, for: .normal)
-                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-                self.withoutZero.backgroundColor  = .systemGray6
-//                self.withoutZero.cornerRadius = 12
-                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-                self.withoutZero.borderWidth = 1
-                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-            }
-        }
-        else if isZeroSelected == false  && isWithoutSelected == true {
-            DispatchQueue.main.async {
-                self.withoutZero.setTitleColor(.white, for: .normal)
-                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
-                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal) 
-                self.withZero.backgroundColor  = .systemGray6
-//                self.withZero.cornerRadius = 12
-                self.withZero.borderColor =  UIColor(named: "AccentColor")
-                self.withZero.borderWidth = 1
-                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-            }
-        }
-        
-    }
+//
+//    func highlightedButtons() {
+////        busnissCard.reloadData()
+//        if isZeroSelected  == true && isWithoutSelected == false {
+//            DispatchQueue.main.async { [self] in
+//                self.withZero.setTitleColor(.white, for: .normal)
+//                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
+//                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+//                self.withoutZero.backgroundColor  = .white
+////                self.withoutZero.cornerRadius = 12
+//                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+//                self.withoutZero.borderWidth = 1
+//
+//            }
+//        }
+//        else if isZeroSelected == false  && isWithoutSelected == true {
+//            DispatchQueue.main.async {
+//                self.withoutZero.setTitleColor(.white, for: .normal)
+//                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
+//                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
+//                self.withZero.backgroundColor  = .white
+////                self.withZero.cornerRadius = 12
+//                self.withZero.borderColor =  UIColor(named: "AccentColor")
+//                self.withZero.borderWidth = 1
+//
+//            }
+//        }
+//
+//    }
     
     
     @IBAction func withoutZeero(btn:UIButton){
-        DispatchQueue.main.async {
-            self.securityOwnership.removeAll()
-            self.busnissCard.reloadData()
-        }
-        
-        secData.removeAll()
-        self.paperNameBtn.setTitle("-", for: .normal)
-        self.literalNumBtn.setTitle("-", for: .normal)
-        withZeroFlag = "0"
-        isWithoutSelected = true
-        isZeroSelected = false
-        highlightedButtons()
+//        self.securityOwnership.removeAll()
+//        self.dinarData?.removeAll()
+//        self.filteredData?.removeAll()
+//        self.paperNameBtn.setTitle("-", for: .normal)
+//        searchStack.isHidden = true
+//        withZeroFlag = "1"
+//        isWithoutSelected = true
+//        isZeroSelected = false
+//        highlightedButtons()
 
     }
     
@@ -251,25 +416,47 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     // set title for picker's buttons when is selected from picker vc
     
-    func getSelectdPicker(selectdTxt: String,securtNumber:String ,flag: String,securtyId:String) {
+   
+    
+    func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
         
         if flag == "0"{
-            selectedPaperName = selectdTxt
-            self.paperNameBtn.setTitle(selectdTxt, for: .normal)
             
-        } else  if flag == "1"{
-            selectedLiteralNum = selectdTxt
-            self.literalNumBtn.setTitle(securtNumber, for: .normal)
+            searchStack.isHidden = false
+            staticCellInfo.isHidden = false
+            
+            selectedPaperName = selectdTxt
+            self.securityNameLabel.setTitle(  "\(selectdTxt)/\(securtNumber)" , for: .normal)
+           // ??
             
         }
         
+        
         self.securtyIdToCallApi = securtyId
+        searchStack.isHidden = false
+        
+        
+        // set labels for static cell
+        
+        isinLabel.text = secISIN ?? ""
+        reuterCode.text = securtNumber ?? ""
+        secNameLabel.text = selectdTxt ?? ""
+        secStatusLabel.text = secStatus ?? ""
+        secMarketLabel.text = secMarket ?? ""
+        
         
         print("Securty !!",securtyId)
         print("Securty !!",securtyId)
+    }
+    
+    
+    
+    func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String) {
+        
         
         
     }
+    
     
     // Security name Picker pressed
     
@@ -301,13 +488,14 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func searchPressed(_ sender: Any) {
-        //
-        //    if self.securtyIdToCallApi?.isEmpty == true{
-        //        self.showErrorHud(msg: "")
-        //    }else {
-        self.getSecurityOwnership(securtID: self.securtyIdToCallApi ?? "")
-        //    }
+        
+        self.getSecurityOwnership(securtID: securtyIdToCallApi ?? "", withZero: withZeroFlag ?? "")
+            
     }
+    
+    
+    
+    
     
     
     func getInvestoreInfo(withZero : String){
@@ -318,10 +506,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         
         
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang":  "en" ,
-                                    "with_zero" : withZero
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang":  MOLHLanguage.isRTLLanguage() ? "ar" : "en" ,
+                                    "with_zero" : "1"
                                     
-                                    
+
         ]
         
         let link = URL(string: APIConfig.GetInvOwnership)
@@ -336,27 +524,36 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
-                                
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
-                                    
-                                    
-                                    
+
                                     for item in data {
                                         let model = InvestoreOwnerShape(data: item)
                                         self.invAccount.append(model)
                                         
-                                        self.secData.append(SecurityData(secName: model.Security_Name ?? "", secNum: model.Security_Reuter_Code ?? "" , securotyID: model.securityID ?? "" ))
-                                        
                                     }
                                     
                                     
-                                    
-                                    DispatchQueue.main.async {
-                                        hud.dismiss()
-                                        
-                                    }
                                 }
                                 
+                                // partialData
+                                
+                                if let partialData = jsonObj!["partialData"] as? [[String: Any]]{
+
+
+                                    for item in partialData {
+                                        let model = PartialDataModel(data: item)
+                                        self.dataArray.append(model)
+
+                                        self.secData.append(SecurityData(secName: model.Security_Name ?? "", secNum: model.Security_Reuter_Code ?? "" , securotyID: model.Security_Id ?? "" , secMarket: model.Market_Type_Desc ?? "" , secStatus: model.Security_Status_Desc ?? "" , secISIN: model.Security_Isin ?? ""))
+
+                                    }
+
+                                    DispatchQueue.main.async {
+                                        hud.dismiss()
+
+                                    }
+
+                                }
                             }
                             //                             Session ID is Expired
                             else if status == 400{
@@ -393,7 +590,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         }
     }
     
-    func getSecurityOwnership(securtID:String){
+    func getSecurityOwnership(securtID:String , withZero : String){
         
         self.securityOwnership.removeAll()
         
@@ -406,13 +603,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         let param : [String:Any] = [
             "sessionId" : Helper.shared.getUserSeassion() ?? ""
-            ,"lang": "en",
+            ,"lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en",
             "securityId":self.securtyIdToCallApi ?? "" ,
-            "with_zero" : "0"
+            "with_zero" : withZeroFlag
         ]
-        
-        print("APIIII PRAMMM",param)
-        
         
         let link = URL(string: APIConfig.GetSecurityOwnership)
         
@@ -428,13 +622,24 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
                             if status == 200 {
                                 
                                 
-                                
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
                                         let model = SecurityOwnership(data: item)
                                         self.securityOwnership.append(model)
                                         
                                     }
+                                    
+                                    self.dinarData = []
+                                    
+                                    self.dinarData?
+                                        .append(SecurityOwnerShapeHolder(title: "Bank".localized(), array: self.securityOwnership.filter({($0 .Security_Sector) == "1"})))
+                                    self.dinarData?
+                                        .append(SecurityOwnerShapeHolder(title: "Insurance".localized(), array: self.securityOwnership.filter({($0 .Security_Sector) == "2"})))
+                                    self.dinarData?
+                                        .append(SecurityOwnerShapeHolder(title: "Services".localized(), array: self.securityOwnership.filter({($0 .Security_Sector) == "3"})))
+                                        self.dinarData?
+                                            .append(SecurityOwnerShapeHolder(title: "Industry".localized(), array: self.securityOwnership.filter({($0 .Security_Sector) == "4"})))
+                                    
                                     
                                     DispatchQueue.main.async {
                                         self.busnissCard.reloadData()
@@ -481,6 +686,9 @@ struct SecurityData {
     var secName : String
     var secNum : String
     var securotyID : String
+    var secMarket : String
+    var secStatus : String
+    var secISIN : String
     
 }
 

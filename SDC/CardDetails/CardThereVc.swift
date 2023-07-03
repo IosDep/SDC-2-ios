@@ -12,7 +12,7 @@ import MOLH
 
 class CardThereVc: UIViewController {
 
-    @IBOutlet weak var bellView : UIView!
+//    @IBOutlet weak var bellView : UIView!
     @IBOutlet weak var transactionNumber: UILabel!
     @IBOutlet weak var tradeTime: UILabel!
     @IBOutlet weak var transactionDate: UILabel!
@@ -41,56 +41,29 @@ class CardThereVc: UIViewController {
         mainStack.isLayoutMarginsRelativeArrangement = true
         
         
-        transactionNumber.text =   trans?.Trans_No ?? ""
+        // trans type
         
+        transactionNumber.text =   trans?.Trans_Min_Code_Desc ?? ""
         
-        
-        // trans?.Trade_Time ?? ""
-        
-        tradeTime.text = MOLHLanguage.isRTLLanguage() ?
-        self.convertTimeToArabicNumbers(timeString:         trans?.Trade_Time ?? "") : trans?.Trade_Time ?? ""
         
         // trans?.Trans_Date ?? ""
-        transactionDate.text = self.convertDateToArabicNumbers(dateString: trans?.Trans_Date ?? "")
+        transactionDate.text =   trans?.Trans_Date ?? ""
         
-        
-        // trans?.Settlement_Date ?? ""
-        settlementDate.text = self.convertDateToArabicNumbers(dateString:         trans?.Settlement_Date ?? "")
-        
-        // trans?.Effictive_Date ?? ""
-        effectiveDate.text =
-        self.convertDateToArabicNumbers(dateString:         trans?.Effictive_Date ?? "")
+    
         
         securityID.text = trans?.Security_Reuter_Code ?? ""
         
         
         securityName.text = trans?.Security_Name ?? ""
-        
-        memberNumber.text =  trans?.Member_No ?? ""
-        
         memberName.text = trans?.Member_Name ?? ""
         
         accountID.text =  trans?.Account_No ?? ""
         
-        accountType.text =  trans?.Account_Type ?? ""
-        
-        clientNumber.text =  trans?.Client_No ?? ""
-        
-        descriptionI.text = trans?.Trans_Maj_Code_Desc ?? ""
-        exactDescription.text = trans?.Trans_Min_Code_Desc ?? ""
         quantity.text =  trans?.Quantity ?? ""
         
-        price.text = self.doubleToArabic(value: trans?.Price ?? "")
+        price.text = trans?.Price ?? ""
         
-        marketValue.text = self.doubleToArabic(value: trans?.Market_Value ?? "")
-        
-        // trans?.Post_Date ?? ""
-        postDate.text =
-        self.convertDateToArabicNumbers(dateString:         trans?.Post_Date ?? "")
-        
-        transID.text =  trans?.Rel_Trans_No ?? ""
-
-        self.cerateBellView(bellview: bellView, count: "12")
+        marketValue.text = self.numStringFormat(value: trans?.Market_Value ?? "")
         
     }
     
