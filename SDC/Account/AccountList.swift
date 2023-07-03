@@ -39,9 +39,10 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableVIew.dataSource = self
         tableVIew.delegate = self
         self.getAccountList()
-        cerateBellView(bellview: self.bellView, count: "12")
-        
         tableVIew.register(UINib(nibName: "AccountListXib", bundle: nil), forCellReuseIdentifier: "AccountListXib")
+        
+        let notcount = "\(Helper.shared.getNotificationCount()!)"
+        self.cerateBellView(bellview: self.bellView, count: notcount)
         
         //refreshControl
         refreshControl = UIRefreshControl()

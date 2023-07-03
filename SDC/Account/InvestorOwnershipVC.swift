@@ -87,7 +87,9 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.busnissCard.addSubview(refreshControl)
-        self.cerateBellView(bellview: self.bellView, count: "10")
+        
+        let notcount = "\(Helper.shared.getNotificationCount()!)"
+        self.cerateBellView(bellview: self.bellView, count: notcount)
         
 //        DispatchQueue.main.async {
 //            if self.isZeroSelected == true && self.isWithoutSelected == false {
@@ -786,6 +788,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     var headerViewIsHidden = false
 
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
+    
     var viewHeight: CGFloat = 180
     private var isAnimationInProgress = false
 

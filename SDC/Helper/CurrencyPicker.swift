@@ -70,7 +70,7 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
         
         if checkCompanyAction == true {
             
-            self.selectedNatDelegate?.getSelectdPicker(selectdTxt: categories[indexPath.row], flag: "\(indexPath.row)")
+            self.selectedNatDelegate?.getSelectdPicker(selectdTxt: categories[indexPath.row].localized(), flag: "\(indexPath.row)")
         }
         
         else {

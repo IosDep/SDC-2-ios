@@ -44,7 +44,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var marketValues : [Double] = []
     var categories = [String]()
     var pieTableHolder = [PieTableHolder]()
-    
+    var notifications = [NotificationModel]()
+
     var dbank = SectorAnylisisModel(data: [:])
     var dinsuarance = SectorAnylisisModel(data: [:])
     var dservice = SectorAnylisisModel(data: [:])
@@ -128,6 +129,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         isDinarSelected = true
         highlightedButtons()
         
+        self.getNotificationInfo()
+        
         if checkSideMenu == true {
             sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
         }
@@ -161,9 +164,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.anlyssSection.backgroundColor = .clear
         self.anlyssSection.setCollectionViewLayout(collLayout, animated: false)
         
-        self.cerateBellView(bellview: self.bellView, count: "12")
-        
-        
+    
         //        call api
         
         //        self.getAllData()
@@ -1073,6 +1074,74 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                 
                 self.serverError(hud: hud)
                 
+            }
+        }
+    }
+    
+    func getNotificationInfo(){
+//
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+ ]
+     
+        let link = URL(string: APIConfig.GetNotfication)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                            for item in data {
+                                                let model = NotificationModel(data: item)
+                                                self.notifications.append(model)
+                                 
+                                            }
+                                    Helper.shared.saveNotificationCount(count: self.notifications.count ?? 0)
+                                    
+                                    let notcount = "\(Helper.shared.getNotificationCount()!)"
+                                    self.cerateBellView(bellview: self.bellView, count: notcount)
+                                    
+                                        }
+                                
+                                DispatchQueue.main.async {
+                                    hud.dismiss()
+
+                                }
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                                other Wise Problem
+                            else {
+                                hud.dismiss(animated: true)      }
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+
+
             }
         }
     }

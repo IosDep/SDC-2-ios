@@ -112,7 +112,8 @@ class CardFiveVC: UIViewController {
             sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)
         }
         
-        self.cerateBellView(bellview: bellView, count: "12")
+        let notcount = "\(Helper.shared.getNotificationCount()!)"
+        self.cerateBellView(bellview: self.bellView, count: notcount)
         self.getAccountInfo()
 
         
@@ -180,9 +181,9 @@ class CardFiveVC: UIViewController {
                                     self.investorClassification.text = clientCatDesc ?? ""
                                     
                                     
-                                    let clientTypeDesc = data!["clientTypeDesc"] as? String
-                                    self.investorType.text = clientTypeDesc ?? ""
-                                    
+//                                    let clientTypeDesc = data!["clientTypeDesc"] as? String
+//                                    self.investorType.text = clientTypeDesc ?? ""
+//
                                     
                                     let clientStatusDesc = data!["clientStatusDesc"] as? String
                                     self.investorStatus.text = clientStatusDesc ?? ""

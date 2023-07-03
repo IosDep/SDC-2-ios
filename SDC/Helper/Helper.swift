@@ -104,6 +104,7 @@ final class Helper {
         let def = UserDefaults.standard
         return def.object(forKey: "user_address") as? String
     }
+    
     func saveUserCity(city:String)
     {
         let def = UserDefaults.standard
@@ -115,7 +116,16 @@ final class Helper {
         return def.object(forKey: "user_city") as? String
     }
     
-
+    func saveNotificationCount(count:Int)
+    {
+        let def = UserDefaults.standard
+        def.setValue(count, forKey: "notification_count")
+        def.synchronize()
+    }
+    func getNotificationCount()-> Int?{
+        let def = UserDefaults.standard
+        return def.object(forKey: "notification_count") as? Int
+    }
     
     
     

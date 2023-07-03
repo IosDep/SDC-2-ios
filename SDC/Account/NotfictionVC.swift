@@ -148,9 +148,7 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
               }
             } else {
                 print("Error")
-
                 self.serverError(hud: hud)
-
 
             }
         }

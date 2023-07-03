@@ -15,6 +15,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     
     
+    @IBOutlet weak var search_bar: UISearchBar!
     
     @IBOutlet weak var categoryBtn: DesignableButton!
     @IBOutlet weak var busnissCard: UITableView!
@@ -24,7 +25,8 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     var isWithoutSelected : Bool?
     //    @IBOutlet weak var withoutZero: DesignableButton!
     //    @IBOutlet weak var withZero: DesignableButton!
-    @IBOutlet weak var search_bar: UISearchBar!
+    
+    
     
     var seatrching = false
     var pickerData : [String] = []
@@ -84,17 +86,17 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     func getSelectdPicker(selectdTxt: String, flag: String) {
         
-        if selectdTxt == "Public ShareHolding Companies"{
+        if selectdTxt == "Public ShareHolding Companies".localized(){
             categoryBtn.setTitle(selectdTxt, for: .normal)
             categoryFlag = 0
     }
         
-        if selectdTxt == "Finincial Services Companies" {
+        if selectdTxt == "Finincial Services Companies".localized(){
             categoryBtn.setTitle(selectdTxt, for: .normal)
             categoryFlag = 1
         }
         
-        if selectdTxt == "Custodians" {
+        if selectdTxt == "Custodians".localized(){
             categoryBtn.setTitle(selectdTxt, for: .normal)
             categoryFlag = 2
         }
@@ -128,14 +130,6 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
         seatrching = false
-        self.arr_search.removeAll()
-        self.invOwnership.removeAll()
-        self.busnissCard.reloadData()
-        if isZeroSelected == true && isWithoutSelected == false {
-            self.getLastactions(withZero: self.withZeroFlag ?? "")
-            self.busnissCard.reloadData()
-
-        }
         
         
         }
@@ -304,6 +298,10 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
 //                self.busnissCard.reloadData()
 //
 //        }
+        
+        self.seatrching = true
+        self.busnissCard.reloadData()
+    
     }
     
 //    search
@@ -415,7 +413,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                                     
                                     if self.publicCompanies.isEmpty == false{
                                         self.counter = (self.counter ?? 0) + 1
-                                        self.pickerData.append("Public ShareHolding Companies")
+                                        self.pickerData.append("Public ShareHolding Companies".localized())
                                         
                                     }
                                     
@@ -435,7 +433,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                                     if self.financialCompanies.isEmpty == false{
                                         self.counter = (self.counter ?? 0) + 1
                                         
-                                        self.pickerData.append("Finincial Services Companies")
+                                        self.pickerData.append("Finincial Services Companies".localized())
                                     }
                                     
                                     if let custodians = data["custodians"] as? [[String: Any]]{
@@ -449,7 +447,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                                         if self.custodians.isEmpty == false{
                                             self.counter = (self.counter ?? 0) + 1
                                             
-                                            self.pickerData.append("Custodians")
+                                            self.pickerData.append("Custodians".localized())
                                         }
                                         
                                         
@@ -526,49 +524,51 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     @IBOutlet weak var headerView: UIView!
+    
     var previousScrollViewYOffset: CGFloat = 0
     var headerViewIsHidden = false
     
+    @IBOutlet weak var HeaderContraint: NSLayoutConstraint!
     
-    @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
-    
+    var viewHeight: CGFloat = 180
+    private var isAnimationInProgress = false
+
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentScrollViewYOffset = scrollView.contentOffset.y
-        
-        if currentScrollViewYOffset <= 0 {
-              // User is at the top of the table view
-            headerView.isHidden = false
-          } else {
-              // User has scrolled down
-              headerView.isHidden = true
-          }
-        if currentScrollViewYOffset > previousScrollViewYOffset {
-            // scrolling down
-            if !headerViewIsHidden {
-                headerViewIsHidden = true
-                headerConstrianett.constant = 600
-
+        if !isAnimationInProgress {
+            
+            // Check if an animation is required
+            if scrollView.contentOffset.y > .zero &&
+                HeaderContraint.constant > .zero {
                 
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 0
-                }
+                HeaderContraint.constant = .zero
+                headerView.isHidden = true
+                animateTopViewHeight()
             }
-        } else {
-            // scrolling up
-            if headerViewIsHidden {
-                headerConstrianett.constant = 494
-
-                headerViewIsHidden = false
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 1
-                    
-                }
+            else if scrollView.contentOffset.y <= .zero
+                        && HeaderContraint.constant <= .zero {
+                
+                HeaderContraint.constant = viewHeight
+                headerView.isHidden = false
+                animateTopViewHeight()
             }
         }
-        
-        previousScrollViewYOffset = currentScrollViewYOffset
     }
-
+    
+    private func animateTopViewHeight() {
+        
+        // Lock the animation functionality
+        isAnimationInProgress = true
+        
+        UIView.animate(withDuration: 0.2) {
+            
+            self.view.layoutIfNeeded()
+            
+        } completion: { [weak self] (_) in
+            
+            // Unlock the animation functionality
+            self?.isAnimationInProgress = false
+        }
+    }
 }
 
 
