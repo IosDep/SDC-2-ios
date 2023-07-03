@@ -13,7 +13,6 @@ class CardTwoVc: UIViewController {
 
     @IBOutlet weak var sectorName: UILabel!
     @IBOutlet weak var reuterCode: UILabel!
-    @IBOutlet weak var bellView : UIView!
     @IBOutlet weak var currentBalance: UILabel!
     @IBOutlet weak var freeBalance: UILabel!
     @IBOutlet weak var reservedBalance: UILabel!
@@ -79,7 +78,7 @@ class CardTwoVc: UIViewController {
 //
 //        }
         
-        self.cerateBellView(bellview: bellView, count: "12")
+//        self.cerateBellView(bellview: bellView, count: "12")
         
     }
     
