@@ -147,7 +147,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
         isSearching = false
-        self.filteredData?.removeAll()
+        filteredData?.removeAll()
+        dolarFilteredData?.removeAll()
         self.busnissCard.reloadData()
     }
     

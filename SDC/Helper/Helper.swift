@@ -122,11 +122,26 @@ final class Helper {
         def.setValue(count, forKey: "notification_count")
         def.synchronize()
     }
+    
     func getNotificationCount()-> Int?{
         let def = UserDefaults.standard
         return def.object(forKey: "notification_count") as? Int
     }
     
+    
+    // biometricFlag
+    
+    func saveBiometricFlag(flag:Bool)
+    {
+        let def = UserDefaults.standard
+        def.setValue(flag, forKey: "biometricFlag")
+        def.synchronize()
+    }
+    
+    func getBiometricFlag()-> Bool?{
+        let def = UserDefaults.standard
+        return def.object(forKey: "biometricFlag") as? Bool
+    }
     
     
 }

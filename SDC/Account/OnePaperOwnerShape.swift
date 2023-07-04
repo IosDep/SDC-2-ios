@@ -131,9 +131,12 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
+        dinarData?.removeAll()
+        dolarData?.removeAll()
+        searchStack.isHidden = true
+        staticCellInfo.isHidden = true
         seatrching = false
-        self.arr_search.removeAll()
-//        busnissCard.reloadData()
+        busnissCard.reloadData()
     }
     
     
@@ -346,8 +349,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func clearPressed(_ sender: Any) {
-        self.paperNameBtn.setTitle("-", for: .normal)
-        self.literalNumBtn.setTitle("-", for: .normal)
+        securityNameLabel
         securityOwnership.removeAll()
 //        self.busnissCard.reloadData()
         

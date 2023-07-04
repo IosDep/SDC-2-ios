@@ -22,13 +22,10 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var withoutZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
 
-//    @IBOutlet weak var bellView: UIView!
     var totalDolar : Double?
     var totalDinar : Double?
     var currencyFlag : String?
-    
     var data, filteredData , dolarData , dolarFilteredData: [AccountOwnerShapeHolder]?
-    
     var dinarArray = [AccountOwnerShape]()
     var dolarArray = [AccountOwnerShape]()
     
@@ -50,10 +47,10 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         isWithoutSelected = true
         withZeroFlag = "1"
         currencyFlag = "1"
+        currencyBtn.setTitle("JOD", for: .normal)
         self.highlightedButtons()
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
-        
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
@@ -79,6 +76,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             //            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
             filteredData = []
             dolarFilteredData = []
+        
         if currencyFlag == "1" {
             
             if let data {
@@ -314,7 +312,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         cell?.mainCardView.layer.cornerRadius =  25
         
         if isSearching  {
-            
             if currencyFlag == "1" {
                 if let filteredData {
                     let newData = filteredData.filter({!($0.array?.isEmpty ?? true)})
@@ -371,8 +368,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
             
         }
         
-        
-      
         return cell!
         
     }
@@ -435,7 +430,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     @IBAction func clearPressed(_ sender: Any) {
         search_bar.text = ""
         seatrching = false
-        self.arr_search.removeAll()
+        filteredData?.removeAll()
+        dolarFilteredData?.removeAll()
         self.busnissCard.reloadData()
     }
     
@@ -478,6 +474,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                 self.getAccountInvestoreInfo(withZeroFlag: self.withZeroFlag ?? "")
             }
         }
+        
         else if !isZeroSelected  && isWithoutSelected {
             self.withZeroFlag = "1"
             DispatchQueue.main.async {
@@ -573,15 +570,12 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                         .append(AccountOwnerShapeHolder(title: "Services".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "3"})))
                                         self.dolarData?
                                             .append(AccountOwnerShapeHolder(title: "Industry".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "4"})))
-                                    
                                            
-                                    
                                     DispatchQueue.main.async {
                                         self.busnissCard.reloadData()
                                         self.refreshControl?.endRefreshing()
                                         hud.dismiss()
                                     }
-                                           
                                         }
                                 
                                 if let total = jsonObj!["total"] as? [String: Any]{
@@ -602,20 +596,16 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                     }
                                 }
                                 
-                                
-                               
-                                
                                     }
 //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
                                 self.seassionExpired(msg: msg ?? "")
                             }
-                     
-//                                other Wise Problem
+                            
+//                           other Wise Problem
                             else {  self.refreshControl.endRefreshing()
                                                 hud.dismiss(animated: true)      }
-                      
                         }
                         
                     }

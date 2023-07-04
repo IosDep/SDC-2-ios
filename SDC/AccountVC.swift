@@ -9,12 +9,26 @@ import UIKit
 import MOLH
 
 class AccountVC: UIViewController {
-    var bellCountView: BellCountView!
+    
 
+    
+    @IBOutlet weak var biometricSwitch: UISwitch!
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
 
+    }
+    
+    
+   
+    @IBAction func biometricSwitchPressed(_ sender: Any) {
+        
+        if biometricSwitch.isOn {
+            Helper.shared.saveBiometricFlag(flag: false)
+        }
+        else {
+            Helper.shared.saveBiometricFlag(flag: true)
+        }
     }
     
     
@@ -46,6 +60,8 @@ class AccountVC: UIViewController {
     @IBOutlet weak var arrowImag7: UIImageView!
     @IBOutlet weak var arrowImag8: UIImageView!
     
+    
+    
     var imageViewWithCount: UIView!
       var countLabel: UILabel!
 
@@ -53,23 +69,9 @@ class AccountVC: UIViewController {
         super.viewDidLoad()
         
         self.navigationText(title: "Account Settings".localized())
+        
+        self.checkBiometric()
 
-//        if MOLHLanguage.isArabic(){
-//            self.arrowImag1.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag2.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag3.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag4.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag5.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag6.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag7.transform = CGAffineTransform(scaleX: -1, y: 1)
-//            self.arrowImag8.transform = CGAffineTransform(scaleX: -1, y: 1)
-//
-//        }
-//
-        
-//        self.cerateBellView(bellview: self.bellview, count: "10")
-        
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -134,10 +136,13 @@ class AccountVC: UIViewController {
     
         }
         
-        else  if btn.tag == Actions.FINGERPOINT.rawValue {
-            
-        }
-        
+//        else  if btn.tag == Actions.FINGERPOINT.rawValue {
+//
+//
+//
+//
+//        }
+//
         
         
         else  if btn.tag == Actions.LOGOUT.rawValue {
@@ -153,7 +158,15 @@ class AccountVC: UIViewController {
     }
 
 
-    
+    func checkBiometric() {
+        
+        if Helper.shared.getBiometricFlag() == true {
+            biometricSwitch.setOn(true, animated: true)
+        }
+        else {
+            biometricSwitch.setOn(false, animated: true)
+        }
+    }
 
 
 }

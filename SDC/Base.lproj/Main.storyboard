@@ -5950,6 +5950,9 @@
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="31" id="FRH-2k-Qn8"/>
                                                                         </constraints>
+                                                                        <connections>
+                                                                            <action selector="biometricSwitchPressed:" destination="WRd-dy-JQY" eventType="valueChanged" id="7Xf-jR-vUG"/>
+                                                                        </connections>
                                                                     </switch>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -6140,6 +6143,7 @@
                         <outlet property="arrowImag6" destination="9Fm-cD-Ss5" id="Ses-hu-Wnj"/>
                         <outlet property="arrowImag7" destination="876-3b-aLB" id="FrL-CZ-oRp"/>
                         <outlet property="arrowImag8" destination="7A8-oo-zm5" id="6tp-zd-hgb"/>
+                        <outlet property="biometricSwitch" destination="j1P-Yr-hMB" id="Olg-FT-e8s"/>
                         <outlet property="scroll" destination="jhV-Cv-oKa" id="mdy-3J-DuT"/>
                     </connections>
                 </viewController>

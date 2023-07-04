@@ -1104,6 +1104,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                                 self.notifications.append(model)
                                  
                                             }
+                                    
                                     Helper.shared.saveNotificationCount(count: self.notifications.count ?? 0)
                                     
                                     let notcount = "\(Helper.shared.getNotificationCount()!)"

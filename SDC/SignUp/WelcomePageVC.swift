@@ -39,6 +39,7 @@ class WelcomePageVC: UIViewController {
     
     
     @IBAction func fingerPoint(_ sender:UIButton){
+        
         let context = LAContext()
         var error: NSError?
         if context.canEvaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
@@ -51,11 +52,9 @@ class WelcomePageVC: UIViewController {
                     if success {
                         print("DONEEE")
                         //                        self?.unlockSecretMessage()
-                        
-                        
                         self?.gooingToHome()
                     } else {
-                        let ac = UIAlertController(title: "Authenticationfailed", message: "You could not be verified; pleasetry again.", preferredStyle: .alert)
+                        let ac = UIAlertController(title: "Authenticationfailed", message: "You could not be verified; please try again.", preferredStyle: .alert)
                         ac.addAction (UIAlertAction(title: "OK", style: .default))
                         self?.present(ac, animated: true)
                         
@@ -71,6 +70,7 @@ class WelcomePageVC: UIViewController {
         }
         
     }
+    
     func gooingToHome(){
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
 
