@@ -99,22 +99,41 @@ class AccountVC: UIViewController {
             self.present(vc, animated: true)
             
         }
+        
         else  if btn.tag == Actions.USERGUIDE.rawValue {
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WebVcContent") as! WebVcContent
+            vc.flag = 0
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+            
             
         }
+        
         else  if btn.tag == Actions.Concept.rawValue {
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WebVcContent") as! WebVcContent
+            vc.flag = 1
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
             
         }
+        
+        
         else  if btn.tag == Actions.TERMSANDCONDETION.rawValue {
+            let vc = storyBoard.instantiateViewController(withIdentifier: "WebVcContent") as! WebVcContent
+            vc.flag = 2
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
             
         }
      
         else  if btn.tag == Actions.NOTICE.rawValue {
             let vc = storyBoard.instantiateViewController(withIdentifier: "WebVcContent") as! WebVcContent
+            vc.flag = 3
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
     
         }
+        
         else  if btn.tag == Actions.FINGERPOINT.rawValue {
             
         }

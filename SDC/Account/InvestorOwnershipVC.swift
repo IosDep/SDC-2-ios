@@ -561,6 +561,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 //            self.withoutZero.cornerRadius = 12
             self.withoutZero.borderColor =  UIColor(named: "AccentColor")
             self.withoutZero.borderWidth = 1
+                
+                
                 self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
 
         }
@@ -596,12 +598,11 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         dinarArray.removeAll()
         dolarArray.removeAll()
         currencyFlag = "1"
-        currencyBtn.setTitle("Dinar", for: .normal)
-//        busnissCard.reloadData()
-            withZeroFlag = "2"
-            isZeroSelected = true
-            isWithoutSelected = false
-            highlightedButtons()
+        currencyBtn.setTitle("JOD", for: .normal)
+        withZeroFlag = "2"
+        isZeroSelected = true
+        isWithoutSelected = false
+        highlightedButtons()
     }
     
     
@@ -611,7 +612,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         dolarData?.removeAll()
         dolarArray.removeAll()
         dinarArray.removeAll()
-//        busnissCard.reloadData()
+        currencyBtn.setTitle("JOD", for: .normal)
         withZeroFlag = "1"
         isWithoutSelected = true
         isZeroSelected = false

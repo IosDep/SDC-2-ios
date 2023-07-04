@@ -151,7 +151,7 @@
 "Change language" = "تغيير اللغة";
 "User's guide" = "دليل المستخدم";
 "Concept and instructions" = "المفهوم والإرشادات";
-"Terms and conditions" = "لاشروط والأحكام";
+"Terms and conditions" = "الشروط والأحكام";
 "Notice" = "تنويه";
 "Your fingerprint" ="تسجيل الدخول باستخدام البصمة";
 "Logout" = "تسجيل خروج";
@@ -316,3 +316,4 @@
 "Finincial Services Companies" = "شركات الخدمات المالية";
 "Custodians" = "";
 "choose category" = "اختر الفئة";
+"User Guide" = "دليل المستخدم";

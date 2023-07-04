@@ -13,6 +13,8 @@ import MOLH
 import Loaf
 import SideMenu
 import CDAlertView
+
+
 extension UIViewController {
     
     func image(fromLayer layer: CALayer) -> UIImage {

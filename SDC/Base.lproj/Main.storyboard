@@ -2343,18 +2343,21 @@
                                         <rect key="frame" x="0.0" y="10" width="390" height="114"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="9Ex-l4-VIj">
-                                                <rect key="frame" x="0.0" y="16" width="100" height="82"/>
+                                                <rect key="frame" x="0.0" y="16" width="50" height="82"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8fc-6a-1Wq">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP2-Eu-gXK">
                                                         <rect key="frame" x="0.0" y="0.0" width="50" height="82"/>
                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </view>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gdb-Zf-2Ag">
-                                                        <rect key="frame" x="50" y="0.0" width="50" height="82"/>
                                                         <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="Ulr-gg-Fjw"/>
+                                                            <constraint firstAttribute="width" constant="50" id="HpO-VK-N5U"/>
                                                         </constraints>
                                                         <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <state key="normal" image="chevron.backward" catalog="system">
+                                                            <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        </state>
+                                                        <connections>
+                                                            <action selector="backPressed:" destination="bRe-ma-x3R" eventType="touchUpInside" id="YD9-I9-sgd"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
@@ -2362,7 +2365,7 @@
                                                 </constraints>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notice" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TY4-AQ-LFg" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
-                                                <rect key="frame" x="100" y="47.333333333333336" width="200" height="19.333333333333336"/>
+                                                <rect key="frame" x="50" y="47.333333333333336" width="280" height="19.333333333333336"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
                                                 <color key="textColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -2371,26 +2374,12 @@
                                                 </userDefinedRuntimeAttributes>
                                             </label>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="80x-or-ATg">
-                                                <rect key="frame" x="300" y="0.0" width="40" height="114"/>
+                                                <rect key="frame" x="330" y="0.0" width="60" height="114"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="40" id="1Yx-LW-1gZ"/>
+                                                    <constraint firstAttribute="width" constant="60" id="1Yx-LW-1gZ"/>
                                                 </constraints>
                                             </view>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eP2-Eu-gXK">
-                                                <rect key="frame" x="340" y="46" width="50" height="22"/>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="HpO-VK-N5U"/>
-                                                </constraints>
-                                                <color key="tintColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.99988096950000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <state key="normal" image="chevron.forward" catalog="system">
-                                                    <color key="titleColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                </state>
-                                                <connections>
-                                                    <action selector="backPressed:" destination="bRe-ma-x3R" eventType="touchUpInside" id="YD9-I9-sgd"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -2425,7 +2414,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="bellView" destination="8fc-6a-1Wq" id="kDo-k8-clA"/>
+                        <outlet property="tittle" destination="TY4-AQ-LFg" id="VrF-1J-rUZ"/>
                         <outlet property="webView" destination="fJn-Cx-qiN" id="FC1-Yl-n8f"/>
                     </connections>
                 </viewController>
@@ -5565,8 +5554,8 @@
                                                                             <constraint firstAttribute="width" constant="20" id="mcK-Vw-R7Y"/>
                                                                         </constraints>
                                                                     </imageView>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOB-RD-O8M" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
-                                                                        <rect key="frame" x="29.999999999999993" y="20.666666666666686" width="100.33333333333331" height="21"/>
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User Guide" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pOB-RD-O8M" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
+                                                                        <rect key="frame" x="29.999999999999993" y="20.666666666666686" width="88.333333333333314" height="21"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="10" id="NJT-sh-rbO"/>
                                                                             <constraint firstAttribute="height" constant="21" id="NJV-C8-pBA"/>
@@ -5575,7 +5564,7 @@
                                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <nil key="highlightedColor"/>
                                                                         <userDefinedRuntimeAttributes>
-                                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="User's guide"/>
+                                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="User Guide"/>
                                                                         </userDefinedRuntimeAttributes>
                                                                     </label>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.forward" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="876-3b-aLB">
@@ -5593,7 +5582,7 @@
                                                                             <constraint firstAttribute="height" constant="1" id="41W-Jz-gfX"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-50-3E9">
+                                                                    <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6zg-50-3E9">
                                                                         <rect key="frame" x="0.0" y="0.0" width="362" height="61"/>
                                                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -20394,7 +20383,7 @@
             <size key="intrinsicContentSize" width="71" height="20.333333333333332"/>
         </designable>
         <designable name="pOB-RD-O8M">
-            <size key="intrinsicContentSize" width="100.33333333333333" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="88.333333333333329" height="20.333333333333332"/>
         </designable>
         <designable name="pnW-yV-q4e">
             <size key="intrinsicContentSize" width="79.666666666666671" height="17"/>

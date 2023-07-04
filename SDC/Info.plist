@@ -10,3 +10,8 @@
 	</array>
 </dict>
 </plist>
+<!--<key>NSAppTransportSecurity</key>-->
+<!--<dict>-->
+<!--    <key>NSAllowsArbitraryLoadsInWebContent</key>-->
+<!--    <true/>-->
+<!--</dict>-->
