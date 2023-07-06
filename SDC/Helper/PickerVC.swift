@@ -25,8 +25,10 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     var categories = [String]()
     var reuterCode = [String]()
     var accounNumber = [String]()
+    var memberNum = [String]()
     var checkFlag:String?
     var securtyID = [String]()
+    var securityIDs = [String]()
     var secData =  [SecurityData]()
     var checkAccountStatmnt = false
     
@@ -77,8 +79,10 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
             
             
             if self.checkAccountStatmnt == false{
+                
                 if checkFlag == "0"{
                     cell?.title.text = secData[indexPath.row].secName ?? ""
+                    
                     cell?.reuterCode.text = "\(secData[indexPath.row].secNum)"
                 }
                 
@@ -103,7 +107,9 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
                     cell?.title.text = dataFilterd[indexPath.row]
                     cell?.reuterCode.text = "\(reuterCode[indexPath.row])"
                 }
-
+                
+               
+            
                 else {
                     cell?.title.text = dataFilterd[indexPath.row]
                     cell?.reuterCode.isHidden = true
@@ -129,9 +135,13 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
 //            in account statmnet we provide empty securtyId and Securty Number
             
             if checkFlag == "0" {
-                self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:accounNumber[indexPath.row], flag: checkFlag ?? "",securtyId: "" , secMarket: "" , secStatus: "" , secISIN: "")
+                self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:memberNum[indexPath.row], flag: checkFlag ?? "",securtyId: securityIDs[indexPath.row] , secMarket: "" , secStatus: "" , secISIN: "")
             }
             
+//            else if checkFlag == "1" {
+//                self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: reuterCode[indexPath.row] , secMarket: "" , secStatus: "" , secISIN: "")
+//            }
+//            
             
             else if checkFlag == "2"{
                 self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: reuterCode[indexPath.row] , secMarket: "" , secStatus: "" , secISIN: "")

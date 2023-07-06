@@ -13,45 +13,88 @@ import Alamofire
 
 class AccountStatement: UIViewController,DataSelectedDelegate{
     
-    
-    
+    @IBOutlet weak var datePicker2: UIDatePicker!
+    @IBOutlet weak var nameStack: UIStackView!
+    @IBOutlet weak var searchBtn: DesignableButton!
     
     // set title for picker's buttons when is selected from picker vc
     
   
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var accountIDStack: UIStackView!
     
-    @IBOutlet weak var withoutZero: DesignableButton!
-    @IBOutlet weak var withZero: DesignableButton!
-//    @IBOutlet weak var bellView: UIView!
+    @IBOutlet weak var fromDate: DesignableLabel2!
+    @IBOutlet weak var toDate: DesignableLabel2!
+    //    @IBOutlet weak var bellView: UIView!
     @IBOutlet weak var membername: UIButton!
     @IBOutlet weak var accountNumberBtn: UIButton!
     @IBOutlet weak var literalnumber: UIButton!
     @IBOutlet weak var secutrtyNameBtn: UIButton!
     @IBOutlet weak var mebemrCodeBtn: UIButton!
-    @IBOutlet weak var fromDate: UIButton!
-    @IBOutlet weak var toDate: UIButton!
+    
     
     var accountList =  [AccountListModel]()
     var invAccount = [InvestoreOwnerShape]()
     var accountName = [String]()
     var numberCode = [String]()
     var securityName = [String]()
+    var securityIDs = [String]()
     var accounNumber = [String]()
+    var memberNum = [String]()
+    var accountID = [AccountIDModel]()
 //    var isZeroSelected : Bool?
 //    var isWithoutSelected : Bool?
     var withZeroFlag : String?
     var dataArray = [PartialDataModel]()
-
+    var fromDateString : String?
+    var toDateString : String?
+    var memberID : String?
+    var accountNo : String?
+    var securityID : String?
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.withoutZero.cornerRadius = 12
-//        self.withZero.cornerRadius = 12
-//        isZeroSelected = true
-//        isWithoutSelected = false
-//        withZeroFlag = "1"
+        nameStack.isHidden = true
+        accountIDStack.isHidden = true
+        searchBtn.isHidden = true
+        datePicker.isHidden = true
+        datePicker2.isHidden = true
+        fromDate.isHidden = true
+        toDate.isHidden = true
         self.getAccountList()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
+        
+//        let currentDate = Date()
+//                let calendar = Calendar.current
+//                let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate)
+//                let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate)
+//
+        datePicker.datePickerMode = .date
+        datePicker.date = Date() // Set an initial date if needed
+
+                // Set the minimum and maximum dates
+        let calendar = Calendar.current
+        let currentDate = Date()
+
+                // Calculate the date one month ago
+        guard let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate) else {
+                   return
+                }
+        
+        datePicker.minimumDate = oneMonthAgo
+        datePicker.maximumDate = currentDate
+        
+        
+        
+//        datePicker.datePickerMode = .date
+//        datePicker.minimumDate = oneMonthAgo
+//        datePicker.maximumDate = oneMonthLater
+//        datePicker2.datePickerMode = .date
+//        datePicker2.minimumDate = oneMonthAgo
+//        datePicker2.maximumDate = oneMonthLater
+
+        
 
     }
     
@@ -114,24 +157,39 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
 //        highlightedButtons()
 //    }
     
-   
+    
+    
+    @IBAction func searchPressed(_ sender: Any) {
+        
+        self.downloadButtonPressed()
+    }
+    
+    
     func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
         
+        
         if flag == "0"{
+            accountIDStack.isHidden = false
             self.membername.setTitle(selectdTxt, for: .normal)
-            self.accountNumberBtn.setTitle(securtNumber, for: .normal)
-            accountNumberBtn.isEnabled = false
+            self.getMemberID(memberID: securtNumber)
+            self.accountNumberBtn.setTitle("choose".localized(), for: .normal)
+            self.memberID = securtNumber
+            self.securityID = securtyId
 
-        }else if flag == "1" {
-            
+        } else if flag == "1" {
+            self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
+            nameStack.isHidden = false
+            self.accountNo = selectdTxt
         }
         
         else if flag == "2" {
-            self.secutrtyNameBtn.setTitle("\(selectdTxt)/\(securtyId)" , for: .normal)
+            datePicker.isHidden = false
+            fromDate.isHidden = false
+            self.secutrtyNameBtn.setTitle(selectdTxt, for: .normal)
+
         }else {
-            self.mebemrCodeBtn.setTitle(selectdTxt, for: .normal)
+            
         }
-        
     }
     
     
@@ -154,7 +212,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         switch sender.tag {
         case 0:
             vc.dataFilterd = accountName
-            vc.accounNumber = accounNumber
+            vc.memberNum = memberNum
+            vc.securityIDs = self.securityIDs
             vc.checkFlag = "0"
         case 1:
             vc.dataFilterd = accounNumber
@@ -181,6 +240,62 @@ print("default Value")
 
     }
     
+    
+    
+    @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
+        
+//        let selectedDate = sender.date
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+//        fromDateString = dateFormatter.string(from: selectedDate)
+        
+        let selectedDate = sender.date
+
+        // Handle the selected date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let dateString = dateFormatter.string(from: selectedDate)
+        fromDateString = dateFormatter.string(from: selectedDate)
+        
+        
+        datePicker2.isHidden = false
+        toDate.isHidden = false
+
+        datePicker2.datePickerMode = .date
+        datePicker2.date = Date() // Set an initial date if needed
+
+        // Set the minimum and maximum dates
+        let calendar = Calendar.current
+        let currentDate = Date()
+
+                // Calculate the date one month later
+        guard let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate) else {
+                   return
+                }
+        
+        datePicker2.minimumDate = selectedDate
+        datePicker2.maximumDate = currentDate
+        
+        
+        
+    }
+    
+    
+    @IBAction func datePicker2Changed(_ sender: UIDatePicker) {
+        
+        let selectedDate = sender.date
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        toDateString = dateFormatter.string(from: selectedDate)
+        self.toDateString = dateFormatter.string(from: selectedDate)
+        searchBtn.isHidden = false
+        
+        
+        
+    }
+    
+    
+    
     // Api call for ````Picker data
     
     func getInvestoreInfo(withZero : String){
@@ -189,7 +304,7 @@ print("default Value")
 //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
 
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": "en" ,
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
                                     "with_zero" : "1"]
      
         let link = URL(string: APIConfig.GetInvOwnership)
@@ -224,8 +339,9 @@ print("default Value")
                                         let model = PartialDataModel(data: item)
                                         self.dataArray.append(model)
 
-                                        self.securityName.append(model.Security_Name!)
-                                        self.numberCode.append(model.Security_Reuter_Code!)
+                                        self.securityName.append(model.Security_Name ?? "")
+                                        self.numberCode.append(model.Security_Reuter_Code ?? "")
+                                        self.securityIDs.append(model.Security_Id ?? "")
                                         
                                     }
 
@@ -308,8 +424,13 @@ print("default Value")
                                                 
                                                 self.accountList.append(model)
                                                 
-                                                self.accountName.append(model.Member_Name!)
-                                                self.accounNumber.append(model.Account_No!)
+                                                self.accountName.append(model.Member_Name ?? "")
+                                                
+                                                self.memberNum.append(model.Member_No ?? "")
+                                                
+                                             
+                                                
+//                                                self.accounNumber.append(model.Account_No!)
                                                 
                                             }
                                     DispatchQueue.main.async {
@@ -376,5 +497,133 @@ print("default Value")
     }
     
     
+    func getMemberID(memberID : String){
+        
+        accounNumber.removeAll()
+        
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+    
+     
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+                                    "memberId" : memberID
+                                    
+ ]
+     
+        let link = URL(string: APIConfig.getMemberId)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                            
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                
+                            
+                                    
+                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                            for item in data {
+                                                let model = AccountIDModel(data: item)
+                                                self.accounNumber.append(model.Account_No ?? "")
+                                                
+                                                
+                                            }
+                                    DispatchQueue.main.async {
+                                        hud.dismiss()
+//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                        
+//                                                if self.car_arr.count == 0{
+//
+//
+//                                                    self.noDataImage.isHidden = false
+//                                                }else{
+//
+//                                                    self.noDataImage.isHidden = true
+//                                                }
+
+                                    }
+                                            
+                          
+                                        }
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                                
+                                
+                                
+                                
+//                                other Wise Problem
+                            else {
+                                hud.dismiss(animated: true)
+                            }
+                      
+                            
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+
+
+            }
+        }
+
+    }
+    
+    
+    @objc func downloadButtonPressed() {
+        
+        let apiURLString = URL(string: APIConfig.GetAccountStatementPDF)
+           
+           guard let destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("downloadedFile.pdf") else {
+               print("Invalid destination URL")
+               return
+           }
+
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
+                                    "memberId" : ""  ,
+                                    "accountNo" : "" ,
+                                    "securityId" : "" ,
+                                    "fromDate" : "" ,
+                                    "toDate" : "" ]
+
+           AF.upload(multipartFormData: { multipartFormData in
+               for (key, value) in param {
+                   if let data = String(describing: value).data(using: .utf8) {
+                       multipartFormData.append(data, withName: key)
+                   }
+               }
+           }, to: apiURLString!).downloadProgress { progress in
+               // Handle download progress updates if needed
+               print("Download progress: \(progress.fractionCompleted)")
+           }.response { response in
+               switch response.result {
+               case .success:
+                   print("File downloaded successfully and saved to: \(destinationURL.absoluteString)")
+               case .failure(let error):
+                   print("Error downloading file: \(error)")
+               }
+           }
+       }
 }
 

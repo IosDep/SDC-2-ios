@@ -943,9 +943,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                     
                     if jsonObj != nil {
                         
-                        
-                        
-                        
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
@@ -999,84 +996,84 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     //    API Call
     
-    func getTradingValue(){
-        let hud = JGProgressHUD(style: .light)
-        //        hud.textLabel.text = "Please Wait".localized()
-        hud.show(in: self.view)
-        
-        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en", "date":"2020-01-07"
-        ]
-        
-        let link = URL(string: APIConfig.TradesAnalysis)
-        
-        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
-            if response.error == nil {
-                do {
-                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                    
-                    
-                    if jsonObj != nil {
-                        
-                        
-                        
-                        
-                        if let status = jsonObj!["status"] as? Int {
-                            if status == 200 {
-                                
-                                
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
-                                    for item in data {
-                                        let model = TradeAnlysis(data: item)
-                                        self.tradeAnlysis.append(model)
-                                        
-                                    }
-                                    
-                                    DispatchQueue.main.async {
-                                        
-                                        
-                                        
-                                        TradingValue.monthData = self.tradeAnlysis.map { $0.Month ?? "" }
-                                        TradingValue.valueChart = self.tradeAnlysis.map{ Double($0.Market_Value_Sell ?? "") ?? 0.0 }
-                                        
-                                        print("MYUERAAARAY")
-                                        print(self.monthData)
-                                        print(TradingValue.valueChart )
-                                        
-                                        
-                                        hud.dismiss()
-                                        
-                                        
-                                    }
-                                }
-                                
-                            }
-                            //                             Session ID is Expired
-                            else if status == 400{
-                                let msg = jsonObj!["message"] as? String
-                                //                                self.showErrorHud(msg: msg ?? "")
-                                self.seassionExpired(msg: msg ?? "")
-                            }
-                            
-                            //                                other Wise Problem
-                            else {
-                                hud.dismiss(animated: true)      }
-                            
-                        }
-                        
-                    }
-                    
-                } catch let err as NSError {
-                    print("Error: \(err)")
-                    self.serverError(hud: hud)
-                }
-            } else {
-                print("Error")
-                
-                self.serverError(hud: hud)
-                
-            }
-        }
-    }
+//    func getTradingValue(){
+//        let hud = JGProgressHUD(style: .light)
+//        //        hud.textLabel.text = "Please Wait".localized()
+//        hud.show(in: self.view)
+//
+//        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en", "date":"2020-01-07"
+//        ]
+//
+//        let link = URL(string: APIConfig.TradesAnalysis)
+//
+//        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+//            if response.error == nil {
+//                do {
+//                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+//
+//
+//                    if jsonObj != nil {
+//
+//
+//
+//
+//                        if let status = jsonObj!["status"] as? Int {
+//                            if status == 200 {
+//
+//
+//                                if let data = jsonObj!["data"] as? [[String: Any]]{
+//                                    for item in data {
+//                                        let model = TradeAnlysis(data: item)
+//                                        self.tradeAnlysis.append(model)
+//
+//                                    }
+//
+//                                    DispatchQueue.main.async {
+//
+//
+//
+//                                        TradingValue.monthData = self.tradeAnlysis.map { $0.Month ?? "" }
+//                                        TradingValue.valueChart = self.tradeAnlysis.map{ Double($0.Market_Value_Sell ?? "") ?? 0.0 }
+//
+//                                        print("MYUERAAARAY")
+//                                        print(self.monthData)
+//                                        print(TradingValue.valueChart )
+//
+//
+//                                        hud.dismiss()
+//
+//
+//                                    }
+//                                }
+//
+//                            }
+//                            //                             Session ID is Expired
+//                            else if status == 404{
+//                                let msg = jsonObj!["message"] as? String
+//                                //                                self.showErrorHud(msg: msg ?? "")
+//                                self.seassionExpired(msg: msg ?? "")
+//                            }
+//
+//                            //                                other Wise Problem
+//                            else {
+//                                hud.dismiss(animated: true)      }
+//
+//                        }
+//
+//                    }
+//
+//                } catch let err as NSError {
+//                    print("Error: \(err)")
+//                    self.serverError(hud: hud)
+//                }
+//            } else {
+//                print("Error")
+//
+//                self.serverError(hud: hud)
+//
+//            }
+//        }
+//    }
     
     func getNotificationInfo(){
 //

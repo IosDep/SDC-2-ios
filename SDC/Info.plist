@@ -2,16 +2,13 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 	<key>NSFaceIDUsageDescription</key>
-	<string></string>
+	<string>To let you sign in to the account using Face ID</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
 	</array>
 </dict>
 </plist>
-<!--<key>NSAppTransportSecurity</key>-->
-<!--<dict>-->
-<!--    <key>NSAllowsArbitraryLoadsInWebContent</key>-->
-<!--    <true/>-->
-<!--</dict>-->

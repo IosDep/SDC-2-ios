@@ -21,14 +21,12 @@ class Login: UIViewController {
     
     @IBAction func authenticateTapped (_ sender: Any) {
         
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
 
     }
-    
-    
-    
     
 }

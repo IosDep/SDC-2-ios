@@ -37,6 +37,7 @@
 		3FB0EF832A38FB1700D72C4C /* InvestorOwnershipCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0EF812A38FB1700D72C4C /* InvestorOwnershipCell.swift */; };
 		3FB0EF842A38FB1700D72C4C /* InvestorOwnershipCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FB0EF822A38FB1700D72C4C /* InvestorOwnershipCell.xib */; };
 		3FB0EF862A391F4500D72C4C /* sectorHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */; };
+		3FB2E9B42A5460B3005EC377 /* AccountIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */; };
 		3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */; };
 		3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A982A03DBA200C74E58 /* InvInfo.swift */; };
 		3FD7E34C2A498314003EC702 /* CompanyCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */; };
@@ -171,6 +172,7 @@
 		3FB0EF812A38FB1700D72C4C /* InvestorOwnershipCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorOwnershipCell.swift; sourceTree = "<group>"; };
 		3FB0EF822A38FB1700D72C4C /* InvestorOwnershipCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InvestorOwnershipCell.xib; sourceTree = "<group>"; };
 		3FB0EF852A391F4500D72C4C /* sectorHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sectorHeaderView.swift; sourceTree = "<group>"; };
+		3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIDModel.swift; sourceTree = "<group>"; };
 		3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfo.swift; sourceTree = "<group>"; };
 		3FB42A982A03DBA200C74E58 /* InvInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvInfo.swift; sourceTree = "<group>"; };
 		3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCategoryCell.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				3F7A0BBE2A386BE3006DCBC5 /* InvestorInfoModel.swift */,
 				3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */,
 				3F9065812A482059008268D3 /* PartialDataModel.swift */,
+				3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				876758A729C751C6000F3CBC /* InvestorOwnershipVC.swift in Sources */,
 				3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */,
 				8771087729D04AD50010AEBE /* NotficationXIB.swift in Sources */,
+				3FB2E9B42A5460B3005EC377 /* AccountIDModel.swift in Sources */,
 				3F8AFA802A0B9C6700D13625 /* CompanyProcedureVC.swift in Sources */,
 				8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */,
 				3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */,

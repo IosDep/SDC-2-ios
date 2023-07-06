@@ -82,12 +82,6 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         searchStack.isHidden = true
         staticCellInfo.isHidden = true
-        self.withoutZero.cornerRadius = 12
-        self.withZero.cornerRadius = 12
-        isZeroSelected = false
-        isWithoutSelected = true
-        withZeroFlag = "1"
-        
         
         if checkSideMenu == true {
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
@@ -682,6 +676,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             }
         }
     }
+    
+    
+    
+    
 }
 
 struct SecurityData {

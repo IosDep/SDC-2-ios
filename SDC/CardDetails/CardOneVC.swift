@@ -17,8 +17,7 @@ class CardOneVC: UIViewController {
     
     @IBOutlet weak var thirdLabel: DesignableLabel2!
     @IBOutlet weak var sectorName: UILabel!
-    @IBOutlet weak var bellView : UIView!
-   
+    
     @IBOutlet weak var clientNum: UILabel!
     
     @IBOutlet weak var nominalValue: UILabel!
@@ -44,11 +43,16 @@ class CardOneVC: UIViewController {
     
     @IBOutlet weak var securityID: UILabel!
     
+    @IBOutlet weak var aditionalView1: UIView!
     @IBOutlet weak var isin: UILabel!
     @IBOutlet weak var securityName: UILabel!
     @IBOutlet weak var additionalStack: UIStackView!
     @IBOutlet weak var marketValue: UILabel!
     @IBOutlet weak var securityStatus: UILabel!
+    
+    @IBOutlet weak var aditionalView2: UIView!
+    
+    @IBOutlet weak var additionalView4: UIView!
     
     var invAccount : AccountOwnerShape?
     var securityOwnership : SecurityOwnership?
@@ -61,11 +65,14 @@ class CardOneVC: UIViewController {
         super.viewDidLoad()
         
     
-        self.cerateBellView(bellview: bellView, count: "12")
         
         if checkOnepaper == true {
-            additionalStack.isHidden = false
+            
             additionalView.isHidden = false
+            aditionalView2.isHidden = false
+            additionalView4.isHidden = false
+            aditionalView1.isHidden = false
+            
             firstLabel.text = "Membership Type".localized()
             secondLabel.text = "Member Name".localized()
             thirdLabel.text = "Account No.".localized()
@@ -103,8 +110,11 @@ class CardOneVC: UIViewController {
         }
             
         else {
-            additionalStack.isHidden = true
             additionalView.isHidden = true
+            aditionalView2.isHidden = true
+            additionalView4.isHidden = true
+            aditionalView1.isHidden = true
+            
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
             currantBalance.text =  invAccount?.Quantity_Owned ?? ""
             freeBalance.text =  invAccount?.Quantity_Avilable ?? ""

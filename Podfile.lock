@@ -118,6 +118,9 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.1.0)
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
   - JGProgressHUD (2.2)
   - LineChart (1.0.3)
   - Loaf (0.7.0)
@@ -159,6 +162,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/Auth
   - GoogleSignIn (>= 5.0)
+  - ImageSlideshow (~> 1.9.0)
   - JGProgressHUD
   - LineChart
   - Loaf
@@ -193,6 +197,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - ImageSlideshow
     - JGProgressHUD
     - LineChart
     - Loaf
@@ -229,6 +234,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   LineChart: de75393c5047512a39be45525a79e49d69b3c9bc
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
@@ -244,6 +250,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   TPKeyboardAvoidingSwift: ce1a75e0bc3af6b485f8bfa1d0a8320cfc565851
 
-PODFILE CHECKSUM: d789c6769b27601ace40f1889a3a3e8a1e05408c
+PODFILE CHECKSUM: 9fd2b84e674a3662a909f6bb46b55e1f71c69db6
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.0

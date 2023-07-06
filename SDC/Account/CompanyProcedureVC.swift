@@ -188,16 +188,14 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             
             if publicCompanies[indexPath.row].color == "arrow_green" {
                 cell?.percentage.textColor = UIColor(named: "AccentColor")
-                cell?.arrowBtn.setImage(UIImage(systemName: "arrow.up"), for: .normal)
-                cell?.arrowBtn.tintColor = UIColor(named: "AccentColor")
+                cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
+               
             }
                 
                 else if  publicCompanies[indexPath.row].color == "arrow_red" {
                     
                     cell?.percentage.textColor = .red
-                    let image = UIImage(systemName: "arrow.down")?.withTintColor(.red , renderingMode: .alwaysTemplate)
-                    cell?.arrowBtn.setImage(image, for: .normal)
-                    
+                    cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
                     
             }
             

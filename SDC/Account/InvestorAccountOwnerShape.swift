@@ -51,10 +51,10 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         self.highlightedButtons()
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
-        self.busnissCard.delegate = self
-        self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "BusnissCardTable", bundle: nil), forCellReuseIdentifier: "BusnissCardTable")
         busnissCard.register(UINib(nibName: "SectionNameView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "SectionNameView")
+        self.busnissCard.delegate = self
+        self.busnissCard.dataSource = self
         search_bar.delegate = self
         //refreshControl
         refreshControl = UIRefreshControl()
@@ -627,53 +627,54 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         }
 
     }
+
+    @IBOutlet weak var headerView: UIView!
+    var previousScrollViewYOffset: CGFloat = 0
+    var headerViewIsHidden = false
+
+    @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
     
-//    @IBOutlet weak var headerView: UIView!
-//    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint?
-//    var viewHeight: CGFloat = 100
-//    private var isAnimationInProgress = false
-//
-//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-//        if !isAnimationInProgress {
-//
-//            guard let topViewHeightConstraint = topViewHeightConstraint
-//            else { return }
-//
-//            // Check if an animation is required
-//            if scrollView.contentOffset.y > .zero &&
-//                topViewHeightConstraint.constant > .zero {
-//
-//                topViewHeightConstraint.constant = .zero
-//                animateTopViewHeight()
-//            }
-//            else if scrollView.contentOffset.y <= .zero
-//                        && topViewHeightConstraint.constant <= .zero {
-//
-//                topViewHeightConstraint.constant = viewHeight
-//                animateTopViewHeight()
-//            }
-//        }
-//    }
+    var viewHeight: CGFloat = 180
+    private var isAnimationInProgress = false
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if !isAnimationInProgress {
+            
+            // Check if an animation is required
+            if scrollView.contentOffset.y > .zero &&
+                headerConstrianett.constant > .zero {
+                
+                headerConstrianett.constant = .zero
+                headerView.isHidden = true
+                animateTopViewHeight()
+            }
+            else if scrollView.contentOffset.y <= .zero
+                        && headerConstrianett.constant <= .zero {
+                
+                headerConstrianett.constant = viewHeight
+                headerView.isHidden = false
+                animateTopViewHeight()
+            }
+        }
+    }
     
-//    private func animateTopViewHeight() {
-//        
-//        // Lock the animation functionality
-//        isAnimationInProgress = true
-//        
-//        UIView.animate(withDuration: 0.2) {
-//            
-//            self.view.layoutIfNeeded()
-//            
-//        } completion: { [weak self] (_) in
-//            
-//            // Unlock the animation functionality
-//            self?.isAnimationInProgress = false
-//        }
-//    }
-    
-    
-    
+    private func animateTopViewHeight() {
+        
+        // Lock the animation functionality
+        isAnimationInProgress = true
+        
+        UIView.animate(withDuration: 0.2) {
+            
+            self.view.layoutIfNeeded()
+            
+        } completion: { [weak self] (_) in
+            
+            // Unlock the animation functionality
+            self?.isAnimationInProgress = false
+        }
+    }
 }
+
 extension UIView {
     func dropShadow(scale: Bool = true) {
         layer.masksToBounds = false

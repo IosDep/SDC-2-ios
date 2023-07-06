@@ -78,7 +78,7 @@ extension UIViewController {
     func seassionExpired(msg:String){
         let alert = CDAlertView(title: "Expired".localized(), message:  msg, type: .error)
         
-        let action = CDAlertViewAction(title: "Cancel".localized(), font: UIFont.systemFont(ofSize: 17), textColor: UIColor.red, backgroundColor: UIColor.white, handler: { action in
+        let action = CDAlertViewAction(title: "OK".localized(), font: UIFont.systemFont(ofSize: 17), textColor: UIColor.red, backgroundColor: UIColor.white, handler: { action in
             
             //            rest cash token cause it is expired
             Helper.shared.saveToken(auth: "")
@@ -295,11 +295,11 @@ extension UIViewController {
             
             
             SideMenuManager.default.rightMenuNavigationController = MenuNavigationController
-            SideMenuManager.default.rightMenuNavigationController?.menuWidth = 250
+            SideMenuManager.default.rightMenuNavigationController?.menuWidth = 300
             
         } else {
             SideMenuManager.default.leftMenuNavigationController = MenuNavigationController
-            SideMenuManager.default.leftMenuNavigationController?.menuWidth = 250
+            SideMenuManager.default.leftMenuNavigationController?.menuWidth = 300
             
         }
         

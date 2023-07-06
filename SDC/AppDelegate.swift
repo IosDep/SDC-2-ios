@@ -30,17 +30,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
         
 // check user Login
 //
-        if Helper.shared.getUserId() == 0 {
-
-            self.notLogin()
-
-        }else {
-            self.isLogin()
-
-        }
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC")
+        self.window?.rootViewController = vc
 //
         return true
     }
+    
+        
     func isLogin() {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "tabNav")

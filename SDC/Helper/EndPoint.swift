@@ -32,10 +32,17 @@ class APIConfig {
 //    static let baseURL = "http://preinsouq1-001-site1.btempurl.com/api" //
 
 
+    static let getMemberId = BaseURL + "investor_information/getAccountInfoByMemberID"
+    
     static let GetAccountInvInfo = BaseURL + "investor_information/getAccountInfo"
+    
+    static let GetAccountStatementPDF = BaseURL + "https://sdce5.blueraydev.com/api/investor_information/getSecurityDetailedTransPDF"
+    
     
     static let encoding = JSONEncoding.default
     static let stringencoding = JSONEncoding.default
     static let encoding2 = URLEncoding.queryString
+    
+    
     
 }

@@ -28,6 +28,7 @@
 "Expiry Date" = "تاريخ الانتهاء" ;
 "Release Date" = "تاريخ الاصدار" ;
 "Family Book Number" = "رقم دفتر العائلة" ;
+"OK" = "حسناً";
 "Follow These Step To SignUp" = "اتبع هذه الخطوات للتسجيل" ;
 "Welcome" = "مرحبًا بك" ;
 "Name" = "" ;
@@ -317,3 +318,11 @@
 "Custodians" = "";
 "choose category" = "اختر الفئة";
 "User Guide" = "دليل المستخدم";
+"Investor Ownership For Specific Security" = "ملكية المستثمر لورقة مالية محددة";
+"Last Corporate Actions" = "أخر إجراءات الشركة";
+"Please check internet connection" = "يرجى التحقق من اتصال الإنترنت";
+"Server Error" = "خطأ في اتصال الشبكة";
+"Please Wait" = "يرجى الإنتظار";
+"Biometry unavailable" = "اللتحقق الحيوي غير مفعل";
+"Your device is not configured for biometric authentication." = " لم يتم تفعيل جهازك للتحقق الحيوي.
+";

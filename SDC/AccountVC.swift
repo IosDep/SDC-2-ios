@@ -7,12 +7,14 @@
 
 import UIKit
 import MOLH
+import LocalAuthentication
 
 class AccountVC: UIViewController {
     
 
     
     @IBOutlet weak var biometricSwitch: UISwitch!
+    
     
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
@@ -21,16 +23,28 @@ class AccountVC: UIViewController {
     
     
    
-    @IBAction func biometricSwitchPressed(_ sender: Any) {
+    @IBAction func biometricSwitchPressed(_ sender: UISwitch) {
         
-        if biometricSwitch.isOn {
-            Helper.shared.saveBiometricFlag(flag: false)
+        if sender.isOn {
+            enableBiometricAuthentication()
         }
-        else {
-            Helper.shared.saveBiometricFlag(flag: true)
-        }
-    }
+        else if sender.isOn == false {
+               disableBiometricAuthentication()
+           }
+        
     
+//        if Helper.shared.getBiometricFlag() == true {
+//            Helper.shared.saveBiometricFlag(flag: false)
+//
+//        }
+//
+//        else {
+//            // enrolled ?
+//            self.authenticateWithFaceID()
+//            Helper.shared.saveBiometricFlag(flag: true)
+//        }
+//
+    }
     
     @IBOutlet weak var scroll: UIScrollView!
     
@@ -63,14 +77,16 @@ class AccountVC: UIViewController {
     
     
     var imageViewWithCount: UIView!
-      var countLabel: UILabel!
-
+    var countLabel: UILabel!
+    
+   
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.checkBiometric()
         self.navigationText(title: "Account Settings".localized())
         
-        self.checkBiometric()
+        
+        
 
     }
     
@@ -156,18 +172,88 @@ class AccountVC: UIViewController {
         
         
     }
+    
+    
+    func enableBiometricAuthentication() {
+        
+    let context = LAContext()
+    var error: NSError?
+        if context.canEvaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
+                                              error: &error) {
+            
+            
+        let reason = "Identify yourself!"
+        context.evaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
+                                            localizedReason: reason) { [weak self] success,
+                authenticationError in
+                DispatchQueue.main.async {
+                if success {
+                print("DONEEE")
+                    
+                UserDefaults.standard.set(true, forKey: "biometricAuthenticationEnabled")
+                                
+                            } else {
+                                DispatchQueue.main.async {
+                                    // Set the switch button back to its previous state
+                                    self?.biometricSwitch.setOn(false, animated: true)
+                                }
+        
+                            }
+                        }
+                    }
+                }else{
+                    
+                    if let error = error {
+                               print("Biometric authentication not available: \(error.localizedDescription)")
+                           }
+                }
+        
+        
+//        let context = LAContext()
+//        var error: NSError?
+//
+//        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+//            // Biometric authentication is available
+//            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Identify yourself!") { (success, error) in
+//                if success {
+                    // Biometric authentication successful
+                    // Store the preference in your app's settings
+//                    UserDefaults.standard.set(true, forKey: "biometricAuthenticationEnabled")
+//                } else {
+//                    // Biometric authentication failed or user canceled
+//                    DispatchQueue.main.async {
+//                        // Set the switch button back to its previous state
+//                        self.biometricSwitch.setOn(false, animated: true)
+//                    }
+//                }
+//            }
+//        } else {
+//            // Biometric authentication is not available
+//            // Show an appropriate error or fallback to another authentication method
+//        }
+    }
+    
+    func disableBiometricAuthentication() {
+        // Remove the preference from your app's settings
+        UserDefaults.standard.removeObject(forKey: "biometricAuthenticationEnabled")
+    }
+
+
 
 
     func checkBiometric() {
         
-        if Helper.shared.getBiometricFlag() == true {
+        // enrolled ?
+        
+        if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
             biometricSwitch.setOn(true, animated: true)
         }
-        else {
+        
+        else   {
             biometricSwitch.setOn(false, animated: true)
         }
     }
-
+    
 
 }
 
