@@ -408,7 +408,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         //           2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "")
         pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-        
+        pieChartView.legend.enabled = false
         //           3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()

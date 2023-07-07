@@ -25,7 +25,7 @@ class LoginVC: UIViewController {
         
         if UserDefaults.standard.string(forKey: "rememberMe") == "1" {
 
-         if let image = UIImage(systemName: "square.fill") {
+         if let image = UIImage(systemName: "checkmark.square") {
              remmbermeimg.image = image
              remmbermeimg.tintColor = UIColor(named: "AccentColor")
           }
@@ -40,6 +40,7 @@ class LoginVC: UIViewController {
 
          if let image = UIImage(systemName: "square") {
              remmbermeimg.image = image
+             remmbermeimg.tintColor = UIColor(named: "AccentColor")
          }
 
          AgreeIconClick = false
@@ -82,9 +83,9 @@ class LoginVC: UIViewController {
         
         if(AgreeIconClick == false) {
 
-         if let image = UIImage(named: "checked1") {
+            if let image = UIImage.init(systemName: "checkmark.square") {
              self.remmbermeimg.image = image
-             
+                self.remmbermeimg.tintColor = UIColor.init(named: "AccentColor")
              UserDefaults.standard.set("1", forKey: "rememberMe")
              UserDefaults.standard.set(userName.text ?? "" , forKey: "userMail")
              UserDefaults.standard.set(password.text ?? "", forKey: "userPassword")
@@ -94,7 +95,7 @@ class LoginVC: UIViewController {
             AgreeIconClick = true
             
          } else {
-         if let image = UIImage(systemName: "circle") {
+         if let image = UIImage(systemName: "square") {
              self.remmbermeimg.image = image
              UserDefaults.standard.set("2", forKey: "rememberMe")
 
