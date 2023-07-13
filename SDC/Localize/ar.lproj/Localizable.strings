@@ -11,7 +11,7 @@
 "investor info" = "معلومات المستثمر" ;
 "investor ownerShape" = "ملكية المستثمر" ;
 "investor account" = "حسابات المستثمر" ;
-"company's latest procedures" = "اخر اجرات الشركة" ;
+"company's latest procedures" = "اخر اجرات الشركات" ;
 "investor's ownership of a new security" = "ملكية المستثمر لورقة مالية واحدة" ;
 "account settings" = "اعدادات الحساب" ;
 "Last Transactions" = " اخر الحركات" ;
@@ -136,7 +136,6 @@
 "Investor Information" = "بيانات المستثمر" ;
 "Investor Accounts" = "حسابات المستثمر" ;
 "Account settings" = "إعدادات الحساب" ;
-"Search" = "بحث";
 "Home" = "الرئيسة";
 
 "Investor information" = "معلومات المستثمر";
@@ -147,7 +146,6 @@
 "Change Language" = "تغيير لغة التطبيق";
 "Corporation's last actions" = "آخر إجراءات الشركة";
 "Investor's ownership of a new security" = "ملكية المستثمر لورقة مالية جديدة";
-"Account statement" = "كشف حساب";
 "Change password" = "تغيير كلمة السر";
 "Change language" = "تغيير اللغة";
 "User's guide" = "دليل المستخدم";
@@ -166,8 +164,8 @@
 "Sign In" = "تسجيل دخول";
 "Sign Up" = "تسجيل حساب جديد";
 "Sign in With FingerPoint" = "تسجيل دخول باستخدام البصمة";
-"Welcome " = "مرحباً";
-"Enter your information below" = "ادخل معلوماتك في الأسفل";
+"Welcome " = "مرحباًبك";
+"Enter your information below" = "ادخل معلوماتك أدناه";
 "Username" = "اسم المستخدم";
 "Password" = "كلمة المرور";
 "Remember me" = "تذكرني";
@@ -224,14 +222,14 @@
 "ID type"="نوع الوثيقة";
 "ID No."="رقم الوثيقة";
 "Identity Card No"="رقم الهوية";
-"Clear"="مسح";
-"Reuter Code"="الرمز الحرفي";
+"Clear"="تفريغ حقول";
+"Reuter Code"="الرمز الحرفي للورقة المالية";
 "Owned"="الرصيد الحالي";
 "Available"="الرصيد الحر";
 "Lien"="الرصيد المحجوز";
 "Pending until settlement"="معلق لحين التسوية";
 "Non-traded"="الرصيد غير المتداول";
-"Investor No."="رفم المركز";
+"Investor No."="رقم المركز";
 "Occupation"="المهنة";
 "Investor category" = "تصنيف المستثمر";
 "Qualification" = "المؤهل العلمي";
@@ -262,10 +260,10 @@
 " Bank Account Data" = "بيانات الحساب البنكي";
 "Identity Card number" = "رقم الهوية";
 "Close Price" = "سعر الإغلاق" ;
- "Services" = "خدمات";
-"Industry" = "صناعة";
-"Banks" = "البنوك";
-"Insuarance" = "تأمين";
+ "Services" = " قطاع الخدمات";
+"Industry" = "قطاع الصناعة";
+"Banks" = "قطاع البنوك";
+"Insuarance" = "قطاع التأمين";
 "forget ypur password ?" = "هل نسيت كلمة المرور؟";
 "Expiry date" = "تاريخ الّإنتهاء";
 "Shareholders" = "المساهمات";
@@ -319,10 +317,19 @@
 "choose category" = "اختر الفئة";
 "User Guide" = "دليل المستخدم";
 "Investor Ownership For Specific Security" = "ملكية المستثمر لورقة مالية محددة";
-"Last Corporate Actions" = "أخر إجراءات الشركة";
+"Last Corporate Actions" = "أخر إجراءات الشركات";
 "Please check internet connection" = "يرجى التحقق من اتصال الإنترنت";
 "Server Error" = "خطأ في اتصال الشبكة";
 "Please Wait" = "يرجى الإنتظار";
 "Biometry unavailable" = "اللتحقق الحيوي غير مفعل";
 "Your device is not configured for biometric authentication." = " لم يتم تفعيل جهازك للتحقق الحيوي.
 ";
+"Market" = "السوق";
+"choose security name" = "اختر اسم الورقة المالية";
+"Search" = "استعلام";
+"Action date" = "تاريخ الإجراء";
+"USD" = "دولار أمريكي";
+"JOD" = "دينار أردني";
+"Currency" = "نوع العملة";
+"search" = "ادخل كلمة البحث";
+"Home" = "الصفحة الرئيسية";

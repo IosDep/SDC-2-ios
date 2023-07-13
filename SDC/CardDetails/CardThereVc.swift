@@ -13,8 +13,15 @@ import MOLH
 class CardThereVc: UIViewController {
 
 //    @IBOutlet weak var bellView : UIView!
+    
+    @IBOutlet weak var secondStack: UIStackView!
+    @IBOutlet weak var thirdStack: UIStackView!
+    
+    
     @IBOutlet weak var transactionNumber: UILabel!
+    @IBOutlet weak var firstStack: UIStackView!
     @IBOutlet weak var tradeTime: UILabel!
+    
     @IBOutlet weak var transactionDate: UILabel!
     @IBOutlet weak var settlementDate: UILabel!
     @IBOutlet weak var effectiveDate: UILabel!
@@ -67,6 +74,12 @@ class CardThereVc: UIViewController {
         
     }
     
+    override func viewDidLayoutSubviews() {
+        firstStack.roundCorners([.topLeft, .topRight], radius: 8)
+        secondStack.roundCorners([.topLeft, .topRight], radius: 8)
+        thirdStack.roundCorners([.topLeft, .topRight], radius: 8)
+
+    }
     
    
 

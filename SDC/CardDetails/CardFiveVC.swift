@@ -192,7 +192,7 @@ class CardFiveVC: UIViewController {
                                     self.language.text = languageDesc ?? ""
                                     
                                     let birthDate = data!["birthDate"] as? String
-                                    self.birthDate.text = self.convertDateToArabicNumbers(dateString: birthDate ?? "")
+                                    self.birthDate.text = self.convertDate(dateString: birthDate ?? "")
                                     
                                     let sexDesc = data!["sexDesc"] as? String
                                     self.gender.text = sexDesc ?? ""
@@ -205,7 +205,7 @@ class CardFiveVC: UIViewController {
                                     
                                     
                                     let statusDate = data!["statusDate"] as? String
-                                    self.statusDate.text = self.convertDateToArabicNumbers(dateString: statusDate ?? "")
+                                    self.statusDate.text = self.convertDate(dateString: statusDate ?? "")
                                     
                                     
                                     let pobox = data!["pobox"] as? String
@@ -234,14 +234,13 @@ class CardFiveVC: UIViewController {
                                     self.documentReference.text = idDocReference ?? ""
                                     
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text =
-                                                                idDocDate ?? ""
-                                    
+                                    self.releaseDate.text = self.convertDate(dateString: idDocDate ?? "")
+                                
                                     let identificationNo = data!["identificationNo"] as? String
                                     self.identificationNumber.text = identificationNo
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text =   idDocExpDate ?? ""
+                                    self.expiryDate.text =  self.convertDate(dateString: idDocExpDate ?? "")
                                     
                                     
                                     // resAddress1

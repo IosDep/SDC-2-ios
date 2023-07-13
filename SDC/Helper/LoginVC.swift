@@ -49,13 +49,16 @@ class LoginVC: UIViewController {
 #if DEBUG
         
         userName.text = "9651010730"
-        password.text = "123456"
+        password.text = "BlueRay@12345"
 #endif
         
         
     }
     
  
+    @IBAction func backPressed(_ sender: Any) {
+        self.dismiss(animated: true)
+    }
     
 
     @IBAction func Login(_ sender: Any) {
@@ -229,7 +232,7 @@ class LoginVC: UIViewController {
                                 
                                
                                 if status == true {
-                                     let message = jsonObj!["errNum1"] as? String
+                                     let message = jsonObj!["message"] as? String
                                     
                                     let user_data = jsonObj!["user_data"] as? [String:Any]
                                     
@@ -256,7 +259,7 @@ class LoginVC: UIViewController {
                                 //    status ==> false
                                 else {
                                     
-                                    if let message = jsonObj!["msg"] as? String {
+                                    if let message = jsonObj!["message"] as? String {
                                         hud.dismiss()
                                         DispatchQueue.main.async {
                                             self.showErrorHud(msg: message, hud: hud)

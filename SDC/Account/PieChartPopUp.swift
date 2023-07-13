@@ -32,9 +32,12 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
     var service = SectorAnylisisModel(data: [:])
     var industry = SectorAnylisisModel(data: [:])
     var totalAnlysis = SectorAnylisisModel(data: [:])
+    var dtotalAnlysis = SectorAnylisisModel(data: [:])
+
     
     var pieTableHolder = [PieTableHolder]()
     var pieFlag : Int?
+    var currencyFlag : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +53,10 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
             tableTitle.text = "Shareholders".localized()
             percentageTitle.isHidden = true
             totalPercentage.isHidden = true
+            
+            
             totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
+            
         
         }
         
@@ -92,6 +98,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         //           2. Set ChartDataSet
         let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "")
         pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
+        pieChartView.legend.enabled = false
         
         //           3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
@@ -129,17 +136,22 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         if pieFlag == 0 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.sec_count ?? 0.0)
             cell?.percentageValue.isHidden = true
+            cell?.colorBtn.setImage(UIImage(systemName: "square.fill"), for: .normal)
+            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
         }
         
         else if pieFlag == 1 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.Quantity ?? 0.0)
             cell?.percentageValue.isHidden = true
+            cell?.colorBtn.setImage(UIImage(systemName: "square.fill"), for: .normal)
+            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
         }
         
         else if pieFlag == 2 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.market_value ?? 0)
             cell?.percentageValue.isHidden = false
             cell?.percentageValue.text = self.numFormat(value: percanetageValues[indexPath.row] ?? 0.0)
+            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
 
         }
         return cell!

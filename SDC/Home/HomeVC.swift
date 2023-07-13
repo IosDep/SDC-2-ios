@@ -71,6 +71,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     //function for change background selected background color for with and without zero btn
     
     func highlightedButtons() {
+        self.busnissCard.reloadData()
         if isDolarSelected && !isDinarSelected {
             DispatchQueue.main.async {
                 self.dolar.setTitleColor(.white, for: .normal)
@@ -102,7 +103,13 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     @IBAction func dolarPressed(_ sender: Any) {
         currencyFlag = "22"
-        busnissCard.reloadData()
+        
+        DispatchQueue.main.async {
+            
+            self.anlyssSection.reloadData()
+            
+        }
+        
         isDolarSelected = true
         isDinarSelected = false
         highlightedButtons()
@@ -111,7 +118,10 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     @IBAction func dinarPressed(_ sender: Any) {
         currencyFlag = "1"
-        busnissCard.reloadData()
+        DispatchQueue.main.async {
+        
+            self.anlyssSection.reloadData()
+        }
         isDolarSelected = false
         isDinarSelected = true
         highlightedButtons()
@@ -165,15 +175,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.anlyssSection.setCollectionViewLayout(collLayout, animated: false)
         
     
-        //        call api
-        
-        //        self.getAllData()
+
         self.getLastTrans()
         self.getLastDate()
         //        self.getOwnerShapeList()
         //        self.getTradingValue()
-        
-        
         
     }
     
@@ -224,6 +230,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         if collectionView == busnissCard {
             let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let vc = storyBoard.instantiateViewController(withIdentifier: "CardThereVc") as! CardThereVc
@@ -233,7 +240,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             self.present(vc, animated: true)
         }
         
-        else if collectionView == anlyssSection{
+        else if collectionView == anlyssSection {
             
             let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let vc = storyBoard.instantiateViewController(withIdentifier: "PieChartPopUp") as! PieChartPopUp
@@ -242,23 +249,59 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             vc.insuarance = self.insuarance
             vc.service = self.service
             vc.industry = self.industrry
-            vc.totalAnlysis = totalAnlysis
+            
+            if currencyFlag == "1" {
+                vc.totalAnlysis = totalAnlysis
+
+            }
+            
+            else if currencyFlag == "22" {
+                vc.totalAnlysis = dtotalAnlysis
+
+            }
 //            vc.pieFlag = indexPath.row
         
-            vc.pieTableHolder = self.pieTableHolder
+            if currencyFlag == "1" {
+                vc.pieTableHolder = self.pieTableHolder
+
+            }
+            
+            else if currencyFlag == "22" {
+                vc.pieTableHolder = self.dpieTableHolder
+
+            }
 
             if indexPath.row == 0 {
-                vc.chartValues = securities
+                if currencyFlag == "1" {
+                    vc.chartValues = securities
+                }
+                else if currencyFlag == "22" {
+                    vc.chartValues = dsecurities
+                }
+                
                 vc.pieFlag = 0
             }
             
             else if indexPath.row == 1 {
-                vc.chartValues = quantities
+                
+                if currencyFlag == "1" {
+                    vc.chartValues = quantities
+                }
+                else if currencyFlag == "22" {
+                    vc.chartValues = dquantities
+                }
+
                 vc.pieFlag = 1
             }
             
             else if indexPath.row == 2 {
-                vc.chartValues = marketValues
+                if currencyFlag == "1" {
+                    vc.chartValues = marketValues
+                }
+                else if currencyFlag == "22" {
+                    vc.chartValues = dmarketValues
+                }
+
                 vc.pieFlag = 2
             }
             
@@ -294,13 +337,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             
             let data  = lastTransarr[indexPath.row]
             
-            cell?.firstlbl.text =   data.Security_Id ?? ""
+            cell?.firstlbl.text = data.Security_Id ?? ""
             
             cell?.secondlbl.text = data.Security_Name
             
-            // ?????
-            
-            cell?.theredlbl.text =  self.doubleToArabic(value: data.Price ??  "")
+            cell?.theredlbl.text =  data.Quantity ??  ""
             
             return cell!
             
@@ -324,66 +365,119 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             cell?.layer.shadowOpacity = 0.2
             cell?.layer.masksToBounds = false
             
-            if indexPath.row == 0 {
+            
                 
-                
-                
-                cell?.title.text = "Shareholders" .localized()
-                
-                
-                if (securities.count != 0)  {
-                    customizeChart(dataPoints: categories, values: securities,pieChartView: (cell?.chartView!)!)
-                }
+                if indexPath.row == 0 {
+                    
+                    if currencyFlag == "1" {
 
-            }
-            
-           else if indexPath.row == 1 {
-               
-               if currencyFlag == "1" {
-                   if (quantities.count != 0)  {
-                       cell?.title.text = "Securities" .localized()
-                        customizeChart(dataPoints: categories, values: quantities,pieChartView: (cell?.chartView!)!)
-                     
-                   }
-                   
-               }
-               
-               else if currencyFlag == "22" {
-                   if (quantities.count != 0)  {
-                       cell?.title.text = "Securities" .localized()
-                        customizeChart(dataPoints: categories, values: dquantities,pieChartView: (cell?.chartView!)!)
-                     
-                   }
-               }
-               
-               
-                        }
-            
-            else if indexPath.row == 2 {
-                
-                if currencyFlag == "1" {
-                    if (marketValues.count != 0)  {
-                        
-                        cell?.title.text = "Market Value" .localized()
-                        customizeChart(dataPoints: categories, values: marketValues ,pieChartView: (cell?.chartView!)!)
+                    
+                    cell?.title.text = "Shareholders" .localized()
+                    
+                    if (securities.count != 0)  {
+                        customizeChart(dataPoints: categories, values: securities,pieChartView: (cell?.chartView!)!)
+                        cell?.logo.image = UIImage(named: "shareholder")
                     }
                     
                 }
-                
-                else if currencyFlag == "22" {
-                    if (marketValues.count != 0)  {
+                    
+                    else if currencyFlag == "22" {
                         
-                        cell?.title.text = "Market Value" .localized()
-                        customizeChart(dataPoints: categories, values: dmarketValues ,pieChartView: (cell?.chartView!)!)
+                        cell?.title.text = "Shareholders" .localized()
+                        
+                        if (dsecurities.count != 0)  {
+                            customizeChart(dataPoints: categories, values: dsecurities,pieChartView: (cell?.chartView!)!)
+                            cell?.logo.image = UIImage(named: "shareholder")
+                        }
+                    }
+            }
+                
+            else if indexPath.row == 1 {
+                
+                if currencyFlag == "1" {
+                    
+                    if (quantities.count != 0)  {
+                        cell?.title.text = "Securities" .localized()
+                        customizeChart(dataPoints: categories, values: quantities,pieChartView: (cell?.chartView!)!)
+                        cell?.logo.image = UIImage(named: "securities")
+                        
                     }
                 }
-            
+                
+               else if currencyFlag == "22" {
+                    
+                    if (dquantities.count != 0)  {
+                        cell?.title.text = "Securities" .localized()
+                        customizeChart(dataPoints: categories, values: dquantities,pieChartView: (cell?.chartView!)!)
+                        cell?.logo.image = UIImage(named: "securities")
+                        
+                    }
+                }
             }
+                
+                else if indexPath.row == 2 {
+                    
+                    if currencyFlag == "1" {
+                        if (marketValues.count != 0)  {
+                            
+                                cell?.title.text = "Market Value" .localized()
+                                customizeChart(dataPoints: categories, values: marketValues ,pieChartView: (cell?.chartView!)!)
+                                cell?.logo.image = UIImage(named: "marketValue")
+                            }
+                            
+                           
+                        }
+                    
+                  else if currencyFlag == "22" {
+                        if (dmarketValues.count != 0)  {
+                            
+                                cell?.title.text = "Market Value" .localized()
+                                customizeChart(dataPoints: categories, values: dmarketValues ,pieChartView: (cell?.chartView!)!)
+                                cell?.logo.image = UIImage(named: "marketValue")
+                            }
+                            
+                           
+                        }
+                }
+            
+            
+//             if currencyFlag == "22" {
+//
+//                if indexPath.row == 0 {
+//
+//                    cell?.title.text = "Shareholders" .localized()
+//
+//                    if (dsecurities.count != 0)  {
+//                        customizeChart(dataPoints: categories, values: dsecurities,pieChartView: (cell?.chartView!)!)
+//                        cell?.logo.image = UIImage(named: "shareholder")
+//                    }
+//
+//                }
+//
+//               else if indexPath.row == 1 {
+//
+//                       if (dquantities.count != 0)  {
+//                           cell?.title.text = "Securities" .localized()
+//                            customizeChart(dataPoints: categories, values: dquantities,pieChartView: (cell?.chartView!)!)
+//                           cell?.logo.image = UIImage(named: "securities")
+//
+//                       }
+//                            }
+//
+//                else if indexPath.row == 2 {
+//
+//                        if (dmarketValues.count != 0)  {
+//
+//                            cell?.title.text = "Market Value" .localized()
+//                            customizeChart(dataPoints: categories, values: dmarketValues ,pieChartView: (cell?.chartView!)!)
+//                            cell?.logo.image = UIImage(named: "marketValue")
+//                        }
+//                }
+//            }
        
             return cell!
   
         }
-        
         
         ////          let data =  ownershapeAnlusis[indexPath.row]
         ////          cell?.title.text = data.Main_Security_Cat_Desc
@@ -681,19 +775,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         
                                         
                                         if self.bank.sec_count != 0 && self.bank.Quantity != 0 && self.bank.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.bank))
+                                            self.pieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.bank, color: UIColor(named: "BankColor")!))
                                         }
                                         
                                          if self.insuarance.sec_count != 0 && self.insuarance.Quantity != 0 && self.insuarance.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.insuarance))
+                                             self.pieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.insuarance, color: UIColor(named: "InsuranceCollor")!))
                                         }
                                         
                                          if self.service.sec_count != 0 && self.service.Quantity != 0 && self.service.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.service))
+                                            self.pieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.service , color: UIColor(named: "ServiceColor")!))
                                         }
                                         
                                         if self.industrry.sec_count != 0 && self.industrry.Quantity != 0 && self.industrry.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.industrry))
+                                            self.pieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.industrry , color: UIColor(named: "industryColor")!))
                                         }
                                         
                                     }
@@ -774,19 +868,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         
                                         
                                         if self.dbank.sec_count != 0 && self.dbank.Quantity != 0 && self.dbank.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.dbank))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.dbank , color: UIColor(named: "BankColor")!))
                                         }
                                         
                                         else if self.dinsuarance.sec_count != 0 && self.dinsuarance.Quantity != 0 && self.dinsuarance.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.dinsuarance))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.dinsuarance , color: UIColor(named: "InsuranceCollor")!))
                                         }
                                         
                                         else if self.dservice.sec_count != 0 && self.dservice.Quantity != 0 && self.dservice.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.dservice))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.dservice , color: UIColor(named: "ServiceColor")!))
                                         }
                                         
                                         else if self.dindustry.sec_count != 0 && self.dindustry.Quantity != 0 && self.dindustry.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.dindustry))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.dindustry , color: UIColor(named: "industryColor")!))
                                         }
                                         
                                     }
@@ -1150,4 +1244,5 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
 struct PieTableHolder {
     var title : String
     var array : SectorAnylisisModel
+    var color : UIColor
 }

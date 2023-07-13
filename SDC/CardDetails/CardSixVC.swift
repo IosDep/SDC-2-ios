@@ -29,7 +29,7 @@ class CardSixVC: UIViewController {
         corporationID.text =  lastAction?.Member_Id ?? ""
         isin.text = lastAction?.Isin ?? ""
         literalNum.text = lastAction?.Reuter_Code ?? ""
-        actionDate.text = self.convertDateToArabicNumbers(dateString: lastAction?.Action_Date ?? "")
+        actionDate.text = self.convertDate(dateString: lastAction?.Action_Date ?? "")
         action.text = lastAction?.Trans_Type_Desc ?? ""
         
         actionDescription.text = lastAction?.Action_Type_Desc ?? ""

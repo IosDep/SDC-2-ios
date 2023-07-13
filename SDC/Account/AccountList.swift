@@ -32,6 +32,7 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         super.viewDidLoad()
         if checkSideMenu == true {
             sideMenuBtn.setImage(UIImage(systemName: "chevron.backward"), for: .normal)
+            bellView.isHidden = true
         }
         else {
             sideMenuBtn.setImage(UIImage(named: "menus"), for: .normal)

@@ -41,6 +41,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     var isWithoutSelected : Bool = false
     var isSearching = false
 
+
     override func viewDidLoad() {
         super.viewDidLoad()
         isZeroSelected = false

@@ -29,6 +29,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var paperNameBtn: UIButton!
     @IBOutlet weak var search_bar: UISearchBar!
     @IBOutlet weak var literalNumBtn: UIButton!
+    @IBOutlet weak var greenView: UIView!
     @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var busnissCard: UITableView!
     @IBOutlet weak var headerView: UIView!
@@ -81,7 +82,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         super.viewDidLoad()
         
         searchStack.isHidden = true
-        staticCellInfo.isHidden = true
+//        staticCellInfo.isHidden = true
         
         if checkSideMenu == true {
             sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
@@ -128,7 +129,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         dinarData?.removeAll()
         dolarData?.removeAll()
         searchStack.isHidden = true
-        staticCellInfo.isHidden = true
+//        staticCellInfo.isHidden = true
         seatrching = false
         busnissCard.reloadData()
     }
@@ -419,7 +420,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         if flag == "0"{
             
             searchStack.isHidden = false
-            staticCellInfo.isHidden = false
+//            staticCellInfo.isHidden = false
             
             selectedPaperName = selectdTxt
             self.securityNameLabel.setTitle(  "\(selectdTxt)/\(securtNumber)" , for: .normal)

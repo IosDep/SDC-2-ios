@@ -107,12 +107,12 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fCn-6R-TR1">
                                                 <rect key="frame" x="0.0" y="96.666666666666671" width="376" height="31.333333333333329"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned Balance" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGU-oc-115" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quantity" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGU-oc-115" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="188" height="31.333333333333332"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Owned Balance"/>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Quantity"/>
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="500.5" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3kq-EU-KhG">
@@ -198,7 +198,7 @@
             <size key="intrinsicContentSize" width="83" height="14.333333333333334"/>
         </designable>
         <designable name="iGU-oc-115">
-            <size key="intrinsicContentSize" width="88" height="14.333333333333334"/>
+            <size key="intrinsicContentSize" width="48.333333333333336" height="14.333333333333334"/>
         </designable>
     </designables>
     <resources>

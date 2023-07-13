@@ -630,7 +630,7 @@ extension UIViewController {
     
     
     
-    func convertDateToArabicNumbers(dateString: String) -> String? {
+    func convertDate(dateString: String) -> String? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-dd-MM HH:mm:ss"
         

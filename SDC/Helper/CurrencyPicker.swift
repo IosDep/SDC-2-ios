@@ -52,9 +52,9 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
            else {
                switch indexPath.row {
                case 0 :
-                   cell?.currency.text = "JOD"
+                   cell?.currency.text = "JOD".localized()
                case 1 :
-                   cell?.currency.text = "USD"
+                   cell?.currency.text = "USD".localized()
                default:
                    print("Defaultt")
                }

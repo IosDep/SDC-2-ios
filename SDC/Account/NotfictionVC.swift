@@ -161,28 +161,28 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     
     
-    func convertDate(dateString: String) -> String? {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
-        
-        guard let date = dateFormatter.date(from: dateString) else {
-            return nil
-        }
-        
-        if MOLHLanguage.isRTLLanguage() {
-            let arabicLocale = Locale(identifier: "ar")
-            dateFormatter.locale = arabicLocale
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
-            
-        }
-        
-        else {
-            let englishLocale = Locale(identifier: "en")
-            dateFormatter.locale = englishLocale
-            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
-        }
-        
-        return dateFormatter.string(from: date)
-    }
+//    func convertDate(dateString: String) -> String? {
+//        let dateFormatter = DateFormatter()
+//        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSSZ"
+//        
+//        guard let date = dateFormatter.date(from: dateString) else {
+//            return nil
+//        }
+//        
+//        if MOLHLanguage.isRTLLanguage() {
+//            let arabicLocale = Locale(identifier: "ar")
+//            dateFormatter.locale = arabicLocale
+//            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+//            
+//        }
+//        
+//        else {
+//            let englishLocale = Locale(identifier: "en")
+//            dateFormatter.locale = englishLocale
+//            dateFormatter.setLocalizedDateFormatFromTemplate("dd-MM-yyyy")
+//        }
+//        
+//        return dateFormatter.string(from: date)
+//    }
 
 }

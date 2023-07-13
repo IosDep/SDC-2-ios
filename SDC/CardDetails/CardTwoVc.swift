@@ -11,6 +11,7 @@ import UIKit
 
 class CardTwoVc: UIViewController {
 
+    @IBOutlet weak var currencyFlag: DesignableLabel!
     @IBOutlet weak var sectorName: UILabel!
     @IBOutlet weak var reuterCode: UILabel!
     @IBOutlet weak var currentBalance: UILabel!
@@ -28,12 +29,20 @@ class CardTwoVc: UIViewController {
     @IBOutlet weak var balanceStack: UIStackView!
     @IBOutlet weak var pendingStack: UIStackView!
     @IBOutlet weak var marketValue: UILabel!
+    
     var invOwnership : InvestoreOwnerShape?
+    var currency : String?
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if currency == "1" {
+            currencyFlag.text = "JOD".localized()
+    }
+        else if currency == "22" {
+            currencyFlag.text = "USD".localized()
+        }
         
         currentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Owned ?? "")
 
@@ -50,7 +59,6 @@ class CardTwoVc: UIViewController {
         
         nonCurrentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Unlisted ?? "") 
         
-        securityID.text =  invOwnership?.securityID ?? ""
         
         securityName.text = invOwnership?.Security_Name ?? ""
         reuterCode.text = invOwnership?.Security_Reuter_Code ?? ""

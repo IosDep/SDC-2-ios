@@ -9,6 +9,7 @@ import UIKit
 
 class PieTableCell: UITableViewCell {
     
+    @IBOutlet weak var colorBtn: UIButton!
     @IBOutlet weak var percentageValue: UILabel!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var value: UILabel!

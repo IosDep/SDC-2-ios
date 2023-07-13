@@ -36,7 +36,7 @@ class APIConfig {
     
     static let GetAccountInvInfo = BaseURL + "investor_information/getAccountInfo"
     
-    static let GetAccountStatementPDF = BaseURL + "https://sdce5.blueraydev.com/api/investor_information/getSecurityDetailedTransPDF"
+    static let GetAccountStatementPDF = BaseURL + "https://sdce5.blueraydev.com/api/investor_information/getSecurityDetailedTrans"
     
     
     static let encoding = JSONEncoding.default

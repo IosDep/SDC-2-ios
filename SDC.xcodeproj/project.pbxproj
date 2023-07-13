@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		364D455FB1D4360B43DA4153 /* Pods_SDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */; };
 		3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1038992A02704E004594ED /* SecurityOwnership.swift */; };
+		3F11040B2A601C160086CABA /* PDFViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11040A2A601C160086CABA /* PDFViewerVC.swift */; };
 		3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */; };
 		3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */; };
 		3F1B3CE92A487F35006F0FAE /* LastCoorporationActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */; };
@@ -145,6 +146,7 @@
 		312806C7B0722D6FDCD1CFDF /* Pods-SDC.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDC.release.xcconfig"; path = "Target Support Files/Pods-SDC/Pods-SDC.release.xcconfig"; sourceTree = "<group>"; };
 		35A43BAA4BE44B9CDDE441CD /* Pods-SDCTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.release.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.release.xcconfig"; sourceTree = "<group>"; };
 		3F1038992A02704E004594ED /* SecurityOwnership.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityOwnership.swift; sourceTree = "<group>"; };
+		3F11040A2A601C160086CABA /* PDFViewerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFViewerVC.swift; sourceTree = "<group>"; };
 		3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnwerShip.swift; sourceTree = "<group>"; };
 		3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastCoorporationActionCell.swift; sourceTree = "<group>"; };
 		3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastCoorporationActionCell.xib; sourceTree = "<group>"; };
@@ -409,6 +411,7 @@
 				87F4FD5229EA282300FF2485 /* OnePaperOwnerShape.swift */,
 				3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */,
 				3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */,
+				3F11040A2A601C160086CABA /* PDFViewerVC.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -815,6 +818,7 @@
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
 				3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */,
 				3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */,
+				3F11040B2A601C160086CABA /* PDFViewerVC.swift in Sources */,
 				87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */,
 				3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */,
 				87D3E9B829DA9FCC006B6AA7 /* LoadingOverly.swift in Sources */,

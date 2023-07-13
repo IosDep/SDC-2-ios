@@ -19,7 +19,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     // set title for picker's buttons when is selected from picker vc
     
-  
+    
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var accountIDStack: UIStackView!
     
@@ -42,8 +42,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     var accounNumber = [String]()
     var memberNum = [String]()
     var accountID = [AccountIDModel]()
-//    var isZeroSelected : Bool?
-//    var isWithoutSelected : Bool?
+    //    var isZeroSelected : Bool?
+    //    var isWithoutSelected : Bool?
     var withZeroFlag : String?
     var dataArray = [PartialDataModel]()
     var fromDateString : String?
@@ -52,12 +52,12 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     var accountNo : String?
     var securityID : String?
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         nameStack.isHidden = true
         accountIDStack.isHidden = true
-        searchBtn.isHidden = true
+        //        searchBtn.isHidden = true
         datePicker.isHidden = true
         datePicker2.isHidden = true
         fromDate.isHidden = true
@@ -65,104 +65,100 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         self.getAccountList()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
         
-//        let currentDate = Date()
-//                let calendar = Calendar.current
-//                let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate)
-//                let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate)
-//
+        //        let currentDate = Date()
+        //                let calendar = Calendar.current
+        //                let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate)
+        //                let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate)
+        //
         datePicker.datePickerMode = .date
         datePicker.date = Date() // Set an initial date if needed
-
-                // Set the minimum and maximum dates
+        
+        // Set the minimum and maximum dates
         let calendar = Calendar.current
         let currentDate = Date()
-
-                // Calculate the date one month ago
+        
+        // Calculate the date one month ago
         guard let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate) else {
-                   return
-                }
+            return
+        }
         
         datePicker.minimumDate = oneMonthAgo
         datePicker.maximumDate = currentDate
         
         
         
-//        datePicker.datePickerMode = .date
-//        datePicker.minimumDate = oneMonthAgo
-//        datePicker.maximumDate = oneMonthLater
-//        datePicker2.datePickerMode = .date
-//        datePicker2.minimumDate = oneMonthAgo
-//        datePicker2.maximumDate = oneMonthLater
-
+        //        datePicker.datePickerMode = .date
+        //        datePicker.minimumDate = oneMonthAgo
+        //        datePicker.maximumDate = oneMonthLater
+        //        datePicker2.datePickerMode = .date
+        //        datePicker2.minimumDate = oneMonthAgo
+        //        datePicker2.maximumDate = oneMonthLater
         
-
+        
+        
     }
     
-   
-//    @IBAction func withZeero(btn:UIButton){
-//
-//        withZeroFlag = "1"
-//        isZeroSelected = true
-//        isWithoutSelected = false
-//        highlightedButtons()
-//
-//    }
+    
+    //    @IBAction func withZeero(btn:UIButton){
+    //
+    //        withZeroFlag = "1"
+    //        isZeroSelected = true
+    //        isWithoutSelected = false
+    //        highlightedButtons()
+    //
+    //    }
     
     //function for change background selected background color for with and without zero btn
     
-//    func highlightedButtons() {
-//        invAccount.removeAll()
-//        securityName.removeAll()
-//        numberCode.removeAll()
-//
-//        self.secutrtyNameBtn.setTitle("-", for: .normal)
-//        self.mebemrCodeBtn.setTitle("-", for: .normal)
-//        self.membername.setTitle("-", for: .normal)
-//        self.accountNumberBtn.setTitle("-", for: .normal)
-//
-//
-//        if isZeroSelected  == true && isWithoutSelected == false {
-//            DispatchQueue.main.async {
-//                self.withZero.setTitleColor(.white, for: .normal)
-//                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-//                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-//                self.withoutZero.backgroundColor  = .systemGray6
-////                self.withoutZero.cornerRadius = 12
-//                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-//                self.withoutZero.borderWidth = 1
-//                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-//            }
-//        }
-//        else if isZeroSelected == false  && isWithoutSelected == true {
-//            DispatchQueue.main.async {
-//                self.withoutZero.setTitleColor(.white, for: .normal)
-//                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
-//                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-//                self.withZero.backgroundColor  = .systemGray6
-////                self.withZero.cornerRadius = 12
-//                self.withZero.borderColor =  UIColor(named: "AccentColor")
-//                self.withZero.borderWidth = 1
-//                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-//            }
-//        }
-//
-//    }
+    //    func highlightedButtons() {
+    //        invAccount.removeAll()
+    //        securityName.removeAll()
+    //        numberCode.removeAll()
+    //
+    //        self.secutrtyNameBtn.setTitle("-", for: .normal)
+    //        self.mebemrCodeBtn.setTitle("-", for: .normal)
+    //        self.membername.setTitle("-", for: .normal)
+    //        self.accountNumberBtn.setTitle("-", for: .normal)
+    //
+    //
+    //        if isZeroSelected  == true && isWithoutSelected == false {
+    //            DispatchQueue.main.async {
+    //                self.withZero.setTitleColor(.white, for: .normal)
+    //                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
+    //                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+    //                self.withoutZero.backgroundColor  = .systemGray6
+    ////                self.withoutZero.cornerRadius = 12
+    //                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
+    //                self.withoutZero.borderWidth = 1
+    //                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+    //            }
+    //        }
+    //        else if isZeroSelected == false  && isWithoutSelected == true {
+    //            DispatchQueue.main.async {
+    //                self.withoutZero.setTitleColor(.white, for: .normal)
+    //                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
+    //                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
+    //                self.withZero.backgroundColor  = .systemGray6
+    ////                self.withZero.cornerRadius = 12
+    //                self.withZero.borderColor =  UIColor(named: "AccentColor")
+    //                self.withZero.borderWidth = 1
+    //                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+    //            }
+    //        }
+    //
+    //    }
     
     
-//    @IBAction func withoutZeero(btn:UIButton){
-//
-//        withZeroFlag = "0"
-//        isWithoutSelected = true
-//        isZeroSelected = false
-//        highlightedButtons()
-//    }
+    //    @IBAction func withoutZeero(btn:UIButton){
+    //
+    //        withZeroFlag = "0"
+    //        isWithoutSelected = true
+    //        isZeroSelected = false
+    //        highlightedButtons()
+    //    }
     
     
     
-    @IBAction func searchPressed(_ sender: Any) {
-        
-        self.downloadButtonPressed()
-    }
     
     
     func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
@@ -175,7 +171,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             self.accountNumberBtn.setTitle("choose".localized(), for: .normal)
             self.memberID = securtNumber
             self.securityID = securtyId
-
+            
         } else if flag == "1" {
             self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
             nameStack.isHidden = false
@@ -186,18 +182,54 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             datePicker.isHidden = false
             fromDate.isHidden = false
             self.secutrtyNameBtn.setTitle(selectdTxt, for: .normal)
-
+            
         }else {
             
         }
     }
     
     
-    
-
-    @IBAction func nextBtn(_ sender: Any) {
+    @IBAction func downloadButtonPressed(_ sender: UIButton) {
         
+        self.getPDF()
+        
+        //        let apiUrl =  URL(string: APIConfig.GetAccountStatementPDF)
+        //
+        //        let parameters: [String: Any] = [
+        //            "sessionId": Helper.shared.getUserSeassion() ?? "",
+        //            "memberId": self.memberID ?? "" ,
+        //            "accountNo" : self.accountNo ?? "",
+        //            "securityId" : self.securityID,
+        //            "fromDate" : "",
+        //            "toDate" : "",
+        //
+        //
+        //        ]
+        //
+        //        AF.download(apiUrl!, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
+        //            .response { response in
+        //                if let error = response.error {
+        //                    // Handle the error
+        //                    print("Error: \(error)")
+        //                } else {
+        //                    // Save the downloaded file to a destination URL
+        //                    if let destinationURL = response.fileURL {
+        //                        let destinationPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("AccountStatemant.pdf")
+        //
+        //                        do {
+        //                            try FileManager.default.moveItem(at: destinationURL, to: destinationPath)
+        //                            print("File downloaded and saved to: \(destinationPath)")
+        //
+        //                            // Handle the downloaded file
+        //                            // e.g., open it or display it in a web view
+        //                        } catch {
+        //                            print("Error saving file: \(error)")
+        //                        }
+        //                    }
+        //                }
+        //            }
     }
+    
     
     // When pressed one of the three pickers
     
@@ -205,10 +237,10 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
-    
+        
         vc.dataSelectedDelegate = self
         vc.checkAccountStatmnt = true
-
+        
         switch sender.tag {
         case 0:
             vc.dataFilterd = accountName
@@ -218,60 +250,54 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         case 1:
             vc.dataFilterd = accounNumber
             vc.checkFlag = "1"
-
+            
         case 2:
             vc.dataFilterd = securityName
             vc.reuterCode = numberCode
             vc.checkFlag = "2"
-
+            
             
         case 3:
             vc.dataFilterd = numberCode
             vc.checkFlag = "3"
-
-        
+            
+            
         default:
             return
-print("default Value")
-
+            print("default Value")
+            
         }
         
         self.present(vc, animated: true)
-
+        
     }
     
     
     
     @IBAction func datePickerValueChanged(_ sender: UIDatePicker) {
         
-//        let selectedDate = sender.date
-//        let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "yyyy-MM-dd"
-//        fromDateString = dateFormatter.string(from: selectedDate)
-        
         let selectedDate = sender.date
-
+        
         // Handle the selected date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
         let dateString = dateFormatter.string(from: selectedDate)
         fromDateString = dateFormatter.string(from: selectedDate)
         
-        
         datePicker2.isHidden = false
         toDate.isHidden = false
-
+        
         datePicker2.datePickerMode = .date
         datePicker2.date = Date() // Set an initial date if needed
-
+        
         // Set the minimum and maximum dates
         let calendar = Calendar.current
         let currentDate = Date()
-
-                // Calculate the date one month later
+        
+        // Calculate the date one month later
         guard let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate) else {
-                   return
-                }
+            return
+        }
         
         datePicker2.minimumDate = selectedDate
         datePicker2.maximumDate = currentDate
@@ -288,7 +314,7 @@ print("default Value")
         dateFormatter.dateFormat = "yyyy-MM-dd"
         toDateString = dateFormatter.string(from: selectedDate)
         self.toDateString = dateFormatter.string(from: selectedDate)
-        searchBtn.isHidden = false
+        //        searchBtn.isHidden = false
         
         
         
@@ -301,88 +327,88 @@ print("default Value")
     func getInvestoreInfo(withZero : String){
         
         let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = "Please Wait".localized()
+        //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
-
+        
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
                                     "with_zero" : "1"]
-     
+        
         let link = URL(string: APIConfig.GetInvOwnership)
-
+        
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
                 do {
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                   
+                    
                     if jsonObj != nil {
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-//                                if let data = jsonObj!["data"] as? [[String: Any]]{
-//                                            for item in data {
-//                                                let model = InvestoreOwnerShape(data: item)
-//                                                self.invAccount.append(model)
-//                                                self.securityName.append(model.Security_Name!)
-//                                                self.numberCode.append(model.Security_Reuter_Code!)
-//
-//                                            }
-//
-//                                            DispatchQueue.main.async {
-//                                                hud.dismiss()
-//
-//
-//                                            }
-//                                        }
+                                //                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                //                                            for item in data {
+                                //                                                let model = InvestoreOwnerShape(data: item)
+                                //                                                self.invAccount.append(model)
+                                //                                                self.securityName.append(model.Security_Name!)
+                                //                                                self.numberCode.append(model.Security_Reuter_Code!)
+                                //
+                                //                                            }
+                                //
+                                //                                            DispatchQueue.main.async {
+                                //                                                hud.dismiss()
+                                //
+                                //
+                                //                                            }
+                                //                                        }
                                 
                                 if let partialData = jsonObj!["partialData"] as? [[String: Any]]{
-
+                                    
                                     for item in partialData {
                                         let model = PartialDataModel(data: item)
                                         self.dataArray.append(model)
-
+                                        
                                         self.securityName.append(model.Security_Name ?? "")
                                         self.numberCode.append(model.Security_Reuter_Code ?? "")
                                         self.securityIDs.append(model.Security_Id ?? "")
                                         
                                     }
-
+                                    
                                     DispatchQueue.main.async {
                                         hud.dismiss()
-
+                                        
                                     }
-
+                                    
                                 }
                                 
                                 
                                 
                                 
-                                    }
-//                             Session ID is Expired
+                            }
+                            //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
-//                                self.showErrorHud(msg: msg ?? "")
+                                //                                self.showErrorHud(msg: msg ?? "")
                                 self.seassionExpired(msg: msg ?? "")
                             }
                             
-//                                other Wise Problem
+                            //                                other Wise Problem
                             else {
-                                                hud.dismiss(animated: true)      }
-                      
+                                hud.dismiss(animated: true)      }
+                            
                             
                         }
                         
                     }
-
+                    
                 } catch let err as NSError {
                     print("Error: \(err)")
                     self.serverError(hud: hud)
                     
-              }
+                }
             } else {
                 print("Error")
-
+                
                 self.serverError(hud: hud)
-
-
+                
+                
             }
         }
     }
@@ -391,106 +417,106 @@ print("default Value")
     
     func getAccountList(){
         
-//
+        //
         let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = "Please Wait".localized()
+        //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
-
-    
-     
+        
+        
+        
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
                                     "with_zero" : "1"
                                     
- ]
-     
+        ]
+        
         let link = URL(string: APIConfig.GetAccountInfo)
-
+        
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
                 do {
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                   
-
+                    
+                    
                     if jsonObj != nil {
-                            
+                        
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
-                            
-                                    
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
-                                            for item in data {
-                                                let model = AccountListModel(data: item)
-                                                
-                                                self.accountList.append(model)
-                                                
-                                                self.accountName.append(model.Member_Name ?? "")
-                                                
-                                                self.memberNum.append(model.Member_No ?? "")
-                                                
-                                             
-                                                
-//                                                self.accounNumber.append(model.Account_No!)
-                                                
-                                            }
-                                    DispatchQueue.main.async {
-                                  
-                                        hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
-                                        
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
-
-                                    }
-                                            
-                          
-                                        }
                                 
+                                
+                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                    for item in data {
+                                        let model = AccountListModel(data: item)
+                                        
+                                        self.accountList.append(model)
+                                        
+                                        self.accountName.append(model.Member_Name ?? "")
+                                        
+                                        self.memberNum.append(model.Member_No ?? "")
+                                        
+                                        
+                                        
+                                        //                                                self.accounNumber.append(model.Account_No!)
+                                        
                                     }
-//                             Session ID is Expired
+                                    DispatchQueue.main.async {
+                                        
+                                        hud.dismiss()
+                                        //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                        
+                                        //                                                if self.car_arr.count == 0{
+                                        //
+                                        //
+                                        //                                                    self.noDataImage.isHidden = false
+                                        //                                                }else{
+                                        //
+                                        //                                                    self.noDataImage.isHidden = true
+                                        //                                                }
+                                        
+                                    }
+                                    
+                                    
+                                }
+                                
+                            }
+                            //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
-//                                self.showErrorHud(msg: msg ?? "")
+                                //                                self.showErrorHud(msg: msg ?? "")
                                 self.seassionExpired(msg: msg ?? "")
                             }
-                                
-                                
-                                
-                                
-//                                other Wise Problem
+                            
+                            
+                            
+                            
+                            //                                other Wise Problem
                             else {
                                 hud.dismiss(animated: true)
                             }
-                      
+                            
                             
                         }
                         
                     }
-
+                    
                 } catch let err as NSError {
                     print("Error: \(err)")
                     self.serverError(hud: hud)
                     
-
-              }
+                    
+                }
             } else {
                 print("Error")
-
+                
                 self.serverError(hud: hud)
-
-
+                
+                
             }
         }
-
-
-
-
+        
+        
+        
+        
         
         
         
@@ -502,128 +528,168 @@ print("default Value")
         accounNumber.removeAll()
         
         let hud = JGProgressHUD(style: .light)
-//        hud.textLabel.text = "Please Wait".localized()
+        //        hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)
-
-    
-     
+        
+        
+        
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
                                     "memberId" : memberID
                                     
- ]
-     
+        ]
+        
         let link = URL(string: APIConfig.getMemberId)
-
+        
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
                 do {
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
-                   
-
+                    
+                    
                     if jsonObj != nil {
-                            
+                        
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
-                            
-                                    
+                                
+                                
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
-                                            for item in data {
-                                                let model = AccountIDModel(data: item)
-                                                self.accounNumber.append(model.Account_No ?? "")
-                                                
-                                                
-                                            }
+                                    for item in data {
+                                        let model = AccountIDModel(data: item)
+                                        self.accounNumber.append(model.Account_No ?? "")
+                                        
+                                        
+                                    }
                                     DispatchQueue.main.async {
                                         hud.dismiss()
-//                                                self.showSuccessHud(msg: message ?? "", hud: hud)
+                                        //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
                                         
-//                                                if self.car_arr.count == 0{
-//
-//
-//                                                    self.noDataImage.isHidden = false
-//                                                }else{
-//
-//                                                    self.noDataImage.isHidden = true
-//                                                }
-
+                                        //                                                if self.car_arr.count == 0{
+                                        //
+                                        //
+                                        //                                                    self.noDataImage.isHidden = false
+                                        //                                                }else{
+                                        //
+                                        //                                                    self.noDataImage.isHidden = true
+                                        //                                                }
+                                        
                                     }
-                                            
-                          
-                                        }
+                                    
+                                    
+                                }
                                 
-                                    }
-//                             Session ID is Expired
+                            }
+                            //                             Session ID is Expired
                             else if status == 400{
                                 let msg = jsonObj!["message"] as? String
-//                                self.showErrorHud(msg: msg ?? "")
+                                //                                self.showErrorHud(msg: msg ?? "")
                                 self.seassionExpired(msg: msg ?? "")
                             }
-                                
-                                
-                                
-                                
-//                                other Wise Problem
+                            
+                            
+                            
+                            
+                            //                                other Wise Problem
                             else {
                                 hud.dismiss(animated: true)
                             }
-                      
+                            
                             
                         }
                         
                     }
-
+                    
                 } catch let err as NSError {
                     print("Error: \(err)")
                     self.serverError(hud: hud)
                     
-
-              }
+                    
+                }
             } else {
                 print("Error")
-
+                
                 self.serverError(hud: hud)
-
-
+                
+                
             }
         }
-
+        
     }
     
-    
-    @objc func downloadButtonPressed() {
+    func getPDF(){
         
-        let apiURLString = URL(string: APIConfig.GetAccountStatementPDF)
-           
-           guard let destinationURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first?.appendingPathComponent("downloadedFile.pdf") else {
-               print("Invalid destination URL")
-               return
-           }
-
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
-                                    "memberId" : ""  ,
-                                    "accountNo" : "" ,
-                                    "securityId" : "" ,
-                                    "fromDate" : "" ,
-                                    "toDate" : "" ]
-
-           AF.upload(multipartFormData: { multipartFormData in
-               for (key, value) in param {
-                   if let data = String(describing: value).data(using: .utf8) {
-                       multipartFormData.append(data, withName: key)
-                   }
-               }
-           }, to: apiURLString!).downloadProgress { progress in
-               // Handle download progress updates if needed
-               print("Download progress: \(progress.fractionCompleted)")
-           }.response { response in
-               switch response.result {
-               case .success:
-                   print("File downloaded successfully and saved to: \(destinationURL.absoluteString)")
-               case .failure(let error):
-                   print("Error downloading file: \(error)")
-               }
-           }
-       }
+                                    "memberId" : "999" ,
+                                    "accountNo" : "53429" ,
+                                    "fromDate" : "2005-12-25" ,
+                                    "toDate" : "2023-07-04" ,
+                                    "securityId" : "111006"
+        ]
+        
+        let link = URL(string: APIConfig.GetAccountStatementPDF)
+        
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                    
+                    if jsonObj != nil {
+                        
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                    
+                                    let urlString = data["file"] as? String
+                                        
+                DispatchQueue.main.async {
+                    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                    let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                        vc.url = urlString
+                        vc.modalPresentationStyle = .fullScreen
+                        self.present(vc, animated: true)
+                                            
+                                    }
+                                }
+                                
+                            }
+                            //                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+                                
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+                            
+                            
+                            
+                            //                                other Wise Problem
+                            else {
+                                
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    //                    self.serverError(hud: hud)
+                    //                    self.refreshControl.endRefreshing()
+                    
+                }
+            } else {
+                print("Error")
+                
+                //                self.serverError(hud: hud)
+                //                self.refreshControl.endRefreshing()
+                
+                
+            }
+        }
+        
+        
+        
+        
+    }
+    
 }
-

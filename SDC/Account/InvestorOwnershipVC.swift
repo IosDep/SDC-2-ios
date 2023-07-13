@@ -53,7 +53,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.currencyBtn.setTitle("JOD", for: .normal)
+        self.currencyBtn.setTitle("JOD".localized(), for: .normal)
         self.currencyFlag = "1"
         self.makeShadow(mainView: totalValueStack)
         
@@ -337,6 +337,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         
         if !isSearching {
             if currencyFlag == "1" {
+                vc.currency = currencyFlag
                 if let data {
                     let newData = data.filter({!($0.array?.isEmpty ?? true)})
                     vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
@@ -345,6 +346,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
             
             else {
                 if let dolarData {
+                    vc.currency = currencyFlag
                     let newData = dolarData.filter({!($0.array?.isEmpty ?? true)})
                     vc.invOwnership = newData[indexPath.section].array?[indexPath.row]
                 }

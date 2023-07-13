@@ -47,11 +47,11 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="qHi-GA-UP4">
                                         <rect key="frame" x="5" y="0.0" width="416" height="162"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="enG-0X-g1c">
-                                                <rect key="frame" x="0.0" y="0.0" width="416" height="38.333333333333336"/>
+                                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="enG-0X-g1c">
+                                                <rect key="frame" x="0.0" y="0.0" width="416" height="0.0"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ISIN" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e4t-s5-RbF" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -60,7 +60,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="8555174" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4YN-4p-BFn">
-                                                        <rect key="frame" x="208" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="208" y="0.0" width="208" height="0.0"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -68,10 +68,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="WZb-5I-B5v">
-                                                <rect key="frame" x="0.0" y="41.333333333333329" width="416" height="38.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="416" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reuter Code" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc5-cc-l5g" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -80,7 +80,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="122335" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HpX-QB-AV6">
-                                                        <rect key="frame" x="208" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="208" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
@@ -88,10 +88,10 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="qyS-ut-EOd">
-                                                <rect key="frame" x="0.0" y="82.666666666666671" width="416" height="38"/>
+                                                <rect key="frame" x="0.0" y="55" width="416" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Security Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ptd-Df-TeZ" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="38"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
@@ -100,17 +100,17 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000  ►" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gCB-on-dLF">
-                                                        <rect key="frame" x="208" y="0.0" width="208" height="38"/>
+                                                        <rect key="frame" x="208" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Z8a-6Q-3EG">
-                                                <rect key="frame" x="0.0" y="123.66666666666664" width="416" height="38.333333333333329"/>
+                                                <rect key="frame" x="0.0" y="110" width="416" height="52"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Owned Balance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cV7-Ef-yRk" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
                                                         <userDefinedRuntimeAttributes>
@@ -118,7 +118,7 @@
                                                         </userDefinedRuntimeAttributes>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="50000  ►" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34m-9L-SDh">
-                                                        <rect key="frame" x="208" y="0.0" width="208" height="38.333333333333336"/>
+                                                        <rect key="frame" x="208" y="0.0" width="208" height="52"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>

@@ -129,12 +129,12 @@ class CardFourVC: UIViewController {
                                     self.accountType.text = accountTypeDesc ?? ""
                                    
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text = self.convertDateToArabicNumbers(dateString: idDocDate ?? "")
+                                    self.releaseDate.text = self.convertDate(dateString: idDocDate ?? "")
 
                                     
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = self.convertDateToArabicNumbers(dateString: idDocExpDate ?? "")
+                                    self.expiryDate.text = self.convertDate(dateString: idDocExpDate ?? "")
                                     
                                     let idDocReference = data!["idDocReference"] as? String
                                     self.documentRefernce.text = idDocReference ?? ""
@@ -176,7 +176,7 @@ class CardFourVC: UIViewController {
                                     
                                     
                                     let statusDate = data!["statusDate"] as? String
-                                    self.statusDate.text = self.convertDateToArabicNumbers(dateString: statusDate ?? "")
+                                    self.statusDate.text = self.convertDate(dateString: statusDate ?? "")
                                     
                                     
                                     let branchName = data!["branchName"] as? String
