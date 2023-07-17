@@ -49,7 +49,7 @@ class LoginVC: UIViewController {
 #if DEBUG
         
         userName.text = "9651010730"
-        password.text = "BlueRay@12345"
+        password.text = "BlueRay@123455"
 #endif
         
         
@@ -171,7 +171,7 @@ class LoginVC: UIViewController {
                                 //    status ==> false
                                 else {
                                     
-                                    if let message = jsonObj!["msg"] as? String {
+                                    if let message = jsonObj!["message"] as? String {
                                         hud.dismiss()
                                         DispatchQueue.main.async {
                                             self.showErrorHud(msg: message, hud: hud)

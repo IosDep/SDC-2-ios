@@ -12,11 +12,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
     
     
    
-    @IBOutlet weak var totalPercentage: UILabel!
-    @IBOutlet weak var totalValue: UILabel!
-    @IBOutlet weak var percentageTitle: DesignableLabel!
     
-    @IBOutlet weak var tableTitle: DesignableLabel!
     
     @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -45,35 +41,24 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         tableView.dataSource = self
         tableView.reloadData()
         self.tableView.register(UINib(nibName: "PieTableCell", bundle: nil), forCellReuseIdentifier: "PieTableCell")
+        
+        tableView.register(UINib(nibName: "TotalHeaderView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "TotalHeaderView")
+        
+        tableView.register(UINib(nibName: "TotalFooterView", bundle: Bundle.main), forHeaderFooterViewReuseIdentifier: "TotalFooterView")
+        
         self.categories = ["Banks" , "insurance" , "Services" , "Industry"]
         customizeChart(dataPoints: categories, values: chartValues ,pieChartView: chartView)
         
         if pieFlag == 0 {
             mainTitle.text = "Shareholders".localized()
-            tableTitle.text = "Shareholders".localized()
-            percentageTitle.isHidden = true
-            totalPercentage.isHidden = true
-            
-            
-            totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
-            
         }
         
         else if pieFlag == 1 {
             mainTitle.text = "Securities".localized()
-            tableTitle.text = "Securities".localized()
-            percentageTitle.isHidden = true
-            totalPercentage.isHidden = true
-            totalValue.text = self.numFormat(value: totalAnlysis.Quantity ?? 0.0)
-
         }
         
         else if pieFlag == 2 {
             mainTitle.text = "Market Value".localized()
-            tableTitle.text = "Market Value".localized()
-            percentageTitle.isHidden = false
-            totalPercentage.isHidden = false
-            totalValue.text = self.numFormat(value: totalAnlysis.market_value ?? 0.0)
             
             for i in chartValues {
                 if i != 0 {
@@ -120,6 +105,70 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
     }
     
     
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TotalHeaderView") as! TotalHeaderView
+        
+        
+        if pieFlag == 0 {
+            headerView.sectorLabel.text = "Shareholders".localized()
+            headerView.marketValLabel.isHidden = true
+            
+        }
+        
+        else if pieFlag == 1 {
+            headerView.sectorLabel.text =             "Securities".localized()
+
+            headerView.marketValLabel.isHidden = true
+
+        }
+        
+        else if pieFlag == 2 {
+            headerView.sectorLabel.text = "Market Value".localized()
+            headerView.marketValLabel.isHidden = false
+
+        }
+        
+        return headerView
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TotalFooterView") as! TotalFooterView
+        
+        
+        if pieFlag == 0 {
+            footerView.totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
+            footerView.totalPercentage.isHidden = true
+            
+        }
+        
+        else if pieFlag == 1 {
+            footerView.totalValue.text = self.numFormat(value: totalAnlysis.Quantity ?? 0.0)
+            footerView.totalPercentage.isHidden = true
+            
+        }
+        
+        else if pieFlag == 2 {
+            footerView.totalValue.text = self.numFormat(value: totalAnlysis.market_value ?? 0.0)
+            footerView.totalPercentage.isHidden = false
+            footerView.totalPercentage.text = "100"
+            
+//            self.numFormat(value: percanetageValues[section] ?? 0.0)
+
+        }
+        
+        return footerView
+        
+        
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pieTableHolder.count
     }
@@ -150,7 +199,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.market_value ?? 0)
             cell?.percentageValue.isHidden = false
             cell?.percentageValue.text = self.numFormat(value: percanetageValues[indexPath.row] ?? 0.0)
-            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color 
+            cell?.colorBtn.backgroundColor = pieTableHolder[indexPath.row].color 
 
         }
         

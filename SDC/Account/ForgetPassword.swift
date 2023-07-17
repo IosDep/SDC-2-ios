@@ -23,11 +23,8 @@ class ForgetPassword: UIViewController {
     @IBOutlet weak var majorView: UIView!
     @IBOutlet weak var mainView: UIView!
     
-    
     var checkOldPassword : Bool?
 
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 //        self.makeShadow(mainView: self.backView)
@@ -72,21 +69,19 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
         hud.show(in: self.view)
         
         
-        
-     
-        let endpoint = URL(string:APIConfig.Login)
+    let endpoint = URL(string:APIConfig.changePassword)
         
         
         let param: [String: Any] = [
             "sessionId": Helper.shared.getUserSeassion()  ?? "",
-            "currentPassword": oldPassword
-            ,"confirmPassword" : confirmPassword,
-            "newPassword": newPassword,
-            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+            "current_pass": oldPassword
+            ,"new_pass" : newPassword,
+            "confirm_pass": confirmPassword
+//            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
 
         ]
         
-        AF.request(endpoint!, method: .post, parameters: param).response { (response) in
+        AF.request(endpoint!, method: .post, parameters: param ,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
                 do {
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
@@ -95,52 +90,38 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
                         
                         //    object status
                         
-                            if let status = jsonObj!["status"] as? Bool {
-                                
-                                
-                                
-                                
-                                if status == true {
-                                     let message = jsonObj!["msg"] as? String
-                                    
-                                    let user_data = jsonObj!["user_data"] as? [String:Any]
-                                    
-                                    Helper.shared.saveToken(auth: user_data!["access_token"] as? String ?? "")
-                                    Helper.shared.SaveSeassionId(seassionId: user_data!["sessionId"] as? String ?? "")
-                                    Helper.shared.saveUserId(id:  user_data!["user_id"] as? Int ?? 1)
-
-                                    
-//                                    showing Done Flag
-                                    self.showSuccessHud(msg: message ?? "", hud: hud)
+                            if let success = jsonObj!["success"] as? Bool {
+                            
+                                if success == true {
+                                     
+                                    let data = jsonObj!["data"] as? [String:Any]
                                     
                                     
                                     
-
+                                    Helper.shared.SaveSeassionId(seassionId: data!["sessionId"] as? String ?? "")
+        
                                     
-                                        
-                                        
+                                    self.showSuccessHud(msg: "Succfully Changed Password" , hud: hud)
+                                    
+                                      
                                     DispatchQueue.main.async {
                                         hud.dismiss(afterDelay: 1.5, animated: true,completion: {
                                             let appDelegate = UIApplication.shared.delegate as! AppDelegate
-                                            appDelegate.isLogin()
+                                            appDelegate.notLogin()
+                                            
                                         })
                                         
                                         
                                     }
-                                    
                                 }
-                                
-                                
                                 //    status ==> false
                                 else {
-                                    if let message = jsonObj!["msg"] as? String {
+                                    if let message = jsonObj!["message"] as? String {
                                         DispatchQueue.main.async {
                                             self.showErrorHud(msg: message, hud: hud)
                                             
                                             
                                         }
-                                        
-                                        
                                     }
                                 }
                             }

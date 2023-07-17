@@ -6,6 +6,8 @@ class APIConfig {
     
     static let Login = BaseURL  + "authentication/login"
     
+    static let changePassword = BaseURL  + "investor_information/changePassword"
+    
     static let GetInvOwnership = BaseURL  + "investor_information/getInvOwnership"
     
     static let GetInvOwnershipPDF = BaseURL  + "investor_information/getInvOwnershipPdf"
@@ -36,8 +38,6 @@ class APIConfig {
     static let GetSecurityPwnership = BaseURL + "investor_information/getInvOwnership"
     
     static let GetNationality = BaseURL  + "investor_information/getOtherNat"
-    
-    static let ChangePassword = BaseURL  + "authentication/changePassword"
     
     static let GetSecurityOwnership = BaseURL  + "investor_information/getSecurityOwnershipWithGetAccountsList"
     

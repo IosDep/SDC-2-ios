@@ -21,7 +21,7 @@ class ChangeLanguage: UIViewController {
     override func viewDidLoad() {
         
         super.viewDidLoad()
-//        self.cerateBellView(bellview: bellView, count: "12")
+        
         self.langView.layer.cornerRadius = 23
         self.langView.layer.backgroundColor = UIColor.black.cgColor
         self.langView.backgroundColor = UIColor.systemBackground
@@ -31,8 +31,6 @@ class ChangeLanguage: UIViewController {
         langView.layer.shadowOffset = .zero
         langView.layer.shadowPath = UIBezierPath(rect: langView.bounds).cgPath
         langView.layer.shouldRasterize = true
-
-    // UIColor(named: "AccentColor")
         
         if MOLHLanguage.isArabic() {
             enimaeg.semanticContentAttribute = .forceRightToLeft

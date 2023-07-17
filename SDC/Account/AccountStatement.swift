@@ -617,11 +617,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     func getPDF(){
         
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
-                                    "memberId" : "999" ,
-                                    "accountNo" : "53429" ,
-                                    "fromDate" : "2005-12-25" ,
-                                    "toDate" : "2023-07-04" ,
-                                    "securityId" : "111006"
+                                    "memberId" : memberID ,
+                                    "accountNo" : accountNo ,
+                                    "fromDate" : fromDate ,
+                                    "toDate" : toDate ,
+                                    "securityId" : securityID
         ]
         
         let link = URL(string: APIConfig.GetAccountStatementPDF)
@@ -637,7 +637,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 if let data = jsonObj!["data"] as? [String: Any]{
-                                    
                                     let urlString = data["file"] as? String
                                         
                 DispatchQueue.main.async {
