@@ -67,12 +67,16 @@ class CardFourVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.getAccountInfo()
-//        self.cerateBellView(bellview: bellView, count: "12")
-        
+
     }
     override func viewDidLayoutSubviews() {
         accountStack.roundCorners([.topLeft, .topRight], radius: 12)
         addressStack.roundCorners([.topLeft, .topRight], radius: 12)
+    }
+    
+    
+    @IBAction func pdfPressed(_ sender: Any) {
+        self.getAccountInfoPDF()
     }
     
     // Api call
@@ -117,62 +121,61 @@ class CardFourVC: UIViewController {
                                     self.name.text = memberName ?? ""
                                     
                                     let idDocTypeDesc = data!["idDocTypeDesc"] as? String
-                                    self.documentType.text = idDocTypeDesc ?? ""
+                                    self.documentType.text = self.handleNillData(value: idDocTypeDesc ?? "")
                                     
                                     let idDocNo = data!["idDocNo"] as? String
-                                    self.documentNumber.text =  idDocNo ?? ""
+                                    self.documentNumber.text = self.handleNillData(value: idDocNo ?? "")
                                     
                                     let accountNo = data!["accountNo"] as? String
-                                    self.accountID.text =  accountNo ?? ""
+                                    self.accountID.text =  self.handleNillData(value: accountNo ?? "")
 
                                     let accountTypeDesc = data!["accountTypeDesc"] as? String
-                                    self.accountType.text = accountTypeDesc ?? ""
+                                    self.accountType.text = self.handleNillData(value: accountTypeDesc ?? "")
                                    
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text = self.convertDate(dateString: idDocDate ?? "")
+                                    self.releaseDate.text =  self.handleNillData(value: idDocDate ?? "")
 
-                                    
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = self.convertDate(dateString: idDocExpDate ?? "")
+                                    self.expiryDate.text = self.handleNillData(value: idDocExpDate ?? "")
                                     
                                     let idDocReference = data!["idDocReference"] as? String
-                                    self.documentRefernce.text = idDocReference ?? ""
+                                    self.documentRefernce.text = self.handleNillData(value: idDocReference ?? "")
                                     
                                     let identificationNo = data!["identificationNo"] as? String
-                                    self.identificationNumber.text = identificationNo ?? ""
+                                    self.identificationNumber.text = self.handleNillData(value: identificationNo ?? "")
                                     
                                     let pobox = data!["pobox"] as? String
-                                    self.postalBox.text =  pobox ?? ""
+                                    self.postalBox.text =  self.handleNillData(value: pobox ?? "")
 
                                     let postalCode = data!["postalCode"] as? String
-                                    self.postalCode.text =  postalCode ?? ""
+                                    self.postalCode.text = self.handleNillData(value: postalCode ?? "")
                                     
                                     let postalCountry = data!["postalCountry"] as? String
-                                    self.country.text = postalCountry ?? ""
+                                    self.country.text = self.handleNillData(value: postalCountry ?? "")
                                     
                                     let postalCity = data!["postalCity"] as? String
-                                    self.city.text = postalCity ?? ""
+                                    self.city.text = self.handleNillData(value: postalCity ?? "")
                                     
                                     let country = data!["resCountry"] as? String
-                                    self.pCountry.text = postalCountry ?? ""
+                                    self.pCountry.text = self.handleNillData(value: postalCountry ?? "")
                                     
                                     let city = data!["resCity"] as? String
-                                    self.pCity.text = city ?? ""
+                                    self.pCity.text = self.handleNillData(value: city ?? "")
                                     
                                     
                                     
                                     let bankName = data!["bankName"] as? String
-                                    self.bankName.text = bankName ?? ""
+                                    self.bankName.text = self.handleNillData(value: bankName ?? "")
                                     
                                     let bankId = data!["bankId"] as? String
-                                    self.bankID.text = bankId ?? ""
+                                    self.bankID.text = self.handleNillData(value: bankId ?? "")
                                     
                                     let bankTypeDesc = data!["bankTypeDesc"] as? String
-                                    self.bankType.text = bankTypeDesc ?? ""
+                                    self.bankType.text = self.handleNillData(value: bankTypeDesc ?? "")
                                     
                                     let clientStatusDesc = data!["clientStatusDesc"] as? String
-                                    self.accountStatus.text = clientStatusDesc ?? ""
+                                    self.accountStatus.text = self.handleNillData(value: clientStatusDesc ?? "")
                                     
                                     
                                     let statusDate = data!["statusDate"] as? String
@@ -180,57 +183,57 @@ class CardFourVC: UIViewController {
                                     
                                     
                                     let branchName = data!["branchName"] as? String
-                                    self.bankBranch.text = branchName ?? ""
+                                    self.bankBranch.text = self.handleNillData(value: branchName ?? "")
                                     
                                     
                                     let branchSwiftCode = data!["branchSwiftCode"] as? String
-                                    self.branchSwiftCode.text = branchSwiftCode ?? ""
+                                    self.branchSwiftCode.text = self.handleNillData(value: branchSwiftCode ?? "")
                                     
                                     
                                     let bankAccCurrDesc = data!["bankAccCurrDesc"] as? String
-                                    self.curreny.text = bankAccCurrDesc ?? ""
+                                    self.curreny.text = self.handleNillData(value:  bankAccCurrDesc ?? "")
                                     
                                     
                                     
                                     let resAddress1 = data!["resAddress1"] as? String
-                                    self.address.text = resAddress1 ?? ""
+                                    self.address.text = self.handleNillData(value: resAddress1 ?? "")
                                     
                                     let resBuildingNo = data!["resBuildingNo"] as? String
-                                    self.buildingNo.text = resBuildingNo ?? ""
+                                    self.buildingNo.text = self.handleNillData(value: resBuildingNo ?? "")
                                     
                                     let resStreet = data!["resStreet"] as? String
-                                    self.street.text = resStreet ?? ""
+                                    self.street.text = self.handleNillData(value: resStreet ?? "")
                                     
                                     let resArea = data!["resArea"] as? String
-                                    self.area.text = resArea ?? ""
+                                    self.area.text = self.handleNillData(value: resStreet ?? "")
                                     
                                     
                                     let phone = data!["phone"] as? String
-                                    self.phone.text =  phone ?? ""
+                                    self.phone.text =  self.handleNillData(value: phone ?? "")
                                     
                                     let fax = data!["fax"] as? String
-                                    self.fax.text = fax ?? ""
+                                    self.fax.text = self.handleNillData(value: fax ?? "")
                                     
                                     let mobile = data!["mobile"] as? String
-                                    self.mobile.text =  mobile ?? ""
+                                    self.mobile.text = self.handleNillData(value: mobile ?? "")
                                     
                                     let email = data!["email"] as? String
-                                    self.email.text = email ?? ""
+                                    self.email.text = self.handleNillData(value: email ?? "")
                                     
                                     
                                     let guardianName = data!["guardianName"] as? String
-                                    self.guardianName.text = guardianName ?? ""
+                                    self.guardianName.text = self.handleNillData(value: guardianName ?? "")
                                     
                                     let guardianNat = data!["guardianNat"] as? String
-                                    self.nationality.text = guardianNat ?? ""
+                                    self.nationality.text = self.handleNillData(value: guardianNat ?? "")
                                     
                                     let guardianTypeDesc = data!["guardianTypeDesc"] as? String
-                                    self.guardianType.text = guardianTypeDesc ?? ""
+                                    self.guardianType.text = self.handleNillData(value: guardianTypeDesc ?? "")
                                     
                                     // inv No ??
                                     
                                     let custNo = data!["custNo"] as? String
-                                    self.investorNo.text = custNo ?? ""
+                                    self.investorNo.text = self.handleNillData(value: custNo ?? "")
                                     
                                     
                                     DispatchQueue.main.async {
@@ -270,5 +273,100 @@ class CardFourVC: UIViewController {
                
             }
         }
+    }
+    
+    func getAccountInfoPDF() {
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+        let endpoint = URL(string:APIConfig.GetAccountInvInfoPDF)
+        let param: [String: Any] = [
+            "sessionId" : Helper.shared.getUserSeassion() ?? "" ,
+            "memberId" : self.memberId,
+            "accountNo" :  self.accountNo ,
+            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        ]
+
+        AF.request(endpoint!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+
+                    if jsonObj != nil {
+
+                        //    object status
+
+                            if let status = jsonObj!["status"] as? Int {
+
+
+
+
+                                if status == 200 {
+                                    if let data = jsonObj!["data"] as? [String:Any] {
+                                        
+                                        
+                                  let file = data["file"] as? String
+                                  
+                                DispatchQueue.main.async {
+                                hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                          
+                            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                            let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                              vc.url = file
+                                              vc.flag = 6
+                                              vc.modalPresentationStyle = .fullScreen
+                                              self.present(vc, animated: true)
+                                              
+                                          
+                                      })
+                                      
+                                  }
+                                  
+                                        
+                                    }
+
+
+                                }
+
+
+
+
+                                else if status == 400{
+                                    let msg = jsonObj!["message"] as? String
+                                    self.seassionExpired(msg: msg ?? "")
+                                }
+
+
+    //                                other Wise Problem
+                                else {
+                                                    hud.dismiss(animated: true)      }
+
+                            }
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                   
+                }
+            } else {
+                print("Error")
+                self.internetError(hud: hud)
+               
+            }
+        }
+    }
+    
+    func handleNillData(value : String) -> String {
+       
+        if value == "" {
+            return "-"
+        }
+        
+        else {
+            return value
+        }
+        
     }
 }

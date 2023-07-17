@@ -15,7 +15,7 @@
 "investor's ownership of a new security" = "ملكية المستثمر لورقة مالية واحدة" ;
 "account settings" = "اعدادات الحساب" ;
 "Last Transactions" = " اخر الحركات" ;
-"Ownership analysis by sector" = " تحليل الملكية حسب القطاع" ;
+"Ownership analysis by sector" = " تحليل الملكية حسب الفئة" ;
 "Dinar" = "دينار" ;
 "Dollar" = "دولار" ;
 "trading value" = "قيمة التداول" ;
@@ -78,7 +78,7 @@
 "Account status" = "حالة الحساب";
 "Description" = "الوصف" ;
 "Exact Desription" = "الوصف الدقيق" ;
-"Quantity" = "الكمية" ;
+"Quantity" = "العدد" ;
 "Price" = "السعر" ;
 "Market Value" = "القيمة السوقية" ;
 "Translation Number" = "رقم التحويل" ;
@@ -130,7 +130,7 @@
 "Without zeros" = "بدون أصفار" ;
 "Account" = "الحساب" ;
 "last login was at 19:13" = "آخر تسجيل دخول " ;
-"  Ownership analysis by sector" = "تحليل الملكية حسب القطاع" ;
+"  Ownership analysis by sector" = "تحليل الملكية حسب الفئة" ;
 "Investor Ownership" = "ملكية المستثمر" ;
 "Account Ownership" = "ملكية الحساب" ;
 "Investor Information" = "بيانات المستثمر" ;

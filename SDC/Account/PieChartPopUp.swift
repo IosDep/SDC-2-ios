@@ -57,7 +57,6 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
             
             totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
             
-        
         }
         
         else if pieFlag == 1 {
@@ -151,9 +150,10 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.market_value ?? 0)
             cell?.percentageValue.isHidden = false
             cell?.percentageValue.text = self.numFormat(value: percanetageValues[indexPath.row] ?? 0.0)
-            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
+            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color 
 
         }
+        
         return cell!
     }
     

@@ -551,8 +551,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 
-                                
-                                
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
                                         let model = AccountIDModel(data: item)
@@ -631,6 +629,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
             if response.error == nil {
                 do {
+                    print(response.data)
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
                     
                     if jsonObj != nil {
@@ -644,10 +643,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                 DispatchQueue.main.async {
                     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                     let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                    vc.flag = 1
                         vc.url = urlString
                         vc.modalPresentationStyle = .fullScreen
                         self.present(vc, animated: true)
-                                            
+
                                     }
                                 }
                                 
@@ -686,9 +686,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                 
             }
         }
-        
-        
-        
         
     }
     

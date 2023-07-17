@@ -16,7 +16,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
     
     @IBOutlet weak var webView: WKWebView!
     
-    @IBOutlet weak var mainTitle: DesignableLabel!
+    @IBOutlet weak var mainTitle: UILabel!
     
     var flag:Int?
     var url : String?
@@ -40,28 +40,17 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
         self.dismiss(animated: true, completion: nil)
     }
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if flag == 0 {
-            mainTitle.text = "User Guide".localized()
-            
-            guard let urlString = URL(string:url ?? "") else {
-                return
-                
-            }
-        
-            
-            webView.load(URLRequest(url: urlString))
+    
 
-            
+       if flag == 1 {
            
-        }
-
-        else if flag == 1 {
             mainTitle.text = "Account Statement".localized()
-            
-            guard let urlString = URL(string:"https://www.sdc.com.jo/arabic/index.php?option=com_content&task=view&id=1818") else {
+            guard let urlString = URL(string: url ?? "") else {
                 return
                 
             }
@@ -71,28 +60,59 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
         }
 
         else if flag == 2 {
-            mainTitle.text = "Terms and conditions".localized()
             
-            guard let urlString = URL(string:"https://www.sdc.com.jo/arabic/index.php?option=com_content&task=view&id=1794") else {
+            mainTitle.text = "Investor Information".localized()
+            guard let urlString = URL(string:url ?? "") else {
                 return
                 
             }
             
             webView.load(URLRequest(url: urlString))
         }
-
+        
         else if flag == 3 {
-            mainTitle.text = "Notice".localized()
             
-            guard let urlString = URL(string:"https://sdc2.bluerayjo.com/ar/node/9149") else {
+            mainTitle.text = "Investor Ownership".localized()
+            guard let urlString = URL(string:url ?? "") else {
                 return
                 
             }
-            
             webView.load(URLRequest(url: urlString))
-            
-
         }
+
+        
+        else if flag == 4 {
+            
+            mainTitle.text = "Investor Accounts".localized()
+            guard let urlString = URL(string:url ?? "") else {
+                return
+                
+            }
+            webView.load(URLRequest(url: urlString))
+        }
+        
+        else if flag == 5 {
+            
+            mainTitle.text = "Account Ownership".localized()
+            guard let urlString = URL(string:url ?? "") else {
+                return
+                
+            }
+            webView.load(URLRequest(url: urlString))
+        }
+        
+        else if flag == 6 {
+            
+            mainTitle.text = "Account Information".localized()
+            guard let urlString = URL(string:url ?? "") else {
+                return
+                
+            }
+            webView.load(URLRequest(url: urlString))
+        }
+        
+        
+        
 //
         webView.navigationDelegate=self
         webView.uiDelegate = self
@@ -102,10 +122,10 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
         webView.uiDelegate = self
         
         webView.configuration.preferences.javaScriptEnabled = true
-        let preferences = WKPreferences()
-        preferences.javaScriptEnabled = true
-        let configuration = WKWebViewConfiguration()
-        configuration.preferences = preferences
+//        let preferences = WKPreferences()
+//        preferences.javaScriptEnabled = true
+//        let configuration = WKWebViewConfiguration()
+//        configuration.preferences = preferences
 
         
         activityIndicator = UIActivityIndicatorView()

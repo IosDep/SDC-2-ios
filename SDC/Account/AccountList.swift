@@ -66,6 +66,12 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    
+    @IBAction func pdfPressed(_ sender: Any) {
+        self.getAccountListPDF()
+        
+    }
+    
     @objc func didPullToRefresh() {
         self.accountList.removeAll()
         self.tableVIew.reloadData()
@@ -185,6 +191,97 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
                                         
                                         
                                     }
+                                }
+                                
+                            }
+                            //                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+                                
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+                            
+                            
+                            
+                            //                                other Wise Problem
+                            else {  self.refreshControl.endRefreshing()
+                                hud.dismiss(animated: true)      }
+                            
+                            
+                        }
+                        
+                    }
+                    
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    self.refreshControl.endRefreshing()
+                    
+                }
+            } else {
+                print("Error")
+                
+                self.serverError(hud: hud)
+                self.refreshControl.endRefreshing()
+                
+                
+            }
+        }
+        
+        
+    }
+    
+    func getAccountListPDF(){
+        
+        //
+        let hud = JGProgressHUD(style: .light)
+        //        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+        
+        
+        
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+        ]
+        
+        let link = URL(string: APIConfig.GetAccountInfoPDF)
+        
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                    
+                    
+                    if jsonObj != nil {
+                        
+                        
+                        
+                        
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                    
+                                    let file = data["file"] as? String
+                                    
+                                    DispatchQueue.main.async {
+                                        hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                            
+                                            DispatchQueue.main.async {
+                                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                                let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                                vc.url = file
+                                                vc.flag = 4
+                                                vc.modalPresentationStyle = .fullScreen
+                                                self.present(vc, animated: true)
+                                                
+                                            }
+                                            
+                                            
+                                        })
+                                        
+                                    }
+                                    
+                                   
                                 }
                                 
                             }

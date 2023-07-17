@@ -91,20 +91,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         let notcount = "\(Helper.shared.getNotificationCount()!)"
         self.cerateBellView(bellview: self.bellView, count: notcount)
         
-//        DispatchQueue.main.async {
-//            if self.isZeroSelected == true && self.isWithoutSelected == false {
-//                self.withZero.setTitleColor(.white, for: .normal)
-//                self.withZero.backgroundColor  =
-//                UIColor(named: "AccentColor")
-//                self.withoutZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-//            }
-//            else if self.isZeroSelected == false && self.isWithoutSelected == true {
-//                self.withoutZero.setTitleColor(.white, for: .normal)
-//                self.withoutZero.backgroundColor = UIColor(named: "AccentColor")
-//                self.withZero.setTitleColor(UIColor(named: "AccentColor"), for: .normal)
-//
-//            }
-//        }
     }
     
     @IBAction func setupMenu(_ sender: Any) {
@@ -122,6 +108,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+    }
+    
+    
+    @IBAction func pdfPressed(_ sender: Any) {
+        
+        self.getInvestoreInfoPDF(withZero: withZeroFlag ?? "")
         
     }
     
@@ -729,6 +722,107 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                                         //
                                         //                                                    self.noDataImage.isHidden = true
                                         //                                                }
+                                        
+                                    }
+                                }
+                                
+                                // market_value
+                                
+                                if let total = jsonObj!["total"] as? [String: Any]{
+                                    if let dinar = total["1"] as? [String: Any]{
+                                        
+                                        let market_value = dinar["market_value"] as? Double
+                                        
+                                        self.totalDinar = market_value
+                                        self.totalValue.text = self.numFormat(value: market_value ?? 0.0)
+                                        
+                                    }
+                                    
+                                    if let dolar = total["22"] as? [String: Any]{
+                                        
+                                        let market_value = dolar["market_value"] as? Double
+                                        self.totalDolar = market_value
+                                        
+                                    }
+                                }
+                            }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+//                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                                other Wise Problem
+                            else {  self.refreshControl.endRefreshing()
+                                                hud.dismiss(animated: true)      }
+                      
+                            
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    self.refreshControl.endRefreshing()
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+                self.refreshControl.endRefreshing()
+
+
+            }
+        }
+    }
+    
+    
+    func getInvestoreInfoPDF(withZero : String){
+//
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+    
+     
+        let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" ,
+                                    "with_zero" : withZero
+ ]
+     
+        let link = URL(string: APIConfig.GetInvOwnershipPDF)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                    
+                        
+                                    let file = data["file"] as? String
+                                    
+                                    DispatchQueue.main.async {
+                                        hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                            
+                                            DispatchQueue.main.async {
+                                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                                let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                                vc.url = file
+                                                vc.flag = 3
+                                                vc.modalPresentationStyle = .fullScreen
+                                                self.present(vc, animated: true)
+                                                
+                                            }
+                                            
+                                            
+                                        })
                                         
                                     }
                                 }

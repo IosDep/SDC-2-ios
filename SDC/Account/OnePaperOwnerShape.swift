@@ -47,6 +47,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     var totalDinar : Double?
     var currencyFlag : String?
     var isSearching = false
+    var flagSelectedTxt = true
 
     
     var dinarData, filteredData , dolarData , dolarFilteredData: [SecurityOwnerShapeHolder]?
@@ -81,7 +82,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchStack.isHidden = true
+//        searchStack.isHidden = true
 //        staticCellInfo.isHidden = true
         
         if checkSideMenu == true {
@@ -126,12 +127,26 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
+        securityNameLabel.setTitle("", for: .normal)
+        isinLabel.text = ""
+        reuterCode.text = ""
+        secNameLabel.text = ""
+        secStatusLabel.text = ""
+        secMarketLabel.text = ""
+        
         dinarData?.removeAll()
         dolarData?.removeAll()
-        searchStack.isHidden = true
+//        searchStack.isHidden = true
 //        staticCellInfo.isHidden = true
         seatrching = false
         busnissCard.reloadData()
+    }
+    
+    
+    @IBAction func pdfPressed(_ sender: Any) {
+        
+        self.getSecurityOwnershipPDF(securtID: securtyIdToCallApi ?? "", withZero: withZeroFlag ?? "")
+        
     }
     
     
@@ -343,12 +358,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     
-    @IBAction func clearPressed(_ sender: Any) {
-        securityNameLabel
-        securityOwnership.removeAll()
-//        self.busnissCard.reloadData()
-        
-    }
+    
     
     
     @IBAction func withZeero(btn:UIButton){
@@ -430,7 +440,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         
         self.securtyIdToCallApi = securtyId
-        searchStack.isHidden = false
+        
+        flagSelectedTxt = true
+        
+//        searchStack.isHidden = false
         
         
         // set labels for static cell
@@ -486,8 +499,11 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     @IBAction func searchPressed(_ sender: Any) {
         
-        self.getSecurityOwnership(securtID: securtyIdToCallApi ?? "", withZero: withZeroFlag ?? "")
-            
+        if flagSelectedTxt == true {
+            self.getSecurityOwnership(securtID: securtyIdToCallApi ?? "", withZero: withZeroFlag ?? "")
+                
+        }
+
     }
     
     
@@ -677,6 +693,91 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             }
         }
     }
+    
+    
+    func getSecurityOwnershipPDF(securtID:String , withZero : String){
+        
+        
+        
+        let hud = JGProgressHUD(style: .light)
+        
+        hud.show(in: self.view)
+        
+        
+        
+        let param : [String:Any] = [
+            "sessionId" : Helper.shared.getUserSeassion() ?? ""
+            ,"lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en",
+            "securityId":self.securtyIdToCallApi ?? "" ,
+            "with_zero" : withZeroFlag
+        ]
+        
+        let link = URL(string: APIConfig.GetSecurityOwnershipPDF)
+        
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                    
+                    
+                    if jsonObj != nil {
+                        
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                    
+                                    
+                                    let file = data["file"] as? String
+                                    
+                                  DispatchQueue.main.async {
+                                  hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                            
+                              let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                              let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                                vc.url = file
+                                                vc.flag = 6
+                                                vc.modalPresentationStyle = .fullScreen
+                                                self.present(vc, animated: true)
+                                                
+                                            
+                                        })
+                                        
+                                    }
+                                    
+                                }
+                                
+                            }
+                            //                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+                                //                                self.showErrorHud(msg: msg ?? "")
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+                            //                                other Wise Problem
+                            else {  self.refreshControl.endRefreshing()
+                                hud.dismiss(animated: true)      }
+                        }
+                        
+                    }
+                    
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    self.refreshControl.endRefreshing()
+                }
+            } else {
+                print("Error")
+                
+                self.serverError(hud: hud)
+                self.refreshControl.endRefreshing()
+                
+                
+            }
+        }
+    }
+    
     
     
     

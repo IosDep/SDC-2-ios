@@ -64,6 +64,12 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                 
     }
     
+    
+    
+    @IBAction func pdfPressed(_ sender: Any) {
+        self.getAccountInvestoreInfoPDF(withZeroFlag: withZeroFlag ?? "")
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
@@ -419,7 +425,6 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         }
         self.present(vc, animated: true)
         
-        
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -628,6 +633,95 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         }
 
     }
+    
+    func getAccountInvestoreInfoPDF(withZeroFlag : String){
+        
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+
+    
+     
+        let param : [String:Any] = [
+                                    "sessionId" : Helper.shared.getUserSeassion() ?? ""
+                                    ,"lang": MOLHLanguage.isRTLLanguage() ? "ar": "en",
+                                    "memberId" : self.memberId,
+                                    "accountNo" : self.accountNo,
+                                    "securityId":self.securityId,
+                                    "with_zero" : withZeroFlag
+                                    
+ ]
+     
+        let link = URL(string: APIConfig.GetAccountOwnerShpePDF)
+
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                   
+
+                    if jsonObj != nil {
+                        
+                        
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                    
+                                if let data = jsonObj!["data"] as? [String: Any]{
+                                          
+                                    let file = data["file"] as? String
+                                    
+                                    DispatchQueue.main.async {
+                                        hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                            
+                                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                                let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                                vc.url = file
+                                                vc.flag = 5
+                                                vc.modalPresentationStyle = .fullScreen
+                                                self.present(vc, animated: true)
+                                                
+                                            
+                                        })
+                                        
+                                    }
+                                    
+                          
+                                        }
+                                
+                                
+                                
+                                    }
+//                             Session ID is Expired
+                            else if status == 400{
+                                let msg = jsonObj!["message"] as? String
+                                self.seassionExpired(msg: msg ?? "")
+                            }
+                            
+//                           other Wise Problem
+                            else {  self.refreshControl.endRefreshing()
+                                                hud.dismiss(animated: true)      }
+                        }
+                        
+                    }
+
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    self.refreshControl.endRefreshing()
+
+              }
+            } else {
+                print("Error")
+
+                self.serverError(hud: hud)
+                self.refreshControl.endRefreshing()
+
+
+            }
+        }
+
+    }
+
 
     @IBOutlet weak var headerView: UIView!
     var previousScrollViewYOffset: CGFloat = 0
