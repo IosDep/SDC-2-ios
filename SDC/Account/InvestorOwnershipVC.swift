@@ -594,7 +594,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         dinarArray.removeAll()
         dolarArray.removeAll()
         currencyFlag = "1"
-        currencyBtn.setTitle("JOD", for: .normal)
+        currencyBtn.setTitle("JOD".localized(), for: .normal)
         withZeroFlag = "2"
         isZeroSelected = true
         isWithoutSelected = false
@@ -608,7 +608,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         dolarData?.removeAll()
         dolarArray.removeAll()
         dinarArray.removeAll()
-        currencyBtn.setTitle("JOD", for: .normal)
+        currencyBtn.setTitle("JOD".localized(), for: .normal)
         withZeroFlag = "1"
         isWithoutSelected = true
         isZeroSelected = false

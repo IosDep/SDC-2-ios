@@ -12,7 +12,7 @@ class SecurityOwnership{
     
     
 
-    var clientNo, Security_Id , Security_Isin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value,Client_No,Trade_Currency , Member_No , Account_No , Security_Reuter_Code , Security_Sector , Balance_Date, Freezed_Flag , Security_Sector_Desc : String?
+    var clientNo, Security_Id , Security_Isin, securityReuterCode,Security_Name , Pending_In, Pending_Out, Security_Close_Price, Quantity_Owned ,Quantity_Avilable, Quantity_Pledge , Quantity_Freezed, Quantity_Unlisted , Nominal_Value,Client_No,Trade_Currency , Member_No , Account_No , Security_Reuter_Code , Security_Sector , Balance_Date, Freezed_Flag , Security_Sector_Desc , Member_Name , Account_Type_Desc: String?
     
     var MarketValue: Double?
 
@@ -118,7 +118,15 @@ class SecurityOwnership{
         if let MarketValue = data["MarketValue"] as? Double {
             self.MarketValue = MarketValue
         }
+        
+        
+        if let Member_Name = data["Member_Name"] as? String {
+            self.Member_Name = Member_Name
+        }
       
+        if let Account_Type_Desc = data["Account_Type_Desc"] as? String {
+            self.Account_Type_Desc = Account_Type_Desc
+        }
         
     }
     

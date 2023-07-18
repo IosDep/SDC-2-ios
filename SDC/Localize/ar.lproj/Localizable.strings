@@ -333,3 +333,14 @@
 "Currency" = "نوع العملة";
 "search" = "ادخل كلمة البحث";
 "Home" = "الصفحة الرئيسية";
+"Incorrect Username or Password" = "اسم المستخدم او كلمة المرور غير صحيحة";
+"Please fill the username and password" = "الرجاء تعبئة اسم المستخدم وكلمة المرور" ;
+"Pin expires after" = "تنتهي PIN بعد";
+"Account Recovery" = "استرجاع الحساب";
+
+"Choose Account Recovery Method" = "اختر طريقة استرجاع الحساب";
+
+"A message containing OTP code were sent to the Email" = "تم إرسال OTP إلى البريد الإلكتروني";
+
+"A message containing OTP code were sent to the Mobile" = "تم إرسال OTP إالى الهاتف";
+"Please fill all required fields" = "الرجاء تعبئة جميع الحقول المطلوبة";

@@ -76,10 +76,10 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
         else {
             switch indexPath.row {
             case 0 :
-                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "JOD", flag: "1")
+                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "JOD".localized(), flag: "1")
                             
             case 1 :
-                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "USD", flag: "22")
+                self.selectedNatDelegate?.getSelectdPicker(selectdTxt: "USD".localized(), flag: "22")
                 
             default:
                 print("Defaultt")

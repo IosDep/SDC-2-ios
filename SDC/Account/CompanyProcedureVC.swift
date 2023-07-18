@@ -122,15 +122,15 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     //    refresh action
         @objc func didPullToRefresh() {
-            self.lastAction.removeAll()
-            self.busnissCard.reloadData()
+//            self.lastAction.removeAll()
+//            self.busnissCard.reloadData()
 
         }
     
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
         seatrching = false
-        
+        self.busnissCard.reloadData()
         
         }
     

@@ -75,8 +75,7 @@ class LoginVC: UIViewController {
     }
     @IBAction func forgetPassword(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "ForgetPassword") as! ForgetPassword
-        vc.checkOldPassword = true
+        let vc = storyBoard.instantiateViewController(withIdentifier: "AccountRecoveryUsername") as! AccountRecoveryUsername
         vc.modalPresentationStyle = .fullScreen
         self.present(vc, animated: true)
         
@@ -167,21 +166,17 @@ class LoginVC: UIViewController {
                                     
                                 }
                                 
-                                
                                 //    status ==> false
                                 else {
                                     
                                     if let message = jsonObj!["message"] as? String {
                                         hud.dismiss()
-                                        DispatchQueue.main.async {
-                                            self.showErrorHud(msg: message, hud: hud)
-                                            
-                                            
+                                        self.showErrorHud(msg: message)
+                                           
                                         }
                                         
-                                        
                                     }
-                                }
+                                
                             }
                         
                     }

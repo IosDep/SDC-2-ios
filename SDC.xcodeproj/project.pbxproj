@@ -38,6 +38,10 @@
 		3F91502A2A40D6B300BE3FC0 /* ChartCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9150282A40D6B200BE3FC0 /* ChartCell.swift */; };
 		3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F9150292A40D6B200BE3FC0 /* ChartCell.xib */; };
 		3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */; };
+		3F9258932A65605300E23B13 /* AccountRecoveryUsername.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258922A65605300E23B13 /* AccountRecoveryUsername.swift */; };
+		3F9258952A6560A700E23B13 /* AccountRecovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258942A6560A700E23B13 /* AccountRecovery.swift */; };
+		3F9258972A6561EC00E23B13 /* AccountRecoveryPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */; };
+		3F9258992A65ED6400E23B13 /* CreatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258982A65ED6400E23B13 /* CreatePassword.swift */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
@@ -181,6 +185,10 @@
 		3F9150282A40D6B200BE3FC0 /* ChartCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartCell.swift; sourceTree = "<group>"; };
 		3F9150292A40D6B200BE3FC0 /* ChartCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChartCell.xib; sourceTree = "<group>"; };
 		3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieChartPopUp.swift; sourceTree = "<group>"; };
+		3F9258922A65605300E23B13 /* AccountRecoveryUsername.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRecoveryUsername.swift; sourceTree = "<group>"; };
+		3F9258942A6560A700E23B13 /* AccountRecovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRecovery.swift; sourceTree = "<group>"; };
+		3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRecoveryPopUp.swift; sourceTree = "<group>"; };
+		3F9258982A65ED6400E23B13 /* CreatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePassword.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
@@ -332,6 +340,7 @@
 				3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */,
 				3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */,
 				3F8D55722A4433A800AD075F /* CurrencyPicker.swift */,
+				3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -426,6 +435,9 @@
 				3F8AFA7F2A0B9C6700D13625 /* CompanyProcedureVC.swift */,
 				3F91502C2A40E45600BE3FC0 /* PieChartPopUp.swift */,
 				3F11040A2A601C160086CABA /* PDFViewerVC.swift */,
+				3F9258922A65605300E23B13 /* AccountRecoveryUsername.swift */,
+				3F9258942A6560A700E23B13 /* AccountRecovery.swift */,
+				3F9258982A65ED6400E23B13 /* CreatePassword.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -847,6 +859,7 @@
 				3F11040B2A601C160086CABA /* PDFViewerVC.swift in Sources */,
 				87D3E9B229DA9D39006B6AA7 /* LoginVC.swift in Sources */,
 				3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */,
+				3F9258972A6561EC00E23B13 /* AccountRecoveryPopUp.swift in Sources */,
 				87D3E9B829DA9FCC006B6AA7 /* LoadingOverly.swift in Sources */,
 				8761E54429DC4B3B00CB72B5 /* AccountListXib.swift in Sources */,
 				87C59C7E29C13C7900EB0C40 /* BusnissCard.swift in Sources */,
@@ -890,10 +903,12 @@
 				8736F53429C7218900A6A567 /* HeaderView.swift in Sources */,
 				3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */,
 				3FD7E3502A49CE0D003EC702 /* PieTableCell.swift in Sources */,
+				3F9258992A65ED6400E23B13 /* CreatePassword.swift in Sources */,
 				3F80D44929ED5615003F9945 /* CardFiveVC.swift in Sources */,
 				87D3E9B629DA9F5E006B6AA7 /* ApiCaler.swift in Sources */,
 				8707FB4C29E9EFB7004CB6AA /* PopUpOTP.swift in Sources */,
 				87B89ADB29CFC81100E82C1E /* PhoneNumberVc.swift in Sources */,
+				3F9258932A65605300E23B13 /* AccountRecoveryUsername.swift in Sources */,
 				3F1104152A6522780086CABA /* TotalView.swift in Sources */,
 				8734D284295C32570044B0F7 /* AppDelegate.swift in Sources */,
 				876758A529C74F6C000F3CBC /* MenuVC.swift in Sources */,
@@ -919,6 +934,7 @@
 				8737879629E1FA0400D73972 /* WebVcContent.swift in Sources */,
 				876758AA29C75935000F3CBC /* BusnissCardTable.swift in Sources */,
 				3F7A0BBF2A386BE3006DCBC5 /* InvestorInfoModel.swift in Sources */,
+				3F9258952A6560A700E23B13 /* AccountRecovery.swift in Sources */,
 				87BC4E0529DDB63B0095BDC1 /* LastTransaction.swift in Sources */,
 				87B89ADD29CFC81B00E82C1E /* EmailVc.swift in Sources */,
 			);

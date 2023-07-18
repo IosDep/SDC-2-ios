@@ -55,13 +55,13 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        nameStack.isHidden = true
-        accountIDStack.isHidden = true
+//        nameStack.isHidden = true
+//        accountIDStack.isHidden = true
         //        searchBtn.isHidden = true
-        datePicker.isHidden = true
-        datePicker2.isHidden = true
-        fromDate.isHidden = true
-        toDate.isHidden = true
+//        datePicker.isHidden = true
+//        datePicker2.isHidden = true
+//        fromDate.isHidden = true
+//        toDate.isHidden = true
         self.getAccountList()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
         
@@ -165,7 +165,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
         
         if flag == "0"{
-            accountIDStack.isHidden = false
+//            accountIDStack.isHidden = false
             self.membername.setTitle(selectdTxt, for: .normal)
             self.getMemberID(memberID: securtNumber)
             self.accountNumberBtn.setTitle("choose".localized(), for: .normal)
@@ -174,13 +174,13 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             
         } else if flag == "1" {
             self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
-            nameStack.isHidden = false
+//            nameStack.isHidden = false
             self.accountNo = selectdTxt
         }
         
         else if flag == "2" {
-            datePicker.isHidden = false
-            fromDate.isHidden = false
+//            datePicker.isHidden = false
+//            fromDate.isHidden = false
             self.secutrtyNameBtn.setTitle(selectdTxt, for: .normal)
             
         }else {
@@ -191,43 +191,16 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     @IBAction func downloadButtonPressed(_ sender: UIButton) {
         
-        self.getPDF()
+        if membername.titleLabel?.text != "" && accountNumberBtn.titleLabel?.text != "" && secutrtyNameBtn .titleLabel?.text != "" && fromDateString != "" && toDateString != "" {
+            self.getPDF()
+
+        }
         
-        //        let apiUrl =  URL(string: APIConfig.GetAccountStatementPDF)
-        //
-        //        let parameters: [String: Any] = [
-        //            "sessionId": Helper.shared.getUserSeassion() ?? "",
-        //            "memberId": self.memberID ?? "" ,
-        //            "accountNo" : self.accountNo ?? "",
-        //            "securityId" : self.securityID,
-        //            "fromDate" : "",
-        //            "toDate" : "",
-        //
-        //
-        //        ]
-        //
-        //        AF.download(apiUrl!, method: .get, parameters: parameters, encoding: URLEncoding.default, headers: nil)
-        //            .response { response in
-        //                if let error = response.error {
-        //                    // Handle the error
-        //                    print("Error: \(error)")
-        //                } else {
-        //                    // Save the downloaded file to a destination URL
-        //                    if let destinationURL = response.fileURL {
-        //                        let destinationPath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("AccountStatemant.pdf")
-        //
-        //                        do {
-        //                            try FileManager.default.moveItem(at: destinationURL, to: destinationPath)
-        //                            print("File downloaded and saved to: \(destinationPath)")
-        //
-        //                            // Handle the downloaded file
-        //                            // e.g., open it or display it in a web view
-        //                        } catch {
-        //                            print("Error saving file: \(error)")
-        //                        }
-        //                    }
-        //                }
-        //            }
+        else {
+            self.showErrorHud(msg: "Please fill all required fields".localized())
+        }
+        
+        
     }
     
     
@@ -284,8 +257,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         let dateString = dateFormatter.string(from: selectedDate)
         fromDateString = dateFormatter.string(from: selectedDate)
         
-        datePicker2.isHidden = false
-        toDate.isHidden = false
+//        datePicker2.isHidden = false
+//        toDate.isHidden = false
         
         datePicker2.datePickerMode = .date
         datePicker2.date = Date() // Set an initial date if needed
@@ -616,11 +589,16 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     func getPDF(){
         
+        let hud = JGProgressHUD(style: .light)
+//        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+        
+        
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
                                     "memberId" : memberID ,
                                     "accountNo" : accountNo ,
-                                    "fromDate" : fromDate ,
-                                    "toDate" : toDate ,
+                                    "fromDate" : fromDateString ,
+                                    "toDate" : toDateString ,
                                     "securityId" : securityID
         ]
         
@@ -634,40 +612,38 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                     
                     if jsonObj != nil {
                         
+                        
+                        
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
                                 if let data = jsonObj!["data"] as? [String: Any]{
                                     let urlString = data["file"] as? String
+                                    
+                                    DispatchQueue.main.async {
+                                        hud.dismiss()
+                                        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                        let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
+                                        vc.flag = 1
+                                        vc.url = urlString
+                                        vc.modalPresentationStyle = .fullScreen
+                                        self.present(vc, animated: true)
                                         
-                DispatchQueue.main.async {
-                    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                    let vc = storyBoard.instantiateViewController(withIdentifier: "PDFViewerVC") as! PDFViewerVC
-                    vc.flag = 1
-                        vc.url = urlString
-                        vc.modalPresentationStyle = .fullScreen
-                        self.present(vc, animated: true)
-
                                     }
                                 }
                                 
                             }
-                            //                             Session ID is Expired
-                            else if status == 400{
+                            
+                            else {
                                 let msg = jsonObj!["message"] as? String
                                 
-                                self.seassionExpired(msg: msg ?? "")
-                            }
-                            
-                            
-                            
-                            
-                            //                                other Wise Problem
-                            else {
+                                self.showErrorHud(msg: msg ?? "", hud: hud)
                                 
                             }
                             
+                            
+                            
+                            
                         }
-                        
                     }
                     
                 } catch let err as NSError {

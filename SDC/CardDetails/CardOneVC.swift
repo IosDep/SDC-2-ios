@@ -11,6 +11,8 @@ class CardOneVC: UIViewController {
     
     // Security info
     
+    @IBOutlet weak var accountType: UILabel!
+    @IBOutlet weak var currencyStack: UIStackView!
     @IBOutlet weak var additionalView: UIView!
     @IBOutlet weak var secondLabel: DesignableLabel2!
     @IBOutlet weak var firstLabel: DesignableLabel2!
@@ -35,6 +37,7 @@ class CardOneVC: UIViewController {
     @IBOutlet weak var nonCurranncyBalance: UILabel!
     
     
+    @IBOutlet weak var currencyLabel: DesignableLabel!
     @IBOutlet weak var bledgedBalance: UILabel!
     
     @IBOutlet weak var pendeingSell: UILabel!
@@ -57,6 +60,7 @@ class CardOneVC: UIViewController {
     var invAccount : AccountOwnerShape?
     var securityOwnership : SecurityOwnership?
     var checkOnepaper = false
+    var currencyFlag : String?
     
 
 // Security_Reuter_Code
@@ -69,13 +73,17 @@ class CardOneVC: UIViewController {
         if checkOnepaper == true {
             
             additionalView.isHidden = false
-            aditionalView2.isHidden = false
-            additionalView4.isHidden = false
+            aditionalView2.isHidden = true
+            additionalView4.isHidden = true
             aditionalView1.isHidden = false
             
-            firstLabel.text = "Membership Type".localized()
-            secondLabel.text = "Member Name".localized()
+            currencyStack.isHidden = true
+            
+            firstLabel.text = "Member Name".localized()
+            secondLabel.text = "Membership Type".localized()
+            
             thirdLabel.text = "Account No.".localized()
+            
             
             currantBalance.text =  securityOwnership?.Quantity_Owned ?? ""
             freeBalance.text =  securityOwnership?.Quantity_Avilable ?? ""
@@ -87,32 +95,28 @@ class CardOneVC: UIViewController {
             pendingBuy.text =  securityOwnership?.Pending_In ?? ""
             pendeingSell.text =  securityOwnership?.Pending_Out ?? ""
             
-            closePrice.text =  securityOwnership?.Security_Close_Price ?? ""
+            securityID.text = securityOwnership?.Member_No ?? ""
             
-            securityID.text = securityOwnership?.securityReuterCode ?? ""
+            isin.text = securityOwnership?.Member_Name ?? ""
             
-            securityName.text = securityOwnership?.Security_Name ?? ""
-            
-            isin.text = securityOwnership?.Security_Isin ?? ""
-            
-            //            clientNum.text = self.doubleToArabic(value: securityOwnership?.Client_No ?? "")
-            //
-            //            nominalValue.text = self.doubleToArabic(value: securityOwnership?.Nominal_Value  ?? "")
-            securityName.text = securityOwnership?.Security_Name ?? ""
-            
-            marketValue.text = self.numFormat(value: securityOwnership?.MarketValue ?? 0.0)
-            
-            //            tradeCuurency.text = self.doubleToArabic(value: securityOwnership?.Trade_Currency ?? "")
-            //            if let value = securityOwnership?.MarketValue as? Double {
-            //                marketValue.text = "\(value)"
-            //            }        }
-            //
+            securityName.text = securityOwnership?.Account_No ?? ""
+            accountType.text = securityOwnership?.Account_Type_Desc
+          
         }
             
         else {
+            
+            if currencyFlag == "1" {
+                currencyLabel.text = "JOD".localized()
+            }
+            
+            else if currencyFlag == "22" {
+                currencyLabel.text = "USD".localized()
+            }
+            
             additionalView.isHidden = true
-            aditionalView2.isHidden = true
-            additionalView4.isHidden = true
+            aditionalView2.isHidden = false
+            additionalView4.isHidden = false
             aditionalView1.isHidden = true
             
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
@@ -121,16 +125,14 @@ class CardOneVC: UIViewController {
             bledgedBalance.text =  invAccount?.Quantity_Pledge ?? ""
             reservedBalacnce.text =  invAccount?.Quantity_Freezed ?? ""
             nonCurranncyBalance.text =  invAccount?.Quantity_Unlisted ?? ""
+            sectorName.text = invAccount?.Security_Sector_Desc
             
             pendingBuy.text =  invAccount?.Pending_In ?? ""
             pendeingSell.text =  invAccount?.Pending_Out ?? ""
             closePrice.text =  invAccount?.Security_Close_Price ?? ""
             securityName.text = invAccount?.Security_Name ?? ""
             isin.text = invAccount?.securityIsin ?? ""
-//            clientNum.text =  invAccount?.Client_No ?? ""
-//            nominalValue.text = self.convertIntToArabicNumbers(intString: invAccount?.Nominal_Value  ?? "")
-//
-//            tradeCuurency.text = self.doubleToArabic(value: invAccount?.Trade_Currency ?? "")
+
             
             marketValue.text = self.numFormat(value: invAccount?.MarketValue ?? 0.0)
             

@@ -104,7 +104,7 @@ class AccountVC: UIViewController {
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "ForgetPassword") as! ForgetPassword
             vc.modalPresentationStyle = .fullScreen
-      
+            
             self.present(vc, animated: true)
             
             

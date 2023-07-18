@@ -43,6 +43,8 @@ class ForgetPassword: UIViewController {
         if checkOldPassword == true {
             oldPasswordStack.isHidden = true
         }
+        
+        
      
     }
     
@@ -53,11 +55,7 @@ class ForgetPassword: UIViewController {
     
     
     
-    override func viewDidAppear(_ animated: Bool) {
-        self.setupSideMenu()
-
-    }
-
+    
     @IBAction func changePassword(snder:UIButton){
         self.forgetPassword(oldPassword: self.oldPassword.text ?? "", newPassword: self.newPasswrod.text ?? "", confirmPassword: self.confimNewPasword.text ?? "")
     }

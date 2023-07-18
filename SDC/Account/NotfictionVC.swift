@@ -14,7 +14,6 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     @IBOutlet weak var notficationTable:UITableView!
     @IBOutlet weak var mainView:UIView!
-    @IBOutlet weak var bellView:UIView!
     
     var notifications = [NotificationModel]()
     var notificationCount : String?
@@ -26,7 +25,7 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
         
         
         notficationTable.register(UINib(nibName: "NotficationXIB", bundle: nil), forCellReuseIdentifier: "NotficationXIB")
-        self.cerateBellView(bellview: self.bellView, count: "\(notificationCount)")
+        
         
     }
 
@@ -106,9 +105,8 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                                             DispatchQueue.main.async {
                                                 
                                                 self.notificationCount = String(self.notifications.count)
-                                                
-                                                    self.cerateBellView(bellview: self.bellView, count: "\(self.notificationCount)")
-                                                    self.notficationTable.reloadData()
+                                               
+                                            self.notficationTable.reloadData()
                                                     
                                                     hud.dismiss()
 

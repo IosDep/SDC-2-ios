@@ -37,9 +37,9 @@ class NatPickerVC: UIViewController , UITableViewDataSource , UITableViewDelegat
                    cell = nib[0] as? NatPickerCell
                }
        else {
-           cell?.investorNum.text = nationalities[indexPath.row].Client_No
-           cell?.name.text = nationalities[indexPath.row].Client_Name ?? ""
-           cell?.nationality.text = nationalities[indexPath.row].Nationality ?? ""
+           cell?.investorNum.text = nationalities[indexPath.row].Client_Name
+           cell?.name.text = nationalities[indexPath.row].Nationality ?? ""
+           cell?.nationality.text = nationalities[indexPath.row].Client_No ?? ""
            cell?.invStatus.text = nationalities[indexPath.row].Client_Status_Desc ?? ""
 
        }

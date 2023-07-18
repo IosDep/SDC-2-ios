@@ -178,6 +178,7 @@
                 <outlet property="accountName" destination="DI4-Di-zp0" id="tdP-pX-2NP"/>
                 <outlet property="accountNum" destination="THK-LM-mss" id="Dex-Pm-FFZ"/>
                 <outlet property="accountOwnerShape" destination="Us2-oy-XcO" id="Wpg-9j-evE"/>
+                <outlet property="buttonsStack" destination="8tS-z0-knw" id="izS-ea-obv"/>
                 <outlet property="greenView" destination="DNz-rL-Smf" id="qa5-LT-sZR"/>
                 <outlet property="memberName" destination="XC5-g0-oBy" id="ueM-8y-Ca9"/>
                 <outlet property="memberNum" destination="v4U-nT-skE" id="9Ld-FQ-wcz"/>

@@ -9,6 +9,9 @@ import UIKit
 
 class AccountListXib: UITableViewCell {
     
+    
+    @IBOutlet weak var buttonsStack: UIStackView!
+    
     @IBOutlet weak var memberNum: UILabel!
     
   

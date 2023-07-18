@@ -48,7 +48,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         isWithoutSelected = true
         withZeroFlag = "1"
         currencyFlag = "1"
-        currencyBtn.setTitle("JOD", for: .normal)
+        currencyBtn.setTitle("JOD".localized(), for: .normal)
         self.highlightedButtons()
         self.withoutZero.cornerRadius = 12
         self.withZero.cornerRadius = 12
@@ -147,6 +147,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     func getSelectdPicker(selectdTxt: String, flag: String) {
         currencyBtn.setTitle(selectdTxt, for: .normal)
         if flag == "1" {
+            
             totalValue.text = self.numFormat(value: totalDinar ?? 0.0)
             self.currencyFlag = "1"
         }
@@ -384,6 +385,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 //        Mark
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
+        vc.currencyFlag = self.currencyFlag
         vc.modalPresentationStyle = .fullScreen
         
         if !isSearching {

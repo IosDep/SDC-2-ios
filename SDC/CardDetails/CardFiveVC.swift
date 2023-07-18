@@ -204,7 +204,7 @@ class CardFiveVC: UIViewController {
                                 self.gender.text = sexDesc ?? ""
                                 
                                 let scientificQualificationDesc = data!["scientificQualification"] as? String
-                                self.educationDegree.text = scientificQualificationDesc ?? ""
+                                self.educationDegree.text = self.handleNillData(value: scientificQualificationDesc ?? "")
                                 
                                 let taxNo = data!["taxNo"] as? String
                                 self.taxNumber.text = self.handleNillData(value: taxNo ?? "")
