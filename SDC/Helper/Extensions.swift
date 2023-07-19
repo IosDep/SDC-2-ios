@@ -765,6 +765,24 @@ extension UIViewController {
             }
             
         }
+    
+    
+    
+    func convertedDate(dateString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.locale = Locale(identifier: "en") // Set the desired locale
+
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "dd-MM-yyyy"
+            let convertedDate = dateFormatter.string(from: date)
+            return convertedDate
+        } else {
+            return nil
+        }
+    }
         
     }
         

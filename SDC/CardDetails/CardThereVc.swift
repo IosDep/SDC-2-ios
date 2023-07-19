@@ -54,7 +54,7 @@ class CardThereVc: UIViewController {
         
         
         // trans?.Trans_Date ?? ""
-        transactionDate.text =   trans?.Trans_Date ?? ""
+        transactionDate.text =   self.convertedDate(dateString: trans?.Trans_Date ?? "")
         
     
         

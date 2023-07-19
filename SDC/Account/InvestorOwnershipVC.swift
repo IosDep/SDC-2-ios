@@ -23,6 +23,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     @IBOutlet weak var withZero: DesignableButton!
     @IBOutlet weak var withoutZero: DesignableButton!
     
+    
+    
     var refreshControl: UIRefreshControl!
     var isZeroSelected : Bool?
     var isWithoutSelected : Bool?
@@ -140,6 +142,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""
         isSearching = false
+        totalValueStack.isHidden = false
         filteredData?.removeAll()
         dolarFilteredData?.removeAll()
         self.busnissCard.reloadData()
@@ -450,6 +453,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
         if searchText == "" {
+            totalValueStack.isHidden = false
             isSearching = false
             filteredData = []
             dolarFilteredData = []
@@ -459,6 +463,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
 //        if MOLHLanguage.isArabic(){
             
             //            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+        
+        totalValueStack.isHidden = true
             filteredData = []
             dolarFilteredData = []
         if currencyFlag == "1" {

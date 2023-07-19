@@ -121,6 +121,9 @@ PODS:
   - ImageSlideshow (1.9.2):
     - ImageSlideshow/Core (= 1.9.2)
   - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/SDWebImage (1.9.2):
+    - ImageSlideshow/Core
+    - SDWebImage (>= 3.7)
   - JGProgressHUD (2.2)
   - LineChart (1.0.3)
   - Loaf (0.7.0)
@@ -163,6 +166,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - GoogleSignIn (>= 5.0)
   - ImageSlideshow (~> 1.9.0)
+  - ImageSlideshow/SDWebImage
   - JGProgressHUD
   - LineChart
   - Loaf
@@ -250,6 +254,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   TPKeyboardAvoidingSwift: ce1a75e0bc3af6b485f8bfa1d0a8320cfc565851
 
-PODFILE CHECKSUM: 9fd2b84e674a3662a909f6bb46b55e1f71c69db6
+PODFILE CHECKSUM: 20bd8fc3fd59c52f108f293d088a83ee3d3367cc
 
 COCOAPODS: 1.12.0

@@ -63,7 +63,13 @@ class APIConfig {
     
     static let GetAccountStatementPDF = BaseURL + "investor_information/getSecurityDetailedTrans"
     
-   
+    
+    static let CreatePassword = BaseURL + "investor_information/createPassword"
+    
+    
+    static let GetSliderImages = BaseURL + "investor_information/getSliders"
+    
+        
     
     static let encoding = JSONEncoding.default
     static let stringencoding = JSONEncoding.default

@@ -22,6 +22,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     @IBOutlet weak var withoutZero: DesignableButton!
     @IBOutlet weak var search_bar: UISearchBar!
 
+    @IBOutlet weak var totalValueStack: UIStackView!
     var totalDolar : Double?
     var totalDinar : Double?
     var currencyFlag : String?
@@ -73,6 +74,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText == "" {
             isSearching = false
+            totalValueStack.isHidden = false
             filteredData = []
             dolarFilteredData = []
             self.busnissCard.reloadData()
@@ -81,6 +83,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
 //        if MOLHLanguage.isArabic(){
             
             //            self.arr_search = self.invAccount.filter({($0.Security_Name?.prefix(searchText.count))! == searchText})
+        
+        totalValueStack.isHidden = true
             filteredData = []
             dolarFilteredData = []
         
@@ -438,6 +442,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
     @IBAction func clearPressed(_ sender: Any) {
         search_bar.text = ""
         seatrching = false
+        totalValueStack.isHidden = false
         filteredData?.removeAll()
         dolarFilteredData?.removeAll()
         self.busnissCard.reloadData()

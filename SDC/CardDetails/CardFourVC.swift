@@ -1,9 +1,4 @@
-//
-//  CardFourVC.swift
-//  SDC
-//
-//  Created by Blue Ray on 14/04/2023.
-//
+
 
 import UIKit
 import Alamofire
@@ -133,11 +128,11 @@ class CardFourVC: UIViewController {
                                     self.accountType.text = self.handleNillData(value: accountTypeDesc ?? "")
                                    
                                     let idDocDate = data!["idDocDate"] as? String
-                                    self.releaseDate.text =  self.handleNillData(value: idDocDate ?? "")
+                                    self.releaseDate.text =  self.handleNillData(value: self.convertDate(dateString: idDocDate ?? "") ?? "")
 
                                     
                                     let idDocExpDate = data!["idDocExpDate"] as? String
-                                    self.expiryDate.text = self.handleNillData(value: idDocExpDate ?? "")
+                                    self.expiryDate.text = self.handleNillData(value: self.convertDate(dateString: idDocExpDate ?? "") ?? "")
                                     
                                     let idDocReference = data!["idDocReference"] as? String
                                     self.documentRefernce.text = self.handleNillData(value: idDocReference ?? "")

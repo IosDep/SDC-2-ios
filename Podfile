@@ -13,11 +13,15 @@ target 'SDC' do
   pod 'SDWebImage', '~> 5.0'
   pod 'CHTCollectionViewWaterfallLayout'
 
+
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
   pod 'GoogleSignIn', '>= 5.0'
   pod 'OneSignal', '>= 3.0.0', '< 4.0'
   pod 'SideMenu'
+  pod 'SDWebImage', '~> 5.0'
+  pod'ImageSlideshow/SDWebImage'
+
 
   pod 'NVActivityIndicatorView'
   pod 'Loaf'

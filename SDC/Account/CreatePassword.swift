@@ -12,12 +12,9 @@ import Alamofire
 class CreatePassword: UIViewController {
     
     @IBOutlet weak var backView: UIStackView!
-    
     @IBOutlet weak var majorView: UIView!
     @IBOutlet weak var mainView: UIView!
-    
     @IBOutlet weak var newPasswordField: UITextField!
-    
     @IBOutlet weak var confirmPasswordField: UITextField!
     
     override func viewDidLoad() {
@@ -75,7 +72,7 @@ class CreatePassword: UIViewController {
             hud.show(in: self.view)
             
             
-        let endpoint = URL(string:APIConfig.getRecoveryData)
+        let endpoint = URL(string:APIConfig.CreatePassword)
             
             
             let param: [String: Any] = [
@@ -92,10 +89,7 @@ class CreatePassword: UIViewController {
                         
                         if jsonObj != nil {
                             
-                            //    object status
-                            
-
-                            
+                                                        
                                 if let status = jsonObj!["status"] as? Int {
                                 
                                     if status == 200 {
@@ -104,9 +98,10 @@ class CreatePassword: UIViewController {
                             
                                             
                             DispatchQueue.main.async {
-                                hud.dismiss()
-                                self.showSuccessHud(msg: data ?? "" )
-                                
+                                self.showErrorHud(msg: data, hud: hud)
+                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC") as! WelcomePageVC
+                                    self.present(vc, animated: true)
                             
                                                 
                                             }
@@ -114,17 +109,13 @@ class CreatePassword: UIViewController {
                                     }
                                     //    status ==> false
                                     else {
-                                        if let message = jsonObj!["message"] as? String {
+                                        
+                                if let message = jsonObj!["message"] as? String {
                                             DispatchQueue.main.async {
-                                        hud.dismiss()
                                             
-                                        self.showErrorHud(msg: message, hud: hud)
+                                self.showErrorHud(msg: message, hud: hud)
                                                 
-                                                
-                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                                let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC") as! WelcomePageVC
-                                    self.present(vc, animated: true)
-                                                
+                                    
                                                 
                                             }
                                         }

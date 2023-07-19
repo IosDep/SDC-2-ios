@@ -2,7 +2,7 @@
 //  CardOneVC.swift
 //  SDC
 //
-//  Created by Blue Ray on 14/04/2023.
+//  Created by Razan barq on 14/04/2023.
 //
 
 import UIKit

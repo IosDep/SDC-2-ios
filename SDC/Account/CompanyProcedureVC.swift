@@ -175,7 +175,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             
             let categoryData = filteredData[indexPath.row]
             cell?.company.text = categoryData.Member_Alias
-            cell?.actionDate.text = categoryData.Action_Date
+            cell?.actionDate.text = self.convertedDate(dateString: categoryData.Action_Date ?? "")
             cell?.transType.text = categoryData.Trans_Type_Desc
             cell?.actionType.text = categoryData.Action_Type_Desc
             cell?.beforeAction.text = categoryData.Value_Before
@@ -209,7 +209,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             if categoryFlag == 0 {
                 let categoryData = publicCompanies[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
-                cell?.actionDate.text =  categoryData.Action_Date
+                cell?.actionDate.text =  self.convertedDate(dateString: categoryData.Action_Date ?? "")
                 cell?.transType.text = categoryData.Trans_Type_Desc
                 cell?.actionType.text = categoryData.Action_Type_Desc
                 cell?.beforeAction.text = categoryData.Value_Before
@@ -219,7 +219,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             else if categoryFlag == 1 {
                 let categoryData = financialCompanies[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
-                cell?.actionDate.text = categoryData.Action_Date
+                cell?.actionDate.text = self.convertedDate(dateString: categoryData.Action_Date ?? "")
                 cell?.transType.text = categoryData.Trans_Type_Desc
                 cell?.actionType.text = categoryData.Action_Type_Desc
                 cell?.beforeAction.text = categoryData.Value_Before
@@ -230,7 +230,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
             else {
                 let categoryData = custodians[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
-                cell?.actionDate.text = categoryData.Action_Date
+                cell?.actionDate.text = self.convertedDate(dateString: categoryData.Action_Date ?? "")
                 cell?.transType.text = categoryData.Trans_Type_Desc
                 cell?.actionType.text = categoryData.Action_Type_Desc
                 cell?.beforeAction.text = categoryData.Value_Before

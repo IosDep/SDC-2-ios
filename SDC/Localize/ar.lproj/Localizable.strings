@@ -14,7 +14,7 @@
 "company's latest procedures" = "اخر اجرات الشركات" ;
 "investor's ownership of a new security" = "ملكية المستثمر لورقة مالية واحدة" ;
 "account settings" = "اعدادات الحساب" ;
-"Last Transactions" = " اخر الحركات" ;
+"Last Transactions" = " آخر الحركات" ;
 "Ownership analysis by sector" = " تحليل الملكية حسب الفئة" ;
 "Dinar" = "دينار" ;
 "Dollar" = "دولار" ;
@@ -196,7 +196,7 @@
 "Non-current balance" = "رصيد غير متداول";
 "Client number"= "رقم العميل" ;
 "Exact security number"= "رقم الورقة المالية" ;
-"Sector" = "قطاع الورقة المالية";
+"Sector" = "القطاع";
 "Account Info" = "معلومات الحساب";
 "Account OwnerShip" = "ملكية الحساب";
 "Successfully registered" = "تم التسجيل بنجاح";
@@ -223,7 +223,7 @@
 "ID No."="رقم الوثيقة";
 "Identity Card No"="رقم الهوية";
 "Clear"="تفريغ حقول";
-"Reuter Code"="الرمز الحرفي للورقة المالية";
+"Reuter Code"="الرمز الحرفي";
 "Owned"="الرصيد الحالي";
 "Available"="الرصيد الحر";
 "Lien"="الرصيد المحجوز";
@@ -321,8 +321,8 @@
 "Please check internet connection" = "يرجى التحقق من اتصال الإنترنت";
 "Server Error" = "خطأ في اتصال الشبكة";
 "Please Wait" = "يرجى الإنتظار";
-"Biometry unavailable" = "اللتحقق الحيوي غير مفعل";
-"Your device is not configured for biometric authentication." = " لم يتم تفعيل جهازك للتحقق الحيوي.
+"Biometry unavailable" = "التحقق الحيوي غير مفعل";
+"Your device is not configured for biometric authentication." = " لم يتم تفعيل البصمة في جهازك.
 ";
 "Market" = "السوق";
 "choose security name" = "اختر اسم الورقة المالية";
@@ -344,3 +344,4 @@
 
 "A message containing OTP code were sent to the Mobile" = "تم إرسال OTP إالى الهاتف";
 "Please fill all required fields" = "الرجاء تعبئة جميع الحقول المطلوبة";
+"Resend code" = "إعادة إرسال PIN";

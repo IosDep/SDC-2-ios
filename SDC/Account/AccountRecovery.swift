@@ -139,9 +139,13 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     print("HHHH",self.uniqueID)
                                     print(self.uniqueID)
                                     print(self.uniqueID)
-                                    
+        
                                     vc.recoveryField = email
                                     vc.flag = self.flag
+                                    vc.username = self.username
+                                    vc.email = self.email
+                                    vc.mobileNum = self.mobileNum
+
                                     self.present(vc, animated: true)
                                     
                                     hud.dismiss()
@@ -223,6 +227,10 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     vc.uniqueID = uniqueId ?? "NO UNIaqyeID"
                                     vc.flag = self.flag
                                     vc.recoveryField = mobile
+                                    vc.username = self.username
+                                    vc.email = self.email
+                                    vc.mobileNum = self.mobileNum
+                                    
                                     self.present(vc, animated: true)
                                     
                                     hud.dismiss()

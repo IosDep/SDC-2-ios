@@ -73,6 +73,7 @@ class AccountRecoveryUsername: UIViewController {
                                 vc.email = self.email
                                 vc.mobileNum = self.mobileNum
                                 vc.username = self.usernameField.text
+                                vc.modalPresentationStyle = .fullScreen
                                 self.present(vc, animated: true)
 
                                             }

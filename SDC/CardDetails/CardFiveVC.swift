@@ -240,13 +240,13 @@ class CardFiveVC: UIViewController {
                                 self.documentReference.text = idDocReference ?? ""
                                 
                                 let idDocDate = data!["idDocDate"] as? String
-                                self.releaseDate.text =  idDocDate ?? ""
+                                self.releaseDate.text =  self.convertedDate(dateString: idDocDate ?? "")
                                 
                                 let identificationNo = data!["identificationNo"] as? String
                                 self.identificationNumber.text = self.handleNillData(value: identificationNo ?? "")
                                 
                                 let idDocExpDate = data!["idDocExpDate"] as? String
-                                self.expiryDate.text =   idDocExpDate ?? ""
+                                self.expiryDate.text =  self.convertedDate(dateString: idDocExpDate ?? "")
                                 
                                 
                                 // resAddress1

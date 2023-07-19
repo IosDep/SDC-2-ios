@@ -15,6 +15,8 @@ import Alamofire
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     
+    @IBOutlet weak var dayLogin: UILabel!
+    @IBOutlet weak var dayUpdate: UILabel!
     @IBOutlet weak var lastUpdateInfo: UILabel!
     @IBOutlet weak var lastloginInfo: UILabel!
     @IBOutlet weak var sideMenuBtn: UIButton!
@@ -33,6 +35,8 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     var checkSideMenu = false
     var tradeAnlysis = [TradeAnlysis]()
     var currencyFlag : String?
+    var updatedDay : String?
+    var loginDay : String?
     
     var bank = SectorAnylisisModel(data: [:])
     var insuarance = SectorAnylisisModel(data: [:])
@@ -366,11 +370,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             cell?.layer.masksToBounds = false
             
             
+            
+            if indexPath.row == 0 {
                 
-                if indexPath.row == 0 {
+                if currencyFlag == "1" {
                     
-                    if currencyFlag == "1" {
-
                     
                     cell?.title.text = "Shareholders" .localized()
                     
@@ -380,18 +384,18 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                     }
                     
                 }
-                    
-                    else if currencyFlag == "22" {
-                        
-                        cell?.title.text = "Shareholders" .localized()
-                        
-                        if (dsecurities.count != 0)  {
-                            customizeChart(dataPoints: categories, values: dsecurities,pieChartView: (cell?.chartView!)!)
-                            cell?.logo.image = UIImage(named: "shareholder")
-                        }
-                    }
-            }
                 
+                else if currencyFlag == "22" {
+                    
+                    cell?.title.text = "Shareholders" .localized()
+                    
+                    if (dsecurities.count != 0)  {
+                        customizeChart(dataPoints: categories, values: dsecurities,pieChartView: (cell?.chartView!)!)
+                        cell?.logo.image = UIImage(named: "shareholder")
+                    }
+                }
+            }
+            
             else if indexPath.row == 1 {
                 
                 if currencyFlag == "1" {
@@ -404,7 +408,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                     }
                 }
                 
-               else if currencyFlag == "22" {
+                else if currencyFlag == "22" {
                     
                     if (dquantities.count != 0)  {
                         cell?.title.text = "Securities" .localized()
@@ -478,15 +482,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             return cell!
   
         }
-        
-        ////          let data =  ownershapeAnlusis[indexPath.row]
-        ////          cell?.title.text = data.Main_Security_Cat_Desc
-        ////            customizeChart(dataPoints: categoryArray, values: yearArray.map{ Double($0) ?? 0.0 },pieChartView: (cell?.chartView!)!)
-        //
-        //            return cell!
-        //        }
-        
-        
     }
     
     
@@ -524,42 +519,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     }
     
     
-    
-    //    func customizeChart(dataPoints: [String], values: [Double],pieChartView:PieChartView) {
-    //
-    //      // 1. Set ChartDataEntry
-    //      var dataEntries: [ChartDataEntry] = []
-    //      for i in 0..<dataPoints.count {
-    //        let dataEntry = PieChartDataEntry(value: values[i], label: dataPoints[i], data: "" as AnyObject)
-    //        dataEntries.append(dataEntry)
-    //      }
-    //      // 2. Set ChartDataSet
-    //        let pieChartDataSet = PieChartDataSet(entries: dataEntries, label: "nil")
-    //      pieChartDataSet.colors = colorsOfCharts(numbersOfColor: dataPoints.count)
-    //      // 3. Set ChartData
-    //      let pieChartData = PieChartData(dataSet: pieChartDataSet)
-    //      let format = NumberFormatter()
-    //      format.numberStyle = .none
-    //      let formatter = DefaultValueFormatter(formatter: format)
-    //      pieChartData.setValueFormatter(formatter)
-    //      // 4. Assign it to the chart’s data
-    //      pieChartView.data = pieChartData
-    //    }
-    //
-    //    private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
-    //      var colors: [UIColor] = []
-    //      for _ in 0..<numbersOfColor {
-    //        let red = Double(arc4random_uniform(256))
-    //        let green = Double(arc4random_uniform(256))
-    //        let blue = Double(arc4random_uniform(256))
-    //        let color = UIColor(red: CGFloat(red/255), green: CGFloat(green/255), blue: CGFloat(blue/255), alpha: 1)
-    //        colors.append(color)
-    //      }
-    //      return colors
-    //    }
-    //
-    
-    
+   
     
     @IBAction func marketValue(_ sender: Any) {
         
@@ -1044,7 +1004,15 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                 let data  = jsonObj!["data"] as? [String:Any]
                                 
                                 let sysDate =     data!["sysDate"] as? String
+                                
+                                self.loginDay = self.getDayOfWeek(dateTimeString: sysDate ?? "")
+                                self.dayLogin.text = self.loginDay
+                                
                                 let lastUpdate =     data!["lastUpdate"] as? String
+                                                                
+                                self.updatedDay = self.getDayOfWeek(dateTimeString: lastUpdate ?? "")
+                                self.dayUpdate.text = self.updatedDay
+                                
                                 
                                 self.lastloginInfo.text  = sysDate
                                 self.lastUpdateInfo.text = lastUpdate
@@ -1237,6 +1205,32 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             }
         }
     }
+    
+    func getDayOfWeek(dateTimeString: String) -> String? {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        
+        // Get the app's preferred language
+        let preferredLanguage = Locale.preferredLanguages.first ?? "en"
+        
+        // Set the locale based on the preferred language
+        dateFormatter.locale = Locale(identifier: preferredLanguage)
+        
+        if let dateTime = dateFormatter.date(from: dateTimeString) {
+            let calendar = Calendar.current
+            let components = calendar.component(.weekday, from: dateTime)
+            
+            // Get the weekday symbols based on the app's language
+            let weekdaySymbols = dateFormatter.weekdaySymbols
+            
+            // Adjust the index to align with the weekday symbols array
+            let weekday = weekdaySymbols?[components - 1]
+            return weekday
+        } else {
+            return nil
+        }
+    }
+
     
     
 }
