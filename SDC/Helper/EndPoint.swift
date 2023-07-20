@@ -3,7 +3,7 @@ class APIConfig {
 
     
     static let BaseURL = "https://sdce5.blueraydev.com/api/"
-    
+    static let Phase2Url = "http://194.165.152.9/"
     static let Login = BaseURL  + "authentication/login"
     
     static let changePassword = BaseURL  + "investor_information/changePassword"
@@ -54,9 +54,15 @@ class APIConfig {
     static let GetAccountInvInfoPDF = BaseURL + "investor_information/getAccountInfoPdf"
     
     
-    static let GetAccountStatementPDF = BaseURL + "https://sdce5.blueraydev.com/api/investor_information/getSecurityDetailedTrans"
+    static let GetAccountStatementPDF = BaseURL + "investor_information/getSecurityDetailedTrans"
     
+    static let GetClintInf = BaseURL + "authentication/clientInfo"
     
+    static let RegesterInfo =  BaseURL + "authentication/register"
+    static let LoginA =  Phase2Url + "api/auth/login"
+
+    static let createUssr =  Phase2Url + "api/ninRequestWithSMS"
+
     static let encoding = JSONEncoding.default
     static let stringencoding = JSONEncoding.default
     static let encoding2 = URLEncoding.queryString

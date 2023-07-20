@@ -31,6 +31,7 @@ target 'SDC' do
   pod 'netfox', '~> 1.21.0'
   pod 'AlamofireNetworkActivityLogger', '~> 3.4'
 pod 'ImageSlideshow', '~> 1.9.0'
+pod 'OTPFieldView'
 
   target 'SDCTests' do
     inherit! :search_paths

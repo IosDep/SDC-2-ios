@@ -6,13 +6,31 @@
 //
 
 import UIKit
+import JGProgressHUD
+import  Alamofire
+import MOLH
 
 class IdentfairVC: UIViewController {
     @IBOutlet weak var idTxt: DesignableTextFeild!
     @IBOutlet weak var scroll: UIScrollView!
     
-    var accountDetails : AccountDetails?
+//    var accountDetails : AccountDetails?
     
+    
+    
+   static var name : String = ""
+    static var  phoneNum : String = ""
+    static var  email : String = ""
+    static var idNumber :String = ""
+    static  var documentType:String =  ""
+    static  var documentNumber :String = ""
+    static  var  expirDate:String = ""
+    static var familRegester:String = ""
+    static var barithDay:String = ""
+    
+
+    static var sessionId:String = ""
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -26,23 +44,90 @@ class IdentfairVC: UIViewController {
     }
 
     @IBAction func nextBtn(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-
-            
-            let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
-//        vc.accountDetails = AccountDetails(name: <#T##String#>, phoneNum: <#T##String#>, email: <#T##String#>)
-            vc.modalPresentationStyle = .fullScreen
-      
-            self.present(vc, animated: true)
-            
         
+        if self.idTxt.text?.count == 10
+             
+        {
+            self.regesterApiCall()
+            
+        }else {
+            self.showErrorHud(msg: "الرقم المدخل غير صحيح")
+        }
         
         
     }
+    func regesterApiCall(){
+        //
+        let hud = JGProgressHUD(style: .light)
+        //        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+        
+        let param : [String:Any] = ["userName" : self.idTxt.text ?? ""
+        ]
+        
+        let link = URL(string: APIConfig.RegesterInfo)
+        
+        AF.request(link!, method: .post, parameters: param,headers: NetworkService().requestHeaders()).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                    
+                    
+                    if jsonObj != nil {
+                        if let status = jsonObj!["status"] as? Int {
+                            if status == 200 {
+                                
+                                let message = jsonObj!["message"] as? String
+
+                                self.showSuccessHud(msg: message ?? "" , hud: hud)
+                                
+                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                IdentfairVC.idNumber = self.idTxt.text ?? ""
+                                
+                                let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
+                                
+                                
+                                
+                                vc.modalPresentationStyle = .fullScreen
+                                
+                                self.present(vc, animated: true)
+                                
+                            }
+                            //                             Session ID is Expired
+                            else if status == 400{
+                                let message = jsonObj!["message"] as? String
+                                self.showErrorHud(msg: message ?? "")
+                                //                                self.seassionExpired(msg: msg ?? "")
+                            }else if status == 404
+                            {
+                                let message = jsonObj!["message"] as? String
+                                self.showErrorHud(msg: message ?? "" )
+
+                                
+                            }
+                            
+                            
+                            //                                other Wise Problem
+                            else {
+                                hud.dismiss(animated: true)      }
+                        }
+                        
+                    }
+                    
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    
+                }
+            } else {
+                print("Error")
+                self.serverError(hud: hud)
+                
+            }
+        }
+    }
+    
+    
 }
 
-struct AccountDetails {
-    var name : String
-    var  phoneNum : String
-    var  email : String
-}
+
