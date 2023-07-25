@@ -52,7 +52,7 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
             
             self.flag = "1"
             recoveryBtn.setTitle(maskEmail(email: selectdTxt), for: .normal)
-            recoveryTextField.placeholder = "Email"
+            recoveryTextField.placeholder = "Email".localized()
             recoveryTextField.keyboardType = .emailAddress
         }
         
@@ -60,12 +60,27 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
             
             self.flag = "2"
             recoveryBtn.setTitle(maskPhoneNumber(phoneNumber: selectdTxt), for: .normal)
-            recoveryTextField.placeholder = "Mobile Number"
+            recoveryTextField.placeholder = "Mobile Number".localized()
             recoveryTextField.keyboardType = .numberPad
         }
         
     }
     
+//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+//        
+//        if flag == "2" {
+//            
+//            if let text = textField.text, let textRange = Range(range, in: text) {
+//                let updatedText = text.replacingCharacters(in: textRange, with: string)
+//                
+//                return updatedText.count <= 9
+//            }
+//            
+//        }
+//       
+//           return true
+//       }
+//    
     
     
     @IBAction func nextPressed(_ sender: Any) {
@@ -133,14 +148,15 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     
                                     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                                     let vc = storyBoard.instantiateViewController(withIdentifier: "PopUpOTP") as! PopUpOTP
-                                    vc.otp = self.otp
-                                    vc.uniqueID = uniqueId
                                     
+                                    vc.forgetCreate = true
+                                    vc.uniqueID = uniqueId
                                     print("HHHH",self.uniqueID)
                                     print(self.uniqueID)
                                     print(self.uniqueID)
         
                                     vc.recoveryField = email
+                                    
                                     vc.flag = self.flag
                                     vc.username = self.username
                                     vc.email = self.email
@@ -221,8 +237,9 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     
                                     let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                                     let vc = storyBoard.instantiateViewController(withIdentifier: "PopUpOTP") as! PopUpOTP
+                                    
                                     vc.otp = self.otp
-                                   
+                                    
 
                                     vc.uniqueID = uniqueId ?? "NO UNIaqyeID"
                                     vc.flag = self.flag
@@ -230,7 +247,6 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     vc.username = self.username
                                     vc.email = self.email
                                     vc.mobileNum = self.mobileNum
-                                    
                                     self.present(vc, animated: true)
                                     
                                     hud.dismiss()

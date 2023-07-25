@@ -133,8 +133,6 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     @IBAction func searchPressed(_ sender: Any) {
         self.isSearching = true
-        isSearching = false
-        didPullToRefresh()
         busnissCard.reloadData()
     }
     

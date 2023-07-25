@@ -129,6 +129,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
 
         
         activityIndicator = UIActivityIndicatorView()
+        activityIndicator.tintColor = .black
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
 
@@ -138,7 +139,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
         } else {
 //             Fallback on earlier versions
         }
-        activityIndicator.color = .red
+        activityIndicator.color = .darkGray
         activityIndicator.isHidden = true
 
         view.addSubview(activityIndicator)

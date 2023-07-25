@@ -243,9 +243,9 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         return cell!
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 180
-//    }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 420
+    }
     
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {

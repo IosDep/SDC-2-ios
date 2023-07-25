@@ -42,6 +42,8 @@
 		3F9258952A6560A700E23B13 /* AccountRecovery.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258942A6560A700E23B13 /* AccountRecovery.swift */; };
 		3F9258972A6561EC00E23B13 /* AccountRecoveryPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */; };
 		3F9258992A65ED6400E23B13 /* CreatePassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9258982A65ED6400E23B13 /* CreatePassword.swift */; };
+		3F93411A2A7086E000A826AD /* ApplicationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F9341192A7086DF00A826AD /* ApplicationData.swift */; };
+		3F93411C2A70884E00A826AD /* SecuredStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F93411B2A70884E00A826AD /* SecuredStore.swift */; };
 		3FA51A4029F7E20300F19975 /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FA51A3F29F7E20200F19975 /* Notification.swift */; };
 		3FAAB7272A0106B200DCFDA5 /* PickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */; };
 		3FAAB72A2A01079300DCFDA5 /* PickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FAAB7282A01079300DCFDA5 /* PickerCell.swift */; };
@@ -189,6 +191,9 @@
 		3F9258942A6560A700E23B13 /* AccountRecovery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRecovery.swift; sourceTree = "<group>"; };
 		3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountRecoveryPopUp.swift; sourceTree = "<group>"; };
 		3F9258982A65ED6400E23B13 /* CreatePassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatePassword.swift; sourceTree = "<group>"; };
+		3F9341182A6FF00F00A826AD /* SDC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SDC.entitlements; sourceTree = "<group>"; };
+		3F9341192A7086DF00A826AD /* ApplicationData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationData.swift; sourceTree = "<group>"; };
+		3F93411B2A70884E00A826AD /* SecuredStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecuredStore.swift; sourceTree = "<group>"; };
 		3FA51A3F29F7E20200F19975 /* Notification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 		3FAAB7262A0106B200DCFDA5 /* PickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerVC.swift; sourceTree = "<group>"; };
 		3FAAB7282A01079300DCFDA5 /* PickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerCell.swift; sourceTree = "<group>"; };
@@ -341,6 +346,8 @@
 				3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */,
 				3F8D55722A4433A800AD075F /* CurrencyPicker.swift */,
 				3F9258962A6561EC00E23B13 /* AccountRecoveryPopUp.swift */,
+				3F9341192A7086DF00A826AD /* ApplicationData.swift */,
+				3F93411B2A70884E00A826AD /* SecuredStore.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -383,6 +390,7 @@
 		8734D282295C32570044B0F7 /* SDC */ = {
 			isa = PBXGroup;
 			children = (
+				3F9341182A6FF00F00A826AD /* SDC.entitlements */,
 				8728D9E329E9D6C600133096 /* CardDetails */,
 				871181BD29E2D04200F14C5C /* Localize */,
 				87D3E9BB29DAA7D2006B6AA7 /* Model */,
@@ -854,6 +862,7 @@
 				8761E54729DC4D6200CB72B5 /* AccountListModel.swift in Sources */,
 				8748CB46299020D400E9AE81 /* SignUpVC.swift in Sources */,
 				3F91502D2A40E45600BE3FC0 /* PieChartPopUp.swift in Sources */,
+				3F93411C2A70884E00A826AD /* SecuredStore.swift in Sources */,
 				3F11041B2A652B9B0086CABA /* TotalHeaderView.swift in Sources */,
 				3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */,
 				3F11040B2A601C160086CABA /* PDFViewerVC.swift in Sources */,
@@ -932,6 +941,7 @@
 				87B89AE129CFD6B900E82C1E /* ForgetPassword.swift in Sources */,
 				87D5A4AB29DEEFBB00F78DBE /* TradeAnlysis.swift in Sources */,
 				8737879629E1FA0400D73972 /* WebVcContent.swift in Sources */,
+				3F93411A2A7086E000A826AD /* ApplicationData.swift in Sources */,
 				876758AA29C75935000F3CBC /* BusnissCardTable.swift in Sources */,
 				3F7A0BBF2A386BE3006DCBC5 /* InvestorInfoModel.swift in Sources */,
 				3F9258952A6560A700E23B13 /* AccountRecovery.swift in Sources */,
@@ -1125,6 +1135,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SDC/SDC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RDL9PQKYU9;
@@ -1155,6 +1166,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = SDC/SDC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = RDL9PQKYU9;
@@ -1187,7 +1199,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = RDL9PQKYU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -1208,7 +1220,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = RDL9PQKYU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MARKETING_VERSION = 1.0;
@@ -1228,7 +1240,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = RDL9PQKYU9;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = Blueray.SDCUITests;

@@ -92,17 +92,32 @@ class CreatePassword: UIViewController {
                                                         
                                 if let status = jsonObj!["status"] as? Int {
                                 
-                                    if status == 200 {
+                                if status == 200 {
+                                        
+                if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
+//                                        Helper.shared.saveBiometricPass(pass: self.newPasswordField.text ?? "")
+                                        
+                    if let user = ApplicationData.shared.getAccountsList()?.first {
+                                                    
+                    ApplicationData.shared.updateAccount(with: Account(userName: user.userName, password: newPasswordField.text ?? ""))
+                                        
+                                    }
                                         
                         if  let data = jsonObj!["data"] as? String {
                             
                                             
-                            DispatchQueue.main.async {
-                                self.showErrorHud(msg: data, hud: hud)
-                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                                let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC") as! WelcomePageVC
-                                    self.present(vc, animated: true)
-                            
+                DispatchQueue.main.async {
+                self.showSuccessHud(msg: data, hud: hud)
+                                
+                self.dismiss(animated: true , completion: {
+                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                                                
+                let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC") as! WelcomePageVC
+                                            vc.modalPresentationStyle = .overCurrentContext
+                                                                
+                                            self.present(vc, animated: true , completion: nil)
+                                            
+                                        })
                                                 
                                             }
                                         }

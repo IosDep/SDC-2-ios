@@ -9,7 +9,7 @@ import Foundation
 class LastTransaction {
     
     
-    var Trans_No, Trans_Date, Trade_Time , Effictive_Date,Settlement_Date ,Security_Id,Member_No,Member_Name,Account_No,Price,Quantity,Post_Date,Security_Name , Account_Type , Client_No , Trans_Maj_Code_Desc , Trans_Min_Code_Desc , Rel_Trans_No , Security_Reuter_Code : String?
+    var Trans_No, Trans_Date, Trade_Time , Effictive_Date,Settlement_Date ,Security_Id,Member_No,Member_Name,Account_No,Price,Quantity,Post_Date,Security_Name , Account_Type , Client_No , Trans_Maj_Code_Desc , Trans_Min_Code_Desc , Rel_Trans_No , Security_Reuter_Code , Min_Code , Trade_Currency : String?
     
     var Market_Value : String?
     
@@ -19,6 +19,16 @@ class LastTransaction {
         if let Trans_No = data["Trans_No"] as? String {
             self.Trans_No = Trans_No
         }
+        
+        if let Trade_Currency = data["Trade_Currency"] as? String {
+            self.Trade_Currency = Trade_Currency
+        }
+        
+        
+        if let Min_Code = data["Min_Code"] as? String {
+            self.Min_Code = Min_Code
+        }
+        
         if let Post_Date = data["Post_Date"] as? String {
             self.Post_Date = Post_Date
         }

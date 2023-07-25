@@ -15,7 +15,7 @@
 "investor's ownership of a new security" = "ملكية المستثمر لورقة مالية واحدة" ;
 "account settings" = "اعدادات الحساب" ;
 "Last Transactions" = " آخر الحركات" ;
-"Ownership analysis by sector" = " تحليل الملكية حسب الفئة" ;
+"Ownership analysis by sector" = " تحليل الملكية حسب القطاع" ;
 "Dinar" = "دينار" ;
 "Dollar" = "دولار" ;
 "trading value" = "قيمة التداول" ;
@@ -130,7 +130,7 @@
 "Without zeros" = "بدون أصفار" ;
 "Account" = "الحساب" ;
 "last login was at 19:13" = "آخر تسجيل دخول " ;
-"  Ownership analysis by sector" = "تحليل الملكية حسب الفئة" ;
+"  Ownership analysis by sector" = "تحليل الملكية حسب القطاع" ;
 "Investor Ownership" = "ملكية المستثمر" ;
 "Account Ownership" = "ملكية الحساب" ;
 "Investor Information" = "بيانات المستثمر" ;
@@ -296,7 +296,7 @@
 "Member Name" = "اسم العضو";
 "Company" = "الشركة";
 "Transaction Type" = "نوع التحويل";
-"Action Type" = "نوعل الحركة";
+"Action Type" = "نوع الحركة";
 "Before Action" = "قبل الحركة";
 "After Action" = "بعد الحركة";
 
@@ -345,3 +345,13 @@
 "A message containing OTP code were sent to the Mobile" = "تم إرسال OTP إالى الهاتف";
 "Please fill all required fields" = "الرجاء تعبئة جميع الحقول المطلوبة";
 "Resend code" = "إعادة إرسال PIN";
+"Email" = "البريد الإلكتروني";
+"Mobile Number" = "رقم الموبايل";
+"Change Password" = "تغيير كلمة المرور";
+"Identity Card" = "بطاقة أحوال مدنية";
+"Passport" = "جواز سفر";
+
+"Create Password" = "إنشاء كلمة مرور جديدة";
+"time remaining" = "الوقت المتبقي";
+"Full name" = "الإسم الكامل";
+"Birth Date"="تاريخ الميلاد";

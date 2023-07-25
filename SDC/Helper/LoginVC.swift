@@ -15,9 +15,12 @@ class LoginVC: UIViewController {
     @IBOutlet weak var userName: UITextField!
     @IBOutlet weak var password: UITextField!
     
+    @IBOutlet weak var loginImage: UIImageView!
     @IBOutlet weak var remmbermeimg: UIImageView!
     var checkOldPassword : Bool?
     var AgreeIconClick : Bool! = false
+    static var username : String?
+    static var pass : String?
 
     
     override func viewDidLoad() {
@@ -35,6 +38,9 @@ class LoginVC: UIViewController {
          // Set values
                   self.userName.text = UserDefaults.standard.string(forKey: "userMail") ?? ""
                   self.password.text = UserDefaults.standard.string(forKey: "userPassword") ?? ""
+            
+            
+            
 
          }else{
 
@@ -47,12 +53,13 @@ class LoginVC: UIViewController {
         }
         
 #if DEBUG
-        
+
         userName.text = "9651010730"
         password.text = "BlueRay@123455"
 #endif
         
-        
+        self.loginImage.sd_setImage(with: URL(string: WelcomePageVC.loginImage ?? ""))
+
     }
     
  
@@ -89,6 +96,13 @@ class LoginVC: UIViewController {
              self.remmbermeimg.image = image
                 self.remmbermeimg.tintColor = UIColor.init(named: "AccentColor")
              UserDefaults.standard.set("1", forKey: "rememberMe")
+                
+//                if Helper.shared.saveToKeychain(username: userName.text ?? "" , password: password.text ?? "") {
+//                    print("Username and password saved to Keychain.")
+//                } else {
+//                    print("Failed to save to Keychain.")
+//                }
+                
              UserDefaults.standard.set(userName.text ?? "" , forKey: "userMail")
              UserDefaults.standard.set(password.text ?? "", forKey: "userPassword")
 
@@ -143,9 +157,16 @@ class LoginVC: UIViewController {
                                 
                                
                                 if status == true {
+                                    
+                                    LoginVC.username = email ?? ""
+                                    LoginVC.pass = password ?? ""
+                                    
                                      let message = jsonObj!["errNum1"] as? String
                                     
                                     let user_data = jsonObj!["user_data"] as? [String:Any]
+                                    
+    
+                                        
                                     
                                     Helper.shared.saveToken(auth: user_data!["access_token"] as? String ?? "")
                                     Helper.shared.SaveSeassionId(seassionId: user_data!["sessionId"] as? String ?? "")

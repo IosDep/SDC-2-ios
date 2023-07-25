@@ -85,12 +85,12 @@ class CardOneVC: UIViewController {
             thirdLabel.text = "Account No.".localized()
             
             
-            currantBalance.text =  securityOwnership?.Quantity_Owned ?? ""
-            freeBalance.text =  securityOwnership?.Quantity_Avilable ?? ""
-            bledgedBalance.text =  securityOwnership?.Quantity_Pledge ?? ""
-            reservedBalacnce.text =  securityOwnership?.Quantity_Freezed ?? ""
+            currantBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Owned ?? "")
+            freeBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Avilable ?? "")
+            bledgedBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Pledge ?? "")
+            reservedBalacnce.text =  self.numStringFormat(value: securityOwnership?.Quantity_Freezed ?? "")
             
-            nonCurranncyBalance.text =  securityOwnership?.Quantity_Unlisted ?? ""
+            nonCurranncyBalance.text = self.numStringFormat(value: securityOwnership?.Quantity_Unlisted ?? "")
             
             pendingBuy.text =  securityOwnership?.Pending_In ?? ""
             pendeingSell.text =  securityOwnership?.Pending_Out ?? ""
@@ -120,11 +120,17 @@ class CardOneVC: UIViewController {
             aditionalView1.isHidden = true
             
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
-            currantBalance.text =  invAccount?.Quantity_Owned ?? ""
-            freeBalance.text =  invAccount?.Quantity_Avilable ?? ""
-            bledgedBalance.text =  invAccount?.Quantity_Pledge ?? ""
-            reservedBalacnce.text =  invAccount?.Quantity_Freezed ?? ""
-            nonCurranncyBalance.text =  invAccount?.Quantity_Unlisted ?? ""
+            
+            currantBalance.text =  self.numStringFormat(value: invAccount?.Quantity_Owned ?? "")
+            
+            freeBalance.text = self.numStringFormat(value: invAccount?.Quantity_Avilable ?? "")
+            
+            bledgedBalance.text =  self.numStringFormat(value: invAccount?.Quantity_Pledge ?? "")
+            
+            reservedBalacnce.text =  self.numStringFormat(value: invAccount?.Quantity_Freezed ?? "")
+            
+            nonCurranncyBalance.text = self.numStringFormat(value: invAccount?.Quantity_Unlisted ?? "")
+            
             sectorName.text = invAccount?.Security_Sector_Desc
             
             pendingBuy.text =  invAccount?.Pending_In ?? ""

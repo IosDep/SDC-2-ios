@@ -31,6 +31,10 @@ class APIConfig {
 
     static let GetNotfication = BaseURL  + "investor_information/getNotifications"
     
+    static let GetLoginToken = Phase2Url  + "sdc-api-eservice/api/auth/login"
+    
+    
+    
     static let GetAccountOwnerShpe = BaseURL  + "investor_information/getAccountOwnership"
     
     static let GetAccountOwnerShpePDF = BaseURL  + "investor_information/getAccountOwnershipPdf"
@@ -69,7 +73,13 @@ class APIConfig {
     
     static let GetSliderImages = BaseURL + "investor_information/getSliders"
     
-        
+    static let GetMobileLayouts = BaseURL + "investor_information/getMobileLayouts"
+    
+    static let RegesterInfo =  BaseURL + "authentication/register"
+    
+    static let createUssr =  Phase2Url + "sdc-api-eservice/api/ninRequestWithSMS"
+    
+    static let GetClintInf = BaseURL + "authentication/clientInfo"
     
     static let encoding = JSONEncoding.default
     static let stringencoding = JSONEncoding.default

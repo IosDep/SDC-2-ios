@@ -65,11 +65,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         self.getAccountList()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
         
-        //        let currentDate = Date()
-        //                let calendar = Calendar.current
-        //                let oneMonthLater = calendar.date(byAdding: .month, value: 1, to: currentDate)
-        //                let oneMonthAgo = calendar.date(byAdding: .month, value: -1, to: currentDate)
-        //
+     
         datePicker.datePickerMode = .date
         datePicker.date = Date() // Set an initial date if needed
         
@@ -87,26 +83,9 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
         
         
-        //        datePicker.datePickerMode = .date
-        //        datePicker.minimumDate = oneMonthAgo
-        //        datePicker.maximumDate = oneMonthLater
-        //        datePicker2.datePickerMode = .date
-        //        datePicker2.minimumDate = oneMonthAgo
-        //        datePicker2.maximumDate = oneMonthLater
-        
-        
-        
     }
     
     
-    //    @IBAction func withZeero(btn:UIButton){
-    //
-    //        withZeroFlag = "1"
-    //        isZeroSelected = true
-    //        isWithoutSelected = false
-    //        highlightedButtons()
-    //
-    //    }
     
     //function for change background selected background color for with and without zero btn
     
@@ -174,13 +153,10 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             
         } else if flag == "1" {
             self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
-//            nameStack.isHidden = false
             self.accountNo = selectdTxt
         }
         
         else if flag == "2" {
-//            datePicker.isHidden = false
-//            fromDate.isHidden = false
             self.secutrtyNameBtn.setTitle(selectdTxt, for: .normal)
             
         }else {
@@ -289,8 +265,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         self.toDateString = dateFormatter.string(from: selectedDate)
         //        searchBtn.isHidden = false
         
-        
-        
     }
     
     
@@ -314,23 +288,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                     let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
                     
                     if jsonObj != nil {
+                       
+                        
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-                                //                                if let data = jsonObj!["data"] as? [[String: Any]]{
-                                //                                            for item in data {
-                                //                                                let model = InvestoreOwnerShape(data: item)
-                                //                                                self.invAccount.append(model)
-                                //                                                self.securityName.append(model.Security_Name!)
-                                //                                                self.numberCode.append(model.Security_Reuter_Code!)
-                                //
-                                //                                            }
-                                //
-                                //                                            DispatchQueue.main.async {
-                                //                                                hud.dismiss()
-                                //
-                                //
-                                //                                            }
-                                //                                        }
+                                
                                 
                                 if let partialData = jsonObj!["partialData"] as? [[String: Any]]{
                                     
@@ -365,6 +327,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                             //                                other Wise Problem
                             else {
                                 hud.dismiss(animated: true)      }
+                            
+                            
                             
                             
                         }
@@ -413,6 +377,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                     if jsonObj != nil {
                         
                         if let status = jsonObj!["status"] as? Int {
+
+
                             if status == 200 {
                                 
                                 
@@ -595,11 +561,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
         
         let param : [String:Any] = ["sessionId" : Helper.shared.getUserSeassion() ?? "","lang": MOLHLanguage.isRTLLanguage() ? "ar": "en" ,
-                                    "memberId" : memberID ,
-                                    "accountNo" : accountNo ,
-                                    "fromDate" : fromDateString ,
-                                    "toDate" : toDateString ,
-                                    "securityId" : securityID
+                                    "memberId" : memberID ?? "" ,
+                                    "accountNo" : accountNo  ?? "",
+                                    "fromDate" : fromDateString  ?? "",
+                                    "toDate" : toDateString  ?? "",
+                                    "securityId" : securityID ?? ""
         ]
         
         let link = URL(string: APIConfig.GetAccountStatementPDF)
@@ -613,9 +579,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                     if jsonObj != nil {
                         
                         
-                        
                         if let status = jsonObj!["status"] as? Int {
-                            if status == 200 {
+                            if response.response?.statusCode == 200 {
                                 if let data = jsonObj!["data"] as? [String: Any]{
                                     let urlString = data["file"] as? String
                                     
@@ -639,25 +604,15 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                                 self.showErrorHud(msg: msg ?? "", hud: hud)
                                 
                             }
-                            
-                            
-                            
-                            
                         }
                     }
                     
                 } catch let err as NSError {
                     print("Error: \(err)")
-                    //                    self.serverError(hud: hud)
-                    //                    self.refreshControl.endRefreshing()
-                    
                 }
             } else {
                 print("Error")
-                
-                //                self.serverError(hud: hud)
-                //                self.refreshControl.endRefreshing()
-                
+              
                 
             }
         }

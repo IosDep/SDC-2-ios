@@ -15,6 +15,7 @@ import Alamofire
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
     
     
+    @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var dayLogin: UILabel!
     @IBOutlet weak var dayUpdate: UILabel!
     @IBOutlet weak var lastUpdateInfo: UILabel!
@@ -134,6 +135,9 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        homeImage.sd_setImage(with: URL(string: WelcomePageVC.homeImage ?? ""))
+        
         self.busnissCard.tag = 1
         self.anlyssSection.tag = 2
         currencyFlag = "1"
@@ -1006,16 +1010,16 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                 let sysDate =     data!["sysDate"] as? String
                                 
                                 self.loginDay = self.getDayOfWeek(dateTimeString: sysDate ?? "")
-                                self.dayLogin.text = self.loginDay
+                               
                                 
                                 let lastUpdate =     data!["lastUpdate"] as? String
                                                                 
                                 self.updatedDay = self.getDayOfWeek(dateTimeString: lastUpdate ?? "")
-                                self.dayUpdate.text = self.updatedDay
                                 
                                 
-                                self.lastloginInfo.text  = sysDate
-                                self.lastUpdateInfo.text = lastUpdate
+                                self.lastloginInfo.text  = ((self.loginDay ?? "") + " " + (sysDate ?? ""))
+                                self.lastUpdateInfo.text = ((self.updatedDay ?? "") + " " + (lastUpdate ?? "") )
+                                
                                 
                             }
                             //                             Session ID is Expired
@@ -1157,7 +1161,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                     if jsonObj != nil {
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                if let data = jsonObj!["notifications"] as? [[String: Any]]{
                                             for item in data {
                                                 let model = NotificationModel(data: item)
                                                 self.notifications.append(model)

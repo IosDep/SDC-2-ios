@@ -17,6 +17,7 @@ class CardThereVc: UIViewController {
     @IBOutlet weak var secondStack: UIStackView!
     @IBOutlet weak var thirdStack: UIStackView!
     
+    @IBOutlet weak var currency: UILabel!
     
     @IBOutlet weak var transactionNumber: UILabel!
     @IBOutlet weak var firstStack: UIStackView!
@@ -48,26 +49,34 @@ class CardThereVc: UIViewController {
         mainStack.isLayoutMarginsRelativeArrangement = true
         
         
+        if trans?.Trade_Currency == "1" {
+            currency.text = "JOD".localized()
+        }
+        
+        else if trans?.Trade_Currency == "22" {
+            
+            currency.text = "USD".localized()
+
+        }
         // trans type
         
-        transactionNumber.text =   trans?.Trans_Min_Code_Desc ?? ""
+        if trans?.Min_Code == "1" {
+            transactionNumber.textColor = UIColor(named: "AccentColor")
+        }
         
+        else if trans?.Min_Code == "2" {
+            transactionNumber.textColor = .red
+        }
+        transactionNumber.text =   trans?.Trans_Min_Code_Desc ?? ""
         
         // trans?.Trans_Date ?? ""
         transactionDate.text =   self.convertedDate(dateString: trans?.Trans_Date ?? "")
         
-    
-        
         securityID.text = trans?.Security_Reuter_Code ?? ""
-        
-        
         securityName.text = trans?.Security_Name ?? ""
         memberName.text = trans?.Member_Name ?? ""
-        
         accountID.text =  trans?.Account_No ?? ""
-        
         quantity.text =  trans?.Quantity ?? ""
-        
         price.text = trans?.Price ?? ""
         
         marketValue.text = self.numStringFormat(value: trans?.Market_Value ?? "")

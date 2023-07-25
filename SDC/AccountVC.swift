@@ -31,19 +31,6 @@ class AccountVC: UIViewController {
         else if sender.isOn == false {
                disableBiometricAuthentication()
            }
-        
-    
-//        if Helper.shared.getBiometricFlag() == true {
-//            Helper.shared.saveBiometricFlag(flag: false)
-//
-//        }
-//
-//        else {
-//            // enrolled ?
-//            self.authenticateWithFaceID()
-//            Helper.shared.saveBiometricFlag(flag: true)
-//        }
-//
     }
     
     @IBOutlet weak var scroll: UIScrollView!
@@ -175,7 +162,12 @@ class AccountVC: UIViewController {
     
     
     func enableBiometricAuthentication() {
+
         
+//        Helper.shared.saveBiometricUsername(username: LoginVC.username ?? "")
+//
+//        Helper.shared.saveBiometricPass(pass: LoginVC.pass ?? "")
+//
     let context = LAContext()
     var error: NSError?
         if context.canEvaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
@@ -191,10 +183,11 @@ class AccountVC: UIViewController {
                 print("DONEEE")
                     
                 UserDefaults.standard.set(true, forKey: "biometricAuthenticationEnabled")
+                    ApplicationData.shared.setAccount(with: Account(userName: LoginVC.username ?? "", password: LoginVC.pass ?? ""))
                                 
                             } else {
                                 DispatchQueue.main.async {
-                                    // Set the switch button back to its previous state
+                                    
                                     self?.biometricSwitch.setOn(false, animated: true)
                                 }
         
@@ -207,34 +200,13 @@ class AccountVC: UIViewController {
                                print("Biometric authentication not available: \(error.localizedDescription)")
                            }
                 }
-        
-        
-//        let context = LAContext()
-//        var error: NSError?
-//
-//        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
-//            // Biometric authentication is available
-//            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Identify yourself!") { (success, error) in
-//                if success {
-                    // Biometric authentication successful
-                    // Store the preference in your app's settings
-//                    UserDefaults.standard.set(true, forKey: "biometricAuthenticationEnabled")
-//                } else {
-//                    // Biometric authentication failed or user canceled
-//                    DispatchQueue.main.async {
-//                        // Set the switch button back to its previous state
-//                        self.biometricSwitch.setOn(false, animated: true)
-//                    }
-//                }
-//            }
-//        } else {
-//            // Biometric authentication is not available
-//            // Show an appropriate error or fallback to another authentication method
-//        }
     }
     
     func disableBiometricAuthentication() {
-        // Remove the preference from your app's settings
+        if let user = ApplicationData.shared.getAccountsList()?.first {
+            ApplicationData.shared.removeAccount(user)
+//            ApplicationData.shared.updateAccount(with: Account(userName: user.userName, password: ""))
+        }
         UserDefaults.standard.removeObject(forKey: "biometricAuthenticationEnabled")
     }
 

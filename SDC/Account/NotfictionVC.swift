@@ -92,7 +92,7 @@ class NotfictionVC: UIViewController,UITableViewDataSource,UITableViewDelegate {
                     if jsonObj != nil {
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                if let data = jsonObj!["notifications"] as? [[String: Any]]{
                                             for item in data {
                                                 let model = NotificationModel(data: item)
                                                 self.notifications.append(model)

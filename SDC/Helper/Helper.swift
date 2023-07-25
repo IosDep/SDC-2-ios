@@ -1,9 +1,11 @@
 import Foundation
+import Security
 
 
 final class Helper {
     static let shared = Helper()
-    
+    let storingDataKey = "Blueray.SDC"
+
     
     
     func saveAppLang(lang:String)
@@ -141,6 +143,73 @@ final class Helper {
     func getBiometricFlag()-> Bool?{
         let def = UserDefaults.standard
         return def.object(forKey: "biometricFlag") as? Bool
+    }
+    
+    func saveBiometricUsername(username:String)
+    {
+        let def = UserDefaults.standard
+        def.setValue(username, forKey: "BiometricUsername")
+        def.synchronize()
+    }
+    
+    func getBiometricUsername()-> String?{
+        let def = UserDefaults.standard
+        return def.object(forKey: "BiometricUsername") as? String
+    }
+    
+    func saveBiometricPass(pass:String)
+    {
+        let def = UserDefaults.standard
+        def.setValue(pass, forKey: "BiometricPass")
+        def.synchronize()
+    }
+    
+    func getBiometricPass()-> String?{
+        let def = UserDefaults.standard
+        return def.object(forKey: "BiometricPass") as? String
+    }
+    
+    
+    
+    func saveToKeychain(username: String, password: String) -> Bool {
+        if let data = password.data(using: .utf8) {
+            let query: [String: Any] = [
+                kSecClass as String: kSecClassInternetPassword,
+                kSecAttrAccount as String: username,
+                kSecValueData as String: data,
+                kSecAttrAccessible as String: kSecAttrAccessibleWhenUnlocked
+            ]
+
+            SecItemDelete(query as CFDictionary)
+
+            let status = SecItemAdd(query as CFDictionary, nil)
+            print("Save status: \(status)")
+            return status == errSecSuccess
+        }
+        return false
+    }
+
+    func retrieveFromKeychain(username: String) -> String? {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassInternetPassword,
+            kSecAttrAccount as String: username,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+
+        var result: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &result)
+        
+        print("Retrieve status: \(status)")
+
+        if status == errSecSuccess {
+            if let data = result as? Data, let password = String(data: data, encoding: .utf8) {
+                print("Retrieved password: \(password)")
+                return password
+            }
+        }
+
+        return nil
     }
     
     

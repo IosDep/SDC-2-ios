@@ -12,6 +12,7 @@ target 'SDC' do
   pod 'MOLH'
   pod 'SDWebImage', '~> 5.0'
   pod 'CHTCollectionViewWaterfallLayout'
+pod 'OTPFieldView'
 
 
   pod 'Firebase/Analytics'

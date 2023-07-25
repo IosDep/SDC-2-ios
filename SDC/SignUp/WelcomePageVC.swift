@@ -10,6 +10,8 @@ import LocalAuthentication
 import ImageSlideshow
 import Alamofire
 import SDWebImage
+import JGProgressHUD
+import MOLH
 
 class WelcomePageVC: UIViewController {
     @IBOutlet weak var SignUpButton:UIButton!
@@ -18,12 +20,17 @@ class WelcomePageVC: UIViewController {
     
     var urls : [URL] = []
     var imageSources: [SDWebImageSource] = []
+    static var homeImage : String?
+    static var loginImage : String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         //        self.SignUpButton.layer.borderColor = UIColor.init(rgb: 0x4CC18B).cgColor
         self.SignUpButton.layer.borderWidth = 1
-        self.getSliderImages()
+        self.configureSlideShow()
+        self.getMobileLayouts()
+
     }
     
     @IBAction func signIn(_ sender:UIButton){
@@ -60,11 +67,15 @@ class WelcomePageVC: UIViewController {
                 let reason = "Identify yourself!"
                 context.evaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
                                         localizedReason: reason) { [weak self] success,
-                    authenticationError in
-                    DispatchQueue.main.async {
-                        if success {
-                            print("DONEEE")
-                            self?.gooingToHome()
+                      authenticationError in
+                  DispatchQueue.main.async {
+        
+        
+            if success {
+                if let user = ApplicationData.shared.getAccountsList()?.first {
+                    self?.LoginRequest(username: user.userName, password: user.password)
+                }
+//                self?.gooingToHome()
                         } else {
                             let ac = UIAlertController(title: "Authenticationfailed", message: "You could not be verified; please try again.", preferredStyle: .alert)
                             ac.addAction (UIAlertAction(title: "OK".localized(), style: .default))
@@ -75,7 +86,7 @@ class WelcomePageVC: UIViewController {
                 }
             }else{
                 let ac = UIAlertController(title: "Biometry unavailable", message:
-                                            "Your device is not configured for biometric authentication.",
+                                            "Your device is not configured for biometric authentication.".localized(),
                                            preferredStyle: .alert)
                 ac.addAction (UIAlertAction(title: "OK".localized(), style: .default))
                 present (ac, animated: true)
@@ -93,43 +104,7 @@ class WelcomePageVC: UIViewController {
             present (ac, animated: true)
         }
         
-        
-                    
-        
-//        if isFaceIDEnabled {
-//                authenticateWithFaceID()
-//            } else {
-//
-//            }
-        
-//        let context = LAContext()
-//        var error: NSError?
-//        if context.canEvaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
-//                                      error: &error) {
-//            let reason = "Identify yourself!"
-//            context.evaluatePolicy (.deviceOwnerAuthenticationWithBiometrics,
-//                                    localizedReason: reason) { [weak self] success,
-//                authenticationError in
-//                DispatchQueue.main.async {
-//                    if success {
-//                        print("DONEEE")
-                        //                        self?.unlockSecretMessage()
-//                        self?.gooingToHome()
-//                    } else {
-//                        let ac = UIAlertController(title: "Authenticationfailed", message: "You could not be verified; please try again.", preferredStyle: .alert)
-//                        ac.addAction (UIAlertAction(title: "OK", style: .default))
-//                        self?.present(ac, animated: true)
-//
-//                    }
-//                }
-//            }
-//        }else{
-//            let ac = UIAlertController(title: "Biometry unavailable", message:
-//                                        "Your device is not configured for biometric authentication.",
-//                                       preferredStyle: .alert)
-//            ac.addAction (UIAlertAction(title: "OK", style: .default))
-//            present (ac, animated: true)
-//        }
+
         
     }
     
@@ -141,17 +116,104 @@ class WelcomePageVC: UIViewController {
     
     func configureSlideShow() {
         
-        slideShow.setImageInputs(imageSources)
+        slideShow.setImageInputs(AppDelegate.imageSources)
         
         slideShow.slideshowInterval = 2
         
     }
     
+    // Helper.shared.getBiometricUsername() ?? ""
     
-    func getSliderImages(){
+    func LoginRequest(username: String, password: String) {
+
+        let hud = JGProgressHUD(style: .light)
+        hud.textLabel.text = "Please Wait".localized()
+        hud.show(in: self.view)
+        
+        let endpoint = URL(string:APIConfig.Login)
+        let param: [String: String] = [
+            "username": username,
+            "password": password,
+            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en",
+            "login_type": "1"
+          
+        ]
+        
+        AF.request(endpoint!, method: .post, parameters: param).response { (response) in
+            if response.error == nil {
+                do {
+                    let jsonObj = try JSONSerialization.jsonObject(with: response.data!, options: JSONSerialization.ReadingOptions.mutableContainers) as? [String: Any]
+                    
+                    if jsonObj != nil {
+                        
+                        //    object status
+                        
+                            if let status = jsonObj!["status"] as? Bool {
+                                
+                               
+                                if status == true {
+                                    
+                                   
+                                     let message = jsonObj!["errNum1"] as? String
+                                    
+                                    let user_data = jsonObj!["user_data"] as? [String:Any]
+                                    
+    
+                                    
+                                    Helper.shared.saveToken(auth: user_data!["access_token"] as? String ?? "")
+                                    Helper.shared.SaveSeassionId(seassionId: user_data!["sessionId"] as? String ?? "")
+                                    Helper.shared.saveUserId(id:  user_data!["user_id"] as? Int ?? 1)
+
+                                    
+//                                    showing Done Flag
+//                                    self.showSuccessHud(msg:                                         message ?? "", hud: hud)
+//
+                                    DispatchQueue.main.async {
+                                        hud.dismiss(afterDelay: 1.5, animated: true,completion: {
+                                            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+                                            appDelegate.isLogin()
+                                        })
+                                        
+                                        
+                                    }
+                                    
+                                }
+                                
+                                //    status ==> false
+                                else {
+                                    
+                                    if let message = jsonObj!["message"] as? String {
+                                        hud.dismiss()
+                                        self.showErrorHud(msg: message)
+                                           
+                                        }
+                                        
+                                    }
+                                
+                            }
+                        
+                    }
+                    
+                } catch let err as NSError {
+                    print("Error: \(err)")
+                    self.serverError(hud: hud)
+                    //                        self.refreshControl?.endRefreshing()
+                }
+            } else {
+                print("Error")
+                self.internetError(hud: hud)
+                //                    self.refreshControl?.endRefreshing()
+            }
+        }
+    }
+ 
+    
+    
+    
+    func getMobileLayouts(){
         
         
-        let link = URL(string: APIConfig.GetSliderImages)
+        let link = URL(string: APIConfig.GetMobileLayouts)
         
         
         AF.request(link!, method: .post , parameters: [:] , headers: nil ).response { (response) in
@@ -166,22 +228,32 @@ class WelcomePageVC: UIViewController {
                             if status == 200 {
                                 
                                 
-                              if  let data  = jsonObj!["data"] as? [String] {
+                                if  let data  = jsonObj!["data"] as? [String : Any] {
                                   
-                                  for i in data {
-                                      self.urls.append((URL(string: i) ?? URL(string: ""))!)
-                                      
-                                  }
-                                  
-                                  for urlstring in self.urls {
-                                      self.imageSources.append(SDWebImageSource(url: urlstring))
-                                  }
+                                    let id  = data["id"] as? Int
                                     
+                                    let login_image  = data["login_image"] as? String
+                                    
+                                    if let home_image = data["home_image"] as? String {
+                                        
+                                        WelcomePageVC.homeImage = home_image
+                                        
+                                        WelcomePageVC.loginImage = login_image
+
+                                    }
+                                    
+                                    
+//                                    DispatchQueue.main.async {
+//
+//                                        self.loginImage.sd_setImage(with: URL(string: login_image ?? ""))
+//
+//
+//                                    }
+                                    
+                                  
                                 }
                                 
-                                DispatchQueue.main.async {
-                                    self.configureSlideShow()
-                                }
+                               
                                 
                                 
                             }
@@ -207,9 +279,6 @@ class WelcomePageVC: UIViewController {
         }
         
     }
-    
-    
-    
-    
+
     
 }

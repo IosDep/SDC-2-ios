@@ -32,12 +32,11 @@ class ForgetPassword: UIViewController {
         self.backView.layer.backgroundColor = UIColor.black.cgColor
         self.backView.backgroundColor = UIColor.systemBackground
         self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
-        backView.layer.shadowOpacity = 2
+        backView.layer.shadowOpacity = 0.2
         backView.layer.shadowRadius = 23
         backView.layer.shadowOffset = .zero
         backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
         backView.layer.shouldRasterize = true
-//        self.cerateBellView(bellview: bellView, count: "12")
         self.majorView.backgroundColor = .white
             
         if checkOldPassword == true {
@@ -100,6 +99,11 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
         
                                     
                                     self.showSuccessHud(msg: "Succfully Changed Password" , hud: hud)
+                                    
+                                    if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
+                                        Helper.shared.saveBiometricPass(pass: newPassword ?? "")
+                                        
+                                    }
                                     
                                       
                                     DispatchQueue.main.async {

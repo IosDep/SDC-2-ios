@@ -12,6 +12,7 @@ class BusnissCard: UICollectionViewCell {
     @IBOutlet weak var firstlbl: UILabel!
     @IBOutlet weak var secondlbl: UILabel!
     @IBOutlet weak var theredlbl: UILabel!
+    
 //    @IBOutlet weak var forth: UILabel!
 
     @IBOutlet weak var greenView: UIView!

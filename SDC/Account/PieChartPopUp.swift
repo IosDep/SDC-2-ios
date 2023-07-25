@@ -10,10 +10,6 @@ import Charts
 
 class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSource {
     
-    
-   
-    
-    
     @IBOutlet weak var mainTitle: UILabel!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var chartView: PieChartView!
@@ -126,7 +122,6 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         else if pieFlag == 2 {
             headerView.sectorLabel.text = "Market Value".localized()
             headerView.marketValLabel.isHidden = false
-
         }
         
         return headerView
@@ -142,31 +137,24 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         
         let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TotalFooterView") as! TotalFooterView
         
-        
         if pieFlag == 0 {
             footerView.totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
             footerView.totalPercentage.isHidden = true
-            
         }
         
         else if pieFlag == 1 {
             footerView.totalValue.text = self.numFormat(value: totalAnlysis.Quantity ?? 0.0)
             footerView.totalPercentage.isHidden = true
-            
         }
         
         else if pieFlag == 2 {
             footerView.totalValue.text = self.numFormat(value: totalAnlysis.market_value ?? 0.0)
             footerView.totalPercentage.isHidden = false
             footerView.totalPercentage.text = "100"
-            
 //            self.numFormat(value: percanetageValues[section] ?? 0.0)
 
         }
-        
         return footerView
-        
-        
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -184,22 +172,20 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         if pieFlag == 0 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.sec_count ?? 0.0)
             cell?.percentageValue.isHidden = true
-            cell?.colorBtn.setImage(UIImage(systemName: "square.fill"), for: .normal)
-            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
+            cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
         }
         
         else if pieFlag == 1 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.Quantity ?? 0.0)
             cell?.percentageValue.isHidden = true
-            cell?.colorBtn.setImage(UIImage(systemName: "square.fill"), for: .normal)
-            cell?.colorBtn.tintColor = pieTableHolder[indexPath.row].color
+            cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
         }
         
         else if pieFlag == 2 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.market_value ?? 0)
             cell?.percentageValue.isHidden = false
             cell?.percentageValue.text = self.numFormat(value: percanetageValues[indexPath.row] ?? 0.0)
-            cell?.colorBtn.backgroundColor = pieTableHolder[indexPath.row].color 
+            cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
 
         }
         

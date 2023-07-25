@@ -147,6 +147,7 @@ PODS:
     - OneSignal/OneSignalOutcomes
   - OneSignal/OneSignalOutcomes (3.11.2):
     - OneSignal/OneSignalCore
+  - OTPFieldView (1.0.1)
   - PromisesObjC (2.1.1)
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
@@ -174,6 +175,7 @@ DEPENDENCIES:
   - netfox (~> 1.21.0)
   - NVActivityIndicatorView
   - OneSignal (< 4.0, >= 3.0.0)
+  - OTPFieldView
   - SDWebImage (~> 5.0)
   - SideMenu
   - StepIndicator (~> 1.0.8)
@@ -210,6 +212,7 @@ SPEC REPOS:
     - netfox
     - NVActivityIndicatorView
     - OneSignal
+    - OTPFieldView
     - PromisesObjC
     - SDWebImage
     - SideMenu
@@ -247,6 +250,7 @@ SPEC CHECKSUMS:
   netfox: 9d5cc727fe7576c4c7688a2504618a156b7d44b7
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   OneSignal: 8861a1407c321ca1ae59d3adca6286eb7caf9d6e
+  OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
@@ -254,6 +258,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   TPKeyboardAvoidingSwift: ce1a75e0bc3af6b485f8bfa1d0a8320cfc565851
 
-PODFILE CHECKSUM: 20bd8fc3fd59c52f108f293d088a83ee3d3367cc
+PODFILE CHECKSUM: 4509ccc2429714affbae6e1b777cadc24ca275c2
 
 COCOAPODS: 1.12.0

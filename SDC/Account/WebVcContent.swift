@@ -115,7 +115,7 @@ class WebVcContent: UIViewController , WKNavigationDelegate,WKUIDelegate{
         } else {
 //             Fallback on earlier versions
         }
-        activityIndicator.color = .red
+        activityIndicator.color = .darkGray
         activityIndicator.isHidden = true
 
         view.addSubview(activityIndicator)
