@@ -44,6 +44,8 @@ class PopUpOTP: UIViewController {
         super.viewDidLoad()
         
         resendBtn.isEnabled = false
+        resendCodeLabel.textColor = .lightGray
+
         
         if forgetCreate == true {
             
@@ -56,7 +58,6 @@ class PopUpOTP: UIViewController {
             }
             
             recoveryInput.text = recoveryField
-            resendCodeLabel.textColor = .lightGray
 
             
         }
