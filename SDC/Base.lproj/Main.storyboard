@@ -1280,17 +1280,19 @@
                                     <constraint firstItem="3ce-VV-vXC" firstAttribute="centerX" secondItem="QSQ-fa-SAU" secondAttribute="centerX" id="vp5-m0-vqg"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The Securities Depository Center welcomes you to its online services" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-Kv-vQp" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
-                                <rect key="frame" x="10" y="168" width="370" height="40.666666666666657"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H8g-Kv-vQp" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
+                                <rect key="frame" x="10" y="168" width="370" height="20.333333333333343"/>
+                                <string key="text">Welcome to Securities Depository Center(SDC) 
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="The Securities Depository Center welcomes you to its online services"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Welcome to Securities Depository Center(SDC)"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You're Online Wallet Service" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzX-kt-7y9" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
-                                <rect key="frame" x="10" y="230" width="370" height="40.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ePortfolio" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LzX-kt-7y9" customClass="DesignableLabel" customModule="SDC" customModuleProvider="target">
+                                <rect key="frame" x="10" y="209.66666666666666" width="370" height="40.666666666666657"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40.670000000000002" id="Tff-ph-is5"/>
                                 </constraints>
@@ -1298,7 +1300,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="You're Online Wallet Service"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="ePortfolio"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="longlogo" translatesAutoresizingMaskIntoConstraints="NO" id="w6W-ay-g9o">
@@ -20854,7 +20856,7 @@
             <size key="intrinsicContentSize" width="53.333333333333336" height="13.333333333333334"/>
         </designable>
         <designable name="H8g-Kv-vQp">
-            <size key="intrinsicContentSize" width="524" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="359.66666666666669" height="20.333333333333332"/>
         </designable>
         <designable name="HG2-yY-PBk">
             <size key="intrinsicContentSize" width="35" height="30"/>
@@ -20900,7 +20902,7 @@
             <size key="intrinsicContentSize" width="34.666666666666664" height="17"/>
         </designable>
         <designable name="JQO-MK-6cd">
-            <size key="intrinsicContentSize" width="82.666666666666671" height="13.333333333333334"/>
+            <size key="intrinsicContentSize" width="80.333333333333329" height="13.333333333333334"/>
         </designable>
         <designable name="JdB-41-18E">
             <size key="intrinsicContentSize" width="63.333333333333336" height="13.333333333333334"/>
@@ -20951,7 +20953,7 @@
             <size key="intrinsicContentSize" width="108" height="29"/>
         </designable>
         <designable name="LzX-kt-7y9">
-            <size key="intrinsicContentSize" width="213.33333333333334" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="73.333333333333329" height="20.333333333333332"/>
         </designable>
         <designable name="M1E-LO-3Iy">
             <size key="intrinsicContentSize" width="110" height="20.333333333333332"/>
@@ -21326,7 +21328,7 @@
             <size key="intrinsicContentSize" width="106.66666666666667" height="18.666666666666668"/>
         </designable>
         <designable name="ejw-bY-R5Q">
-            <size key="intrinsicContentSize" width="120.66666666666667" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="117.33333333333333" height="20.333333333333332"/>
         </designable>
         <designable name="em9-qf-HgS">
             <size key="intrinsicContentSize" width="90.666666666666671" height="17"/>
@@ -21467,7 +21469,7 @@
             <size key="intrinsicContentSize" width="38" height="17"/>
         </designable>
         <designable name="pEU-k7-jES">
-            <size key="intrinsicContentSize" width="71" height="20.333333333333332"/>
+            <size key="intrinsicContentSize" width="112.66666666666667" height="20.333333333333332"/>
         </designable>
         <designable name="pOB-RD-O8M">
             <size key="intrinsicContentSize" width="88.333333333333329" height="20.333333333333332"/>
