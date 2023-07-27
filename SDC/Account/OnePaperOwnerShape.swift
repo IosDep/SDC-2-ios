@@ -45,7 +45,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     var totalDinar : Double?
     var currencyFlag : String?
     var isSearching = false
-    var flagSelectedTxt = true
+    var flagSelectedTxt = false
 
     
     var dinarData, filteredData , dolarData , dolarFilteredData: [SecurityOwnerShapeHolder]?
@@ -82,7 +82,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 //        staticCellInfo.isHidden = true
         
         if checkSideMenu == true {
-            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
+//            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
         
 //        self.cerateBellView(bellview: bellView, count: "12")
@@ -121,19 +121,14 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func clearBtnPressed(_ sender: Any) {
-        search_bar.text = ""
-        securityNameLabel.setTitle("", for: .normal)
-        isinLabel.text = ""
-        reuterCode.text = ""
-        secNameLabel.text = ""
-        secStatusLabel.text = ""
-        secMarketLabel.text = ""
         
-        dinarData?.removeAll()
-        dolarData?.removeAll()
-//        searchStack.isHidden = true
-//        staticCellInfo.isHidden = true
-        seatrching = false
+        securityNameLabel.setTitle("choose".localized(), for: .normal)
+        isinLabel.text = "choose security name".localized()
+        reuterCode.text = "choose security name".localized()
+        secNameLabel.text = "choose security name".localized()
+        secStatusLabel.text = "choose security name".localized()
+        secMarketLabel.text = "choose security name".localized()
+        securityOwnership.removeAll()
         busnissCard.reloadData()
     }
     
@@ -196,12 +191,20 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "AccountListXib", for: indexPath) as? AccountListXib
         
+        cell?.firstLabel.text = "Member No".localized()
+        cell?.secondLabel.text = "Account No".localized()
+        cell?.thirdLabel.text = "Account type".localized()
+        cell?.fourthLabel.text = "Owned balance".localized()
+        
+        
+        
+        
         cell?.buttonsStack.isHidden = true
         
-        cell?.memberName.text = securityOwnership[indexPath.row].Member_Name
-        cell?.memberNum.text = securityOwnership[indexPath.row].Member_No
-        cell?.accountName.text = securityOwnership[indexPath.row].Account_Type_Desc
-        cell?.accountNum.text = securityOwnership[indexPath.row].Account_No
+        cell?.memberName.text = securityOwnership[indexPath.row].Member_No ?? ""
+        cell?.memberNum.text = securityOwnership[indexPath.row].Account_No ?? ""
+        cell?.accountName.text = securityOwnership[indexPath.row].Account_Type_Desc ?? ""
+        cell?.accountNum.text = securityOwnership[indexPath.row].Quantity_Owned ?? ""
 
         
         return cell!

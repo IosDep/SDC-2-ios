@@ -94,13 +94,13 @@ class CreatePassword: UIViewController {
                                 
                                 if status == 200 {
                                         
-                if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
-//                                        Helper.shared.saveBiometricPass(pass: self.newPasswordField.text ?? "")
+                                    if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
                                         
-                    if let user = ApplicationData.shared.getAccountsList()?.first {
-                                                    
-                    ApplicationData.shared.updateAccount(with: Account(userName: user.userName, password: newPasswordField.text ?? ""))
-                                        
+                                        if let user = ApplicationData.shared.getAccountsList()?.first {
+                                            
+                                            ApplicationData.shared.updateAccount(with: Account(userName: user.userName, password: self.newPasswordField.text ?? ""))
+                                            
+                                        }
                                     }
                                         
                         if  let data = jsonObj!["data"] as? String {

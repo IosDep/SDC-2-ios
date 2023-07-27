@@ -132,6 +132,10 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         return 40
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
@@ -159,6 +163,10 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         pieTableHolder.count
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 40
     }
     
     

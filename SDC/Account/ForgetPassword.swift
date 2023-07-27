@@ -56,7 +56,15 @@ class ForgetPassword: UIViewController {
     
     
     @IBAction func changePassword(snder:UIButton){
-        self.forgetPassword(oldPassword: self.oldPassword.text ?? "", newPassword: self.newPasswrod.text ?? "", confirmPassword: self.confimNewPasword.text ?? "")
+        
+        if oldPassword.text != "" && newPasswrod.text != "" && confimNewPasword.text != "" {
+            
+            self.forgetPassword(oldPassword: self.oldPassword.text ?? "", newPassword: self.newPasswrod.text ?? "", confirmPassword: self.confimNewPasword.text ?? "")
+        }
+        
+        else {
+            self.showErrorHud(msg: "Please fill all required feilds".localized())
+        }
     }
     
     
@@ -74,7 +82,7 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
             "current_pass": oldPassword
             ,"new_pass" : newPassword,
             "confirm_pass": confirmPassword
-//            "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
+           , "lang": MOLHLanguage.isRTLLanguage() ? "ar": "en"
 
         ]
         

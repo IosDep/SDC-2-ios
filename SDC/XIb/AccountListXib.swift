@@ -10,6 +10,16 @@ import UIKit
 class AccountListXib: UITableViewCell {
     
     
+    
+    @IBOutlet weak var firstLabel: DesignableLabel2!
+    
+    
+    @IBOutlet weak var secondLabel: DesignableLabel2!
+    
+    
+    @IBOutlet weak var fourthLabel: DesignableLabel2!
+    @IBOutlet weak var thirdLabel: DesignableLabel2!
+    
     @IBOutlet weak var buttonsStack: UIStackView!
     
     @IBOutlet weak var memberNum: UILabel!

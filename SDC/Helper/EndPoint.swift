@@ -77,6 +77,9 @@ class APIConfig {
     
     static let RegesterInfo =  BaseURL + "authentication/register"
     
+    static let GetLInks =  BaseURL + "investor_information/getAccountSettings"
+
+    
     static let createUssr =  Phase2Url + "sdc-api-eservice/api/ninRequestWithSMS"
     
     static let GetClintInf = BaseURL + "authentication/clientInfo"

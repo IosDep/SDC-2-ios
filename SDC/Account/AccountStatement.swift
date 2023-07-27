@@ -32,6 +32,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     @IBOutlet weak var secutrtyNameBtn: UIButton!
     @IBOutlet weak var mebemrCodeBtn: UIButton!
     
+    @IBOutlet weak var accountNoLabel: DesignableLabel2!
     
     var accountList =  [AccountListModel]()
     var invAccount = [InvestoreOwnerShape]()
@@ -55,6 +56,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        accountNumberBtn.isEnabled = false
+        accountNoLabel.textColor = .lightGray
+        accountNumberBtn.titleLabel?.textColor = .lightGray
+        
 //        nameStack.isHidden = true
 //        accountIDStack.isHidden = true
         //        searchBtn.isHidden = true
@@ -62,6 +68,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
 //        datePicker2.isHidden = true
 //        fromDate.isHidden = true
 //        toDate.isHidden = true
+        
         self.getAccountList()
         self.getInvestoreInfo(withZero: withZeroFlag ?? "" )
         
@@ -85,57 +92,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
     }
     
-    
-    
-    //function for change background selected background color for with and without zero btn
-    
-    //    func highlightedButtons() {
-    //        invAccount.removeAll()
-    //        securityName.removeAll()
-    //        numberCode.removeAll()
-    //
-    //        self.secutrtyNameBtn.setTitle("-", for: .normal)
-    //        self.mebemrCodeBtn.setTitle("-", for: .normal)
-    //        self.membername.setTitle("-", for: .normal)
-    //        self.accountNumberBtn.setTitle("-", for: .normal)
-    //
-    //
-    //        if isZeroSelected  == true && isWithoutSelected == false {
-    //            DispatchQueue.main.async {
-    //                self.withZero.setTitleColor(.white, for: .normal)
-    //                self.withZero.backgroundColor  = UIColor(named: "AccentColor")
-    //                self.withoutZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-    //                self.withoutZero.backgroundColor  = .systemGray6
-    ////                self.withoutZero.cornerRadius = 12
-    //                self.withoutZero.borderColor =  UIColor(named: "AccentColor")
-    //                self.withoutZero.borderWidth = 1
-    //                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-    //            }
-    //        }
-    //        else if isZeroSelected == false  && isWithoutSelected == true {
-    //            DispatchQueue.main.async {
-    //                self.withoutZero.setTitleColor(.white, for: .normal)
-    //                self.withoutZero.backgroundColor  = UIColor(named: "AccentColor")
-    //                self.withZero.titleLabel?.textColor = UIColor(named: "AccentColor")
-    //                self.withZero.backgroundColor  = .systemGray6
-    ////                self.withZero.cornerRadius = 12
-    //                self.withZero.borderColor =  UIColor(named: "AccentColor")
-    //                self.withZero.borderWidth = 1
-    //                self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-    //            }
-    //        }
-    //
-    //    }
-    
-    
-    //    @IBAction func withoutZeero(btn:UIButton){
-    //
-    //        withZeroFlag = "0"
-    //        isWithoutSelected = true
-    //        isZeroSelected = false
-    //        highlightedButtons()
-    //    }
-    
+  
     
     
     
@@ -150,6 +107,11 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             self.accountNumberBtn.setTitle("choose".localized(), for: .normal)
             self.memberID = securtNumber
             self.securityID = securtyId
+            accountNumberBtn.isEnabled = true
+            accountNoLabel.textColor = .black
+            accountNumberBtn.titleLabel?.textColor = .black
+
+            
             
         } else if flag == "1" {
             self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
@@ -167,7 +129,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     @IBAction func downloadButtonPressed(_ sender: UIButton) {
         
-        if membername.titleLabel?.text != "" && accountNumberBtn.titleLabel?.text != "" && secutrtyNameBtn .titleLabel?.text != "" && fromDateString != "" && toDateString != "" {
+        if memberID != nil && accountNo != nil && fromDateString != nil &&  toDateString != nil {
             self.getPDF()
 
         }
@@ -175,7 +137,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         else {
             self.showErrorHud(msg: "Please fill all required fields".localized())
         }
-        
         
     }
     
@@ -579,8 +540,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                     if jsonObj != nil {
                         
                         
-                        if let status = jsonObj!["status"] as? Int {
-                            if response.response?.statusCode == 200 {
+                        if let success = jsonObj!["success"] as? Bool {
+                            if success == true {
                                 if let data = jsonObj!["data"] as? [String: Any]{
                                     let urlString = data["file"] as? String
                                     
@@ -599,10 +560,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                             }
                             
                             else {
-                                let msg = jsonObj!["message"] as? String
-                                
-                                self.showErrorHud(msg: msg ?? "", hud: hud)
-                                
+                                self.showErrorHud(msg: "Data not available".localized() , hud: hud)
                             }
                         }
                     }

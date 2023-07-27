@@ -133,7 +133,7 @@
 "  Ownership analysis by sector" = "تحليل الملكية حسب القطاع" ;
 "Investor Ownership" = "ملكية المستثمر" ;
 "Account Ownership" = "ملكية الحساب" ;
-"Investor Information" = "بيانات المستثمر" ;
+"Investor Information" = "معلومات المستثمر" ;
 "Investor Accounts" = "حسابات المستثمر" ;
 "Account settings" = "إعدادات الحساب" ;
 "Home" = "الرئيسة";
@@ -197,7 +197,7 @@
 "Client number"= "رقم العميل" ;
 "Exact security number"= "رقم الورقة المالية" ;
 "Sector" = "القطاع";
-"Account Info" = "معلومات الحساب";
+"Account Info" = "بيانات الحساب";
 "Account OwnerShip" = "ملكية الحساب";
 "Successfully registered" = "تم التسجيل بنجاح";
 "Done" = "تم";
@@ -262,7 +262,7 @@
 "Close Price" = "سعر الإغلاق" ;
  "Services" = " قطاع الخدمات";
 "Industry" = "قطاع الصناعة";
-"Banks" = "قطاع البنوك";
+"Bank" = "قطاع البنوك";
 "Insuarance" = "قطاع التأمين";
 "forget ypur password ?" = "هل نسيت كلمة المرور؟";
 "Expiry date" = "تاريخ الّإنتهاء";
@@ -303,7 +303,7 @@
 "Transaction Information" = "معلومات الحركة";
 
 "Account Information" = "معلومات الحساب";
-
+"Insurance" = "تأمين";
 "Transaction Type" = "نوع الحركة";
 "Date" = "تاريخ الحركة" ;
 "Total" = "المجموع";
@@ -356,3 +356,7 @@
 "Full name" = "الإسم الكامل";
 "Birth Date"="تاريخ الميلاد";
 "Sign in With Face ID" = "تسجيل دخول باستخدام بصمة الوجه";
+"Investor Ownership of Specific Security" = "ملكية المستثمر لورقة مالية محددة";
+"Data not available" = "لا يوجد بيانات لعرضها";
+"Inquiry" = "استعلام";
+"Your Face ID" = "تسجيل الدخول باستخدام البصمة";

@@ -36,7 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
         // Override point for customization after application launch.
         self.setupLogging()
         self.setUpNetworkInterceptor()
-        MOLHLanguage.setDefaultLanguage("en")
+        MOLHLanguage.setDefaultLanguage("ar")
         MOLH.shared.activate(false)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + delayInSeconds) {

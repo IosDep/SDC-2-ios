@@ -473,7 +473,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     var itemsArray: [InvestoreOwnerShape]? = []
                     if let itemArray = item.array {
                         for innerItem in itemArray{
-                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false {
+                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false || innerItem.Security_Reuter_Code?.lowercased().contains(searchText.lowercased()) ?? false || innerItem.Quantity_Owned?.lowercased().contains(searchText.lowercased()) ?? false{
                                 itemsArray?.append(innerItem)
                             }
                         }
@@ -492,7 +492,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     var itemsArray: [InvestoreOwnerShape]? = []
                     if let itemArray = item.array {
                         for innerItem in itemArray{
-                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false {
+                            if innerItem.Security_Name?.lowercased().contains(searchText.lowercased()) ?? false || innerItem.Security_Reuter_Code?.lowercased().contains(searchText.lowercased()) ?? false || innerItem.Quantity_Owned?.lowercased().contains(searchText.lowercased()) ?? false{
                                 itemsArray?.append(innerItem)
                             }
                         }

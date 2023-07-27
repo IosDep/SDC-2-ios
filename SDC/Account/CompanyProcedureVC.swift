@@ -262,7 +262,8 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         
         if categoryFlag == 0 {
             for item in publicCompanies{
-                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false  || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
+                    item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false {
                     filteredData.append(item)
                 }
             }
@@ -270,32 +271,22 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         }
         else if categoryFlag == 1 {
             for item in financialCompanies{
-                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
+                    item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false {
                     filteredData.append(item)
                 }
             }
         }
             else if categoryFlag == 2 {
                 for item in custodians{
-                    if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false {
+                    if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
+                        item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false{
                         filteredData.append(item)
                     }
             }
         }
         
         
-        
-//        if MOLHLanguage.isArabic(){
-//            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
-//        self.seatrching = true
-//            self.busnissCard.reloadData()
-//
-//        } else {
-//            self.arr_search = self.lastAction.filter({($0.Member_Name?.prefix(searchText.count))! == searchText})
-//            self.seatrching = true
-//                self.busnissCard.reloadData()
-//
-//        }
         
         self.seatrching = true
         self.busnissCard.reloadData()

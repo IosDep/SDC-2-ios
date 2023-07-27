@@ -139,13 +139,7 @@ class AccountVC: UIViewController {
     
         }
         
-//        else  if btn.tag == Actions.FINGERPOINT.rawValue {
-//
-//
-//
-//
-//        }
-//
+
         
         
         else  if btn.tag == Actions.LOGOUT.rawValue {

@@ -12,7 +12,7 @@ import MOLH
 import JGProgressHUD
 import Alamofire
 
-class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource  {
     
     
     @IBOutlet weak var homeImage: UIImageView!
@@ -181,13 +181,18 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.categories = ["Banks" , "insurance" , "Services" , "Industry"]
         self.anlyssSection.backgroundColor = .clear
         self.anlyssSection.setCollectionViewLayout(collLayout, animated: false)
-        
-    
 
         self.getLastTrans()
         self.getLastDate()
-        //        self.getOwnerShapeList()
-        //        self.getTradingValue()
+        
+        if  MOLHLanguage.isRTLLanguage() == true {
+           
+         busnissCard.semanticContentAttribute = .forceRightToLeft
+        }
+        
+        else {
+            busnissCard.semanticContentAttribute = .forceLeftToRight
+        }
         
     }
     
@@ -345,7 +350,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             
             let data  = lastTransarr[indexPath.row]
             
-            cell?.firstlbl.text = data.Security_Id ?? ""
+            cell?.firstlbl.text = data.Security_Reuter_Code ?? ""
             
             cell?.secondlbl.text = data.Security_Name
             
