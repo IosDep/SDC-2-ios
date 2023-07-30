@@ -183,6 +183,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         self.anlyssSection.setCollectionViewLayout(collLayout, animated: false)
 
         self.getLastTrans()
+        
         self.getLastDate()
         
         if  MOLHLanguage.isRTLLanguage() == true {
