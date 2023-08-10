@@ -22,6 +22,7 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     @IBOutlet weak var tableView: UITableView!
     
     var dataFilterd = [String]()
+    var accountNoByMember = [AccountIDModel]()
     var categories = [String]()
     var reuterCode = [String]()
     var accounNumber = [String]()
@@ -31,6 +32,7 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     var securityIDs = [String]()
     var secData =  [SecurityData]()
     var checkAccountStatmnt = false
+    var accountNoFlag : Bool?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +44,8 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // one paper picker
         
         if self.checkAccountStatmnt == false {
             if checkFlag == "4" {
@@ -55,8 +59,22 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
         }
         
         
+        // account statement 3 pickers
+        
         else{
-            return dataFilterd.count
+            
+            // if the picker is account no
+            
+            if accountNoFlag == true {
+                return accountNoByMember.count
+            }
+            
+            // if the picker is name or reuter code
+
+            else {
+                return dataFilterd.count
+
+            }
             
         }
         
@@ -103,18 +121,31 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
             
             else {
                 
+                // security name third picker
+                
                 if checkFlag ==  "2" {
                     cell?.title.text = dataFilterd[indexPath.row]
                     cell?.reuterCode.text = "\(reuterCode[indexPath.row])"
                 }
                 
-               
+               // account no second picker 
             
-                else {
-                    cell?.title.text = dataFilterd[indexPath.row]
+                else if checkFlag == "1"{
+                    
+                    cell?.title.text = "\(accountNoByMember[indexPath.row].Account_No ?? "") = \(accountNoByMember[indexPath.row].Account_Status_Desc ?? "") - \(accountNoByMember[indexPath.row].Account_Type_Desc ?? "")"
+                    
                     cell?.reuterCode.isHidden = true
 
                 }
+                
+                // first picker
+                
+                else {
+                    cell?.title.text = dataFilterd[indexPath.row]
+                    cell?.reuterCode.isHidden = true
+                }
+                
+                
                 
                 
             }
@@ -130,7 +161,9 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
             
             let data  =  self.secData[indexPath.row]
             self.dataSelectedDelegate?.getSelectdPicker(selectdTxt : data.secName , securtNumber: data.secNum ,flag: checkFlag ?? "" , securtyId: data.securotyID , secMarket: data.secMarket , secStatus: data.secStatus , secISIN: data.secISIN)
-        }else {
+        }
+        
+        else {
             
 //            in account statmnet we provide empty securtyId and Securty Number
             
@@ -141,13 +174,27 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
 //            else if checkFlag == "1" {
 //                self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: reuterCode[indexPath.row] , secMarket: "" , secStatus: "" , secISIN: "")
 //            }
-//            
+//
+            // third picker isin and reuter code
             
             else if checkFlag == "2"{
                 self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: reuterCode[indexPath.row] , secMarket: "" , secStatus: "" , secISIN: "")
             }
             
+            
+            // second picker account no
+            
+            else if checkFlag == "1" {
+                
+                self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.accountNoByMember[indexPath.row].Account_No ?? "" ,securtNumber: self.accountNoByMember[indexPath.row].Account_Status_Desc ?? "" , flag: checkFlag ?? "", securtyId: self.accountNoByMember[indexPath.row].Account_Type_Desc ?? "" , secMarket: "" , secStatus: "" , secISIN: "")
+                
+                
+            }
+            
+            // first picker security name
+            
             else {
+                
                 self.dataSelectedDelegate?.getSelectdPicker(selectdTxt: self.dataFilterd[indexPath.row],securtNumber:"", flag: checkFlag ?? "",securtyId: "" , secMarket: "" , secStatus: "" , secISIN: "")
             }
         }

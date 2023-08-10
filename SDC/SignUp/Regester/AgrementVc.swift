@@ -180,22 +180,24 @@ class AgrementVc: UIViewController {
     
     @IBAction func agree(_ sender: Any) {
         
+        // not agreed
+        
         if flagAgree == 1 {
-            let image = UIImage(systemName: "square.fill")?.withTintColor(UIColor(named: "AccentColor") ?? .green)
+            let image = UIImage(named: "filled")
 //            user Agree
             btnAgree.setImage(image, for: .normal)
             flagAgree = 2
             
+           // agreed
+            
         }else {
 //            user DisAgree
-            let image = UIImage(systemName: "square")?.withTintColor(UIColor(named: "AccentColor") ?? .green)
+            let image =
+            UIImage(systemName: "square")?.withTintColor(UIColor(named: "AccentColor") ?? .green)
             
             btnAgree.setImage(image, for: .normal)
             flagAgree = 1
         }
-        
-        
-        
     }
     @IBAction func next(_ sender: Any) {
         
@@ -206,7 +208,6 @@ class AgrementVc: UIViewController {
             self.regesterCall()
 
 //            user should agree
-            
         }
         
  
@@ -222,10 +223,13 @@ class AgrementVc: UIViewController {
             let vc = storyBoard.instantiateViewController(withIdentifier: "PopUpAccountCreated") as! PopUpAccountCreated
             
             vc.modalPresentationStyle = .overCurrentContext
-            self.present(vc, animated: true,completion: {self.dismiss(animated: true)})
+        
+            self.present(vc, animated: true,completion: nil)
             
         })
+            
         
+        // {self.dismiss(animated: true)}
     }
     
 }

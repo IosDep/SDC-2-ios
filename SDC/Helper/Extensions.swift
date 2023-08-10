@@ -933,3 +933,11 @@ extension UIView {
         }
     }
 }
+
+extension UICollectionViewFlowLayout {
+
+    open override var flipsHorizontallyInOppositeLayoutDirection: Bool {
+        return MOLHLanguage.isRTLLanguage()
+    }
+
+}

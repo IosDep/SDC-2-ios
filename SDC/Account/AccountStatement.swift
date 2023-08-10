@@ -40,7 +40,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     var numberCode = [String]()
     var securityName = [String]()
     var securityIDs = [String]()
-    var accounNumber = [String]()
+    var accounNumber = [AccountIDModel]()
     var memberNum = [String]()
     var accountID = [AccountIDModel]()
     //    var isZeroSelected : Bool?
@@ -92,13 +92,27 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
     }
     
+    
   
+    @IBAction func clearPressed(_ sender: Any) {
+        
+        self.membername.setTitle("-", for: .normal)
+        self.accountNumberBtn.setTitle("-", for: .normal)
+        self.secutrtyNameBtn.setTitle("-", for: .normal)
+        self.datePicker2.date = Date()
+        self.datePicker.date = Date()
+        accountNumberBtn.isEnabled = false
+        accountNoLabel.textColor = .lightGray
+        accountNumberBtn.titleLabel?.textColor = .lightGray
+        
+    }
     
     
     
     
     func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
         
+        // first picker
         
         if flag == "0"{
 //            accountIDStack.isHidden = false
@@ -114,14 +128,15 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             
             
         } else if flag == "1" {
-            self.accountNumberBtn.setTitle(selectdTxt, for: .normal)
+            self.accountNumberBtn.setTitle("\(selectdTxt)-\(securtNumber)-\(securtyId)", for: .normal)
             self.accountNo = selectdTxt
         }
         
         else if flag == "2" {
-            self.secutrtyNameBtn.setTitle(selectdTxt, for: .normal)
+            self.secutrtyNameBtn.setTitle("\(selectdTxt) -  \(securtyId)", for: .normal)
             
         }else {
+            
             
         }
     }
@@ -146,20 +161,29 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     @IBAction func gooingToPicker(_ sender: UIButton) {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        
         let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
         
         vc.dataSelectedDelegate = self
         vc.checkAccountStatmnt = true
         
         switch sender.tag {
+            
         case 0:
             vc.dataFilterd = accountName
             vc.memberNum = memberNum
             vc.securityIDs = self.securityIDs
             vc.checkFlag = "0"
+            
+            
+            // second picker
         case 1:
-            vc.dataFilterd = accounNumber
+            vc.accountNoByMember = accounNumber
+            vc.accountNoFlag = true
             vc.checkFlag = "1"
+           
+            
+        // first picker
             
         case 2:
             vc.dataFilterd = securityName
@@ -454,7 +478,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
                                         let model = AccountIDModel(data: item)
-                                        self.accounNumber.append(model.Account_No ?? "")
+                                        self.accounNumber.append(model)
                                         
                                         
                                     }

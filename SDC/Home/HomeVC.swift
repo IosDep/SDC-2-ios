@@ -242,7 +242,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
     
     
     
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         if collectionView == busnissCard {

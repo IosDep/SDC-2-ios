@@ -13,6 +13,7 @@ target 'SDC' do
   pod 'SDWebImage', '~> 5.0'
   pod 'CHTCollectionViewWaterfallLayout'
 pod 'OTPFieldView'
+pod 'CountryPickerView'
 
 
   pod 'Firebase/Analytics'

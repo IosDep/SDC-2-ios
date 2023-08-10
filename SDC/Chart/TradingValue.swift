@@ -96,8 +96,6 @@ class TradingValue: UIViewController,UITableViewDelegate,UITableViewDataSource,U
         var cell = self.tradeTableVeiw.dequeueReusableCell(withIdentifier: "TradingXibView", for: indexPath) as? TradingXibView
       
         
-        
-        
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("TradingXibView", owner: self, options: nil)!
             cell = nib[0] as? TradingXibView

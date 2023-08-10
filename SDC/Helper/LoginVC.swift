@@ -80,6 +80,7 @@ class LoginVC: UIViewController {
         self.present(vc, animated: true)
         
     }
+    
     @IBAction func forgetPassword(_ sender: Any) {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let vc = storyBoard.instantiateViewController(withIdentifier: "AccountRecoveryUsername") as! AccountRecoveryUsername
@@ -127,7 +128,7 @@ class LoginVC: UIViewController {
     
     
     
-    func LoginRequest(email:String,password:String) {
+func LoginRequest(email:String,password:String) {
         let hud = JGProgressHUD(style: .light)
         hud.textLabel.text = "Please Wait".localized()
         hud.show(in: self.view)

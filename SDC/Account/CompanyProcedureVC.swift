@@ -64,7 +64,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         view.layer.zPosition = 999
         busnissCard.contentInsetAdjustmentBehavior = .never
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+//        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
         self.busnissCard.addSubview(refreshControl)
         
         //        self.cerateBellView(bellview: self.bellView, count: "10")
@@ -121,11 +121,11 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
     
     
     //    refresh action
-        @objc func didPullToRefresh() {
+//        @objc func didPullToRefresh() {
 //            self.lastAction.removeAll()
 //            self.busnissCard.reloadData()
 
-        }
+//        }
     
     @IBAction func clearBtnPressed(_ sender: Any) {
         search_bar.text = ""

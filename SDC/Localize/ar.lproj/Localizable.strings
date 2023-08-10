@@ -151,7 +151,7 @@
 "User's guide" = "دليل المستخدم";
 "Concept and instructions" = "المفهوم والإرشادات";
 "Terms and conditions" = "الشروط والأحكام";
-"Notice" = "تنويه";
+"Notice" = "تنويه للمستثمر";
 "Your fingerprint" ="تسجيل الدخول باستخدام البصمة";
 "Logout" = "تسجيل خروج";
 "Security number" = "رقم الورقة المالية";
@@ -254,7 +254,7 @@
 "Guardian name" = "اسم النائب عن المستثمر";
 "Guardian type" = "نوع النيابة";
 "Security ID" = "رقم الورقة المالية";
-"Transaction Type" = "نوع الحركة";
+"Transaction Type" = "وصف الإخراء";
 "No." = "العدد";
 "Account No." = "رقم الحساب";
 " Bank Account Data" = "بيانات الحساب البنكي";
@@ -367,3 +367,6 @@
 ";
 "Welcome to Securities Depository Center(SDC)" = "مركز إيداع الأوراق المالية يرحب بكم في خدماته الإلكترونية
 ";
+"Member No" = "رقم العضو";
+"Account No" = "رقم الحساب";
+"Owned balance" = "hلرصيد الحالي";

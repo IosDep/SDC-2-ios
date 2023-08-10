@@ -373,6 +373,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     }
    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = self.busnissCard.dequeueReusableCell(withIdentifier: "BusnissCardTable", for: indexPath) as? BusnissCardTable
         
         cell?.addtionalStack.isHidden = false

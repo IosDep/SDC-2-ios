@@ -10,17 +10,31 @@ import UIKit
 import MOLH
 import Alamofire
 import JGProgressHUD
+import CountryPickerView
+
+
+
 class PhoneNumberVc: UIViewController {
+    
+    
+   
+ 
+    
     @IBOutlet weak var phoneTxt: DesignableTextFeild!
 
     @IBOutlet weak var scroll: UIScrollView!
     
     
-
+    @IBOutlet weak var countryPickerView: CountryPickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        countryPickerView.font = UIFont.systemFont(ofSize: 14.0)
         
+//        countryPickerView.delegate = self
+//        countryPickerView.dataSource = self
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,24 +43,25 @@ class PhoneNumberVc: UIViewController {
     }
     @IBAction func nextBtn(_ sender: Any) {
         
+//        if self.phoneTxt.text?.count == 9 {
         
-        if self.phoneTxt.text?.count == 9 {
-            
-
-            self.requestOTPMobile(mobile: self.phoneTxt.text ?? "")
-
-
-            
-            
-     
-                
-            
-            
-        
-        }else {
-            self.showErrorHud(msg: "")
+        if self.phoneTxt.text != "" {
+            self.requestOTPMobile(mobile: self.removeLeadingZero(from: self.phoneTxt.text ?? ""))
         }
         
+           
+//        }else {
+//            self.showErrorHud(msg: "Please fill Correct Phone Number")
+//        }
+        
+    }
+    
+    
+    func removeLeadingZero(from string: String) -> String {
+        if string.hasPrefix("0") {
+            return String(string.dropFirst())
+        }
+        return string
     }
     
        func requestOTPMobile(mobile : String) {
@@ -93,9 +108,7 @@ class PhoneNumberVc: UIViewController {
                                    
                                    DispatchQueue.main.async {
                                        
-                                       
-                                       
-                                       IdentfairVC.phoneNum =    "00962\(self.phoneTxt.text ?? "")"
+                                       IdentfairVC.phoneNum =    "00962\( self.removeLeadingZero(from: self.phoneTxt.text ?? "") ?? "")"
                                        
 //                                       self.dismiss(animated: true , completion: {
                                            
@@ -118,8 +131,7 @@ class PhoneNumberVc: UIViewController {
                                
                               
                                else {
-                                   hud.dismiss()
-                                   self.showErrorHud(msg: message ?? "")
+                                   self.showErrorHud(msg: message ?? "" , hud: hud)
                                }
                                
                            }
