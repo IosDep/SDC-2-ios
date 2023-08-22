@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21225" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,7 +36,7 @@
                                         </constraints>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="scorpio(1)" translatesAutoresizingMaskIntoConstraints="NO" id="oJq-8B-jDt">
-                                        <rect key="frame" x="75" y="752" width="240" height="50"/>
+                                        <rect key="frame" x="75" y="714" width="240" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="X5a-b7-BGc"/>
                                         </constraints>
@@ -46,7 +46,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="QrA-hx-Yqn" secondAttribute="trailing" constant="75" id="B9g-g8-Ine"/>
                                     <constraint firstItem="QrA-hx-Yqn" firstAttribute="leading" secondItem="F9O-Ff-GUZ" secondAttribute="leading" constant="75" id="CUm-Fb-dXa"/>
-                                    <constraint firstItem="oJq-8B-jDt" firstAttribute="top" secondItem="QrA-hx-Yqn" secondAttribute="bottom" constant="358" id="Hb6-gL-S7U"/>
+                                    <constraint firstItem="oJq-8B-jDt" firstAttribute="top" secondItem="QrA-hx-Yqn" secondAttribute="bottom" constant="320" id="Hb6-gL-S7U"/>
                                     <constraint firstItem="oJq-8B-jDt" firstAttribute="leading" secondItem="F9O-Ff-GUZ" secondAttribute="leading" constant="75" id="Ho0-WT-Sat"/>
                                     <constraint firstAttribute="trailing" secondItem="Vl6-pB-iA8" secondAttribute="trailing" constant="75" id="LbZ-0u-eGs"/>
                                     <constraint firstItem="Vl6-pB-iA8" firstAttribute="leading" secondItem="F9O-Ff-GUZ" secondAttribute="leading" constant="75" id="SjO-pD-jxY"/>

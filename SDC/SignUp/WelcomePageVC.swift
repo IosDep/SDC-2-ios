@@ -33,6 +33,27 @@ class WelcomePageVC: UIViewController {
 
     }
     
+  
+    
+    @IBAction func englishPressed(_ sender: Any) {
+        
+        MOLH.setLanguageTo("en")
+        MOLH.reset()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.reset()
+    }
+    
+    
+    @IBAction func arabicPressed(_ sender: Any) {
+        
+        MOLH.setLanguageTo("ar")
+        MOLH.reset()
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        appDelegate.reset()
+    }
+    
+    
+    
     @IBAction func signIn(_ sender:UIButton){
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         
@@ -116,6 +137,9 @@ class WelcomePageVC: UIViewController {
     
     func configureSlideShow() {
         
+        slideShow.pageIndicatorPosition = PageIndicatorPosition(horizontal: .center, vertical: .under)
+        slideShow.activityIndicator = DefaultActivityIndicator(style: .white, color: nil)
+
         slideShow.setImageInputs(AppDelegate.imageSources)
         
         slideShow.slideshowInterval = 2

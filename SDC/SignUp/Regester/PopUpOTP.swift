@@ -185,12 +185,46 @@ class PopUpOTP: UIViewController {
                                 // ,completion: {self.dismiss(animated: true)}
                                 
 //                                => invalid otp
+                                
                                 else if code == 400 {
-                                    
                                     let resendId = jsonObj!["resendId"] as? String
                                     
-                                    self.showErrorHud(msg: message ?? "",hud: hud)
-                                }
+                                    let msgg = "Invalid Otp".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
+                      
+                         
+                                else if code == 404 {
+                                    let resendId = jsonObj!["resendId"] as? String
+                                    
+                                    let msgg = "OTP expierd".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
+                                
+                                else if code == 504 {
+                                    let resendId = jsonObj!["resendId"] as? String
+                                    
+                                    let msgg = "Already active otp".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
+                                
+                                else if code == 503 {
+                                                    let msgg = "Service unavailable".localized()
+                                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                        }
+                                                
+                                else if code == 413 {
+                                                    let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                        }
+                                            
+                                                
+                                            
+                                
+                                
                                 
                                 
                             }
@@ -321,12 +355,44 @@ class PopUpOTP: UIViewController {
                                         // ,completion: {self.dismiss(animated: true)}
                                         
         //                                => invalid otp
+                                        
                                         else if code == 400 {
-                                            
                                             let resendId = jsonObj!["resendId"] as? String
                                             
-                                            self.showErrorHud(msg: message ?? "",hud: hud)
-                                        }
+                                            let msgg = "Invalid Otp".localized()
+                                            self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                            
+                                                }
+                              
+                                 
+                                        else if code == 404 {
+                                            let resendId = jsonObj!["resendId"] as? String
+                                            
+                                            let msgg = "OTP expierd".localized()
+                                            self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                            
+                                                }
+                                        
+                                        else if code == 504 {
+                                            let resendId = jsonObj!["resendId"] as? String
+                                            
+                                            let msgg = "Already active otp".localized()
+                                            self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                            
+                                                }
+                                        
+                                        else if code == 503 {
+                                                            let msgg = "Service unavailable".localized()
+                                                            self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                }
+                                                        
+                                        else if code == 413 {
+                                                            let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                            self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                                }
+                                                    
+                                                        
+                                                    
                                         
                                         
                                     }
@@ -395,11 +461,43 @@ class PopUpOTP: UIViewController {
                                 }
                             }
                             
-                    else {
-                        hud.dismiss()
-                    self.showErrorHud(msg: message ?? "")
-                            }
-                                        
+                            else if code == 400 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Invalid Otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                  
+                     
+                            else if code == 404 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "OTP expierd".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                            
+                            else if code == 504 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Already active otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                            
+                            
+                            
+                    
+            else if code == 503 {
+                                let msgg = "Service unavailable".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    }
+                            
+            else if code == 413 {
+                                let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                    }
                         
                             
                         }

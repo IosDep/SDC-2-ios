@@ -79,14 +79,16 @@ class CardOneVC: UIViewController {
             
             currencyStack.isHidden = true
             
-            firstLabel.text = "Member Name".localized()
-            secondLabel.text = "Membership Type".localized()
+            firstLabel.text =  "Membership Type".localized()
+            secondLabel.text = "Member Name".localized()
             
             thirdLabel.text = "Account No.".localized()
             
             
             currantBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Owned ?? "")
+            
             freeBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Avilable ?? "")
+            
             bledgedBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Pledge ?? "")
             reservedBalacnce.text =  self.numStringFormat(value: securityOwnership?.Quantity_Freezed ?? "")
             
@@ -95,9 +97,9 @@ class CardOneVC: UIViewController {
             pendingBuy.text =  securityOwnership?.Pending_In ?? ""
             pendeingSell.text =  securityOwnership?.Pending_Out ?? ""
             
-            securityID.text = securityOwnership?.Member_No ?? ""
+            securityID.text = securityOwnership?.Member_Name ?? ""
             
-            isin.text = securityOwnership?.Member_Name ?? ""
+            isin.text = securityOwnership?.Member_Type_Desc ?? ""
             
             securityName.text = securityOwnership?.Account_No ?? ""
             accountType.text = securityOwnership?.Account_Type_Desc

@@ -1,5 +1,5 @@
 # Uncomment the next line to define a global platform for your project
-# platform :ios, '10.0'
+# platform :ios, '11.0'
 
 target 'SDC' do
   # Comment the next line if you don't want to use dynamic frameworks
@@ -37,6 +37,7 @@ pod 'CountryPickerView'
   pod 'netfox', '~> 1.21.0'
   pod 'AlamofireNetworkActivityLogger', '~> 3.4'
 pod 'ImageSlideshow', '~> 1.9.0'
+
 
   target 'SDCTests' do
     inherit! :search_paths

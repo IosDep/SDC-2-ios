@@ -135,7 +135,6 @@ func LoginRequest(email:String,password:String) {
         
         let userId = OneSignal.getDeviceState()?.userId
         
-     
         let endpoint = URL(string:APIConfig.Login)
         let param: [String: String] = [
             "username": email,

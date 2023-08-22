@@ -19,7 +19,8 @@ struct SecurityOwnerShapeHolder {
 
 class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate , DataSelectedDelegate , SelectedNatDelegate{
     
-    
+    @IBOutlet weak var staticCellHeight: NSLayoutConstraint!
+    @IBOutlet weak var stackHeight: NSLayoutConstraint!
     @IBOutlet weak var searchStack: UIStackView!
     
     @IBOutlet weak var staticCellInfo: UIView!
@@ -78,8 +79,10 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
 //        searchStack.isHidden = true
 //        staticCellInfo.isHidden = true
+//        stackHeight.constant = 200
         
         if checkSideMenu == true {
 //            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
@@ -191,7 +194,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "AccountListXib", for: indexPath) as? AccountListXib
         
-        cell?.firstLabel.text = "Member No".localized()
+        cell?.firstLabel.text = "Member name".localized()
         cell?.secondLabel.text = "Account No".localized()
         cell?.thirdLabel.text = "Account type".localized()
         cell?.fourthLabel.text = "Owned balance".localized()
@@ -201,7 +204,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         
         cell?.buttonsStack.isHidden = true
         
-        cell?.memberName.text = securityOwnership[indexPath.row].Member_No ?? ""
+        cell?.memberName.text = securityOwnership[indexPath.row].Member_Name ?? ""
         cell?.memberNum.text = securityOwnership[indexPath.row].Account_No ?? ""
         cell?.accountName.text = securityOwnership[indexPath.row].Account_Type_Desc ?? ""
         cell?.accountNum.text = securityOwnership[indexPath.row].Quantity_Owned ?? ""
@@ -259,6 +262,8 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             
             searchStack.isHidden = false
 //            staticCellInfo.isHidden = false
+//            stackHeight.constant = 450
+
             
             selectedPaperName = selectdTxt
             self.securityNameLabel.setTitle(  "\(selectdTxt)/\(securtNumber)" , for: .normal)

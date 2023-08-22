@@ -7,7 +7,6 @@ final class Helper {
     let storingDataKey = "Blueray.SDC"
 
     
-    
     func saveAppLang(lang:String)
     {
         let def = UserDefaults.standard

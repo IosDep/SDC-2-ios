@@ -286,6 +286,7 @@ extension UIViewController {
         })
     }
     func setupSideMenu() {
+        
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let menuController = storyBoard.instantiateViewController(withIdentifier: "MenuVC") as! MenuVC
         
@@ -769,6 +770,8 @@ extension UIViewController {
     
     
     
+    
+    
     func convertedDate(dateString: String) -> String? {
         let dateFormatter = DateFormatter()
         
@@ -784,7 +787,47 @@ extension UIViewController {
             return nil
         }
     }
-        
+    
+    func homeDateAndTime(dateString: String) -> (date: String, time: String , day : String)? {
+        let dateFormatter = DateFormatter()
+
+        dateFormatter.locale = Locale(identifier: "en")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+
+        if let date = dateFormatter.date(from: dateString) {
+            let dateFormatterDate = DateFormatter()
+            dateFormatterDate.dateFormat = "dd-MM-yyyy"
+            let formattedDate = dateFormatterDate.string(from: date)
+
+            let dateFormatterTime = DateFormatter()
+            
+            dateFormatterTime.dateFormat = "hh:mm a"
+            let formattedTime = dateFormatterTime.string(from: date)
+            dateFormatterTime.locale = Locale(identifier: "en_US_POSIX")
+            
+            
+            
+            let preferredLanguage = Locale.preferredLanguages.first ?? "en"
+            
+            // Set the locale based on the preferred language
+            dateFormatter.locale = Locale(identifier: preferredLanguage)
+            
+            if let dateTime = dateFormatter.date(from: dateTimeString) {
+                let calendar = Calendar.current
+                let components = calendar.component(.weekday, from: dateTime)
+                
+                // Get the weekday symbols based on the app's language
+                let weekdaySymbols = dateFormatter.weekdaySymbols
+                
+                // Adjust the index to align with the weekday symbols array
+                let weekday = weekdaySymbols?[components - 1]
+                
+            return (formattedDate, formattedTime , weekday)
+        } else {
+            return nil
+        }
+    }
+    
     }
         
     

@@ -18,7 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
     
     func reset() {
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "tabNav")
+        let vc = storyBoard.instantiateViewController(withIdentifier: "WelcomePageVC") 
         self.window?.rootViewController = vc
     }
     

@@ -510,14 +510,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         //           3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
-        format.numberStyle = .none
+        format.numberStyle = .percent
         let formatter = DefaultValueFormatter(formatter: format)
-        pieChartData.setValueFormatter(formatter)
+        pieChartData.setValueFormatter(DefaultValueFormatter(decimals: 2))
         
         // 4. Assign it to the chart’s data
-        pieChartView.data = pieChartData
+            
+            // Set the percentage sign as the suffix for data labels
+            pieChartView.data = pieChartData
+        
+        
         
     }
+    
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []
@@ -744,19 +749,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         
                                         
                                         if self.bank.sec_count != 0 && self.bank.Quantity != 0 && self.bank.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.bank, color: UIColor(named: "BankColor")!))
+                                            self.pieTableHolder.append(PieTableHolder(title: "bank".localized(), array: self.bank, color: UIColor(named: "BankColor")!))
                                         }
                                         
                                          if self.insuarance.sec_count != 0 && self.insuarance.Quantity != 0 && self.insuarance.market_value != 0 {
-                                             self.pieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.insuarance, color: UIColor(named: "InsuranceCollor")!))
+                                             self.pieTableHolder.append(PieTableHolder(title: "insurance".localized(), array: self.insuarance, color: UIColor(named: "InsuranceCollor")!))
                                         }
                                         
                                          if self.service.sec_count != 0 && self.service.Quantity != 0 && self.service.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.service , color: UIColor(named: "ServiceColor")!))
+                                            self.pieTableHolder.append(PieTableHolder(title: "services".localized(), array: self.service , color: UIColor(named: "ServiceColor")!))
                                         }
                                         
                                         if self.industrry.sec_count != 0 && self.industrry.Quantity != 0 && self.industrry.market_value != 0 {
-                                            self.pieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.industrry , color: UIColor(named: "industryColor")!))
+                                            self.pieTableHolder.append(PieTableHolder(title: "industry".localized(), array: self.industrry , color: UIColor(named: "industryColor")!))
                                         }
                                         
                                     }
@@ -837,19 +842,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                         
                                         
                                         if self.dbank.sec_count != 0 && self.dbank.Quantity != 0 && self.dbank.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Bank".localized(), array: self.dbank , color: UIColor(named: "BankColor")!))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "bank".localized(), array: self.dbank , color: UIColor(named: "BankColor")!))
                                         }
                                         
                                         else if self.dinsuarance.sec_count != 0 && self.dinsuarance.Quantity != 0 && self.dinsuarance.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Insurance".localized(), array: self.dinsuarance , color: UIColor(named: "InsuranceCollor")!))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "insurance".localized(), array: self.dinsuarance , color: UIColor(named: "InsuranceCollor")!))
                                         }
                                         
                                         else if self.dservice.sec_count != 0 && self.dservice.Quantity != 0 && self.dservice.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Services".localized(), array: self.dservice , color: UIColor(named: "ServiceColor")!))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "services".localized(), array: self.dservice , color: UIColor(named: "ServiceColor")!))
                                         }
                                         
                                         else if self.dindustry.sec_count != 0 && self.dindustry.Quantity != 0 && self.dindustry.market_value != 0 {
-                                            self.dpieTableHolder.append(PieTableHolder(title: "Industry".localized(), array: self.dindustry , color: UIColor(named: "industryColor")!))
+                                            self.dpieTableHolder.append(PieTableHolder(title: "industry".localized(), array: self.dindustry , color: UIColor(named: "industryColor")!))
                                         }
                                         
                                     }
@@ -921,8 +926,6 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                         
                         if let status = jsonObj!["status"] as? Int {
                             if status == 200 {
-                                
-                                
                                 
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
@@ -1012,7 +1015,12 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                 hud.dismiss()
                                 let data  = jsonObj!["data"] as? [String:Any]
                                 
+                                
+                                
                                 let sysDate =     data!["sysDate"] as? String
+                                
+                               let convertedDateTime = self.homeDateAndTime(dateString: sysDate ?? "")
+                                
                                 
                                 self.loginDay = self.getDayOfWeek(dateTimeString: sysDate ?? "")
                                
@@ -1021,9 +1029,11 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                                                 
                                 self.updatedDay = self.getDayOfWeek(dateTimeString: lastUpdate ?? "")
                                 
+                                self.lastloginInfo.text  = "at ".localized() + (convertedDateTime?.time ?? "") ?? "" + "on ".localized() + convertedDateTime?.day ?? ""
                                 
-                                self.lastloginInfo.text  = ((self.loginDay ?? "") + " " + (sysDate ?? ""))
-                                self.lastUpdateInfo.text = ((self.updatedDay ?? "") + " " + (lastUpdate ?? "") )
+                                
+                                
+                                self.lastUpdateInfo.text = ((self.updatedDay ?? "") + " " + ( self.convertedDate(dateString: lastUpdate ?? "") ?? "") )
                                 
                                 
                             }

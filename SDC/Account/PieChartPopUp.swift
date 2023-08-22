@@ -83,14 +83,20 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         //           3. Set ChartData
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
-        format.numberStyle = .none
+        format.numberStyle = .percent
+        
+        format.minimumFractionDigits = 1 // Minimum decimal places
+        format.maximumFractionDigits = 1
         let formatter = DefaultValueFormatter(formatter: format)
         pieChartData.setValueFormatter(formatter)
         
         // 4. Assign it to the chart’s data
         pieChartView.data = pieChartData
         
+        
     }
+    
+    
     
     private func colorsOfCharts(numbersOfColor: Int) -> [UIColor] {
         var colors: [UIColor] = []

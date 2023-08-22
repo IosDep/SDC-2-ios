@@ -261,9 +261,16 @@
 "Identity Card number" = "رقم الهوية";
 "Close Price" = "سعر الإغلاق" ;
  "Services" = " قطاع الخدمات";
+"services" = "خدمات";
 "Industry" = "قطاع الصناعة";
-"Bank" = "قطاع البنوك";
+"industry" = "صناعة";
+
+"bank" = "بنوك";
+
 "Insuarance" = "قطاع التأمين";
+
+"insuarance" = "تأمين" ;
+
 "forget ypur password ?" = "هل نسيت كلمة المرور؟";
 "Expiry date" = "تاريخ الّإنتهاء";
 "Shareholders" = "المساهمات";
@@ -370,3 +377,13 @@
 "Member No" = "رقم العضو";
 "Account No" = "رقم الحساب";
 "Owned balance" = "hلرصيد الحالي";
+"Invalid Otp" = "خطأ في رمز التحقق";
+"Service unavailable" = "الخدمة غير متاحة حاليا";
+"You have exceeded the allowed number of attempts, you can request a new verification code" = "قد تجاوزت الحد المسموح لعدد المحاولات , بامكانك طلب رمز تحقق";
+
+"OTP expierd" = "لرمز منتهي الصلاحية";
+
+"Already active otp" = "لديك رمز تحقق فعال حاليا , يرجى المحاولة بعد قليل";
+
+"at " = "الساعة";
+"on " = "بتاريخ";

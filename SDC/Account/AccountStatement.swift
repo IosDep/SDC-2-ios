@@ -242,7 +242,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     
     @IBAction func datePicker2Changed(_ sender: UIDatePicker) {
-        
         let selectedDate = sender.date
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
