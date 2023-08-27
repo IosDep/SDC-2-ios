@@ -208,8 +208,23 @@ extension UIViewController {
         //        hud.show(in: self.view)
         //        hud.dismiss(afterDelay: 1.5)
         //
-        Loaf(msg, state: .error,location: .top, sender: self).show()
-        
+
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                    UIColor.init(red: 231.0/255.0, green: 76.0/255.0, blue: 60.0/255.0, alpha: 1.0),
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.error,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+        .show()
     }
     
     
@@ -222,16 +237,48 @@ extension UIViewController {
         //        hud.dismiss(afterDelay: 1.5)
         //        hud.dismiss(afterDelay: 1.5)
         
-        Loaf(msg, state: .success,location: .top, sender: self).show()
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                        UIColor(red: 0.18, green: 0.80, blue: 0.44, alpha: 1.00) ,
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.success,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+             .show()
+        
+        
     }
+    
     func showErrorHud(msg: String, hud: JGProgressHUD) {
         //        hud.indicatorView = JGProgressHUDErrorIndicatorView()
         //        hud.textLabel.text = msg
         //        hud.dismiss(afterDelay: 1.5)
-        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 3)
         
-        Loaf(msg, state: .error,location: .top, sender: self).show()
-        
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                        UIColor(red: 0.91, green: 0.30, blue: 0.24, alpha: 1.00) ,
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.error,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+             .show()
         
     }
     @IBAction func notfication(_ sender: Any) {
@@ -256,26 +303,65 @@ extension UIViewController {
     
     @IBAction func dismiss(_ sender: Any) {self.dismiss(animated: true)}
     
-//    @IBAction func setupMenu(_ sender: Any) {
-//        
-//        if self.checkSideMenu == true {
-//            self.dismiss(animated: true)
-//        }
-//        else if checkSideMenu == false {
-//            self.side_menu()
-//        }
-//        
-//    }
-//    
+    //    @IBAction func setupMenu(_ sender: Any) {
+    //
+    //        if self.checkSideMenu == true {
+    //            self.dismiss(animated: true)
+    //        }
+    //        else if checkSideMenu == false {
+    //            self.side_menu()
+    //        }
+    //
+    //    }
+    //
     
     func showSuccessHud(msg: String, hud: JGProgressHUD) {
         //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
         //        hud.textLabel.text = msg
         //        hud.dismiss(afterDelay: 1.5)
-        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 3)
         
-        Loaf(msg, state: .success,location: .top, sender: self).show()
-    }
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                        UIColor(red: 0.18, green: 0.80, blue: 0.44, alpha: 1.00) ,
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.success,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+             .show()    }
+    
+    func showWarningHud(msg: String, hud: JGProgressHUD) {
+        //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        //        hud.textLabel.text = msg
+        //        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 3)
+        
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                        UIColor(red: 0.95, green: 0.77, blue: 0.06, alpha: 1.00),
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.warning,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+        .show()    }
+    
+    
     
     func showSuccessHudAndOut(msg: String, hud: JGProgressHUD) {
         hud.indicatorView = JGProgressHUDSuccessIndicatorView()
@@ -312,13 +398,13 @@ extension UIViewController {
     func internetError(hud: JGProgressHUD) {
         hud.indicatorView = JGProgressHUDErrorIndicatorView()
         hud.textLabel.text = "Please check internet connection".localized()
-        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 2)
     }
     
     func serverError(hud: JGProgressHUD) {
         hud.indicatorView = JGProgressHUDErrorIndicatorView()
         hud.textLabel.text = "Server Error".localized()
-        hud.dismiss(afterDelay: 1.5)
+        hud.dismiss(afterDelay: 2)
     }
     
     func navigationText(title: String) {
@@ -639,7 +725,7 @@ extension UIViewController {
         guard let date = dateFormatter.date(from: dateString) else {
             return nil
         }
-       
+        
         let englishLocale = Locale(identifier: "en")
         dateFormatter.locale = englishLocale
         dateFormatter.setLocalizedDateFormatFromTemplate("MM-dd-yyyy")
@@ -695,15 +781,18 @@ extension UIViewController {
     }
     
     
+    
+    // function for market values (decimal and thousand digit )
+    
     func numFormat(value: Double) -> String {
         let formatter = NumberFormatter()
         
         formatter.locale = Locale(identifier: "en") // Set the Arabic locale
-
+        
         formatter.numberStyle = .decimal
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
-
+        
         // Format the number with commas and decimal places
         guard let formattedNumber = formatter.string(from: NSNumber(value: value)) else {
             // Assign the formatted number to the label
@@ -713,7 +802,23 @@ extension UIViewController {
         return formattedNumber
     }
     
+    // percentage string
     
+    func percentageNum(value: Double) -> String {
+        let formatter = NumberFormatter()
+
+        formatter.locale = Locale.current  // Use the device's current locale
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+
+        // Format the number with the desired format
+        guard let formattedNumber = formatter.string(from: NSNumber(value: value)) else {
+            return ""
+        }
+
+        return formattedNumber + " %"
+    }
     
     func numStringFormat(value: String) -> String {
         let formatter = NumberFormatter()
@@ -730,53 +835,42 @@ extension UIViewController {
         
         return ""
     }
+    
 
+    // function for balances (thousand digits )
     
-    
-        func doubleToArabic(value: String) -> String {
-            
-            if MOLHLanguage.isRTLLanguage() {
-                let arabicNumerals: [Character: Character] = [
-                    "0": "٠",
-                    "1": "١",
-                    "2": "٢",
-                    "3": "٣",
-                    "4": "٤",
-                    "5": "٥",
-                    "6": "٦",
-                    "7": "٧",
-                    "8": "٨",
-                    "9": "٩",
-                    ".": "."
-                ]
-                
-                let strValue = String(value)
-                var arabicValue = ""
-                
-                for char in strValue {
-                    let arabicChar = arabicNumerals[char] ?? char
-                    arabicValue.append(arabicChar)
-                }
-                
-                return arabicValue
-                
-            }
-            
-            else {
-                return value
-            }
-            
+    func thousandigitNum(_ numberString: String) -> String? {
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .decimal
+        formatter.locale = Locale(identifier: "en") // Set the desired locale
+
+        if let number = formatter.number(from: numberString) {
+            return formatter.string(from: number)
         }
+
+        return nil
+    }
     
     
+    // function for values string ->
     
+    func formatDoubleToString(_ value: Double) -> String {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.locale = Locale(identifier: "en") // Set the desired locale
+        if let formattedString = numberFormatter.string(from: NSNumber(value: value)) {
+            return formattedString
+        } else {
+            return "\(value)"
+        }
+    }
     
     
     func convertedDate(dateString: String) -> String? {
         let dateFormatter = DateFormatter()
         
         dateFormatter.locale = Locale(identifier: "en") // Set the desired locale
-
+        
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         
         if let date = dateFormatter.date(from: dateString) {
@@ -790,19 +884,21 @@ extension UIViewController {
     
     func homeDateAndTime(dateString: String) -> (date: String, time: String , day : String)? {
         let dateFormatter = DateFormatter()
-
+        
         dateFormatter.locale = Locale(identifier: "en")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-
-        if let date = dateFormatter.date(from: dateString) {
+        
+         let date = dateFormatter.date(from: dateString)
             let dateFormatterDate = DateFormatter()
             dateFormatterDate.dateFormat = "dd-MM-yyyy"
-            let formattedDate = dateFormatterDate.string(from: date)
-
+        let formattedDate = dateFormatterDate.string(from: date ?? Date())
+            
             let dateFormatterTime = DateFormatter()
             
             dateFormatterTime.dateFormat = "hh:mm a"
-            let formattedTime = dateFormatterTime.string(from: date)
+            dateFormatterTime.locale = Locale(identifier: "en")
+
+        let formattedTime = dateFormatterTime.string(from: date ?? Date())
             dateFormatterTime.locale = Locale(identifier: "en_US_POSIX")
             
             
@@ -812,7 +908,7 @@ extension UIViewController {
             // Set the locale based on the preferred language
             dateFormatter.locale = Locale(identifier: preferredLanguage)
             
-            if let dateTime = dateFormatter.date(from: dateTimeString) {
+            let dateTime = dateFormatter.date(from: dateString) ?? Date()
                 let calendar = Calendar.current
                 let components = calendar.component(.weekday, from: dateTime)
                 
@@ -822,16 +918,14 @@ extension UIViewController {
                 // Adjust the index to align with the weekday symbols array
                 let weekday = weekdaySymbols?[components - 1]
                 
-            return (formattedDate, formattedTime , weekday)
-        } else {
-            return nil
-        }
-    }
-    
-    }
+                return (formattedDate, formattedTime , weekday ?? "")
+           
         
+        
+    }
     
-
+    
+}
 
 
 

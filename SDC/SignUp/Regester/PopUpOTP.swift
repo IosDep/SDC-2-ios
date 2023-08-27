@@ -57,6 +57,14 @@ class PopUpOTP: UIViewController {
                 verificationMessage.text = "A message containing OTP code were sent to the Mobile".localized()
             }
             
+            if checkEmailPhone == "1" {
+                verificationMessage.text = "A message containing OTP code were sent to the Mobile".localized()
+            }
+            
+            else if checkEmailPhone == "2" {
+                verificationMessage.text = "A message containing OTP code were sent to the Email".localized()
+            }
+            
             recoveryInput.text = recoveryField
 
             
@@ -162,10 +170,9 @@ class PopUpOTP: UIViewController {
                                     
                                    
                     DispatchQueue.main.async {
-                    self.showSuccessHud(msg: message ?? "OTP Verified")
+                    self.showSuccessHud(msg: message ?? "OTP Verified" , hud: hud)
                         
                        
-                        hud.dismiss()
                         
                     self.dismiss(animated: true , completion: {
                                 let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)

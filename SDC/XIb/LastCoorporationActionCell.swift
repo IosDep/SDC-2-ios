@@ -24,7 +24,6 @@ class LastCoorporationActionCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
         greenView.roundCorners([.topLeft, .topRight], radius: 12)
 
         

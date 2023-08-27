@@ -1,180 +1,212 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="217" id="QB4-vE-ASw" customClass="AccountListXib" customModule="SDC" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="488" height="217"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" rowHeight="259" id="QB4-vE-ASw" customClass="AccountListXib" customModule="SDC" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="390" height="259"/>
             <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QB4-vE-ASw" id="M7u-dh-hKL">
-                <rect key="frame" x="0.0" y="0.0" width="488" height="217"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QB4-vE-ASw" id="M7u-dh-hKL">
+                <rect key="frame" x="0.0" y="0.0" width="390" height="259"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNz-rL-Smf">
-                        <rect key="frame" x="10" y="11" width="405" height="20"/>
-                        <color key="backgroundColor" name="AccentColor"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="43K-SS-6p9"/>
-                        </constraints>
-                    </view>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-FY-T4s">
-                        <rect key="frame" x="30" y="36" width="365" height="137.33333333333334"/>
+                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDd-vU-jkh">
+                        <rect key="frame" x="10" y="10" width="370" height="231"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="dOR-BJ-7HG">
-                                <rect key="frame" x="0.0" y="0.0" width="365" height="97.333333333333329"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hT0-Dz-6Lb">
-                                        <rect key="frame" x="0.0" y="0.0" width="365" height="24.333333333333332"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-8X-2vr" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Member number"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4U-nT-skE">
-                                                <rect key="frame" x="182.66666666666663" y="0.0" width="182.33333333333337" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zsz-UU-QtJ">
-                                        <rect key="frame" x="0.0" y="24.333333333333336" width="365" height="24.333333333333336"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec0-DE-BJ7" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Member name"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC5-g0-oBy">
-                                                <rect key="frame" x="182.66666666666663" y="0.0" width="182.33333333333337" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-Sx-3Xe">
-                                        <rect key="frame" x="0.0" y="48.666666666666671" width="365" height="24.333333333333329"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nf-UR-LHT" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account type"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI4-Di-zp0">
-                                                <rect key="frame" x="182.66666666666663" y="0.0" width="182.33333333333337" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-VO-KBz">
-                                        <rect key="frame" x="0.0" y="73" width="365" height="24.333333333333329"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrO-fB-2na" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="0.0" width="182.66666666666666" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                                <userDefinedRuntimeAttributes>
-                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account number"/>
-                                                </userDefinedRuntimeAttributes>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THK-LM-mss">
-                                                <rect key="frame" x="182.66666666666663" y="0.0" width="182.33333333333337" height="24.333333333333332"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                        </subviews>
-                                    </stackView>
-                                </subviews>
-                            </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8tS-z0-knw">
-                                <rect key="frame" x="0.0" y="97.333333333333343" width="365" height="40"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Tk-9NY" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="180" height="34.333333333333336"/>
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="UOs-zw-bEF"/>
-                                            <constraint firstAttribute="height" constant="34.329999999999998" id="erB-xs-z6U"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Account Info">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account Info"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us2-oy-XcO" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
-                                        <rect key="frame" x="185" y="0.0" width="180" height="34.333333333333336"/>
-                                        <color key="backgroundColor" name="AccentColor"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="180" id="ORC-Xb-eX6"/>
-                                            <constraint firstAttribute="height" constant="34.329999999999998" id="S00-jJ-3qq"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                        <state key="normal" title="Account OwnerShip">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        </state>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="15"/>
-                                            </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account OwnerShip"/>
-                                        </userDefinedRuntimeAttributes>
-                                    </button>
-                                </subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DNz-rL-Smf">
+                                <rect key="frame" x="0.0" y="0.0" width="370" height="20"/>
+                                <color key="backgroundColor" name="AccentColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="PAz-yW-c24"/>
+                                    <constraint firstAttribute="height" constant="20" id="o8J-f8-xuH"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="topLeftRounded" value="YES"/>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="Ops-FY-T4s">
+                                <rect key="frame" x="20" y="30" width="330" height="191"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="dOR-BJ-7HG">
+                                        <rect key="frame" x="0.0" y="0.0" width="330" height="141"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hT0-Dz-6Lb">
+                                                <rect key="frame" x="0.0" y="0.0" width="330" height="27.666666666666668"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tBA-8X-2vr" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Member number"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4U-nT-skE">
+                                                        <rect key="frame" x="165" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zsz-UU-QtJ">
+                                                <rect key="frame" x="0.0" y="37.666666666666671" width="330" height="28"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Member name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ec0-DE-BJ7" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="28"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Member name"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XC5-g0-oBy">
+                                                        <rect key="frame" x="165" y="0.0" width="165" height="28"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="wlR-Sx-3Xe">
+                                                <rect key="frame" x="0.0" y="75.666666666666671" width="330" height="27.666666666666671"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0Nf-UR-LHT" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account type"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DI4-Di-zp0">
+                                                        <rect key="frame" x="165" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FSe-VO-KBz">
+                                                <rect key="frame" x="0.0" y="113.33333333333334" width="330" height="27.666666666666657"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Account number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HrO-fB-2na" customClass="DesignableLabel2" customModule="SDC" customModuleProvider="target">
+                                                        <rect key="frame" x="0.0" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account number"/>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="312321" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="THK-LM-mss">
+                                                        <rect key="frame" x="165" y="0.0" width="165" height="27.666666666666668"/>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </stackView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="8tS-z0-knw">
+                                        <rect key="frame" x="0.0" y="151" width="330" height="40"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="loV-Tk-9NY" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="162.66666666666666" height="34.333333333333336"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34.329999999999998" id="erB-xs-z6U"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account Info">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account Info"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Us2-oy-XcO" customClass="DesignableButton" customModule="SDC" customModuleProvider="target">
+                                                <rect key="frame" x="167.66666666666663" y="0.0" width="162.33333333333337" height="34.333333333333336"/>
+                                                <color key="backgroundColor" name="AccentColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="34.329999999999998" id="S00-jJ-3qq"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                <state key="normal" title="Account OwnerShip">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="15"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="Languagable" value="Account OwnerShip"/>
+                                                </userDefinedRuntimeAttributes>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="PAz-yW-c24"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </stackView>
                         </subviews>
+                        <color key="backgroundColor" systemColor="systemPinkColor"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="137.33000000000001" id="fa8-Pm-1Wf"/>
+                            <constraint firstItem="Ops-FY-T4s" firstAttribute="top" secondItem="DNz-rL-Smf" secondAttribute="bottom" constant="10" id="2E6-Ax-lEZ"/>
+                            <constraint firstItem="DNz-rL-Smf" firstAttribute="leading" secondItem="sDd-vU-jkh" secondAttribute="leading" id="6fj-Qi-SK4"/>
+                            <constraint firstAttribute="trailing" secondItem="Ops-FY-T4s" secondAttribute="trailing" constant="20" id="Ecb-7b-Y6B"/>
+                            <constraint firstItem="DNz-rL-Smf" firstAttribute="top" secondItem="sDd-vU-jkh" secondAttribute="top" id="TLf-By-BcR"/>
+                            <constraint firstAttribute="bottom" secondItem="Ops-FY-T4s" secondAttribute="bottom" constant="10" id="fV5-Yh-4gz"/>
+                            <constraint firstItem="Ops-FY-T4s" firstAttribute="leading" secondItem="sDd-vU-jkh" secondAttribute="leading" constant="20" id="lTN-qX-vQD"/>
+                            <constraint firstAttribute="trailing" secondItem="DNz-rL-Smf" secondAttribute="trailing" id="mbe-kB-doZ"/>
                         </constraints>
-                    </stackView>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                <size key="value" width="2" height="2"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                <real key="value" value="0.5"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                <real key="value" value="0.0"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <real key="value" value="25"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </view>
                 </subviews>
-                <constraints>
-                    <constraint firstItem="DNz-rL-Smf" firstAttribute="top" secondItem="M7u-dh-hKL" secondAttribute="top" constant="11" id="41S-uE-nM4"/>
-                    <constraint firstAttribute="trailing" secondItem="Ops-FY-T4s" secondAttribute="trailing" constant="30" id="Ldg-fT-HUS"/>
-                    <constraint firstItem="Ops-FY-T4s" firstAttribute="top" secondItem="DNz-rL-Smf" secondAttribute="bottom" constant="5" id="QyG-DK-Fs8"/>
-                    <constraint firstItem="DNz-rL-Smf" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="10" id="Sd8-Yx-zLA"/>
-                    <constraint firstItem="Ops-FY-T4s" firstAttribute="leading" secondItem="M7u-dh-hKL" secondAttribute="leading" constant="30" id="aNQ-XW-s63"/>
-                    <constraint firstItem="DNz-rL-Smf" firstAttribute="width" relation="lessThanOrEqual" secondItem="M7u-dh-hKL" secondAttribute="width" multiplier="1.01282" id="ias-lc-W0q"/>
-                    <constraint firstAttribute="trailing" secondItem="DNz-rL-Smf" secondAttribute="trailing" constant="10" id="jI4-9y-hli"/>
-                    <constraint firstAttribute="bottom" secondItem="Ops-FY-T4s" secondAttribute="bottom" constant="10" id="qJ5-CI-Aof"/>
-                </constraints>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             </tableViewCellContentView>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="sDd-vU-jkh" secondAttribute="trailing" constant="10" id="DSK-cg-Zbv"/>
+                <constraint firstAttribute="bottom" secondItem="sDd-vU-jkh" secondAttribute="bottom" constant="18" id="dSy-yN-Ymu"/>
+                <constraint firstItem="sDd-vU-jkh" firstAttribute="leading" secondItem="QB4-vE-ASw" secondAttribute="leading" constant="10" id="ihY-HR-r8j"/>
+                <constraint firstItem="sDd-vU-jkh" firstAttribute="top" secondItem="QB4-vE-ASw" secondAttribute="top" constant="10" id="rFX-1P-fJW"/>
+            </constraints>
             <connections>
                 <outlet property="accountName" destination="DI4-Di-zp0" id="tdP-pX-2NP"/>
                 <outlet property="accountNum" destination="THK-LM-mss" id="Dex-Pm-FFZ"/>
@@ -183,13 +215,14 @@
                 <outlet property="firstLabel" destination="tBA-8X-2vr" id="qcJ-r0-c4u"/>
                 <outlet property="fourthLabel" destination="HrO-fB-2na" id="Z7z-2L-umx"/>
                 <outlet property="greenView" destination="DNz-rL-Smf" id="qa5-LT-sZR"/>
+                <outlet property="mainCardView" destination="sDd-vU-jkh" id="RQX-to-t5o"/>
                 <outlet property="memberName" destination="XC5-g0-oBy" id="ueM-8y-Ca9"/>
                 <outlet property="memberNum" destination="v4U-nT-skE" id="9Ld-FQ-wcz"/>
                 <outlet property="profileInfo" destination="loV-Tk-9NY" id="MZj-QK-8M4"/>
                 <outlet property="secondLabel" destination="ec0-DE-BJ7" id="Oa9-wM-OOp"/>
                 <outlet property="thirdLabel" destination="0Nf-UR-LHT" id="kBM-Mt-zME"/>
             </connections>
-            <point key="canvasLocation" x="127.69230769230769" y="259.12322274881518"/>
+            <point key="canvasLocation" x="132.30769230769229" y="167.41706161137441"/>
         </tableViewCell>
     </objects>
     <designables>
@@ -214,7 +247,10 @@
     </designables>
     <resources>
         <namedColor name="AccentColor">
-            <color red="0.0" green="0.7839999794960022" blue="0.42399999499320984" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.7803921568627451" blue="0.42352941176470588" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
     </resources>
 </document>

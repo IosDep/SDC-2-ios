@@ -131,6 +131,12 @@
 		87D5A4AB29DEEFBB00F78DBE /* TradeAnlysis.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87D5A4AA29DEEFBB00F78DBE /* TradeAnlysis.swift */; };
 		87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD5029EA261800FF2485 /* AccountStatement.swift */; };
 		87F4FD5329EA282300FF2485 /* OnePaperOwnerShape.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87F4FD5229EA282300FF2485 /* OnePaperOwnerShape.swift */; };
+		B9EFE90F2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFE90D2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.swift */; };
+		B9EFE9102A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9EFE90E2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib */; };
+		B9EFE9132A9906F6008FB93D /* OnePaperTopHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFE9112A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.swift */; };
+		B9EFE9142A9906F6008FB93D /* OnePaperTopHeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9EFE9122A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.xib */; };
+		B9EFE9162A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9EFE9152A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift */; };
+		B9EFE9182A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9EFE9172A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib */; };
 		E94145515506B1DD16C8FED3 /* Pods_SDCTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 05BB6CDEAC5B8D5785497F34 /* Pods_SDCTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -289,6 +295,12 @@
 		87F4FD5029EA261800FF2485 /* AccountStatement.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountStatement.swift; sourceTree = "<group>"; };
 		87F4FD5229EA282300FF2485 /* OnePaperOwnerShape.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePaperOwnerShape.swift; sourceTree = "<group>"; };
 		ADB64507FB015385B77E1BEB /* Pods-SDC-SDCUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDC-SDCUITests.debug.xcconfig"; path = "Target Support Files/Pods-SDC-SDCUITests/Pods-SDC-SDCUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		B9EFE90D2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePaperSearchHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		B9EFE90E2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnePaperSearchHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		B9EFE9112A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePaperTopHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		B9EFE9122A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnePaperTopHeaderTableViewCell.xib; sourceTree = "<group>"; };
+		B9EFE9152A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnePaperOwnerShipDataHeaderView.swift; sourceTree = "<group>"; };
+		B9EFE9172A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnePaperOwnerShipDataHeaderView.xib; sourceTree = "<group>"; };
 		ECDA1B898AF6138A99DA886A /* Pods_SDC_SDCUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDC_SDCUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9D29DF46CEED17015169961 /* Pods-SDC.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDC.debug.xcconfig"; path = "Target Support Files/Pods-SDC/Pods-SDC.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -531,6 +543,12 @@
 				3F11041A2A652B9B0086CABA /* TotalHeaderView.swift */,
 				3F11041C2A652D710086CABA /* TotalFooterView.xib */,
 				3F11041E2A652EFE0086CABA /* TotalFooterView.swift */,
+				B9EFE90D2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.swift */,
+				B9EFE90E2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib */,
+				B9EFE9112A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.swift */,
+				B9EFE9122A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.xib */,
+				B9EFE9152A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift */,
+				B9EFE9172A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -705,11 +723,14 @@
 				3F11040D2A651FB00086CABA /* Header.xib in Resources */,
 				3F1104172A6528540086CABA /* TotalHeaderView.xib in Resources */,
 				3F80D44A29ED5E2B003F9945 /* Localizable.strings in Resources */,
+				B9EFE9142A9906F6008FB93D /* OnePaperTopHeaderTableViewCell.xib in Resources */,
+				B9EFE9182A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib in Resources */,
 				8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */,
 				8734D28D295C32590044B0F7 /* Assets.xcassets in Resources */,
 				3F11041D2A652D710086CABA /* TotalFooterView.xib in Resources */,
 				3F1B3CE92A487F35006F0FAE /* LastCoorporationActionCell.xib in Resources */,
 				3F8D55712A4432F100AD075F /* CurrencyCellTableViewCell.xib in Resources */,
+				B9EFE9102A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib in Resources */,
 				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
@@ -877,6 +898,7 @@
 				3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */,
 				8748CB4D2990562B00E9AE81 /* Login.swift in Sources */,
 				87B89AD929CFC78B00E82C1E /* DocumentType.swift in Sources */,
+				B9EFE9162A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift in Sources */,
 				3F8D55732A4433A800AD075F /* CurrencyPicker.swift in Sources */,
 				87B614FB29D15C690039813A /* HeaderDataXIB.swift in Sources */,
 				3FD7E34C2A498314003EC702 /* CompanyCategoryCell.swift in Sources */,
@@ -888,6 +910,7 @@
 				3F9065822A48205A008268D3 /* PartialDataModel.swift in Sources */,
 				3F11041F2A652EFE0086CABA /* TotalFooterView.swift in Sources */,
 				87F4FD5329EA282300FF2485 /* OnePaperOwnerShape.swift in Sources */,
+				B9EFE90F2A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.swift in Sources */,
 				87B05CE329C06D5D00EAA41D /* WelcomePageVC.swift in Sources */,
 				8736F52F29C70DB800A6A567 /* AccountVC.swift in Sources */,
 				87B89ADF29CFC85000E82C1E /* IdentfairVC.swift in Sources */,
@@ -930,6 +953,7 @@
 				8728D9EB29E9D73800133096 /* CardFourVC.swift in Sources */,
 				87B614FE29D170580039813A /* CardInfo.swift in Sources */,
 				8728D9E929E9D72100133096 /* CardThereVc.swift in Sources */,
+				B9EFE9132A9906F6008FB93D /* OnePaperTopHeaderTableViewCell.swift in Sources */,
 				871DC73B29C0813800C90982 /* TabBarVC.swift in Sources */,
 				87D3E9BA29DAA07F006B6AA7 /* EndPoint.swift in Sources */,
 				87B89AE429CFE8BA00E82C1E /* TradingValue.swift in Sources */,
@@ -1141,6 +1165,7 @@
 				DEVELOPMENT_TEAM = QVFP3WE862;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SDC ePortfolio";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1172,6 +1197,7 @@
 				DEVELOPMENT_TEAM = QVFP3WE862;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "SDC ePortfolio";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

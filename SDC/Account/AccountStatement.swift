@@ -60,6 +60,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         accountNumberBtn.isEnabled = false
         accountNoLabel.textColor = .lightGray
         accountNumberBtn.titleLabel?.textColor = .lightGray
+        datePicker.backgroundColor = .white
+        datePicker2.backgroundColor = .white
         
 //        nameStack.isHidden = true
 //        accountIDStack.isHidden = true

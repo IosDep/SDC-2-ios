@@ -19,7 +19,6 @@ class EmailVc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
     }
     
     
@@ -32,10 +31,7 @@ class EmailVc: UIViewController {
         
         
         if emailTxt.text != "" {
-            
-
-            
-            
+                        
             self.requestOTPEmail(email: self.emailTxt.text ?? "")
             
             
@@ -108,9 +104,7 @@ class EmailVc: UIViewController {
                                         vc.modalPresentationStyle = .overCurrentContext
                                         self.present(vc, animated: true)
                                         
-                                        
-                                        
-                                        
+                                                                    
                                     }
                                     
 //                                    )}

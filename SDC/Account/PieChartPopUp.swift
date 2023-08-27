@@ -16,6 +16,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
     @IBOutlet weak var date: UILabel!
  
     
+    @IBOutlet weak var mainView: UIView!
     var chartValues : [Double] = []
     var percanetageValues : [Double] = []
     var categories = [String]()
@@ -84,14 +85,15 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
         format.numberStyle = .percent
-        
-        format.minimumFractionDigits = 1 // Minimum decimal places
+        format.locale = Locale(identifier: "en")
         format.maximumFractionDigits = 1
-        let formatter = DefaultValueFormatter(formatter: format)
-        pieChartData.setValueFormatter(formatter)
+        format.multiplier = 1.0
+        
         
         // 4. Assign it to the chart’s data
         pieChartView.data = pieChartData
+        pieChartData.setValueFormatter(DefaultValueFormatter(formatter: format))
+
         
         
     }
@@ -119,7 +121,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         }
         
         else if pieFlag == 1 {
-            headerView.sectorLabel.text =             "Securities".localized()
+            headerView.sectorLabel.text = "Securities".localized()
 
             headerView.marketValLabel.isHidden = true
 
@@ -142,25 +144,37 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         return 50
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view == self.mainView{
+            
+        }else {
+            self.dismiss(animated: true,completion: {
+                print("Done WIth  2 second ")
+            })
+        }
+    }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "TotalFooterView") as! TotalFooterView
         
         if pieFlag == 0 {
-            footerView.totalValue.text = self.numFormat(value: totalAnlysis.sec_count ?? 0.0)
+            footerView.totalValue.text = self.formatDoubleToString(totalAnlysis.sec_count ?? 0.0)
             footerView.totalPercentage.isHidden = true
         }
         
         else if pieFlag == 1 {
-            footerView.totalValue.text = self.numFormat(value: totalAnlysis.Quantity ?? 0.0)
+            footerView.totalValue.text = self.formatDoubleToString(totalAnlysis.Quantity ?? 0.0)
             footerView.totalPercentage.isHidden = true
         }
         
         else if pieFlag == 2 {
             footerView.totalValue.text = self.numFormat(value: totalAnlysis.market_value ?? 0.0)
             footerView.totalPercentage.isHidden = false
-            footerView.totalPercentage.text = "100"
+            footerView.totalPercentage.text = "100 %"
 //            self.numFormat(value: percanetageValues[section] ?? 0.0)
 
         }
@@ -184,13 +198,13 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         cell?.title.text = pieTableHolder[indexPath.row].title
         
         if pieFlag == 0 {
-            cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.sec_count ?? 0.0)
+            cell?.value.text = self.formatDoubleToString(pieTableHolder[indexPath.row].array.sec_count ?? 0.0) 
             cell?.percentageValue.isHidden = true
             cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
         }
         
         else if pieFlag == 1 {
-            cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.Quantity ?? 0.0)
+            cell?.value.text = self.formatDoubleToString(pieTableHolder[indexPath.row].array.Quantity ?? 0.0)
             cell?.percentageValue.isHidden = true
             cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
         }
@@ -198,7 +212,7 @@ class PieChartPopUp: UIViewController , UITableViewDelegate , UITableViewDataSou
         else if pieFlag == 2 {
             cell?.value.text = self.numFormat(value: pieTableHolder[indexPath.row].array.market_value ?? 0)
             cell?.percentageValue.isHidden = false
-            cell?.percentageValue.text = self.numFormat(value: percanetageValues[indexPath.row] ?? 0.0)
+            cell?.percentageValue.text = self.percentageNum(value: percanetageValues[indexPath.row] ?? 0.0)
             cell?.imageColor.backgroundColor = pieTableHolder[indexPath.row].color
 
         }

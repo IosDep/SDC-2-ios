@@ -87,8 +87,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         view.layer.zPosition = 999
         busnissCard.contentInsetAdjustmentBehavior = .never
         refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        self.busnissCard.addSubview(refreshControl)
+//        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+//        self.busnissCard.addSubview(refreshControl)
         
         let notcount = "\(Helper.shared.getNotificationCount()!)"
         self.cerateBellView(bellview: self.bellView, count: notcount)
@@ -152,21 +152,21 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
     
     
     //    refresh action
-    @objc func didPullToRefresh() {
-        self.invAccount.removeAll()
-        self.busnissCard.reloadData()
-        if isZeroSelected == true && isWithoutSelected == false {
-            self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-            self.busnissCard.reloadData()
-            
-        }
-        
-        else if isZeroSelected == false && isWithoutSelected == true {
-            self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
-            self.busnissCard.reloadData()
-        }
-      
-    }
+//    @objc func didPullToRefresh() {
+//        self.invAccount.removeAll()
+//        self.busnissCard.reloadData()
+//        if isZeroSelected == true && isWithoutSelected == false {
+//            self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+//            self.busnissCard.reloadData()
+//
+//        }
+//
+//        else if isZeroSelected == false && isWithoutSelected == true {
+//            self.getInvestoreInfo(withZero: self.withZeroFlag ?? "")
+//            self.busnissCard.reloadData()
+//        }
+//      
+//    }
     
     
     @IBAction func currencyPressed(_ sender: Any) {
@@ -389,7 +389,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text = self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
             }
             
@@ -401,7 +401,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
             }
             
@@ -416,7 +416,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
 
             }
@@ -430,7 +430,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
         }
             
@@ -613,6 +613,7 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
         dolarData?.removeAll()
         dolarArray.removeAll()
         dinarArray.removeAll()
+        currencyFlag = "1"
         currencyBtn.setTitle("JOD".localized(), for: .normal)
         withZeroFlag = "1"
         isWithoutSelected = true
@@ -655,13 +656,13 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                                 if let data = jsonObj!["data"] as? [[String: Any]]{
                                     for item in data {
                                         let model = InvestoreOwnerShape(data: item)
-                                
+                                        
                                         self.invAccount.append(model)
                                         
                                     }
                                     
                                     self.dinarArray += self.invAccount.filter({ $0.Trade_Currency == "1" })
-
+                                    
                                     self.dolarArray += self.invAccount.filter({ $0.Trade_Currency == "22" })
                                     
                                     // Security_Sector_Desc
@@ -697,8 +698,8 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                                         .append(InvestoreOwnerShapeHolder(title: "Insurance".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "2"})))
                                     self.data?
                                         .append(InvestoreOwnerShapeHolder(title: "Services".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "3"})))
-                                        self.data?
-                                            .append(InvestoreOwnerShapeHolder(title: "Industry".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "4"})))
+                                    self.data?
+                                        .append(InvestoreOwnerShapeHolder(title: "Industry".localized(), array: self.dinarArray.filter({($0 .Security_Sector) == "4"})))
                                     
                                     
                                     
@@ -715,7 +716,20 @@ class InvestorOwnershipVC: UIViewController,UITableViewDataSource,UITableViewDel
                     DispatchQueue.main.async {
                                        
                     self.busnissCard.reloadData()
-                    self.refreshControl?.endRefreshing()
+                        
+                        if self.currencyFlag == "1" {
+                            if data.count == 0 {
+                                self.showWarningHud(msg: "No data to show".localized(), hud: hud)
+                            }
+                        }
+                        
+                        else if self.currencyFlag == "22" {
+                            if self.dolarData?.count == 0 {
+                                self.showWarningHud(msg: "No data to show".localized(), hud: hud)
+                            }
+                        }
+                        
+//                    self.refreshControl?.endRefreshing()
                                         hud.dismiss()
                                         //                                                self.showSuccessHud(msg: message ?? "", hud: hud)
                                         

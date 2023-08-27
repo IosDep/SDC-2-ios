@@ -14,6 +14,7 @@ import Alamofire
 
 class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource  {
     
+    @IBOutlet weak var loginLabel: DesignableLabel2!
     
     @IBOutlet weak var homeImage: UIImageView!
     @IBOutlet weak var dayLogin: UILabel!
@@ -258,31 +259,27 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let vc = storyBoard.instantiateViewController(withIdentifier: "PieChartPopUp") as! PieChartPopUp
             
+            vc.modalPresentationStyle = .overCurrentContext
             vc.bank = self.bank
             vc.insuarance = self.insuarance
             vc.service = self.service
             vc.industry = self.industrry
             
             if currencyFlag == "1" {
-                vc.totalAnlysis = totalAnlysis
-
-            }
-            
-            else if currencyFlag == "22" {
-                vc.totalAnlysis = dtotalAnlysis
-
-            }
-//            vc.pieFlag = indexPath.row
-        
-            if currencyFlag == "1" {
                 vc.pieTableHolder = self.pieTableHolder
+                vc.totalAnlysis = totalAnlysis
 
             }
             
             else if currencyFlag == "22" {
                 vc.pieTableHolder = self.dpieTableHolder
 
+                vc.totalAnlysis = dtotalAnlysis
+
             }
+//            vc.pieFlag = indexPath.row
+        
+           
 
             if indexPath.row == 0 {
                 if currencyFlag == "1" {
@@ -511,13 +508,19 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
         let pieChartData = PieChartData(dataSet: pieChartDataSet)
         let format = NumberFormatter()
         format.numberStyle = .percent
-        let formatter = DefaultValueFormatter(formatter: format)
-        pieChartData.setValueFormatter(DefaultValueFormatter(decimals: 2))
+        format.locale = Locale(identifier: "en")
+        format.maximumFractionDigits = 1
+        format.multiplier = 1.0
+//        format.percentSymbol = "%"
+        
         
         // 4. Assign it to the chart’s data
             
             // Set the percentage sign as the suffix for data labels
-            pieChartView.data = pieChartData
+        pieChartView.data = pieChartData
+        
+        pieChartData.setValueFormatter(DefaultValueFormatter(formatter: format))
+
         
         
         
@@ -1017,24 +1020,36 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                                 
                                 
                                 
-                                let sysDate =     data!["sysDate"] as? String
+                                let sysDate = data!["sysDate"] as? String
                                 
                                let convertedDateTime = self.homeDateAndTime(dateString: sysDate ?? "")
                                 
-                                
-                                self.loginDay = self.getDayOfWeek(dateTimeString: sysDate ?? "")
-                               
-                                
+                                                        
                                 let lastUpdate =     data!["lastUpdate"] as? String
+                                
+                                let updatedDateTime = self.homeDateAndTime(dateString: lastUpdate ?? "")
                                                                 
-                                self.updatedDay = self.getDayOfWeek(dateTimeString: lastUpdate ?? "")
+
+                                let timePart = convertedDateTime?.time ?? ""
+                                let datePart = convertedDateTime?.date ?? ""
+
+                                let localizedAt = "at ".localized()
+                                let localizedOn = " on ".localized()
                                 
-                                self.lastloginInfo.text  = "at ".localized() + (convertedDateTime?.time ?? "") ?? "" + "on ".localized() + convertedDateTime?.day ?? ""
+                                let updatedTime = updatedDateTime?.time ?? ""
+                                let updatedDate = updatedDateTime?.date ?? ""
+                                let updatedDay = updatedDateTime?.day ?? ""
+
+                                let localizedIN = " in ".localized()
+                                let localizedLogin  = "Last Login ".localized()
                                 
+                                self.loginLabel.text = localizedLogin + localizedAt + timePart + localizedOn + datePart
+
+//                                self.lastloginInfo.text = localizedAt + timePart + localizedOn + datePart
                                 
+                                self.lastUpdateInfo.text = localizedAt + updatedTime + " " + updatedDay + localizedIN + updatedDate
                                 
-                                self.lastUpdateInfo.text = ((self.updatedDay ?? "") + " " + ( self.convertedDate(dateString: lastUpdate ?? "") ?? "") )
-                                
+                            
                                 
                             }
                             //                             Session ID is Expired

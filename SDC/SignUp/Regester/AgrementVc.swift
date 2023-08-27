@@ -148,7 +148,11 @@ class AgrementVc: UIViewController {
                                 
                                 let data = jsonObj!["data"] as? String
                                 self.showSuccessHud(msg: data ?? "" , hud: hud)
-                                self.createAccount()
+                                
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                    
+                                    self.createAccount()
+                                }
                             }
                      
                             

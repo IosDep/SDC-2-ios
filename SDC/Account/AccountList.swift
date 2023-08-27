@@ -95,6 +95,9 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
             cell = nib[0] as? AccountListXib
         }
         
+        self.makeShadow(mainView: cell?.mainCardView ?? UIView())
+        
+        
         let data = accountList[indexPath.row]
         cell?.memberName.text = data.Member_Name
         cell?.memberNum.text =  data.Member_No ?? ""
@@ -145,6 +148,10 @@ class AccountList: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 250
+    }
     
     
     

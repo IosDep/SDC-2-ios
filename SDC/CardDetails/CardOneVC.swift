@@ -85,14 +85,14 @@ class CardOneVC: UIViewController {
             thirdLabel.text = "Account No.".localized()
             
             
-            currantBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Owned ?? "")
+            currantBalance.text =  self.thousandigitNum(securityOwnership?.Quantity_Owned ?? "")
             
-            freeBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Avilable ?? "")
+            freeBalance.text =  self.thousandigitNum(securityOwnership?.Quantity_Avilable ?? "")
             
-            bledgedBalance.text =  self.numStringFormat(value: securityOwnership?.Quantity_Pledge ?? "")
-            reservedBalacnce.text =  self.numStringFormat(value: securityOwnership?.Quantity_Freezed ?? "")
+            bledgedBalance.text =  self.thousandigitNum(securityOwnership?.Quantity_Pledge ?? "")
+            reservedBalacnce.text =  self.thousandigitNum(securityOwnership?.Quantity_Freezed ?? "")
             
-            nonCurranncyBalance.text = self.numStringFormat(value: securityOwnership?.Quantity_Unlisted ?? "")
+            nonCurranncyBalance.text = self.thousandigitNum(securityOwnership?.Quantity_Unlisted ?? "")
             
             pendingBuy.text =  securityOwnership?.Pending_In ?? ""
             pendeingSell.text =  securityOwnership?.Pending_Out ?? ""
@@ -123,15 +123,15 @@ class CardOneVC: UIViewController {
             
             securityID.text = invAccount?.Security_Reuter_Code ?? ""
             
-            currantBalance.text =  self.numStringFormat(value: invAccount?.Quantity_Owned ?? "")
+            currantBalance.text =  self.thousandigitNum(invAccount?.Quantity_Owned ?? "")
             
-            freeBalance.text = self.numStringFormat(value: invAccount?.Quantity_Avilable ?? "")
+            freeBalance.text = self.thousandigitNum(invAccount?.Quantity_Avilable ?? "")
             
-            bledgedBalance.text =  self.numStringFormat(value: invAccount?.Quantity_Pledge ?? "")
+            bledgedBalance.text =  self.thousandigitNum(invAccount?.Quantity_Pledge ?? "")
             
-            reservedBalacnce.text =  self.numStringFormat(value: invAccount?.Quantity_Freezed ?? "")
+            reservedBalacnce.text =  self.thousandigitNum(invAccount?.Quantity_Freezed ?? "")
             
-            nonCurranncyBalance.text = self.numStringFormat(value: invAccount?.Quantity_Unlisted ?? "")
+            nonCurranncyBalance.text = self.thousandigitNum(invAccount?.Quantity_Unlisted ?? "")
             
             sectorName.text = invAccount?.Security_Sector_Desc
             

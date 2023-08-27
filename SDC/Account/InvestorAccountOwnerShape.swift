@@ -332,7 +332,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
             }
             
@@ -344,7 +344,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
             }
             
@@ -360,7 +360,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
 
             }
@@ -374,7 +374,7 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                     
                     cell?.sector.text = newData[indexPath.section].array?[indexPath.row].Security_Name ?? ""
                     
-                    cell?.balance.text =  self.numStringFormat(value: newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
+                    cell?.balance.text =  self.thousandigitNum(newData[indexPath.section].array?[indexPath.row].Quantity_Owned ?? "")
                 }
         }
             
@@ -454,6 +454,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         dolarData?.removeAll()
         dolarArray.removeAll()
         dinarArray.removeAll()
+        currencyFlag = "1"
+        currencyBtn.setTitle("JOD".localized(), for: .normal)
         withZeroFlag = "1"
         isWithoutSelected = true
         isZeroSelected = false
@@ -466,6 +468,8 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
         dolarData?.removeAll()
         dinarArray.removeAll()
         dolarArray.removeAll()
+        currencyFlag = "1"
+        currencyBtn.setTitle("JOD".localized(), for: .normal)
         withZeroFlag = "2"
         isZeroSelected = true
         isWithoutSelected = false
@@ -585,8 +589,26 @@ class InvestorAccountOwnerShape : UIViewController,UITableViewDataSource,UITable
                                             .append(AccountOwnerShapeHolder(title: "Industry".localized(), array: self.dolarArray.filter({($0 .Security_Sector) == "4"})))
                                            
                                     DispatchQueue.main.async {
+                                        
+                                        
                                         self.busnissCard.reloadData()
-                                        self.refreshControl?.endRefreshing()
+                                        
+                                        
+                                        if self.currencyFlag == "1" {
+                                            if data.count == 0 {
+                                                self.showWarningHud(msg: "No data to show".localized(), hud: hud)
+                                            }
+                                        }
+                                        
+                                        else if self.currencyFlag == "22" {
+                                            
+                                            if self.dolarData?.count == 0 {
+                                                self.showWarningHud(msg: "No data to show".localized(), hud: hud)
+                                            }
+                                            
+                                        }
+                                        
+//                                        self.refreshControl?.endRefreshing()
                                         hud.dismiss()
                                     }
                                         }

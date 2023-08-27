@@ -52,7 +52,7 @@ class IdentfairVC: UIViewController {
             self.regesterApiCall()
             
         }else {
-            self.showErrorHud(msg: "الرقم المدخل غير صحيح")
+            self.showErrorHud(msg: "Invalid ID Num".localized())
         }
         
         
@@ -86,28 +86,29 @@ class IdentfairVC: UIViewController {
                                 IdentfairVC.name = cname ?? ""
                                 
                                 self.showSuccessHud(msg: message ?? "" , hud: hud )
-                                
+                                //                                hud.dismiss()
                                 
                                 let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                                 
                                 IdentfairVC.idNumber = self.idTxt.text ?? ""
                                 
-                              
-                                    
-                                    
-                                    self.dismiss(animated: true , completion: {
-                                        
-                                            let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
-                                            
-                                            
-                                            
-                                            vc.modalPresentationStyle = .fullScreen
-                                            
-                                            self.present(vc, animated: true)
-                                        
-                                    })
                                 
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+
+                                
+//                                self.dismiss(animated: true , completion: {
                                     
+                                    let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
+                                    
+                                    
+                                    
+                                    vc.modalPresentationStyle = .fullScreen
+                                    
+                                    self.present(vc, animated: true)
+                                    
+//                                })
+                                
+                            }
                                 
                             }
                             //                             Session ID is Expired
@@ -118,7 +119,7 @@ class IdentfairVC: UIViewController {
                             }else if status == 404
                             {
                                 let message = jsonObj!["message"] as? String
-                                self.showErrorHud(msg: message ?? "" )
+                                self.showErrorHud(msg: message ?? "" , hud: hud )
 
                                 
                             }

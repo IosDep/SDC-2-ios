@@ -50,6 +50,9 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         //        self.withoutZero.cornerRadius = 12
         //        self.withZero.cornerRadius = 12
         //
+        categoryFlag = 0
+        categoryBtn.setTitle( "Public ShareHolding Companies".localized() , for: .normal)
+
         isZeroSelected = true
         isWithoutSelected = false
         withZeroFlag = "1"
@@ -68,9 +71,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         self.busnissCard.addSubview(refreshControl)
         
         //        self.cerateBellView(bellview: self.bellView, count: "10")
-        
     }
-    
     
     
     @IBAction func categoryPressed(_ sender: Any) {
@@ -165,13 +166,36 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "LastCoorporationActionCell", for: indexPath) as? LastCoorporationActionCell
        
         cell?.mainView.layer.cornerRadius =  20
-
+        
+        self.makeShadow(mainView: cell?.mainView ?? UIView())
+        
         if cell == nil {
             let nib: [Any] = Bundle.main.loadNibNamed("LastCoorporationActionCell", owner: self, options: nil)!
             cell = nib[0] as? LastCoorporationActionCell
         }
         
         if seatrching == true {
+            
+            
+            if filteredData[indexPath.row].color == "arrow_green" {
+                cell?.percentage.textColor = UIColor(named: "AccentColor")
+                cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
+               
+            }
+                
+                else if  filteredData[indexPath.row].color == "arrow_red" {
+                    
+                    cell?.percentage.textColor = .red
+                    cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
+                    
+            }
+            
+            else if filteredData[indexPath.row].color == "arrow_grey" {
+                cell?.percentage.textColor = .systemGray3
+                cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+                cell?.arrowBtn.tintColor = .systemGray3
+                
+        }
             
             let categoryData = filteredData[indexPath.row]
             cell?.company.text = categoryData.Member_Alias
@@ -186,27 +210,29 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         
         else {
             
-            if publicCompanies[indexPath.row].color == "arrow_green" {
-                cell?.percentage.textColor = UIColor(named: "AccentColor")
-                cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
-               
-            }
-                
-                else if  publicCompanies[indexPath.row].color == "arrow_red" {
-                    
-                    cell?.percentage.textColor = .red
-                    cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
-                    
-            }
-            
-            else if publicCompanies[indexPath.row].color == "arrow_grey" {
-                cell?.percentage.textColor = .systemGray3
-                cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
-                cell?.arrowBtn.tintColor = .systemGray3
-                
-        }
             
             if categoryFlag == 0 {
+                
+                if publicCompanies[indexPath.row].color == "arrow_green" {
+                    cell?.percentage.textColor = UIColor(named: "AccentColor")
+                    cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
+                   
+                }
+                    
+                    else if  publicCompanies[indexPath.row].color == "arrow_red" {
+                        
+                        cell?.percentage.textColor = .red
+                        cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
+                        
+                }
+                
+                else if publicCompanies[indexPath.row].color == "arrow_grey" {
+                    cell?.percentage.textColor = .systemGray3
+                    cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+                    cell?.arrowBtn.tintColor = .systemGray3
+                    
+            }
+                
                 let categoryData = publicCompanies[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
                 cell?.actionDate.text =  self.convertedDate(dateString: categoryData.Action_Date ?? "")
@@ -217,6 +243,26 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                 cell?.percentage.text = categoryData.percentageChange
             }
             else if categoryFlag == 1 {
+                
+                if financialCompanies[indexPath.row].color == "arrow_green" {
+                    cell?.percentage.textColor = UIColor(named: "AccentColor")
+                    cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
+                   
+                }
+                    
+                    else if  financialCompanies[indexPath.row].color == "arrow_red" {
+                        
+                        cell?.percentage.textColor = .red
+                        cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
+                        
+                }
+                
+                else if financialCompanies[indexPath.row].color == "arrow_grey" {
+                    cell?.percentage.textColor = .systemGray3
+                    cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+                    cell?.arrowBtn.tintColor = .systemGray3
+                    
+            }
                 let categoryData = financialCompanies[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
                 cell?.actionDate.text = self.convertedDate(dateString: categoryData.Action_Date ?? "")
@@ -228,6 +274,27 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
 
             }
             else {
+                
+                if custodians[indexPath.row].color == "arrow_green" {
+                    cell?.percentage.textColor = UIColor(named: "AccentColor")
+                    cell?.arrowBtn.setImage(UIImage(named: "up-arrow"), for: .normal)
+                   
+                }
+                    
+                    else if  custodians[indexPath.row].color == "arrow_red" {
+                        
+                        cell?.percentage.textColor = .red
+                        cell?.arrowBtn.setImage(UIImage(named: "arrow-down"), for: .normal)
+                        
+                }
+                
+                else if custodians[indexPath.row].color == "arrow_grey" {
+                    cell?.percentage.textColor = .systemGray3
+                    cell?.arrowBtn.setImage(UIImage(systemName: "arrow.left"), for: .normal)
+                    cell?.arrowBtn.tintColor = .systemGray3
+                    
+            }
+                
                 let categoryData = custodians[indexPath.row]
                 cell?.company.text = categoryData.Member_Alias
                 cell?.actionDate.text = self.convertedDate(dateString: categoryData.Action_Date ?? "")
@@ -261,9 +328,10 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         filteredData = []
         
         if categoryFlag == 0 {
+            
             for item in publicCompanies{
-                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false  || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
-                    item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false {
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false  || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.contains(searchText) ?? false ||
+                    item.Value_After?.contains(searchText) ?? false || item.percentageChange?.contains(searchText) ?? false {
                     filteredData.append(item)
                 }
             }
@@ -271,7 +339,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         }
         else if categoryFlag == 1 {
             for item in financialCompanies{
-                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
+                if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
                     item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false {
                     filteredData.append(item)
                 }
@@ -279,7 +347,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
         }
             else if categoryFlag == 2 {
                 for item in custodians{
-                    if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Trans_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
+                    if item.Member_Alias?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Date?.lowercased().contains(searchText.lowercased()) ?? false || item.Action_Type_Desc?.lowercased().contains(searchText.lowercased()) ?? false || item.Value_Before?.lowercased().contains(searchText.lowercased()) ?? false ||
                         item.Value_After?.lowercased().contains(searchText.lowercased()) ?? false || item.percentageChange?.lowercased().contains(searchText.lowercased()) ?? false{
                         filteredData.append(item)
                     }
@@ -444,8 +512,7 @@ class CompanyProcedureVC: UIViewController,UITableViewDataSource,UITableViewDele
                                     }
                                     
                                     DispatchQueue.main.async {
-//                                        self.busnissCard.reloadData()
-                                        self.refreshControl?.endRefreshing()
+                                        self.busnissCard.reloadData()
                                         hud.dismiss()
                                     }
                                     

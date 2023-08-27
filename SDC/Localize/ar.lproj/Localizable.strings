@@ -164,7 +164,7 @@
 "Sign In" = "تسجيل دخول";
 "Sign Up" = "تسجيل حساب جديد";
 "Sign in With FingerPoint" = "تسجيل دخول باستخدام البصمة";
-"Welcome " = "مرحباًبك";
+"Welcome " = "مرحباً بك";
 "Enter your information below" = "ادخل معلوماتك أدناه";
 "Username" = "اسم المستخدم";
 "Password" = "كلمة المرور";
@@ -291,7 +291,7 @@
 
 "Press to show Nationality" = "اضغط لعرض الجنسيات الأخرى";
 "Other Nationalities" = "بيانات الجنسيات الأخرى";
-"Name" = "الإسم";
+"Name" = "اسم الورقة المالية";
 
 "Total Market Value" = "المجموع الكلي للقيمة السوقية";
 "Owned Balance" = "الرصيد الحالي" ;
@@ -376,7 +376,7 @@
 ";
 "Member No" = "رقم العضو";
 "Account No" = "رقم الحساب";
-"Owned balance" = "hلرصيد الحالي";
+"Owned balance" = "لرصيد الحالي";
 "Invalid Otp" = "خطأ في رمز التحقق";
 "Service unavailable" = "الخدمة غير متاحة حاليا";
 "You have exceeded the allowed number of attempts, you can request a new verification code" = "قد تجاوزت الحد المسموح لعدد المحاولات , بامكانك طلب رمز تحقق";
@@ -385,5 +385,12 @@
 
 "Already active otp" = "لديك رمز تحقق فعال حاليا , يرجى المحاولة بعد قليل";
 
-"at " = "الساعة";
-"on " = "بتاريخ";
+"at " = " الساعة ";
+" on " = " بتاريخ ";
+
+" in " = " الموافق ";
+"Ownership Data" = "بيانات الملكية";
+"name" = "اسم المستثمر";
+"Last Login " = "أخر دخول ";
+"No data to show" = "لا يوجد ملكية لعرضها";
+"Invalid ID Num" =  "الرقم المدخل غير صحيح" ;

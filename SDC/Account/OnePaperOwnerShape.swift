@@ -17,23 +17,14 @@ struct SecurityOwnerShapeHolder {
 
 
 
-class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate , DataSelectedDelegate , SelectedNatDelegate{
+class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate , DataSelectedDelegate , SelectedNatDelegate, OnePaperHeaderDelegate {
     
-    @IBOutlet weak var staticCellHeight: NSLayoutConstraint!
-    @IBOutlet weak var stackHeight: NSLayoutConstraint!
     @IBOutlet weak var searchStack: UIStackView!
     
     @IBOutlet weak var staticCellInfo: UIView!
     @IBOutlet weak var securityNameLabel: UIButton!
-    @IBOutlet weak var withZero: DesignableButton!
-    @IBOutlet weak var withoutZero: DesignableButton!
-    @IBOutlet weak var paperNameBtn: UIButton!
-    @IBOutlet weak var search_bar: UISearchBar!
-    @IBOutlet weak var literalNumBtn: UIButton!
     @IBOutlet weak var greenView: UIView!
-    @IBOutlet weak var sideMenuBtn: UIButton!
     @IBOutlet weak var busnissCard: UITableView!
-    @IBOutlet weak var staticCellView: UIView!
     @IBOutlet weak var isinLabel: UILabel!
     @IBOutlet weak var reuterCode: UILabel!
     @IBOutlet weak var secNameLabel: UILabel!
@@ -45,9 +36,9 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     var totalDolar : Double?
     var totalDinar : Double?
     var currencyFlag : String?
-    var isSearching = false
+    var didPick = false
     var flagSelectedTxt = false
-
+    var pickerData: [String]?
     
     var dinarData, filteredData , dolarData , dolarFilteredData: [SecurityOwnerShapeHolder]?
     
@@ -79,42 +70,24 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-//        searchStack.isHidden = true
-//        staticCellInfo.isHidden = true
-//        stackHeight.constant = 200
+        staticCellInfo.isHidden = true
         
         if checkSideMenu == true {
 //            sideMenuBtn.setImage(UIImage(named: ""), for: .normal)
         }
         
-//        self.cerateBellView(bellview: bellView, count: "12")
         self.getInvestoreInfo(withZero: withZeroFlag ?? "")
         self.busnissCard.delegate = self
         self.busnissCard.dataSource = self
         self.busnissCard.register(UINib(nibName: "AccountListXib", bundle: nil), forCellReuseIdentifier: "AccountListXib")
-       
-        //refreshControl
-        refreshControl = UIRefreshControl()
-//        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-        self.busnissCard.addSubview(refreshControl)
+        self.busnissCard.register(.init(nibName: "OnePaperSearchHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "OnePaperSearchHeaderTableViewCell")
+        self.busnissCard.register(.init(nibName: "OnePaperTopHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "OnePaperTopHeaderTableViewCell")
+        self.busnissCard.register(UINib.init(nibName: "OnePaperOwnerShipDataHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "OnePaperOwnerShipDataHeaderView")
     }
-    
-    //    refresh action
-//    @objc func didPullToRefresh() {
-//        self.invAccount.removeAll()
-////        self.busnissCard.reloadData()
-//        
-//    }
-    
     
     
     @IBAction func currencyPressed(_ sender: Any) {
-        
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "CurrencyPicker") as! CurrencyPicker
-        vc.selectedNatDelegate = self
-        self.present(vc, animated: true)
+    
     }
     
     
@@ -124,15 +97,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     
     @IBAction func clearBtnPressed(_ sender: Any) {
-        
-        securityNameLabel.setTitle("choose".localized(), for: .normal)
-        isinLabel.text = "choose security name".localized()
-        reuterCode.text = "choose security name".localized()
-        secNameLabel.text = "choose security name".localized()
-        secStatusLabel.text = "choose security name".localized()
-        secMarketLabel.text = "choose security name".localized()
-        securityOwnership.removeAll()
-        busnissCard.reloadData()
+    
     }
     
     
@@ -162,108 +127,190 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 //
 //        }
     }
-    
-    
-    
-    
-    
-    
-    
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return didPick ? 3 : 1
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-            return securityOwnership.count
-       
-    }
-    
-   
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
-        vc.checkOnepaper = true
-        vc.modalPresentationStyle = .fullScreen
-       
-            vc.securityOwnership = securityOwnership[indexPath.row]
-                
-        self.present(vc, animated: true)
-        
+        if didPick {
+            switch section {
+            case 0:
+                return 1
+            case 1:
+                return 5
+            case 2:
+                return securityOwnership.count
+            default:
+                return 0
+            }
+        }
+        return 1
     }
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        var cell = self.busnissCard.dequeueReusableCell(withIdentifier: "AccountListXib", for: indexPath) as? AccountListXib
-        
-        cell?.firstLabel.text = "Member name".localized()
-        cell?.secondLabel.text = "Account No".localized()
-        cell?.thirdLabel.text = "Account type".localized()
-        cell?.fourthLabel.text = "Owned balance".localized()
-        
-        
-        
-        
-        cell?.buttonsStack.isHidden = true
-        
-        cell?.memberName.text = securityOwnership[indexPath.row].Member_Name ?? ""
-        cell?.memberNum.text = securityOwnership[indexPath.row].Account_No ?? ""
-        cell?.accountName.text = securityOwnership[indexPath.row].Account_Type_Desc ?? ""
-        cell?.accountNum.text = securityOwnership[indexPath.row].Quantity_Owned ?? ""
-
-        
-        return cell!
-
-    }
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 180
-    }
-    
-    
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        if !decelerate && scrollView.contentOffset.y == 0 {
-            
-            // scrolling down
-            if !headerViewIsHidden {
-                
-                headerViewIsHidden = true
-                headerConstrianett.constant = 850
-                
-                
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 0
-                }
+        switch indexPath.section {
+        case 0:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OnePaperTopHeaderTableViewCell", for: indexPath) as? OnePaperTopHeaderTableViewCell {
+                cell.delegate = self
+                cell.chooseButton.setTitle(didPick ? "\(pickerData?[2] ?? "")/\(pickerData?[1] ?? "")" : "choose".localized(), for: .normal)
+                return cell
             }
-        } else {
-            // scrolling up
-            if headerViewIsHidden {
-                headerConstrianett.constant = 310
+        case 1:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "OnePaperSearchHeaderTableViewCell", for: indexPath) as? OnePaperSearchHeaderTableViewCell {
                 
-                headerViewIsHidden = false
-                UIView.animate(withDuration: 0.2) {
-                    self.headerView.alpha = 1
-                    
+                switch indexPath.row {
+                case 0:
+                    cell.theTitleLabel.text = "ISIN".localized()
+                case 1:
+                    cell.theTitleLabel.text = "Reuter Code".localized()
+                case 2:
+                    cell.theTitleLabel.text = "Security Name".localized()
+                case 3:
+                    cell.theTitleLabel.text = "Security Status".localized()
+                case 4:
+                    cell.theTitleLabel.text = "Market".localized()
+                default:
+                    break
                 }
+                cell.theDescriptionLabel.text = pickerData?[indexPath.row] ?? ""
+                return cell
+            }
+        case 2:
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListXib", for: indexPath) as? AccountListXib {
+                cell.fillData(data: securityOwnership[indexPath.row])
+                return cell
+            }
+        default:
+            return UITableViewCell()
+        }
+        return UITableViewCell()
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "OnePaperOwnerShipDataHeaderView") as? OnePaperOwnerShipDataHeaderView {
+                return header
             }
         }
+        return nil
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 60
+        }
+        return .zero
+    }
+
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0, 1:
+            return UITableView.automaticDimension
+        case 2:
+            return 230
+        default:
+            return .zero
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 2:
+            return 230
+        default:
+            return .zero
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 2 {
+            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let vc = storyBoard.instantiateViewController(withIdentifier: "CardOneVC") as! CardOneVC
+            vc.checkOnepaper = true
+            vc.modalPresentationStyle = .fullScreen
+            
+            vc.securityOwnership = securityOwnership[indexPath.row]
+            
+            self.present(vc, animated: true)
+        }
+    }
+    
+    func didSelectChooseButton() {
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
         
+        vc.dataSelectedDelegate = self
+        vc.checkFlag = "0"
+        vc.secData = self.secData
+        vc.checkAccountStatmnt = false
+        self.present(vc, animated: true)
+    }
+    
+    func didSelectInquiryButton() {
+        if flagSelectedTxt == true {
+            self.getSecurityOwnership(securtID: securtyIdToCallApi ?? "", withZero: withZeroFlag ?? "")
+        }
+        else {
+            showErrorHud(msg: "Please fill security name")
+        }
+    }
+    
+    func didSelectClearButton() {
+        didPick = false
+        securityOwnership.removeAll()
+        busnissCard.reloadData()
     }
     
     
-    
-    // set title for picker's buttons when is selected from picker vc
-    
-   
+//    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+//        if !decelerate && scrollView.contentOffset.y == 0 {
+//
+//            // scrolling down
+//            if !headerViewIsHidden {
+//
+//                headerViewIsHidden = true
+//                headerConstrianett.constant = 850
+//
+//
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 0
+//                }
+//            }
+//        } else {
+//            // scrolling up
+//            if headerViewIsHidden {
+//                headerConstrianett.constant = 310
+//
+//                headerViewIsHidden = false
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 1
+//
+//                }
+//            }
+//        }
+//
+//    }
     
     func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
         
+        pickerData = []
+        pickerData?.append(secISIN)
+        pickerData?.append(securtNumber)
+        pickerData?.append(selectdTxt)
+        pickerData?.append(secStatus)
+        pickerData?.append(secMarket)
+        didPick = true
+
         self.securityOwnership.removeAll()
         self.busnissCard.reloadData()
         
-        if flag == "0"{
+        if flag == "0" {
             
             searchStack.isHidden = false
-//            staticCellInfo.isHidden = false
-//            stackHeight.constant = 450
-
+            staticCellInfo.isHidden = false
             
             selectedPaperName = selectdTxt
             self.securityNameLabel.setTitle(  "\(selectdTxt)/\(securtNumber)" , for: .normal)
@@ -275,11 +322,6 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         self.securtyIdToCallApi = securtyId
         
         flagSelectedTxt = true
-        
-//        searchStack.isHidden = false
-        
-        
-        // set labels for static cell
         
         isinLabel.text = secISIN ?? ""
         reuterCode.text = securtNumber ?? ""
@@ -307,14 +349,6 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     // Security name Picker pressed
     
     @IBAction func securityNamePressed(_ sender: Any) {
-        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "PickerVC") as! PickerVC
-        
-        vc.dataSelectedDelegate = self
-        vc.checkFlag = "0"
-        vc.secData = self.secData
-        vc.checkAccountStatmnt = false
-        self.present(vc, animated: true)
         
     }
     
@@ -344,7 +378,6 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         }
 
     }
-    
     
     
     
@@ -482,6 +515,11 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
                                    
                                     
                                     DispatchQueue.main.async {
+                                        
+                                        if self.securityOwnership.count == 0 {
+                                            self.showWarningHud(msg: "No data to show".localized(), hud: hud)
+                                        }
+                                        
                                         self.busnissCard.reloadData()
                                         self.refreshControl?.endRefreshing()
                                         hud.dismiss()
@@ -514,7 +552,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
                 print("Error")
                 
                 self.serverError(hud: hud)
-                self.refreshControl.endRefreshing()
+                // self.refreshControl.endRefreshing()
                 
                 
             }
@@ -611,45 +649,83 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 
     @IBOutlet weak var headerConstrianett: NSLayoutConstraint!
     
-    var viewHeight: CGFloat = 180
+    var viewHeight: CGFloat = 400
     private var isAnimationInProgress = false
-
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if !isAnimationInProgress {
-            
-            // Check if an animation is required
-            if scrollView.contentOffset.y > .zero &&
-                headerConstrianett.constant > .zero {
-                
-                headerConstrianett.constant = .zero
-                headerView.isHidden = true
-                animateTopViewHeight()
-            }
-            else if scrollView.contentOffset.y <= .zero
-                        && headerConstrianett.constant <= .zero {
-                
-                headerConstrianett.constant = viewHeight
-                headerView.isHidden = false
-                animateTopViewHeight()
-            }
-        }
-    }
     
-    private func animateTopViewHeight() {
-        
-        // Lock the animation functionality
-        isAnimationInProgress = true
-        
-        UIView.animate(withDuration: 0.2) {
-            
-            self.view.layoutIfNeeded()
-            
-        } completion: { [weak self] (_) in
-            
-            // Unlock the animation functionality
-            self?.isAnimationInProgress = false
-        }
-    }
+    
+//    
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        let currentScrollViewYOffset = scrollView.contentOffset.y
+//        
+//        if currentScrollViewYOffset <= 0 {
+//              // User is at the top of the table view
+//            headerView.isHidden = false
+//          } else {
+//              // User has scrolled down
+//              headerView.isHidden = true
+//          }
+//        if currentScrollViewYOffset > previousScrollViewYOffset {
+//            // scrolling down
+//            if !headerViewIsHidden {
+//                headerViewIsHidden = true
+//                headerConstrianett.constant = 600
+//
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 0
+//                }
+//            }
+//        } else {
+//            // scrolling up
+//            if headerViewIsHidden {
+//                headerConstrianett.constant = 600
+//                headerViewIsHidden = false
+//                UIView.animate(withDuration: 0.2) {
+//                    self.headerView.alpha = 1
+//                    
+//                }
+//            }
+//        }
+//        
+//        previousScrollViewYOffset = currentScrollViewYOffset
+//    }
+
+
+//    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+//        if !isAnimationInProgress {
+//
+//            // Check if an animation is required
+//            if scrollView.contentOffset.y > .zero &&
+//                headerConstrianett.constant > .zero {
+//
+//                headerConstrianett.constant = .zero
+//                headerView.isHidden = true
+//                animateTopViewHeight()
+//            }
+//            else if scrollView.contentOffset.y <= .zero
+//                        && headerConstrianett.constant <= .zero {
+//
+//                headerConstrianett.constant = viewHeight
+//                headerView.isHidden = false
+//                animateTopViewHeight()
+//            }
+//        }
+//    }
+//
+//    private func animateTopViewHeight() {
+//
+//        // Lock the animation functionality
+//        isAnimationInProgress = true
+//
+//        UIView.animate(withDuration: 0.2) {
+//
+//            self.view.layoutIfNeeded()
+//
+//        } completion: { [weak self] (_) in
+//
+//            // Unlock the animation functionality
+//            self?.isAnimationInProgress = false
+//        }
+//    }
 }
 
     

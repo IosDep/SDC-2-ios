@@ -44,20 +44,19 @@ class CardTwoVc: UIViewController {
             currencyFlag.text = "USD".localized()
         }
         
-        currentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Owned ?? "")
+        currentBalance.text = self.thousandigitNum(invOwnership?.Quantity_Owned ?? "")
 
         
-        freeBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Avilable ?? "")
+        freeBalance.text = self.thousandigitNum(invOwnership?.Quantity_Avilable ?? "")
         
-        pledgedBalance.text = self.numStringFormat(value:
-                invOwnership?.Quantity_Pledge ?? "")
+        pledgedBalance.text = self.thousandigitNum(invOwnership?.Quantity_Pledge ?? "")
        
         
-        reservedBalance.text = self.numStringFormat(value:         invOwnership?.Quantity_Freezed ?? ""
+        reservedBalance.text = self.thousandigitNum(invOwnership?.Quantity_Freezed ?? ""
 )
         
         
-        nonCurrentBalance.text = self.numStringFormat(value: invOwnership?.Quantity_Unlisted ?? "") 
+        nonCurrentBalance.text = self.thousandigitNum(invOwnership?.Quantity_Unlisted ?? "")
         
         
         securityName.text = invOwnership?.Security_Name ?? ""
@@ -65,10 +64,10 @@ class CardTwoVc: UIViewController {
         iSSN.text = invOwnership?.securityIsin ?? ""
         
         
-        pendingIn.text = self.numStringFormat(value:         invOwnership?.Pending_In ?? "")
+        pendingIn.text = self.thousandigitNum(invOwnership?.Pending_In ?? "")
         
         
-        pendingOut.text = self.numStringFormat(value: invOwnership?.Pending_Out ?? "")
+        pendingOut.text = self.thousandigitNum(invOwnership?.Pending_Out ?? "")
         
         //doubleToArabic
         closePrice.text =  invOwnership?.closePrice ?? ""

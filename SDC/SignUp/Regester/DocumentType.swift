@@ -173,35 +173,37 @@ class DocumentType: UIViewController , UIPickerViewDataSource , UIPickerViewDele
                                 
                                 self.showSuccessHud(msg: message ?? "", hud: hud)
 //                                
-                                
-                                
-                                self.dismiss(animated: true , completion: {
-                                    
-                                    let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-    //                                1 card 2 passport
-                                    
-                                    IdentfairVC.documentNumber =  self.DocumentNumber.text ?? ""
-                                    
-                                    
-                                    
-                                    IdentfairVC.documentType =  self.idType ?? ""
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
 
-                                    IdentfairVC.barithDay =  self.birthdayDate ?? ""
-                                    
-                                    IdentfairVC.expirDate =  self.expDate ?? ""
-                                    
-                                    
-                                    IdentfairVC.familRegester =  self.familyNumber.text ?? ""
-                                    
-
+                                
+//                                    self.dismiss(animated: true , completion: {
+                                        
+                                        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                        //                                1 card 2 passport
+                                        
+                                        IdentfairVC.documentNumber =  self.DocumentNumber.text ?? ""
+                                        
+                                        
+                                        
+                                        IdentfairVC.documentType =  self.idType ?? ""
+                                        
+                                        IdentfairVC.barithDay =  self.birthdayDate ?? ""
+                                        
+                                        IdentfairVC.expirDate =  self.expDate ?? ""
+                                        
+                                        
+                                        IdentfairVC.familRegester =  self.familyNumber.text ?? ""
+                                        
+                                        
                                         let vc = storyBoard.instantiateViewController(withIdentifier: "PhoneNumberVc") as! PhoneNumberVc
-
+                                        
                                         vc.modalPresentationStyle = .fullScreen
-                                  
+                                    
                                         self.present(vc, animated: true)
-                                            
-                                            
-                                        })
+                                        
+                                        
+                                        //                                        })
+                                    }
 
                             }
                             //                             Session ID is Expired
