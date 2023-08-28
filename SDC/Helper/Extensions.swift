@@ -1024,6 +1024,10 @@ func animateViewHeight (controller:UIViewController
             layer.borderColor = newValue?.cgColor
         }
     }
+    
+    
+    
+    
 }
 
 
@@ -1069,6 +1073,23 @@ extension UIView {
             return layer.shadowRadius
         }
     }
+    
+    class InspectableLabel: UILabel {
+
+        @IBInspectable var customFontName: String = "" {
+            didSet {
+                if let customFont = UIFont(name: customFontName, size: font.pointSize) {
+                    font = customFont
+                }
+            }
+        }
+        
+        // Other label customization code, if needed
+        
+    }
+    
+    
+    
 }
 
 extension UICollectionViewFlowLayout {
