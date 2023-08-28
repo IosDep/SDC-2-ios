@@ -47,27 +47,16 @@ class AccountListXib: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         DispatchQueue.main.async {
-//            self.mainCardView.layer.cornerRadius = 23
-//            self.mainCardView.layer.masksToBounds = true
-//            self.mainCardView.layer.backgroundColor = UIColor.black.cgColor
             self.mainCardView.backgroundColor = UIColor.systemBackground
-//            self.mainCardView.layer.shadowColor = UIColor.systemGray3.cgColor
-//            self.mainCardView.layer.shadowOpacity = 2
-//            self.mainCardView.layer.shadowRadius = 23
-//            self.mainCardView.layer.shadowOffset = CGSize(width: 1, height: 2)
-//            self.mainCardView.layer.shadowPath = UIBezierPath(rect: self.mainCardView.bounds).cgPath
-//            self.mainCardView.layer.shouldRasterize = true
-            self.greenView.roundCorners([.topLeft, .topRight], radius: 12)
+            self.greenView.roundCorners([.topLeft, .topRight], radius: 10)
+            self.mainCardView.layer.shadowColor = UIColor.black.cgColor
+            self.mainCardView.layer.shadowOpacity = 0.2
+            self.mainCardView.layer.shadowOffset = CGSize(width: 2, height: 2)
+            self.mainCardView.layer.shadowRadius = 4
+            self.mainCardView.layer.masksToBounds = false
 
 
-//            self.mainCardView.layer.cornerRadius = 23
-//            self.mainCardView.layer.masksToBounds = true
-//            self.mainCardView.layer.shadowColor = UIColor.black.cgColor
-//            self.mainCardView.layer.shadowOffset = CGSize(width: 1.0, height: 1.0)
-//            self.mainCardView.layer.shadowRadius = 23
-//            self.mainCardView.layer.shadowOpacity = 0.2
-//            self.mainCardView.layer.shouldRasterize = true
-//            self.mainCardView.layer.rasterizationScale = UIScreen.main.scale
+
         }
     }
 

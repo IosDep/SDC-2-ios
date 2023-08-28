@@ -149,10 +149,8 @@ class AgrementVc: UIViewController {
                                 let data = jsonObj!["data"] as? String
                                 self.showSuccessHud(msg: data ?? "" , hud: hud)
                                 
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
                                     
                                     self.createAccount()
-                                }
                             }
                      
                             
@@ -221,16 +219,18 @@ class AgrementVc: UIViewController {
     func createAccount(){
         
         self.dismiss(animated: true , completion: {
+        
+            
             
             let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
             
             let vc = storyBoard.instantiateViewController(withIdentifier: "PopUpAccountCreated") as! PopUpAccountCreated
             
             vc.modalPresentationStyle = .overCurrentContext
-        
+            
             self.present(vc, animated: true,completion: nil)
             
-        })
+                    })
             
         
         // {self.dismiss(animated: true)}
