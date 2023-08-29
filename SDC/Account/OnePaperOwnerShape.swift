@@ -83,6 +83,8 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         self.busnissCard.register(.init(nibName: "OnePaperSearchHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "OnePaperSearchHeaderTableViewCell")
         self.busnissCard.register(.init(nibName: "OnePaperTopHeaderTableViewCell", bundle: nil), forCellReuseIdentifier: "OnePaperTopHeaderTableViewCell")
         self.busnissCard.register(UINib.init(nibName: "OnePaperOwnerShipDataHeaderView", bundle: nil), forHeaderFooterViewReuseIdentifier: "OnePaperOwnerShipDataHeaderView")
+        self.busnissCard.register(.init(nibName: "StaticInfoCell", bundle: nil), forCellReuseIdentifier: "StaticInfoCell")
+
     }
     
     
@@ -139,7 +141,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
             case 0:
                 return 1
             case 1:
-                return 5
+                return 1
             case 2:
                 return securityOwnership.count
             default:
@@ -159,25 +161,37 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
                 return cell
             }
         case 1:
-            if let cell = tableView.dequeueReusableCell(withIdentifier: "OnePaperSearchHeaderTableViewCell", for: indexPath) as? OnePaperSearchHeaderTableViewCell {
+//            if let cell = tableView.dequeueReusableCell(withIdentifier: "OnePaperSearchHeaderTableViewCell", for: indexPath) as? OnePaperSearchHeaderTableViewCell {
+//
+//                switch indexPath.row {
+//                case 0:
+//                    cell.theTitleLabel.text = "ISIN".localized()
+//                case 1:
+//                    cell.theTitleLabel.text = "Reuter Code".localized()
+//                case 2:
+//                    cell.theTitleLabel.text = "Security Name".localized()
+//                case 3:
+//                    cell.theTitleLabel.text = "Security Status".localized()
+//                case 4:
+//                    cell.theTitleLabel.text = "Market".localized()
+//                default:
+//                    break
+//                }
+//                cell.theDescriptionLabel.text = pickerData?[indexPath.row] ?? ""
+//                return cell
+//            }
+            
+            if let cell = tableView.dequeueReusableCell(withIdentifier: "StaticInfoCell", for: indexPath) as? StaticInfoCell {
+                cell.isin.text = pickerData?[0]
+                cell.reuterCode.text = pickerData?[1]
+                cell.securityName.text = pickerData?[2]
+                cell.securityStatus.text = pickerData?[3]
+                cell.market.text = pickerData?[4]
                 
-                switch indexPath.row {
-                case 0:
-                    cell.theTitleLabel.text = "ISIN".localized()
-                case 1:
-                    cell.theTitleLabel.text = "Reuter Code".localized()
-                case 2:
-                    cell.theTitleLabel.text = "Security Name".localized()
-                case 3:
-                    cell.theTitleLabel.text = "Security Status".localized()
-                case 4:
-                    cell.theTitleLabel.text = "Market".localized()
-                default:
-                    break
-                }
-                cell.theDescriptionLabel.text = pickerData?[indexPath.row] ?? ""
                 return cell
             }
+            
+            
         case 2:
             if let cell = tableView.dequeueReusableCell(withIdentifier: "AccountListXib", for: indexPath) as? AccountListXib {
                 cell.fillData(data: securityOwnership[indexPath.row])
@@ -189,21 +203,21 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
         return UITableViewCell()
     }
     
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        if section == 1 {
-            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "OnePaperOwnerShipDataHeaderView") as? OnePaperOwnerShipDataHeaderView {
-                return header
-            }
-        }
-        return nil
-    }
+//    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+//        if section == 1 {
+//            if let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "OnePaperOwnerShipDataHeaderView") as? OnePaperOwnerShipDataHeaderView {
+//                return header
+//            }
+//        }
+//        return nil
+//    }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if section == 1 {
-            return 60
-        }
-        return .zero
-    }
+//    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        if section == 1 {
+//            return 60
+//        }
+//        return .zero
+//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {

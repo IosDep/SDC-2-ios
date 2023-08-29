@@ -109,7 +109,15 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
                                     self.showSuccessHud(msg: "Succfully Changed Password" , hud: hud)
                                     
                                     if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
-                                        Helper.shared.saveBiometricPass(pass: newPassword ?? "")
+                                        
+                                        if let user = ApplicationData.shared.getAccountsList()?.first {
+                                            
+                                            ApplicationData.shared.updateAccount(with: Account(userName: user.userName, password: newPassword ?? ""))
+                                            
+                                        }
+                                        
+                                        
+//                                        Helper.shared.saveBiometricPass(pass: newPassword ?? "")
                                         
                                     }
                                     

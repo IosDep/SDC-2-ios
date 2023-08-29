@@ -20,6 +20,8 @@
 		3F16846729FA9D69004AD1D4 /* AccountOnwerShip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */; };
 		3F1B3CE82A487F35006F0FAE /* LastCoorporationActionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */; };
 		3F1B3CE92A487F35006F0FAE /* LastCoorporationActionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */; };
+		3F4310F12A9CE0CE009AF08A /* StaticInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4310EF2A9CE0CE009AF08A /* StaticInfoCell.swift */; };
+		3F4310F22A9CE0CE009AF08A /* StaticInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4310F02A9CE0CE009AF08A /* StaticInfoCell.xib */; };
 		3F4F5CAA2A0A21E800554BAD /* NatPickerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */; };
 		3F4F5CAD2A0A28AF00554BAD /* NatPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */; };
 		3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */; };
@@ -176,6 +178,8 @@
 		3F16846629FA9D69004AD1D4 /* AccountOnwerShip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountOnwerShip.swift; sourceTree = "<group>"; };
 		3F1B3CE62A487F34006F0FAE /* LastCoorporationActionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LastCoorporationActionCell.swift; sourceTree = "<group>"; };
 		3F1B3CE72A487F34006F0FAE /* LastCoorporationActionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LastCoorporationActionCell.xib; sourceTree = "<group>"; };
+		3F4310EF2A9CE0CE009AF08A /* StaticInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticInfoCell.swift; sourceTree = "<group>"; };
+		3F4310F02A9CE0CE009AF08A /* StaticInfoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StaticInfoCell.xib; sourceTree = "<group>"; };
 		3F4F5CA92A0A21E800554BAD /* NatPickerVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerVC.swift; sourceTree = "<group>"; };
 		3F4F5CAB2A0A28AE00554BAD /* NatPickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatPickerCell.swift; sourceTree = "<group>"; };
 		3F4F5CAC2A0A28AE00554BAD /* NatPickerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NatPickerCell.xib; sourceTree = "<group>"; };
@@ -549,6 +553,8 @@
 				B9EFE9122A9906F5008FB93D /* OnePaperTopHeaderTableViewCell.xib */,
 				B9EFE9152A990A4D008FB93D /* OnePaperOwnerShipDataHeaderView.swift */,
 				B9EFE9172A990A5A008FB93D /* OnePaperOwnerShipDataHeaderView.xib */,
+				3F4310EF2A9CE0CE009AF08A /* StaticInfoCell.swift */,
+				3F4310F02A9CE0CE009AF08A /* StaticInfoCell.xib */,
 			);
 			path = XIb;
 			sourceTree = "<group>";
@@ -734,6 +740,7 @@
 				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
+				3F4310F22A9CE0CE009AF08A /* StaticInfoCell.xib in Resources */,
 				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
 				3FB0EF842A38FB1700D72C4C /* InvestorOwnershipCell.xib in Resources */,
 				3F4F5CAE2A0A28AF00554BAD /* NatPickerCell.xib in Resources */,
@@ -922,6 +929,7 @@
 				8707FB4A29E9EFA6004CB6AA /* PopUpAccountCreated.swift in Sources */,
 				3F8AFA822A0BAFB800D13625 /* CardSixVC.swift in Sources */,
 				87CE38EB29EBC78800FD09D5 /* TradingXibView.swift in Sources */,
+				3F4310F12A9CE0CE009AF08A /* StaticInfoCell.swift in Sources */,
 				87F4FD5129EA261800FF2485 /* AccountStatement.swift in Sources */,
 				87BC4E0729DDBD070095BDC1 /* OwnerShapeAnlysisModel.swift in Sources */,
 				3F8D2FF92A3F0B9400564271 /* SectorAnlysisModel.swift in Sources */,

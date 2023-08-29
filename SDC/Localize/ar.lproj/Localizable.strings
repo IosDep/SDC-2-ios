@@ -362,7 +362,7 @@
 "time remaining" = "الوقت المتبقي";
 "Full name" = "الإسم الكامل";
 "Birth Date"="تاريخ الميلاد";
-"Sign in With Face ID" = "تسجيل دخول باستخدام بصمة الوجه";
+"Sign in With Face ID" = "تسجيل دخول باستخدام البصمة";
 "Investor Ownership of Specific Security" = "ملكية المستثمر لورقة مالية محددة";
 "Data not available" = "لا يوجد بيانات لعرضها";
 "Inquiry" = "استعلام";
@@ -394,3 +394,4 @@
 "Last Login " = "أخر دخول ";
 "No data to show" = "لا يوجد ملكية لعرضها";
 "Invalid ID Num" =  "الرقم المدخل غير صحيح" ;
+

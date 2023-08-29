@@ -55,7 +55,7 @@ class LoginVC: UIViewController {
 #if DEBUG
 
         userName.text = "9651010730"
-        password.text = "BlueRay@1"
+        password.text = "BlueRay@2"
 #endif
         
         self.loginImage.sd_setImage(with: URL(string: WelcomePageVC.loginImage ?? ""))
