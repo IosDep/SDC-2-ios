@@ -36,8 +36,6 @@ class DesignableLabel: UILabel {
             
         }
     }
-    
-    
 }
 
 @IBDesignable

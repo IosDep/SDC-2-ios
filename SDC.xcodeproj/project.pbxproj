@@ -56,6 +56,7 @@
 		3FB2E9B42A5460B3005EC377 /* AccountIDModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */; };
 		3FB42A972A03C0D900C74E58 /* InvestorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */; };
 		3FB42A992A03DBA200C74E58 /* InvInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FB42A982A03DBA200C74E58 /* InvInfo.swift */; };
+		3FC673722A9F732D007258E2 /* MemberDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FC673712A9F732D007258E2 /* MemberDataModel.swift */; };
 		3FD7E34C2A498314003EC702 /* CompanyCategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */; };
 		3FD7E34D2A498314003EC702 /* CompanyCategoryCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3FD7E34B2A498314003EC702 /* CompanyCategoryCell.xib */; };
 		3FD7E3502A49CE0D003EC702 /* PieTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3FD7E34E2A49CE0D003EC702 /* PieTableCell.swift */; };
@@ -214,6 +215,7 @@
 		3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountIDModel.swift; sourceTree = "<group>"; };
 		3FB42A962A03C0D900C74E58 /* InvestorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvestorInfo.swift; sourceTree = "<group>"; };
 		3FB42A982A03DBA200C74E58 /* InvInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InvInfo.swift; sourceTree = "<group>"; };
+		3FC673712A9F732D007258E2 /* MemberDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDataModel.swift; sourceTree = "<group>"; };
 		3FD7E34A2A498314003EC702 /* CompanyCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCategoryCell.swift; sourceTree = "<group>"; };
 		3FD7E34B2A498314003EC702 /* CompanyCategoryCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CompanyCategoryCell.xib; sourceTree = "<group>"; };
 		3FD7E34E2A49CE0D003EC702 /* PieTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PieTableCell.swift; sourceTree = "<group>"; };
@@ -588,6 +590,7 @@
 				3F8D2FF82A3F0B9400564271 /* SectorAnlysisModel.swift */,
 				3F9065812A482059008268D3 /* PartialDataModel.swift */,
 				3FB2E9B32A5460B2005EC377 /* AccountIDModel.swift */,
+				3FC673712A9F732D007258E2 /* MemberDataModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -959,6 +962,7 @@
 				8755766229E2E3C4009CA58D /* ChangeLanguage.swift in Sources */,
 				3F8AFA842A0BC47A00D13625 /* LastAction.swift in Sources */,
 				8728D9EB29E9D73800133096 /* CardFourVC.swift in Sources */,
+				3FC673722A9F732D007258E2 /* MemberDataModel.swift in Sources */,
 				87B614FE29D170580039813A /* CardInfo.swift in Sources */,
 				8728D9E929E9D72100133096 /* CardThereVc.swift in Sources */,
 				B9EFE9132A9906F6008FB93D /* OnePaperTopHeaderTableViewCell.swift in Sources */,

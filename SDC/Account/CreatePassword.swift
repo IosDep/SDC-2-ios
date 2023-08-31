@@ -8,6 +8,7 @@
 import UIKit
 import JGProgressHUD
 import Alamofire
+import MOLH
 
 class CreatePassword: UIViewController {
     
@@ -78,7 +79,7 @@ class CreatePassword: UIViewController {
             let param: [String: Any] = [
                 "sessionId":  AccountRecoveryUsername.sessionID ?? "",
                 "new_pass": newPasswordField.text ?? "",
-                "confirm_pass" : confirmPasswordField.text ?? ""
+                "confirm_pass" : confirmPasswordField.text ?? "" ,"lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" 
 
             ]
             

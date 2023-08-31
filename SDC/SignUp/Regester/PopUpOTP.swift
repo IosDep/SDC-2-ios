@@ -141,7 +141,7 @@ class PopUpOTP: UIViewController {
             
             let param: [String: Any] = [
                 "uniqueId": uniqueID ?? "",
-                "otp": OTP
+                "otp": OTP 
 
             ]
         

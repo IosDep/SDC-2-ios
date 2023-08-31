@@ -29,6 +29,7 @@ extension UIViewController {
         
         return outputImage!
     }
+    
     func makeShadow(mainView:UIView){
         mainView.layer.shadowColor = UIColor.black.cgColor
         mainView.layer.shadowOpacity = 0.5
@@ -361,6 +362,28 @@ extension UIViewController {
              sender: self)
         .show()    }
     
+    func showWarningHud(msg: String) {
+        //        hud.indicatorView = JGProgressHUDSuccessIndicatorView()
+        //        hud.textLabel.text = msg
+        //        hud.dismiss(afterDelay: 1.5)
+        
+        Loaf(msg, state:
+                .custom(
+                    .init(
+                    backgroundColor:
+                        UIColor(red: 0.95, green: 0.77, blue: 0.06, alpha: 1.00),
+                    textColor: .white,
+                    tintColor: .white,
+                    font: .systemFont(ofSize: 14.0),
+                    icon: Loaf.Icon.warning,
+                    textAlignment: .natural,
+                    iconAlignment: .left ,
+                    width: .fixed(280))
+                ),
+             location: .top,
+             sender: self)
+        .show()    }
+    
     
     
     func showSuccessHudAndOut(msg: String, hud: JGProgressHUD) {
@@ -371,6 +394,7 @@ extension UIViewController {
             self.navigationController?.popViewController(animated: true)
         })
     }
+    
     func setupSideMenu() {
         
         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
@@ -383,11 +407,11 @@ extension UIViewController {
             
             
             SideMenuManager.default.rightMenuNavigationController = MenuNavigationController
-            SideMenuManager.default.rightMenuNavigationController?.menuWidth = 300
+            SideMenuManager.default.rightMenuNavigationController?.menuWidth = 308
             
         } else {
             SideMenuManager.default.leftMenuNavigationController = MenuNavigationController
-            SideMenuManager.default.leftMenuNavigationController?.menuWidth = 300
+            SideMenuManager.default.leftMenuNavigationController?.menuWidth = 308
             
         }
         
@@ -756,6 +780,8 @@ extension UIViewController {
     
     
     
+    
+    
     func digitNumber(intString: String) -> String? {
         
         let numberFormatter = NumberFormatter()
@@ -781,6 +807,14 @@ extension UIViewController {
     }
     
     
+    //
+    
+    
+    
+    
+    
+    
+    
     
     // function for market values (decimal and thousand digit )
     
@@ -793,6 +827,7 @@ extension UIViewController {
         formatter.maximumFractionDigits = 2
         formatter.minimumFractionDigits = 2
         
+        
         // Format the number with commas and decimal places
         guard let formattedNumber = formatter.string(from: NSNumber(value: value)) else {
             // Assign the formatted number to the label
@@ -801,6 +836,36 @@ extension UIViewController {
         
         return formattedNumber
     }
+    
+    func priceFormat(value: String) -> String {
+        let formatter = NumberFormatter()
+        
+        formatter.locale = Locale(identifier: "en") // Set the Arabic locale
+        
+        formatter.numberStyle = .decimal
+        formatter.maximumFractionDigits = 2
+        formatter.minimumFractionDigits = 2
+        
+        // Convert the input string to a double, if possible
+        if let doubleValue = Double(value) {
+            // Format the number with commas and decimal places
+            guard let formattedNumber = formatter.string(from: NSNumber(value: doubleValue)) else {
+                return ""
+            }
+            
+            // Check if the formatted number starts with a dot and add a leading zero if needed
+                   if formattedNumber.hasPrefix(".") {
+                       return "0" + formattedNumber
+                   }
+                   
+                   return formattedNumber
+               }
+               
+               return ""
+           }
+    
+
+    
     
     // percentage string
     

@@ -8,6 +8,7 @@
 import UIKit
 import JGProgressHUD
 import Alamofire
+import MOLH
 
 
 class AccountRecovery: UIViewController , SelectedNatDelegate {
@@ -116,14 +117,16 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
             let param: [String: Any] = [
                 "email": email ,
                 "client_req_id" : username ,
-                "service_name" : "eportfolio"
+                "service_name" : "eportfolio" , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en"
             ]
         
         let username = "sdc"
         let password = "sdc@2022"
             
         let credentialData = "\(username):\(password)".data(using: .utf8)!
+        
             let base64Credentials = credentialData.base64EncodedString()
+        
             let headers = HTTPHeaders(["Authorization": "Basic \(base64Credentials)"])
             
             AF.request(endpoint!, method: .post, parameters: param , headers: headers).response { (response) in

@@ -8,6 +8,7 @@
 import UIKit
 import JGProgressHUD
 import Alamofire
+import MOLH
 
 class AccountRecoveryUsername: UIViewController {
 
@@ -35,7 +36,7 @@ class AccountRecoveryUsername: UIViewController {
             
             
             let param: [String: Any] = [
-                "userName": username
+                "userName": username , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en"
             ]
         
             

@@ -42,7 +42,7 @@ class AgrementVc: UIViewController {
 //        //        hud.textLabel.text = "Please Wait".localized()
 //        hud.show(in: self.view)
         
-        let param : [String:Any] = ["username" :"sdc","password": "sdc@2022"
+        let param : [String:Any] = ["username" :"sdc","password": "sdc@2022" , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" ,
         ]
         
         let link = URL(string: APIConfig.GetLoginToken)

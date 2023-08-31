@@ -69,7 +69,14 @@ class LoginVC: UIViewController {
     
 
     @IBAction func Login(_ sender: Any) {
-        self.LoginRequest(email: self.userName.text ?? "", password: self.password.text ?? "")
+        
+        if userName.text != "" && password.text != "" {
+            self.LoginRequest(email: self.userName.text ?? "", password: self.password.text ?? "")
+        }
+        
+        else {
+            self.showWarningHud(msg: "Please fill username and password".localized())
+        }
     }
     
     @IBAction func SignUp(_ sender: Any) {

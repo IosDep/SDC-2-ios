@@ -57,7 +57,7 @@ class EmailVc: UIViewController {
                 let param: [String: Any] = [
                     "email": email ,
                     "client_req_id" : IdentfairVC.idNumber ,
-                    "service_name" : "eportfolio"
+                    "service_name" : "eportfolio" , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" 
                 ]
             
             let username = "sdc"

@@ -153,7 +153,7 @@ class CardFourVC: UIViewController {
                                     self.city.text = self.handleNillData(value: postalCity ?? "")
                                     
                                     let country = data!["resCountry"] as? String
-                                    self.pCountry.text = self.handleNillData(value: postalCountry ?? "")
+                                    self.pCountry.text = self.handleNillData(value: country ?? "")
                                     
                                     let city = data!["resCity"] as? String
                                     self.pCity.text = self.handleNillData(value: city ?? "")

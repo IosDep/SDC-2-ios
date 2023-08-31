@@ -133,8 +133,6 @@ class CardFiveVC: UIViewController {
         hud.show(in: self.view)
         
         
-        
-        
         let endpoint = URL(string:APIConfig.GetInvestorInfo)
         let param: [String: Any] = [
             "sessionId" : Helper.shared.getUserSeassion() ?? "" ,
@@ -152,8 +150,6 @@ class CardFiveVC: UIViewController {
                         //    object status
                         
                         if let status = jsonObj!["status"] as? Int {
-                            
-                            
                             
                             
                             if status == 200 {

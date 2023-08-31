@@ -77,7 +77,7 @@ class CardThereVc: UIViewController {
         memberName.text = trans?.Member_Name ?? ""
         accountID.text =  trans?.Account_No ?? ""
         quantity.text =  trans?.Quantity ?? ""
-        price.text = trans?.Price ?? ""
+        price.text =  self.priceFormat(value:trans?.Price ?? "")
         
         marketValue.text = self.numStringFormat(value: trans?.Market_Value ?? "")
         

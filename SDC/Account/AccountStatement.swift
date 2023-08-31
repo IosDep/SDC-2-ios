@@ -34,7 +34,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     @IBOutlet weak var accountNoLabel: DesignableLabel2!
     
-    var accountList =  [AccountListModel]()
+    var accountList =  [MemberDataModel]()
     var invAccount = [InvestoreOwnerShape]()
     var accountName = [String]()
     var numberCode = [String]()
@@ -118,6 +118,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         
         if flag == "0"{
 //            accountIDStack.isHidden = false
+            
             self.membername.setTitle(selectdTxt, for: .normal)
             self.getMemberID(memberID: securtNumber)
             self.accountNumberBtn.setTitle("choose".localized(), for: .normal)
@@ -127,7 +128,6 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
             accountNoLabel.textColor = .black
             accountNumberBtn.titleLabel?.textColor = .black
 
-            
             
         } else if flag == "1" {
             self.accountNumberBtn.setTitle("\(selectdTxt)-\(securtNumber)-\(securtyId)", for: .normal)
@@ -257,6 +257,8 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
     
     // Api call for ````Picker data
     
+    // editing!!!!!!
+    
     func getInvestoreInfo(withZero : String){
         
         let hud = JGProgressHUD(style: .light)
@@ -369,9 +371,9 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
                                 
                                 
                                 
-                                if let data = jsonObj!["data"] as? [[String: Any]]{
+                                if let data = jsonObj!["membersData"] as? [[String: Any]]{
                                     for item in data {
-                                        let model = AccountListModel(data: item)
+                                        let model = MemberDataModel(data: item)
                                         
                                         self.accountList.append(model)
                                         

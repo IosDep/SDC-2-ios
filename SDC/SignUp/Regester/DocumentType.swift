@@ -140,7 +140,7 @@ class DocumentType: UIViewController , UIPickerViewDataSource , UIPickerViewDele
                 ,"birth_date": birthdayDate ?? ""
                 ,"famno": self.familyNumber.text ?? ""
                 ,"card_no": self.DocumentNumber.text ?? ""
-                ,"card_exp_dt": expDate ?? ""
+                ,"card_exp_dt": expDate ?? "" , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" 
                 
                 
             ]

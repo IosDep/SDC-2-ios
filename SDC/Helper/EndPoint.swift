@@ -6,16 +6,15 @@ class APIConfig {
     static let Phase2Url = "http://194.165.152.9/"
     
     static let Login = BaseURL  + "authentication/login"
-    
     static let changePassword = BaseURL  + "investor_information/changePassword"
-    
     static let getRecoveryData = BaseURL  + "investor_information/getRecoveryInfo"
-    
     static let validateOTP = BaseURL  + "sdc/otp-validate"
     
     static let getRequestOTP = BaseURL  + "sdc/otp-request"
     
     static let GetInvOwnership = BaseURL  + "investor_information/getInvOwnership"
+    
+    
     
     static let GetInvOwnershipPDF = BaseURL  + "investor_information/getInvOwnershipPdf"
     
@@ -50,9 +49,9 @@ class APIConfig {
     
     static let GetNationality = BaseURL  + "investor_information/getOtherNat"
     
-    static let GetSecurityOwnership = BaseURL  + "investor_information/getSecurityOwnershipWithGetAccountsList"
+    static let GetSecurityOwnership = BaseURL + "investor_information/getSecurityOwnershipWithGetAccountsList"
     
-    static let GetSecurityOwnershipPDF = BaseURL  + "investor_information/getSecurityOwnershipWithGetAccountsListPdf"
+    static let GetSecurityOwnershipPDF = BaseURL + "investor_information/getSecurityOwnershipWithGetAccountsListPdf"
 
     static let GetSysDates = BaseURL + "investor_information/getSysDates"
 //    static let baseURL = "http://preinsouq1-001-site1.btempurl.com/api" //

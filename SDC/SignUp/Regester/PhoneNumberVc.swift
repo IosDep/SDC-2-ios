@@ -78,7 +78,7 @@ class PhoneNumberVc: UIViewController {
                let param: [String: Any] = [
                    "mobile": mobile ,
                    "client_req_id" : IdentfairVC.idNumber ,
-                   "service_name" : "eportfolio"
+                   "service_name" : "eportfolio" , "lang": MOLHLanguage.isRTLLanguage() ? "ar" : "en" 
                ]
            
            let username = "sdc"
