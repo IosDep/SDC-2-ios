@@ -166,17 +166,22 @@ class DocumentType: UIViewController , UIPickerViewDataSource , UIPickerViewDele
                     
                     
                     if jsonObj != nil {
-                        if let status = jsonObj!["status"] as? Int {
-                            if status == 200 {
-                                
-                                 let message = jsonObj!["message"] as? String
-                                
-                                self.showSuccessHud(msg: message ?? "", hud: hud)
-//                                
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-
-                                
-//                                    self.dismiss(animated: true , completion: {
+                        
+                        let success = jsonObj!["success"] as? Bool
+                        
+                        if success == true {
+                            
+//                            if let status = jsonObj!["status"] as? Int {
+//                                if status == 200 {
+                                    
+                                    let message = jsonObj!["message"] as? String
+                                    
+                                    self.showSuccessHud(msg: message ?? "", hud: hud)
+                                    //
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
+                                        
+                                        
+                                        //                                    self.dismiss(animated: true , completion: {
                                         
                                         let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
                                         //                                1 card 2 passport
@@ -198,35 +203,42 @@ class DocumentType: UIViewController , UIPickerViewDataSource , UIPickerViewDele
                                         let vc = storyBoard.instantiateViewController(withIdentifier: "PhoneNumberVc") as! PhoneNumberVc
                                         
                                         vc.modalPresentationStyle = .fullScreen
-                                    
+                                        
                                         self.present(vc, animated: true)
                                         
                                         
                                         //                                        })
                                     }
-
-                            }
-                            //                             Session ID is Expired
-                            else if status == 400{
-                                let msg = jsonObj!["message"] as? String
-                                                                self.showErrorHud(msg: msg ?? "",hud: hud)
-//                                self.seassionExpired(msg: msg ?? "")
-                            }
-                            else if  status == 404{
-                                    let msg = jsonObj!["message"] as? String
-                                    self.showErrorHud(msg: msg ?? "",hud: hud)
-
-                            }
-                            
-                            //                                other Wise Problem
-                            else {
-                                
-                                let msg = jsonObj!["message"] as? String
-                                                                self.showErrorHud(msg: msg ?? "",hud: hud)
-
-                            }
+                                    
+//                                }
+                                //                             Session ID is Expired
+//                                else if status == 400{
+//                                    let msg = jsonObj!["message"] as? String
+//                                    self.showErrorHud(msg: msg ?? "",hud: hud)
+//                                    //                                self.seassionExpired(msg: msg ?? "")
+//                                }
+//                                else if  status == 404{
+//                                    let msg = jsonObj!["message"] as? String
+//                                    self.showErrorHud(msg: msg ?? "",hud: hud)
+//
+//                                }
+//
+                                //                                other Wise Problem
+//                                else {
+//
+//                                    let msg = jsonObj!["message"] as? String
+//                                    self.showErrorHud(msg: msg ?? "",hud: hud)
+//
+//                                }
+//                            }
                         }
                         
+                        else {
+                        
+                        let msg = jsonObj!["message"] as? String
+                        self.showErrorHud(msg: msg ?? "",hud: hud)
+                        
+                                                        }
                     }
                     
                 } catch let err as NSError {

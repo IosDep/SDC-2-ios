@@ -132,7 +132,7 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
             
                 else if checkFlag == "1"{
                     
-                    cell?.title.text = "\(accountNoByMember[indexPath.row].Account_No ?? "") = \(accountNoByMember[indexPath.row].Account_Status_Desc ?? "") - \(accountNoByMember[indexPath.row].Account_Type_Desc ?? "")"
+                    cell?.title.text = "\(accountNoByMember[indexPath.row].Account_No ?? "") - \(accountNoByMember[indexPath.row].Account_Status_Desc ?? "") - \(accountNoByMember[indexPath.row].Account_Type_Desc ?? "")"
                     
                     cell?.reuterCode.isHidden = true
 

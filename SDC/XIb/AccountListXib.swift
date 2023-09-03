@@ -38,8 +38,8 @@ class AccountListXib: UITableViewCell {
 
         self.buttonsStack.isHidden = true
         
-        self.memberName.text = data.Member_Name ?? ""
-        self.memberNum.text = data.Account_No ?? ""
+        self.memberName.text = data.Account_No ?? ""
+        self.memberNum.text = data.Member_Name ?? ""
         self.accountName.text = data.Account_Type_Desc ?? ""
         self.accountNum.text = data.Quantity_Owned ?? ""
     }

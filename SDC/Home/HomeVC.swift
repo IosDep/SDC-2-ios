@@ -1016,6 +1016,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                             if status == 200 {
                                 
                                 hud.dismiss()
+                                
                                 let data  = jsonObj!["data"] as? [String:Any]
                                 
                                 

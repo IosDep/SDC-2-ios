@@ -76,7 +76,16 @@ class IdentfairVC: UIViewController {
                     
                     
                     if jsonObj != nil {
-                        if let status = jsonObj!["status"] as? Int {
+                        
+                        
+                        let success = jsonObj!["success"] as? Bool
+                        
+                        if success == true {
+                            
+                            if let status = jsonObj!["status"] as? Int {
+                            
+                            
+                            
                             if status == 200 {
                                 
                                 let message = jsonObj!["message"] as? String
@@ -94,9 +103,9 @@ class IdentfairVC: UIViewController {
                                 
                                 
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 4) {
-
-                                
-//                                self.dismiss(animated: true , completion: {
+                                    
+                                    
+                                    //                                self.dismiss(animated: true , completion: {
                                     
                                     let vc = storyBoard.instantiateViewController(withIdentifier: "DocumentType") as! DocumentType
                                     
@@ -106,9 +115,9 @@ class IdentfairVC: UIViewController {
                                     
                                     self.present(vc, animated: true)
                                     
-//                                })
-                                
-                            }
+                                    //                                })
+                                    
+                                }
                                 
                             }
                             //                             Session ID is Expired
@@ -120,7 +129,7 @@ class IdentfairVC: UIViewController {
                             {
                                 let message = jsonObj!["message"] as? String
                                 self.showErrorHud(msg: message ?? "" , hud: hud )
-
+                                
                                 
                             }
                             
@@ -128,6 +137,13 @@ class IdentfairVC: UIViewController {
                             //                                other Wise Problem
                             else {
                                 hud.dismiss(animated: true)      }
+                        }
+                    }
+                        
+                        else {
+                            let message = jsonObj!["message"] as? String
+                            self.showErrorHud(msg: message ?? "" , hud: hud )
+
                         }
                         
                     }

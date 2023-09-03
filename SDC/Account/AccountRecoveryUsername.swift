@@ -48,52 +48,58 @@ class AccountRecoveryUsername: UIViewController {
                         if jsonObj != nil {
                             
                             //    object status
-                    let message = jsonObj!["message"] as? String
-                    if let status = jsonObj!["status"] as? Int {
-                                
-                    if status == 200 {
-                                        
-                                         
-                        if  let data = jsonObj!["data"] as? [String:Any] {
+                            let message = jsonObj!["message"] as? String
                             
-                            AccountRecoveryUsername.sessionID =  data["sessionId"] as? String
-                                            
-                            let email = data["email"] as? String
-                            self.email = email
-                                            
-                                            
-                            let mobile = data["mobile"] as? String
-                                self.mobileNum = mobile
-                                            
-                            DispatchQueue.main.async {
+                            let success = jsonObj!["success"] as? Bool
+                            
+                            if success == true {
+                            if let status = jsonObj!["status"] as? Int {
                                 
-                                hud.dismiss()
-                                
-                                let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
-                                let vc = storyBoard.instantiateViewController(withIdentifier: "AccountRecovery") as! AccountRecovery
-                                vc.email = self.email
-                                vc.mobileNum = self.mobileNum
-                                vc.username = self.usernameField.text
-                                vc.modalPresentationStyle = .fullScreen
-                                self.present(vc, animated: true)
-
-                                            }
+                                if status == 200 {
+                                    
+                                    
+                                    if  let data = jsonObj!["data"] as? [String:Any] {
+                                        
+                                        AccountRecoveryUsername.sessionID =  data["sessionId"] as? String
+                                        
+                                        let email = data["email"] as? String
+                                        self.email = email
+                                        
+                                        
+                                        let mobile = data["mobile"] as? String
+                                        self.mobileNum = mobile
+                                        
+                                        DispatchQueue.main.async {
+                                            
+                                            hud.dismiss()
+                                            
+                                            let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+                                            let vc = storyBoard.instantiateViewController(withIdentifier: "AccountRecovery") as! AccountRecovery
+                                            vc.email = self.email
+                                            vc.mobileNum = self.mobileNum
+                                            vc.username = self.usernameField.text
+                                            vc.modalPresentationStyle = .fullScreen
+                                            self.present(vc, animated: true)
+                                            
                                         }
                                     }
-                        
-                                    //    status ==> false
-                                    else if status == 400 {
+                                }
+                                
+                                //    status ==> false
+                                else if status == 400 {
+                                    
+                                    DispatchQueue.main.async {
+                                        self.showErrorHud(msg: message ?? "", hud: hud)
                                         
-                                            DispatchQueue.main.async {
-                                                hud.dismiss()
-                                                self.showErrorHud(msg: message ?? "", hud: hud)
-                                                
-                                                
-                                            }
                                         
                                     }
+                                    
                                 }
-                            
+                            }
+                        }
+                            else {
+                                self.showErrorHud(msg: message ?? "", hud: hud)
+                            }
                         }
                         
                     } catch let err as NSError {
