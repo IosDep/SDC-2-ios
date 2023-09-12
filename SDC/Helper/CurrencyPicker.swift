@@ -10,6 +10,7 @@ import UIKit
 class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDelegate {
     
     
+    @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var tableView: UITableView!
     
     var selectedNatDelegate:SelectedNatDelegate?
@@ -25,9 +26,22 @@ class CurrencyPicker: UIViewController , UITableViewDataSource , UITableViewDele
         self.tableView.reloadData()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view == self.mainView{
+            
+        }else {
+            self.dismiss(animated: true,completion: {
+                print("Done WIth  2 second ")
+            })
+        }
+    }
     
-
     
+    
+        
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if checkCompanyAction == true {
             return categories.count

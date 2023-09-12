@@ -3,7 +3,8 @@
 //  SDC
 //
 //  Created by Blue Ray on 14/04/2023.
-//
+
+
 
 import UIKit
 import JGProgressHUD
@@ -13,14 +14,13 @@ class PopUpOTP: UIViewController {
 
     @IBOutlet weak var counter: UILabel!
     @IBOutlet weak var otpTxt: UITextField!
-    
-    
     @IBOutlet weak var verificationMessage: DesignableLabel!
     @IBOutlet weak var recoveryInput: UILabel!
-    
     @IBOutlet weak var resendCodeLabel: DesignableLabel!
-    
     @IBOutlet weak var timerLabel: UILabel!
+    @IBOutlet weak var mainView: UIView!
+   
+
     
     var otp : String?
     var uniqueID : String?
@@ -29,11 +29,9 @@ class PopUpOTP: UIViewController {
     var username : String?
     var email : String?
     var mobileNum : String?
-    
     var forgetCreate = false
     var checkEmailPhone:String?
     
-
     @IBOutlet weak var resendBtn: UIButton!
     
     var remainingTime = 180
@@ -58,13 +56,13 @@ class PopUpOTP: UIViewController {
             }
             
             if checkEmailPhone == "1" {
-                verificationMessage.text = "A message containing OTP code were sent to the Mobile".localized()
-            }
-            
-            else if checkEmailPhone == "2" {
                 verificationMessage.text = "A message containing OTP code were sent to the Email".localized()
             }
             
+            else if checkEmailPhone == "2" {
+                verificationMessage.text = "A message containing OTP code were sent to the Mobile".localized()
+            }
+
             recoveryInput.text = recoveryField
 
             
@@ -94,6 +92,19 @@ class PopUpOTP: UIViewController {
                 self?.updateTimer()
             })
         
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view == self.mainView{
+            
+        }else {
+            self.dismiss(animated: true,completion: {
+                print("Done WIth  2 second ")
+            })
+        }
     }
     
     
@@ -205,7 +216,7 @@ class PopUpOTP: UIViewController {
                                 else if code == 404 {
                                     let resendId = jsonObj!["resendId"] as? String
                                     
-                                    let msgg = "OTP expierd".localized()
+                                    let msgg = "OTP expired".localized()
                                     self.showErrorHud(msg: msgg ?? "" , hud: hud)
                                     
                                         }
@@ -375,7 +386,7 @@ class PopUpOTP: UIViewController {
                                         else if code == 404 {
                                             let resendId = jsonObj!["resendId"] as? String
                                             
-                                            let msgg = "OTP expierd".localized()
+                                            let msgg = "OTP expired".localized()
                                             self.showErrorHud(msg: msgg ?? "" , hud: hud)
                                             
                                                 }
@@ -480,7 +491,7 @@ class PopUpOTP: UIViewController {
                             else if code == 404 {
                                 let resendId = jsonObj!["resendId"] as? String
                                 
-                                let msgg = "OTP expierd".localized()
+                                let msgg = "OTP expired".localized()
                                 self.showErrorHud(msg: msgg ?? "" , hud: hud)
                                 
                                     }

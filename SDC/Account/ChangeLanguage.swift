@@ -12,7 +12,7 @@ class ChangeLanguage: UIViewController {
     @IBOutlet weak var englishBtn: DesignableButton!
     @IBOutlet weak var arabicBtn: DesignableButton!
     @IBOutlet weak var backView: UIView!
-    @IBOutlet weak var langView: UIStackView!
+    @IBOutlet weak var langView: UIView!
 //    @IBOutlet weak var bellView: UIView!
     @IBOutlet weak var majoreView: UIView!
     @IBOutlet weak var enimaeg: UIImageView!
@@ -22,15 +22,17 @@ class ChangeLanguage: UIViewController {
         
         super.viewDidLoad()
         
+//        self.backView.layer.cornerRadius = 23
+        
         self.langView.layer.cornerRadius = 23
-        self.langView.layer.backgroundColor = UIColor.black.cgColor
-        self.langView.backgroundColor = UIColor.systemBackground
-        self.langView.layer.shadowColor = UIColor.systemGray3.cgColor
-        langView.layer.shadowOpacity = 2
-        langView.layer.shadowRadius = 23
-        langView.layer.shadowOffset = .zero
-        langView.layer.shadowPath = UIBezierPath(rect: langView.bounds).cgPath
-        langView.layer.shouldRasterize = true
+//        self.langView.layer.backgroundColor = UIColor.black.cgColor
+//        self.langView.backgroundColor = UIColor.systemBackground
+//        self.langView.layer.shadowColor = UIColor.systemGray3.cgColor
+//        langView.layer.shadowOpacity = 2
+//        langView.layer.shadowRadius = 23
+//        langView.layer.shadowOffset = .zero
+//        langView.layer.shadowPath = UIBezierPath(rect: langView.bounds).cgPath
+//        langView.layer.shouldRasterize = true
         
         if MOLHLanguage.isArabic() {
             enimaeg.semanticContentAttribute = .forceRightToLeft

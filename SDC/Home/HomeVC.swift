@@ -259,7 +259,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
             let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
             let vc = storyBoard.instantiateViewController(withIdentifier: "PieChartPopUp") as! PieChartPopUp
             
-            vc.modalPresentationStyle = .overCurrentContext
+//            vc.modalPresentationStyle = .overCurrentContext
             vc.bank = self.bank
             vc.insuarance = self.insuarance
             vc.service = self.service
@@ -315,7 +315,7 @@ class HomeVC: UIViewController,UICollectionViewDelegate,UICollectionViewDataSour
                 vc.pieFlag = 2
             }
             
-            vc.modalPresentationStyle = .popover
+//            vc.modalPresentationStyle = .popover
             self.present(vc, animated: true)
 
         }

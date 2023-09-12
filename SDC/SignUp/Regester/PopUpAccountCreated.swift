@@ -9,11 +9,27 @@ import UIKit
 
 class PopUpAccountCreated: UIViewController {
 
+    @IBOutlet weak var mainView: UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view == self.mainView{
+            
+        }else {
+            self.dismiss(animated: true,completion: {
+                print("Done WIth  2 second ")
+            })
+        }
+    }
+    
+    
     
 
 

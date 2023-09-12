@@ -30,14 +30,14 @@ class ForgetPassword: UIViewController {
 //        self.makeShadow(mainView: self.backView)
         self.backView.layer.cornerRadius = 23
 //        self.backView.layer.backgroundColor = UIColor.black.cgColor
-        self.backView.backgroundColor = UIColor.systemBackground
-        self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
-        backView.layer.shadowOpacity = 0.2
-        backView.layer.shadowRadius = 10
-        backView.layer.shadowOffset = .zero
-        backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
-        backView.layer.shouldRasterize = true
-        self.majorView.backgroundColor = .white
+//        self.backView.backgroundColor = UIColor.systemBackground
+//        self.backView.layer.shadowColor = UIColor.systemGray3.cgColor
+//        backView.layer.shadowOpacity = 0.2
+//        backView.layer.shadowRadius = 10
+//        backView.layer.shadowOffset = .zero
+//        backView.layer.shadowPath = UIBezierPath(rect: backView.bounds).cgPath
+//        backView.layer.shouldRasterize = true
+//        self.majorView.backgroundColor = .white
             
         if checkOldPassword == true {
             oldPasswordStack.isHidden = true
@@ -63,7 +63,7 @@ class ForgetPassword: UIViewController {
         }
         
         else {
-            self.showErrorHud(msg: "Please fill all required feilds".localized())
+            self.showErrorHud(msg: "Fill all required feilds".localized())
         }
     }
     
@@ -103,7 +103,7 @@ func forgetPassword(oldPassword:String,newPassword:String,confirmPassword:String
                                     
                                     Helper.shared.SaveSeassionId(seassionId: data!["sessionId"] as? String ?? "")
                                     
-                                    self.showSuccessHud(msg: "Succfully Changed Password" , hud: hud)
+                                    self.showSuccessHud(msg: "Successfully Changed Password".localized() , hud: hud)
                                     
                                     if UserDefaults.standard.bool(forKey: "biometricAuthenticationEnabled") == true {
                                         

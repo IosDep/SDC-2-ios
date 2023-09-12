@@ -9,14 +9,27 @@ import UIKit
 import JGProgressHUD
 import Alamofire
 import MOLH
+import CountryPickerView
 
 
-class AccountRecovery: UIViewController , SelectedNatDelegate {
+class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerViewDelegate {
     
    
 
     @IBOutlet weak var recoveryBtn: UIButton!
     @IBOutlet weak var recoveryTextField: UITextField!
+    
+    @IBOutlet weak var stackHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var mobileView: UIView!
+    
+    @IBOutlet weak var emailView: UIView!
+    
+    
+    @IBOutlet weak var countryPickerView: CountryPickerView!
+    
+    @IBOutlet weak var phoneTxt: UITextField!
+
     
     var email : String?
     var mobileNum : String?
@@ -26,13 +39,34 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
     var flag : String?
     var otp : String?
     var uniqueID : String?
+    var phoneCode : String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        countryPickerView.delegate = self
+        countryPickerView.font = UIFont.systemFont(ofSize: 14.0)
+
+        emailView.isHidden = true
+        mobileView.isHidden = true
+        stackHeight.constant = 250
+        
 //        self.GetRecoveryData(username: self.username ?? "")
 
     }
     
+    func countryPickerView(_ countryPickerView: CountryPickerView, willShow viewController: CountryPickerViewController) {
+        
+        
+        // set the default jo
+    }
+    
+    
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+       let pCode = countryPickerView.selectedCountry.phoneCode
+        
+        self.phoneCode = countryPickerView.selectedCountry.phoneCode.replacingOccurrences(of: "+", with: "00")
+
+    }
 
     @IBAction func recoveryPressed(_ sender: Any) {
         
@@ -53,55 +87,60 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
             
             self.flag = "1"
             recoveryBtn.setTitle(maskEmail(email: selectdTxt), for: .normal)
+            
+            emailView.isHidden = false
+            mobileView.isHidden = true
+            stackHeight.constant = 270
             recoveryTextField.placeholder = "Email".localized()
             recoveryTextField.keyboardType = .emailAddress
+            
         }
         
         else if flag == "2" {
             
             self.flag = "2"
             recoveryBtn.setTitle(maskPhoneNumber(phoneNumber: selectdTxt), for: .normal)
-            recoveryTextField.placeholder = "Mobile Number".localized()
-            recoveryTextField.keyboardType = .numberPad
+            
+            mobileView.isHidden = false
+            emailView.isHidden = true
+            stackHeight.constant = 270
+            phoneTxt.keyboardType = .phonePad
+            
+//            recoveryTextField.placeholder = "Mobile Number".localized()
+//            recoveryTextField.keyboardType = .numberPad
         }
         
     }
     
-//    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-//        
-//        if flag == "2" {
-//            
-//            if let text = textField.text, let textRange = Range(range, in: text) {
-//                let updatedText = text.replacingCharacters(in: textRange, with: string)
-//                
-//                return updatedText.count <= 9
-//            }
-//            
-//        }
-//       
-//           return true
-//       }
-//    
-    
+
     
     @IBAction func nextPressed(_ sender: Any) {
         
-        if recoveryInput == recoveryTextField.text {
-            
             if flag == "1" {
-                self.requestOTPEmail(email: email ?? "")
+                
+                if recoveryInput == recoveryTextField.text {
+                    self.requestOTPEmail(email: email ?? "")
+                }
+                else {
+                    self.showWarningHud(msg: "Email doesn't match".localized())
+                }
             }
             
             else if flag == "2" {
-                self.requestOTPMobile(mobile: mobileNum ?? "")
+                
+                if let phoneCode = phoneCode, let phoneText = phoneTxt.text {
+                    let combinedPhoneNumber = phoneCode + phoneText
+                    
+                    if recoveryInput == combinedPhoneNumber {
+                        self.requestOTPMobile(mobile: mobileNum ?? "")
+                    }
+                    
+                    else {
+                        self.showWarningHud(msg: "Mobile doesn't match".localized())
+                    }
+                }
+               
             }
-            
-        }
-        
-        else {
-            self.showErrorHud(msg: "Doesn't match".localized())
-        }
-        
     }
     
    
@@ -164,7 +203,7 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     vc.username = self.username
                                     vc.email = self.email
                                     vc.mobileNum = self.mobileNum
-
+                                    self.modalPresentationStyle = .overCurrentContext
                                     self.present(vc, animated: true)
                                     
                                     hud.dismiss()
@@ -243,13 +282,14 @@ class AccountRecovery: UIViewController , SelectedNatDelegate {
                                     
                                     vc.otp = self.otp
                                     
-
+                                    vc.forgetCreate = true
                                     vc.uniqueID = uniqueId ?? "NO UNIaqyeID"
                                     vc.flag = self.flag
                                     vc.recoveryField = mobile
                                     vc.username = self.username
                                     vc.email = self.email
                                     vc.mobileNum = self.mobileNum
+                                    
                                     self.present(vc, animated: true)
                                     
                                     hud.dismiss()

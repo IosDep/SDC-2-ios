@@ -16,6 +16,7 @@ PODS:
   - CHTCollectionViewWaterfallLayout (0.9.10):
     - CHTCollectionViewWaterfallLayout/Swift (= 0.9.10)
   - CHTCollectionViewWaterfallLayout/Swift (0.9.10)
+  - CountryPickerView (3.3.0)
   - CRRefresh (1.1.3)
   - Firebase/Analytics (9.6.0):
     - Firebase/Core
@@ -118,6 +119,12 @@ PODS:
     - AppAuth/Core (~> 1.6)
     - GTMSessionFetcher/Core (< 3.0, >= 1.5)
   - GTMSessionFetcher/Core (2.1.0)
+  - ImageSlideshow (1.9.2):
+    - ImageSlideshow/Core (= 1.9.2)
+  - ImageSlideshow/Core (1.9.2)
+  - ImageSlideshow/SDWebImage (1.9.2):
+    - ImageSlideshow/Core
+    - SDWebImage (>= 3.7)
   - JGProgressHUD (2.2)
   - LineChart (1.0.3)
   - Loaf (0.7.0)
@@ -141,6 +148,7 @@ PODS:
     - OneSignal/OneSignalOutcomes
   - OneSignal/OneSignalOutcomes (3.11.2):
     - OneSignal/OneSignalCore
+  - OTPFieldView (1.0.1)
   - PromisesObjC (2.1.1)
   - SDWebImage (5.13.4):
     - SDWebImage/Core (= 5.13.4)
@@ -155,10 +163,13 @@ DEPENDENCIES:
   - CDAlertView
   - Charts
   - CHTCollectionViewWaterfallLayout
+  - CountryPickerView
   - CRRefresh
   - Firebase/Analytics
   - Firebase/Auth
   - GoogleSignIn (>= 5.0)
+  - ImageSlideshow (~> 1.9.0)
+  - ImageSlideshow/SDWebImage
   - JGProgressHUD
   - LineChart
   - Loaf
@@ -166,6 +177,7 @@ DEPENDENCIES:
   - netfox (~> 1.21.0)
   - NVActivityIndicatorView
   - OneSignal (< 4.0, >= 3.0.0)
+  - OTPFieldView
   - SDWebImage (~> 5.0)
   - SideMenu
   - StepIndicator (~> 1.0.8)
@@ -179,6 +191,7 @@ SPEC REPOS:
     - CDAlertView
     - Charts
     - CHTCollectionViewWaterfallLayout
+    - CountryPickerView
     - CRRefresh
     - Firebase
     - FirebaseAnalytics
@@ -193,6 +206,7 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
+    - ImageSlideshow
     - JGProgressHUD
     - LineChart
     - Loaf
@@ -201,6 +215,7 @@ SPEC REPOS:
     - netfox
     - NVActivityIndicatorView
     - OneSignal
+    - OTPFieldView
     - PromisesObjC
     - SDWebImage
     - SideMenu
@@ -213,8 +228,9 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityLogger: 162ab8aee00e6267a4304d7cc134e13ccfe3bcc5
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   CDAlertView: cd6624e857c85ad14560e2cd23d7eb25b983b590
-  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
+  CountryPickerView: 6322ada32a80b0cd721b0267282a5c24f406f263
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044
   Firebase: 5ae8b7cf8efce559a653aef0ad95bab3f427c351
   FirebaseAnalytics: 89ad762c6c3852a685794174757e2c60a36b6a82
@@ -229,6 +245,7 @@ SPEC CHECKSUMS:
   GoogleUtilities: 1d20a6ad97ef46f67bbdec158ce00563a671ebb7
   GTMAppAuth: 0ff230db599948a9ad7470ca667337803b3fc4dd
   GTMSessionFetcher: ffbb25ec00ebcb5201adab0a56d808f6f1902d9f
+  ImageSlideshow: be305b54eaf2b2cfc7a7141c7c734605d44dc07d
   JGProgressHUD: d83d7a981b85d11205e19ff8ad5bb9c40571c847
   LineChart: de75393c5047512a39be45525a79e49d69b3c9bc
   Loaf: d69937cd00649f3fa260beb8b7aef0a1feb861ef
@@ -237,6 +254,7 @@ SPEC CHECKSUMS:
   netfox: 9d5cc727fe7576c4c7688a2504618a156b7d44b7
   NVActivityIndicatorView: 1f6c5687f1171810aa27a3296814dc2d7dec3667
   OneSignal: 8861a1407c321ca1ae59d3adca6286eb7caf9d6e
+  OTPFieldView: 700a752fe62c41d1c4914c78aa500fb30d97c255
   PromisesObjC: ab77feca74fa2823e7af4249b8326368e61014cb
   SDWebImage: e5cc87bf736e60f49592f307bdf9e157189298a3
   SideMenu: f583187d21c5b1dd04c72002be544b555a2627a2
@@ -244,6 +262,6 @@ SPEC CHECKSUMS:
   SwiftAlgorithms: 38dda4731d19027fdeee1125f973111bf3386b53
   TPKeyboardAvoidingSwift: ce1a75e0bc3af6b485f8bfa1d0a8320cfc565851
 
-PODFILE CHECKSUM: d789c6769b27601ace40f1889a3a3e8a1e05408c
+PODFILE CHECKSUM: 64da0491aaa4a9de78a31458a98bff60e2e8933d
 
-COCOAPODS: 1.11.3
+COCOAPODS: 1.12.1

@@ -185,7 +185,7 @@
 "Follow these steps to signup" = "اتبع هذه الخطوات للتسجيل";
 "New Account" = "حساب جديد";
 "Welcome Back" = "مرحبًا بعودتك";
-"National NO" = "الرقم الوطني";
+"National Number" = "الرقم الوطني";
 "Document type"= "نوع الوثيقة" ;
 "Phone number" = "رقم الهاتف";
 "Email"= "البريد الإلكتروني" ;
@@ -381,7 +381,7 @@
 "Service unavailable" = "الخدمة غير متاحة حاليا";
 "You have exceeded the allowed number of attempts, you can request a new verification code" = "قد تجاوزت الحد المسموح لعدد المحاولات , بامكانك طلب رمز تحقق";
 
-"OTP expierd" = "لرمز منتهي الصلاحية";
+"OTP expired" = "لرمز منتهي الصلاحية";
 
 "Already active otp" = "لديك رمز تحقق فعال حاليا , يرجى المحاولة بعد قليل";
 
@@ -396,3 +396,18 @@
 "Invalid ID Num" =  "الرقم المدخل غير صحيح" ;
 
 "Please fill username and password" = "يرجى إدخال اسم المستخدم و كلمة المرور";
+"Choose Password Recovery Method" = "اختر طريقة استرجاع كلمة السر";
+"Password Recovery" = "طريقة استرجاع كلمة السر";
+
+"Family Book Number" = "رقم دفتر العائلة";
+"Complete these steps to create a new account" = "اتبع الخطوات لإنشاء حساب";
+"A message containing OTP code were sent to the Email" = "تم إرسال رسالة تحتوي على رمز التحقق على البريد الإلكتروني";
+"A message containing OTP code were sent to the Mobile" = "تم إرسال رسالة تحتوي على رمز التحقق على رقم الهاتف";
+"Fill all the required fields except from/ to fields"= "املى جميع الحقول المطلوبة ما عدا من/إلى تاريخ";
+
+"Fill all required feilds" = "املئ جميع الحقول المطلوبة";
+"Successfully Changed Password" = "تم تغيير كلمة السر بنجاح";
+"Please enter the verification number" = "قم بإدخال رمز التحقق";
+"Forgetten your password" = "استعادة كلمة السر";
+"Mobile doesn't match" = "رقم الهاتف غير متطابق";
+"Email doesn't match" = "البريد الإلكتروني غير متطابق";

@@ -228,7 +228,7 @@ SPEC CHECKSUMS:
   AlamofireNetworkActivityLogger: 162ab8aee00e6267a4304d7cc134e13ccfe3bcc5
   AppAuth: 8fca6b5563a5baef2c04bee27538025e4ceb2add
   CDAlertView: cd6624e857c85ad14560e2cd23d7eb25b983b590
-  Charts: 354f86803d11d9c35de280587fef50d1af063978
+  Charts: ce0768268078eee0336f122c3c4ca248e4e204c5
   CHTCollectionViewWaterfallLayout: b989a459788d7657ac010e03bc0f7eedca95a420
   CountryPickerView: 6322ada32a80b0cd721b0267282a5c24f406f263
   CRRefresh: 1415d4ae06837fa7bb064c44f2e102f3ef517044

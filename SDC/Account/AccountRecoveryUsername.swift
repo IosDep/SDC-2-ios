@@ -12,7 +12,7 @@ import MOLH
 
 class AccountRecoveryUsername: UIViewController {
 
-    @IBOutlet weak var usernameField: DesignableTextFeild!
+    @IBOutlet weak var usernameField: UITextField!
     
     var email : String?
     var mobileNum : String?

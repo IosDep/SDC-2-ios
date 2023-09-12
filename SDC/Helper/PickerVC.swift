@@ -18,6 +18,9 @@ protocol DataSelectedDelegate{
 
 class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
     
+    
+    @IBOutlet weak var mainView: UIView!
+    
     var dataSelectedDelegate:DataSelectedDelegate?
     @IBOutlet weak var tableView: UITableView!
     
@@ -42,6 +45,22 @@ class PickerVC: UIViewController , UITableViewDataSource , UITableViewDelegate {
         self.tableView.register(UINib(nibName: "PickerCell", bundle: nil), forCellReuseIdentifier: "PickerCell")
         
     }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+        let touch = touches.first
+        
+        if touch?.view == self.mainView{
+            
+        }else {
+            self.dismiss(animated: true,completion: {
+                print("Done WIth  2 second ")
+            })
+        }
+    }
+    
+    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

@@ -152,7 +152,7 @@ class AccountStatement: UIViewController,DataSelectedDelegate{
         }
         
         else {
-            self.showWarningHud(msg: "Please fill all required fields".localized())
+            self.showWarningHud(msg: "Fill all the required fields except from/ to fields".localized())
         }
         
     }
