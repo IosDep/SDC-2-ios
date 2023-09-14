@@ -12,6 +12,7 @@ import AlamofireNetworkActivityLogger
 import Alamofire
 import SDWebImage
 import ImageSlideshow
+import OneSignal
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
@@ -50,6 +51,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
             self.window?.rootViewController = vc
         }
         
+        
+        
+        
+//        one signal configration
+        // Remove this method to stop OneSignal Debugging
+        OneSignal.setLogLevel(.LL_VERBOSE, visualLevel: .LL_NONE)
+
+        // OneSignal initialization
+        OneSignal.initWithLaunchOptions(launchOptions)
+        OneSignal.setAppId("80a253cb-a750-4813-a5ba-1192820a0dbd")
+
+        // promptForPushNotifications will show the native iOS notification permission prompt.
+        // We recommend removing the following code and instead using an In-App Message to prompt for notification permission (See step 8)
+        OneSignal.promptForPushNotifications(userResponse: { accepted in
+            
+            if accepted == true {
+                print("User accepted notifications: \(accepted)")
+            }else {
+                print("User UNNNaccepted notifications: \(accepted)")
+
+            }
+            
+            
+            
+        })
         return true
     }
     

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E3056452AB31F9600D30B2C /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E3056442AB31F9600D30B2C /* NotificationService.swift */; };
+		0E3056492AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0E3056422AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		364D455FB1D4360B43DA4153 /* Pods_SDC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */; };
 		3F10389A2A02704E004594ED /* SecurityOwnership.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F1038992A02704E004594ED /* SecurityOwnership.swift */; };
 		3F11040B2A601C160086CABA /* PDFViewerVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F11040A2A601C160086CABA /* PDFViewerVC.swift */; };
@@ -145,6 +147,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0E3056472AB31F9600D30B2C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8734D278295C32570044B0F7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 0E3056412AB31F9600D30B2C;
+			remoteInfo = OneSignalNotificationServiceExtension;
+		};
 		8734D297295C32590044B0F7 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 8734D278295C32570044B0F7 /* Project object */;
@@ -161,8 +170,25 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		0E30564D2AB31F9600D30B2C /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				0E3056492AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		05BB6CDEAC5B8D5785497F34 /* Pods_SDCTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDCTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E3056422AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = OneSignalNotificationServiceExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		0E3056442AB31F9600D30B2C /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		0E3056462AB31F9600D30B2C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17C94678D8E7F0961624AC32 /* Pods-SDC-SDCUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDC-SDCUITests.release.xcconfig"; path = "Target Support Files/Pods-SDC-SDCUITests/Pods-SDC-SDCUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B5C881C3465EA1683E9EF51 /* Pods_SDC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SDC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3114F48A82D937A369D32195 /* Pods-SDCTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SDCTests.debug.xcconfig"; path = "Target Support Files/Pods-SDCTests/Pods-SDCTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -314,6 +340,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0E30563F2AB31F9600D30B2C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8734D27D295C32570044B0F7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -341,6 +374,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E3056432AB31F9600D30B2C /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXGroup;
+			children = (
+				0E3056442AB31F9600D30B2C /* NotificationService.swift */,
+				0E3056462AB31F9600D30B2C /* Info.plist */,
+			);
+			path = OneSignalNotificationServiceExtension;
+			sourceTree = "<group>";
+		};
 		871181BD29E2D04200F14C5C /* Localize */ = {
 			isa = PBXGroup;
 			children = (
@@ -391,6 +433,7 @@
 				8734D282295C32570044B0F7 /* SDC */,
 				8734D299295C32590044B0F7 /* SDCTests */,
 				8734D2A3295C32590044B0F7 /* SDCUITests */,
+				0E3056432AB31F9600D30B2C /* OneSignalNotificationServiceExtension */,
 				8734D281295C32570044B0F7 /* Products */,
 				98BE3C73B97686F73A79DE60 /* Pods */,
 				94AA82A0027AEF1E6BBE0913 /* Frameworks */,
@@ -403,6 +446,7 @@
 				8734D280295C32570044B0F7 /* SDC.app */,
 				8734D296295C32590044B0F7 /* SDCTests.xctest */,
 				8734D2A0295C32590044B0F7 /* SDCUITests.xctest */,
+				0E3056422AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -632,6 +676,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		0E3056412AB31F9600D30B2C /* OneSignalNotificationServiceExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0E30564A2AB31F9600D30B2C /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */;
+			buildPhases = (
+				0E30563E2AB31F9600D30B2C /* Sources */,
+				0E30563F2AB31F9600D30B2C /* Frameworks */,
+				0E3056402AB31F9600D30B2C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = OneSignalNotificationServiceExtension;
+			productName = OneSignalNotificationServiceExtension;
+			productReference = 0E3056422AB31F9600D30B2C /* OneSignalNotificationServiceExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		8734D27F295C32570044B0F7 /* SDC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8734D2AA295C32590044B0F7 /* Build configuration list for PBXNativeTarget "SDC" */;
@@ -641,10 +702,12 @@
 				8734D27D295C32570044B0F7 /* Frameworks */,
 				8734D27E295C32570044B0F7 /* Resources */,
 				269E7D7E05B7C7DA9F960EBA /* [CP] Embed Pods Frameworks */,
+				0E30564D2AB31F9600D30B2C /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				0E3056482AB31F9600D30B2C /* PBXTargetDependency */,
 			);
 			name = SDC;
 			productName = SDC;
@@ -697,9 +760,12 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1400;
+				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1400;
 				TargetAttributes = {
+					0E3056412AB31F9600D30B2C = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
 					8734D27F295C32570044B0F7 = {
 						CreatedOnToolsVersion = 14.0;
 					};
@@ -730,11 +796,19 @@
 				8734D27F295C32570044B0F7 /* SDC */,
 				8734D295295C32590044B0F7 /* SDCTests */,
 				8734D29F295C32590044B0F7 /* SDCUITests */,
+				0E3056412AB31F9600D30B2C /* OneSignalNotificationServiceExtension */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0E3056402AB31F9600D30B2C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8734D27E295C32570044B0F7 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -893,6 +967,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0E30563E2AB31F9600D30B2C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0E3056452AB31F9600D30B2C /* NotificationService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8734D27C295C32570044B0F7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -1018,6 +1100,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		0E3056482AB31F9600D30B2C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 0E3056412AB31F9600D30B2C /* OneSignalNotificationServiceExtension */;
+			targetProxy = 0E3056472AB31F9600D30B2C /* PBXContainerItemProxy */;
+		};
 		8734D298295C32590044B0F7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 8734D27F295C32570044B0F7 /* SDC */;
@@ -1061,6 +1148,58 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0E30564B2AB31F9600D30B2C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E86QS56T84;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.bluerays.SDCE.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0E30564C2AB31F9600D30B2C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = E86QS56T84;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OneSignalNotificationServiceExtension/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = OneSignalNotificationServiceExtension;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.bluerays.SDCE.OneSignalNotificationServiceExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		8734D2A8295C32590044B0F7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1181,27 +1320,30 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = F9D29DF46CEED17015169961 /* Pods-SDC.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SDC/SDC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = E86QS56T84;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "المحفظة الإلكترونية";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "To let you sign in to the account using Face ID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Blueray.SDC;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.bluerays.SDCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1213,27 +1355,30 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 312806C7B0722D6FDCD1CFDF /* Pods-SDC.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = SDC/SDC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = QVFP3WE862;
+				DEVELOPMENT_TEAM = E86QS56T84;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "المحفظة الإلكترونية";
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "To let you sign in to the account using Face ID";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Blueray.SDC;
+				PRODUCT_BUNDLE_IDENTIFIER = gov.bluerays.SDCE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1324,6 +1469,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0E30564A2AB31F9600D30B2C /* Build configuration list for PBXNativeTarget "OneSignalNotificationServiceExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0E30564B2AB31F9600D30B2C /* Debug */,
+				0E30564C2AB31F9600D30B2C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		8734D27B295C32570044B0F7 /* Build configuration list for PBXProject "SDC" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

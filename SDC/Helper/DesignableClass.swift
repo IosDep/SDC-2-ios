@@ -257,3 +257,29 @@ class DesignableButton: UIButton {
     
     
 }
+
+
+
+
+@IBDesignable
+class DesignableLabelFont: UILabel {
+    
+    // Custom switch to toggle the font change.
+    @IBInspectable var useSpecialFont: Bool = false {
+        didSet {
+            updateFont()
+        }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        updateFont()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        updateFont()
+    }
+    
+   
+}

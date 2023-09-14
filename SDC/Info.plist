@@ -6,12 +6,6 @@
 	<array>
 		<string>Poppins-Medium.ttf</string>
 	</array>
-	<key>CFBundleDisplayName</key>
-	<string>المحفظة الإلكترونية</string>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>NSFaceIDUsageDescription</key>
-	<string>To let you sign in to the account using Face ID</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>
