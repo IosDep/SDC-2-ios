@@ -14,20 +14,13 @@ import CountryPickerView
 
 class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerViewDelegate {
     
-   
 
     @IBOutlet weak var recoveryBtn: UIButton!
     @IBOutlet weak var recoveryTextField: UITextField!
-    
     @IBOutlet weak var stackHeight: NSLayoutConstraint!
-    
     @IBOutlet weak var mobileView: UIView!
-    
     @IBOutlet weak var emailView: UIView!
-    
-    
     @IBOutlet weak var countryPickerView: CountryPickerView!
-    
     @IBOutlet weak var phoneTxt: UITextField!
 
     
@@ -129,10 +122,10 @@ class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerVie
             else if flag == "2" {
                 
                 if let phoneCode = phoneCode, let phoneText = phoneTxt.text {
-                    let combinedPhoneNumber = phoneCode + phoneText
+                    let combinedPhoneNumber = phoneCode + self.removeLeadingZero(from: phoneText)
                     
                     if recoveryInput == combinedPhoneNumber {
-                        self.requestOTPMobile(mobile: mobileNum ?? "")
+                        self.requestOTPMobile(mobile: combinedPhoneNumber ?? "")
                     }
                     
                     else {
@@ -142,6 +135,8 @@ class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerVie
                
             }
     }
+    
+    
     
    
     func requestOTPEmail(email : String) {
@@ -211,13 +206,40 @@ class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerVie
                                 }
                             }
                             
-                    else {
-                        hud.dismiss()
-                    self.showErrorHud(msg: message ?? "")
-                            }
-                                        
-                        
+                            else if code == 400 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Invalid Otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                  
+                     
+                            else if code == 404 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "OTP expired".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
                             
+                            else if code == 504 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Already active otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                            
+                            else if code == 503 {
+                                                let msgg = "Service unavailable".localized()
+                                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                    }
+                                            
+                            else if code == 413 {
+                                                let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                    }
                         }
                         
                     } catch let err as NSError {
@@ -298,10 +320,41 @@ class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerVie
                             }
                             
                            
-                            else {
-                                hud.dismiss()
-                                self.showErrorHud(msg: message ?? "")
-                            }
+                            else if code == 400 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Invalid Otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                  
+                     
+                            else if code == 404 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "OTP expired".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                            
+                            else if code == 504 {
+                                let resendId = jsonObj!["resendId"] as? String
+                                
+                                let msgg = "Already active otp".localized()
+                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                
+                                    }
+                            
+                            else if code == 503 {
+                                                let msgg = "Service unavailable".localized()
+                                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                    }
+                                            
+                            else if code == 413 {
+                                                let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                    }
+                        
                             
                         }
                     } catch let err as NSError {
@@ -336,7 +389,12 @@ class AccountRecovery: UIViewController , SelectedNatDelegate , CountryPickerVie
     }
     
 
-     
+    func removeLeadingZero(from string: String) -> String {
+        if string.hasPrefix("0") {
+            return String(string.dropFirst())
+        }
+        return string
+    }
      
         
     }

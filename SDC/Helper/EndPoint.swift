@@ -3,8 +3,10 @@ class APIConfig {
 
     
     static let BaseURL = "https://sdce5.blueraydev.com/api/"
-    static let Phase2Url = "http://194.165.152.9/"
     
+    // "http://eportfolio.sdc.com.jo/api"
+    
+    static let Phase2Url = "http://194.165.152.9/"
     static let Login = BaseURL  + "authentication/login"
     static let changePassword = BaseURL  + "investor_information/changePassword"
     static let getRecoveryData = BaseURL  + "investor_information/getRecoveryInfo"

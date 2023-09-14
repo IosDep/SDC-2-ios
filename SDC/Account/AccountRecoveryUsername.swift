@@ -86,18 +86,19 @@ class AccountRecoveryUsername: UIViewController {
                                 }
                                 
                                 //    status ==> false
-                                else if status == 400 {
-                                    
-                                    DispatchQueue.main.async {
-                                        self.showErrorHud(msg: message ?? "", hud: hud)
-                                        
-                                        
-                                    }
-                                    
-                                }
+//                                else if status == 400 {
+//
+//                                    DispatchQueue.main.async {
+//                                        self.showErrorHud(msg: message ?? "", hud: hud)
+//
+//
+//                                    }
+//
+//                                }
                             }
                         }
                             else {
+                                
                                 self.showErrorHud(msg: message ?? "", hud: hud)
                             }
                         }

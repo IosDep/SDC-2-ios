@@ -110,14 +110,43 @@ class EmailVc: UIViewController {
 //                                    )}
                                 }
                                 
-                        else {
-                        self.showErrorHud(msg: message ?? "" , hud: hud)
-                                }
-                                            
-                            
+                                else if code == 400 {
+                                    let resendId = jsonObj!["resendId"] as? String
+                                    
+                                    let msgg = "Invalid Otp".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
+                      
+                         
+                                else if code == 404 {
+                                    let resendId = jsonObj!["resendId"] as? String
+                                    
+                                    let msgg = "OTP expired".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
                                 
+                                else if code == 504 {
+                                    let resendId = jsonObj!["resendId"] as? String
+                                    
+                                    let msgg = "Already active otp".localized()
+                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                    
+                                        }
+                                
+                                else if code == 503 {
+                                                    let msgg = "Service unavailable".localized()
+                                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                        }
+                                                
+                                else if code == 413 {
+                                                    let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                    self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                        }
                             }
-                            
+                                            
+                         
                         } catch let err as NSError {
                             print("Error: \(err)")
                             self.serverError(hud: hud)

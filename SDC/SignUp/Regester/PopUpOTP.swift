@@ -62,10 +62,7 @@ class PopUpOTP: UIViewController {
             else if checkEmailPhone == "2" {
                 verificationMessage.text = "A message containing OTP code were sent to the Mobile".localized()
             }
-
             recoveryInput.text = recoveryField
-
-            
         }
         
         else {
@@ -109,8 +106,6 @@ class PopUpOTP: UIViewController {
     
     
     @IBAction func resendCodePressed(_ sender: Any) {
-        
-        
         if flag == "1" {
                self.requestOTP(recoveryInput: self.email ?? "", parameter: "email")
            } else if flag == "2" {
@@ -119,11 +114,7 @@ class PopUpOTP: UIViewController {
            
            remainingTime = 180
            updateTimer()
-        
-        
     }
-    
-
 
     @IBAction func Next(_ sender: Any) {
         
@@ -137,9 +128,7 @@ class PopUpOTP: UIViewController {
         else {
             self.vvalidateOTP(OTP: otpTxt.text ?? "")
         }
-        
     }
-    
     
     func validateOTP(OTP : String) {
             let hud = JGProgressHUD(style: .light)
@@ -181,6 +170,7 @@ class PopUpOTP: UIViewController {
                                     
                                    
                     DispatchQueue.main.async {
+                        
                     self.showSuccessHud(msg: message ?? "OTP Verified" , hud: hud)
                         
                        
@@ -194,10 +184,7 @@ class PopUpOTP: UIViewController {
                                 self.present(vc, animated: true , completion: nil)
                                 
                             })
-                            
-                       
                                     }
-                                    
                                 }
                                 
                                 // ,completion: {self.dismiss(animated: true)}
@@ -238,13 +225,6 @@ class PopUpOTP: UIViewController {
                                                     let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
                                                                     self.showErrorHud(msg: msgg ?? "" , hud: hud)
                                                                         }
-                                            
-                                                
-                                            
-                                
-                                
-                                
-                                
                             }
                         }
                         
@@ -480,6 +460,7 @@ class PopUpOTP: UIViewController {
                             }
                             
                             else if code == 400 {
+                                
                                 let resendId = jsonObj!["resendId"] as? String
                                 
                                 let msgg = "Invalid Otp".localized()
@@ -553,6 +534,4 @@ class PopUpOTP: UIViewController {
             
         }
     }
-
-    
 }

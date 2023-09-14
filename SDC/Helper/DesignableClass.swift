@@ -14,10 +14,7 @@ import MOLH
 //center
 class DesignableLabel: UILabel {
     required init(coder aDecoder: NSCoder) {
-        
         super.init(coder: aDecoder)!
-
-
 
     }
     
@@ -56,8 +53,8 @@ class DesignableLabel2: UILabel {
         }
         set(value) {
             self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-    
             self.text = NSLocalizedString(value, comment: "")
+            
             
         }
     }
@@ -83,21 +80,14 @@ class DesignableLabelWitSpace: UILabel {
         }
         set(value) {
             self.textAlignment = MOLHLanguage.isRTLLanguage() ? .right : .left
-            if  self.self.textAlignment == .right {
-             
+            self.text = NSLocalizedString(value, comment: "")
+            
+            // Set the font to "Poppins-Medium"
+            if let customFont = UIFont(name: "Fonts/Poppins-Medium", size: self.font?.pointSize ?? 17.0) {
+                self.font = customFont
             }
-            
-            else if self.self.textAlignment == .left {
-            
-            }
-            
-            self.text = NSLocalizedString("\(value)", comment: "")
-            
         }
-        
     }
-    
-    
 }
 
 
@@ -202,8 +192,6 @@ class DesignableTextFeild3: UITextField {
             
         }
     }
-    
-    
 }
 
 @IBDesignable
@@ -260,6 +248,8 @@ class DesignableButton: UIButton {
         set(value) {
             
             self.setTitle(NSLocalizedString(value, comment: ""), for: state)
+            self.titleLabel?.font = UIFont(name: "Poppins-Medium", size: self.titleLabel?.font.pointSize ?? 17.0)
+
             
         }
     }

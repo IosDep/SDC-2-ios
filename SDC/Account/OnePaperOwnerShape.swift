@@ -19,6 +19,7 @@ struct SecurityOwnerShapeHolder {
 
 class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDelegate,UIScrollViewDelegate , DataSelectedDelegate , SelectedNatDelegate, OnePaperHeaderDelegate {
     
+    @IBOutlet weak var pdfBtn: UIButton!
     @IBOutlet weak var searchStack: UIStackView!
     
     @IBOutlet weak var staticCellInfo: UIView!
@@ -69,7 +70,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        pdfBtn.isEnabled = false
         staticCellInfo.isHidden = true
         
         if checkSideMenu == true {
@@ -91,7 +92,6 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
     @IBAction func currencyPressed(_ sender: Any) {
     
     }
-    
     
     
     //    Tableview Configration
@@ -309,7 +309,7 @@ class OnePaperOwnerShape: UIViewController ,UITableViewDataSource,UITableViewDel
 //    }
     
     func getSelectdPicker(selectdTxt: String, securtNumber: String, flag: String, securtyId: String, secMarket: String, secStatus: String, secISIN: String) {
-        
+        pdfBtn.isEnabled = true
         pickerData = []
         pickerData?.append(secISIN)
         pickerData?.append(securtNumber)

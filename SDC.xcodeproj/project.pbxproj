@@ -105,6 +105,7 @@
 		8771087729D04AD50010AEBE /* NotficationXIB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8771087529D04AD50010AEBE /* NotficationXIB.swift */; };
 		8771087829D04AD50010AEBE /* NotficationXIB.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8771087629D04AD50010AEBE /* NotficationXIB.xib */; };
 		8771087C29D04C870010AEBE /* NotfictionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8771087B29D04C870010AEBE /* NotfictionVC.swift */; };
+		87714CA62AB2FBA3009159A9 /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 87714CA52AB2FBA3009159A9 /* Poppins-Medium.ttf */; };
 		8775B921298FB7770052C551 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775B920298FB7770052C551 /* HomeVC.swift */; };
 		87B05CE329C06D5D00EAA41D /* WelcomePageVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B05CE229C06D5D00EAA41D /* WelcomePageVC.swift */; };
 		87B05CF229C0730700EAA41D /* DesignableClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B05CF129C0730700EAA41D /* DesignableClass.swift */; };
@@ -269,6 +270,7 @@
 		8771087529D04AD50010AEBE /* NotficationXIB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotficationXIB.swift; sourceTree = "<group>"; };
 		8771087629D04AD50010AEBE /* NotficationXIB.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NotficationXIB.xib; sourceTree = "<group>"; };
 		8771087B29D04C870010AEBE /* NotfictionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotfictionVC.swift; sourceTree = "<group>"; };
+		87714CA52AB2FBA3009159A9 /* Poppins-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Poppins-Medium.ttf"; sourceTree = "<group>"; };
 		8775B920298FB7770052C551 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		87B05CE229C06D5D00EAA41D /* WelcomePageVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageVC.swift; sourceTree = "<group>"; };
 		87B05CF129C0730700EAA41D /* DesignableClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DesignableClass.swift; path = SDC/Helper/DesignableClass.swift; sourceTree = SOURCE_ROOT; };
@@ -408,6 +410,7 @@
 		8734D282295C32570044B0F7 /* SDC */ = {
 			isa = PBXGroup;
 			children = (
+				87714CA42AB2FB7F009159A9 /* Fonts */,
 				3F9341182A6FF00F00A826AD /* SDC.entitlements */,
 				8728D9E329E9D6C600133096 /* CardDetails */,
 				871181BD29E2D04200F14C5C /* Localize */,
@@ -478,6 +481,14 @@
 				87B05CE229C06D5D00EAA41D /* WelcomePageVC.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		87714CA42AB2FB7F009159A9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				87714CA52AB2FBA3009159A9 /* Poppins-Medium.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		87B89AD729CFC73100E82C1E /* Regester */ = {
@@ -742,6 +753,7 @@
 				B9EFE9102A98FF6E008FB93D /* OnePaperSearchHeaderTableViewCell.xib in Resources */,
 				3F91502B2A40D6B300BE3FC0 /* ChartCell.xib in Resources */,
 				8736F53529C7218900A6A567 /* HeaderView.xib in Resources */,
+				87714CA62AB2FBA3009159A9 /* Poppins-Medium.ttf in Resources */,
 				876758AB29C75935000F3CBC /* BusnissCardTable.xib in Resources */,
 				3F4310F22A9CE0CE009AF08A /* StaticInfoCell.xib in Resources */,
 				3FAAB72B2A01079300DCFDA5 /* PickerCell.xib in Resources */,
@@ -1177,7 +1189,7 @@
 				DEVELOPMENT_TEAM = QVFP3WE862;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "SDC ePortfolio";
+				INFOPLIST_KEY_CFBundleDisplayName = "المحفظة الإلكترونية";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1209,7 +1221,7 @@
 				DEVELOPMENT_TEAM = QVFP3WE862;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SDC/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "SDC ePortfolio";
+				INFOPLIST_KEY_CFBundleDisplayName = "المحفظة الإلكترونية";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

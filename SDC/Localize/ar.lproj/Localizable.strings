@@ -401,8 +401,8 @@
 
 "Family Book Number" = "رقم دفتر العائلة";
 "Complete these steps to create a new account" = "اتبع الخطوات لإنشاء حساب";
-"A message containing OTP code were sent to the Email" = "تم إرسال رسالة تحتوي على رمز التحقق على البريد الإلكتروني";
-"A message containing OTP code were sent to the Mobile" = "تم إرسال رسالة تحتوي على رمز التحقق على رقم الهاتف";
+"A message containing OTP code were sent to the Email" = "تم إرسال رسالة تحتوي على رمز التحقق إلى البريد الإلكتروني";
+"A message containing OTP code were sent to the Mobile" = "تم إرسال رسالة تحتوي على رمز التحقق إلى رقم الهاتف";
 "Fill all the required fields except from/ to fields"= "املى جميع الحقول المطلوبة ما عدا من/إلى تاريخ";
 
 "Fill all required feilds" = "املئ جميع الحقول المطلوبة";
@@ -411,3 +411,4 @@
 "Forgetten your password" = "استعادة كلمة السر";
 "Mobile doesn't match" = "رقم الهاتف غير متطابق";
 "Email doesn't match" = "البريد الإلكتروني غير متطابق";
+"National No" = "الرقم الوطني";

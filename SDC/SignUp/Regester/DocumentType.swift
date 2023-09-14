@@ -64,8 +64,6 @@ class DocumentType: UIViewController , UIPickerViewDataSource , UIPickerViewDele
     @IBAction func nextBtn(_ sender: Any) {
         self.regesterApiCall(flag: self.idType)
         
-        
-        
     }
     
     

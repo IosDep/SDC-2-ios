@@ -14,21 +14,23 @@ import CountryPickerView
 
 
 
-class PhoneNumberVc: UIViewController {
+class PhoneNumberVc: UIViewController , CountryPickerViewDelegate {
     
     
    
  
     
     @IBOutlet weak var phoneTxt: DesignableTextFeild!
-
     @IBOutlet weak var scroll: UIScrollView!
-    
-    
     @IBOutlet weak var countryPickerView: CountryPickerView!
+    
+    var phoneCode : String?
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        countryPickerView.delegate = self
 
         countryPickerView.font = UIFont.systemFont(ofSize: 14.0)
         
@@ -39,25 +41,44 @@ class PhoneNumberVc: UIViewController {
 
     }
     
+    func countryPickerView(_ countryPickerView: CountryPickerView, didSelectCountry country: Country) {
+       let pCode = countryPickerView.selectedCountry.phoneCode
+        
+        self.phoneCode = countryPickerView.selectedCountry.phoneCode.replacingOccurrences(of: "+", with: "00")
+
+    }
+
+    
     override func viewDidAppear(_ animated: Bool) {
         self.setupSideMenu()
 
     }
     @IBAction func nextBtn(_ sender: Any) {
         
-//        if self.phoneTxt.text?.count == 9 {
+        //        if self.phoneTxt.text?.count == 9 {
+        
         
         if self.phoneTxt.text != "" {
-            self.requestOTPMobile(mobile: self.removeLeadingZero(from: self.phoneTxt.text ?? ""))
+            
+            if let phoneCode = phoneCode, let phoneText = phoneTxt.text {
+                
+            let combinedPhoneNumber = phoneCode + self.removeLeadingZero(from: phoneText)
+                
+             self.requestOTPMobile(mobile: combinedPhoneNumber ?? "")
+                    
+                    
+                
+                //            self.requestOTPMobile(mobile: self.removeLeadingZero(from: self.phoneTxt.text ?? ""))
+                //        }
+                
+                
+                //        }else {
+                //            self.showErrorHud(msg: "Please fill Correct Phone Number")
+                //        }
+                
+            }
         }
-        
-           
-//        }else {
-//            self.showErrorHud(msg: "Please fill Correct Phone Number")
-//        }
-        
     }
-    
     
     func removeLeadingZero(from string: String) -> String {
         if string.hasPrefix("0") {
@@ -132,9 +153,40 @@ class PhoneNumberVc: UIViewController {
                                }
                                
                               
-                               else {
-                                   self.showErrorHud(msg: message ?? "" , hud: hud)
-                               }
+                               else if code == 400 {
+                                   let resendId = jsonObj!["resendId"] as? String
+                                   
+                                   let msgg = "Invalid Otp".localized()
+                                   self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                   
+                                       }
+                     
+                        
+                               else if code == 404 {
+                                   let resendId = jsonObj!["resendId"] as? String
+                                   
+                                   let msgg = "OTP expired".localized()
+                                   self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                   
+                                       }
+                               
+                               else if code == 504 {
+                                   let resendId = jsonObj!["resendId"] as? String
+                                   
+                                   let msgg = "Already active otp".localized()
+                                   self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                   
+                                       }
+                               
+                               else if code == 503 {
+                                                   let msgg = "Service unavailable".localized()
+                                                   self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                       }
+                                               
+                               else if code == 413 {
+                                                   let msgg = "You have exceeded the allowed number of attempts, you can request a new verification code".localized()
+                                                                   self.showErrorHud(msg: msgg ?? "" , hud: hud)
+                                                                       }
                                
                            }
                        } catch let err as NSError {

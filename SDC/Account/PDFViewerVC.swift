@@ -10,12 +10,13 @@ import WebKit
 import JGProgressHUD
 import Alamofire
 import MOLH
+import PDFKit
 
-class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
+class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate , PDFDocumentDelegate , URLSessionDelegate, UIDocumentInteractionControllerDelegate, UIDocumentPickerDelegate {
     
     
+    @IBOutlet weak var pdfView: PDFView!
     @IBOutlet weak var webView: WKWebView!
-    
     @IBOutlet weak var mainTitle: UILabel!
     
     var flag:Int?
@@ -44,8 +45,6 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-    
 
        if flag == 1 {
            
@@ -55,19 +54,25 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
                 
             }
             
-            webView.load(URLRequest(url: urlString))
+//            webView.load(URLRequest(url: urlString))
 
         }
 
         else if flag == 2 {
             
-            mainTitle.text = "Investor Information".localized()
-            guard let urlString = URL(string:url ?? "") else {
-                return
-                
-            }
             
-            webView.load(URLRequest(url: urlString))
+            
+            mainTitle.text = "Investor Information".localized()
+//            guard let urlString = URL(string:url ?? "") else {
+//                return
+//
+//            }
+//
+//            webView.load(URLRequest(url: urlString))
+            
+           
+
+            
         }
         
         else if flag == 3 {
@@ -77,7 +82,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
                 return
                 
             }
-            webView.load(URLRequest(url: urlString))
+//            webView.load(URLRequest(url: urlString))
         }
 
         
@@ -88,7 +93,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
                 return
                 
             }
-            webView.load(URLRequest(url: urlString))
+//            webView.load(URLRequest(url: urlString))
         }
         
         else if flag == 5 {
@@ -98,7 +103,7 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
                 return
                 
             }
-            webView.load(URLRequest(url: urlString))
+//            webView.load(URLRequest(url: urlString))
         }
         
         else if flag == 6 {
@@ -108,20 +113,48 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
                 return
                 
             }
-            webView.load(URLRequest(url: urlString))
+//            webView.load(URLRequest(url: urlString))
+        }
+        
+        
+        DispatchQueue.global().async {
+            // Perform time-consuming task here (e.g., loading a PDF document).
+            
+            // Example:
+            if let url = URL(string: self.url ?? "") {
+                if let pdfDocument = PDFDocument(url: url) {
+                    DispatchQueue.main.async {
+                        // Update the UI with the result on the main thread.
+                        self.pdfView.document = pdfDocument
+                        self.activityIndicator.stopAnimating()
+                    }
+                } else {
+                    // Handle the case where PDF document creation failed.
+                    DispatchQueue.main.async {
+//                            self.showErrorMessage("Failed to load PDF.")
+                        self.activityIndicator.stopAnimating()
+                    }
+                }
+            } else {
+                // Handle the case where the URL is not valid.
+                DispatchQueue.main.async {
+//                        self.showErrorMessage("Invalid PDF URL.")
+                    self.activityIndicator.stopAnimating()
+                }
+            }
         }
         
         
         
 //
-        webView.navigationDelegate=self
-        webView.uiDelegate = self
+//        webView.navigationDelegate=self
+//        webView.uiDelegate = self
         
 //        hundle the web showing
-        webView.navigationDelegate = self
-        webView.uiDelegate = self
+//        webView.navigationDelegate = self
+//        webView.uiDelegate = self
         
-        webView.configuration.preferences.javaScriptEnabled = true
+//        webView.configuration.preferences.javaScriptEnabled = true
 //        let preferences = WKPreferences()
 //        preferences.javaScriptEnabled = true
 //        let configuration = WKWebViewConfiguration()
@@ -133,6 +166,8 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
 
+        
+        
 
         if #available(iOS 13.0, *) {
             activityIndicator.style = .large
@@ -161,6 +196,23 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
 
 
     }
+    
+//
+//    func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
+//            if let pickedURL = urls.first {
+//                // Handle the picked URL, you can save it or perform other actions here
+//                print("Picked document URL: \(pickedURL)")
+//            }
+//        }
+//
+//        func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
+//            // Handle cancellation if needed
+//        }
+    
+//    func documentInteractionControllerViewControllerForPreview(_ controller: UIDocumentInteractionController) -> UIViewController {
+//            return self
+//        }
+//
     func showActivityIndicator(show: Bool) {
         if show {
             activityIndicator.startAnimating()
@@ -168,28 +220,132 @@ class PDFViewerVC: UIViewController , WKNavigationDelegate,WKUIDelegate{
             activityIndicator.stopAnimating()
         }
     }
-    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-
-        activityIndicator.stopAnimating()
-        activityIndicator.isHidden = true
-    }
-
-    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
-        activityIndicator.startAnimating()
-        activityIndicator.isHidden = false
-    }
-
-    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        showActivityIndicator(show: false)
-
-
-    }
     
+//    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+//
+//        activityIndicator.stopAnimating()
+//        activityIndicator.isHidden = true
+//    }
+
+//    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+//        activityIndicator.startAnimating()
+//        activityIndicator.isHidden = false
+//    }
+
+//    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+//        showActivityIndicator(show: false)
+//
+//
+//    }
+//
         
     
     func appDelegate() -> AppDelegate {
         return UIApplication.shared.delegate as! AppDelegate
     }
+    
+    
+    
+    @IBAction func shareButtonTapped(_ sender: Any) {
+        
+        guard let pdfURL = URL(string: url ?? "") else {
+                return
+            }
 
+            let activityViewController = UIActivityViewController(activityItems: [pdfURL], applicationActivities: nil)
+            present(activityViewController, animated: true, completion: nil)
+        
+        
+//        guard let pdfURL = URL(string: url ?? "") else {
+//                return
+//            }
+//
+//            // Create a document interaction controller
+//            let documentInteractionController = UIDocumentInteractionController(url: pdfURL)
+//            documentInteractionController.delegate = self
+//
+//            // Present the document interaction controller
+//            documentInteractionController.presentOptionsMenu(from: self.view.bounds, in: self.view, animated: true)
+        
+        
+        
+//            guard let pdfURL = URL(string: url ?? "") else {
+//                return
+//            }
+//
+//            let documentPicker = UIDocumentPickerViewController(url: pdfURL, in: .exportToService)
+//            documentPicker.delegate = self
+//            present(documentPicker, animated: true, completion: nil)
+//
+            }
+    
+    
+    
+    
+
+    @IBAction func downloadButtonTapped(_ sender: Any) {
+
+            // Check if a valid PDF URL is available (you should have stored it when loading the PDF).
+        
+        if let url = URL(string: self.url ?? "" ) {
+            let destinationDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+            let destinationURL = destinationDirectoryURL.appendingPathComponent("downloaded.pdf")
+            
+            if FileManager.default.fileExists(atPath: destinationURL.path) {
+                // Rename the existing file to avoid conflicts.
+                let timestamp = Int(Date().timeIntervalSince1970)
+                let renamedURL = destinationDirectoryURL.appendingPathComponent("downloaded_\(timestamp).pdf")
+                
+                do {
+                    try FileManager.default.moveItem(at: destinationURL, to: renamedURL)
+                } catch {
+                    // Handle the renaming error.
+                    print("Error renaming file: \(error)")
+                }
+            }
+            
+            if let pdfDocument = PDFDocument(url: url) {
+                DispatchQueue.main.async {
+                    // Update the UI with the result on the main thread.
+                    self.pdfView.document = pdfDocument
+                    self.activityIndicator.stopAnimating()
+                }
+            } else {
+                // Handle the case where PDF document creation failed.
+                DispatchQueue.main.async {
+                    self.showErrorHud(msg: "Failed to load PDF.")
+                    self.activityIndicator.stopAnimating()
+                }
+            }
+        } else {
+            // Handle the case where the URL is not valid.
+            DispatchQueue.main.async {
+                self.showWarningHud(msg: "Invalid PDF URL.")
+                self.activityIndicator.stopAnimating()
+            }
+        }
+        
+        }
+    
+    
+    
+    @IBAction func saveToFiles(_ sender: Any) {
+        
+        
+        if let url = URL(string: self.url ?? "") {
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                } else {
+                    // Handle the case where the URL cannot be opened
+                    print("Unable to open URL: \(url)")
+                }
+            } else {
+                // Handle the case where the URL is invalid
+                print("Invalid URL: \(url)")
+            }
+    }
+    
+    
+    
 
 }

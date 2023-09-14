@@ -3,4 +3,54 @@
    uuid = "F912D6DA-5F20-4571-AE79-29F9223E40AE"
    type = "0"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "4839F3A1-85FB-4FDA-AB8A-F5E8ED754B09"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SDC/SignUp/Regester/IdentfairVC.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "155"
+            endingLineNumber = "155"
+            landmarkName = "regesterApiCall()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "4839F3A1-85FB-4FDA-AB8A-F5E8ED754B09 - 6cbb238d1783e4e4"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in SDC.IdentfairVC.regesterApiCall() -&gt; ()"
+                  moduleName = "SDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bluerayws/Desktop/SDC-2-ios/SDC/SignUp/Regester/IdentfairVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "156"
+                  endingLineNumber = "156"
+                  offsetFromSymbolStart = "6424">
+               </Location>
+               <Location
+                  uuid = "4839F3A1-85FB-4FDA-AB8A-F5E8ED754B09 - 6cbb238d1783e485"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Alamofire.DataResponse&lt;Swift.Optional&lt;Foundation.Data&gt;, Alamofire.AFError&gt;) -&gt; () in SDC.IdentfairVC.regesterApiCall() -&gt; ()"
+                  moduleName = "SDC"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/bluerayws/Desktop/SDC-2-ios/SDC/SignUp/Regester/IdentfairVC.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "6444">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

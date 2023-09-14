@@ -1089,12 +1089,7 @@ func animateViewHeight (controller:UIViewController
             layer.borderColor = newValue?.cgColor
         }
     }
-    
-    
-    
-    
 }
-
 
 
 
@@ -1152,9 +1147,6 @@ extension UIView {
         // Other label customization code, if needed
         
     }
-    
-    
-    
 }
 
 extension UICollectionViewFlowLayout {

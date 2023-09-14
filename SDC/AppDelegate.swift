@@ -39,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate ,MOLHResetable{
         MOLHLanguage.setDefaultLanguage("ar")
         MOLH.shared.activate(false)
         
+        
         self.getSliderImages()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {

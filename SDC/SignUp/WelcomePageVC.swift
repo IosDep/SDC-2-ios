@@ -14,6 +14,8 @@ import JGProgressHUD
 import MOLH
 
 class WelcomePageVC: UIViewController {
+    
+    @IBOutlet weak var mainTitle: DesignableLabel!
     @IBOutlet weak var SignUpButton:UIButton!
     
     @IBOutlet weak var slideShow: ImageSlideshow!
@@ -27,6 +29,12 @@ class WelcomePageVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //        self.SignUpButton.layer.borderColor = UIColor.init(rgb: 0x4CC18B).cgColor
+        if MOLHLanguage.isRTLLanguage() {
+            mainTitle.font = UIFont(name: "Poppins-Medium", size: 17.0)
+
+        }
+        
+
         self.SignUpButton.layer.borderWidth = 1
         self.configureSlideShow()
         self.getMobileLayouts()

@@ -84,8 +84,6 @@ class IdentfairVC: UIViewController {
                             
                             if let status = jsonObj!["status"] as? Int {
                             
-                            
-                            
                             if status == 200 {
                                 
                                 let message = jsonObj!["message"] as? String
